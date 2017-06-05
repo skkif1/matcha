@@ -4,7 +4,7 @@ function signUpUser()
     data ={
         login: $("#signup_form .login").val().trim(),
         password: $("#signup_form .password").val().trim(),
-        email: trim($("#signup_form .email").val().trim())
+        email: $("#signup_form .email").val().trim()
     };
     $.ajax({
         headers: {

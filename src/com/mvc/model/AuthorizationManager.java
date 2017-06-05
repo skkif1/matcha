@@ -3,9 +3,13 @@ package com.mvc.model;
 import com.mvc.DAO.UserDao;
 import com.mvc.Entity.JsonResponseWrapper;
 import com.mvc.Entity.User;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 
+@Component
 public class AuthorizationManager {
 
     private UserDao userDao;
@@ -17,6 +21,7 @@ public class AuthorizationManager {
     public AuthorizationManager() {
     }
 
+    @Autowired
     public AuthorizationManager(UserDao userDao, Hasher hasher, Validator validator, JsonResponseWrapper jsonResponse) {
         this.userDao = userDao;
         this.hasher = hasher;
@@ -51,7 +56,7 @@ public class AuthorizationManager {
                 return jsonResponse;
             }
         } catch (Exception ex) {
-            ex.printStackTrace();
+            System.out.println(ex.getMessage());
         }
         jsonResponse.setAction("Bderror");
         return jsonResponse;
@@ -61,7 +66,7 @@ public class AuthorizationManager {
     {
         try {
             validator.setUser(user);
-            jsonResponse.setAction("bla");
+            jsonResponse.setAction("bla");//mock
             if (!validator.validateUser("login")) {
                 jsonResponse.setAction("error");
                 jsonResponse.setData(validator.getErrors());
@@ -88,6 +93,7 @@ public class AuthorizationManager {
 
         }catch (Exception ex)
         {
+            ex.printStackTrace();
             jsonResponse.setAction("serverError");
             jsonResponse.setData(null);
             return jsonResponse;

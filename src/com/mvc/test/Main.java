@@ -17,7 +17,7 @@ import java.util.ArrayList;
 
 public class Main {
 
-    public static void main(String[] args) throws SQLException, ClassNotFoundException, InvalidKeySpecException, NoSuchAlgorithmException {
+    public static void main(String[] args) throws SQLException, ClassNotFoundException, InvalidKeySpecException, NoSuchAlgorithmException, InterruptedException {
 
 //
 //        DriverManagerDataSource dataSource = new DriverManagerDataSource();
@@ -26,6 +26,6 @@ public class Main {
 //        dataSource.setUsername("root");
 //        dataSource.setPassword("75g03f24");
 
-
     }
+
 }

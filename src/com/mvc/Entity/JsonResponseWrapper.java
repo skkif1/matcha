@@ -1,6 +1,5 @@
 package com.mvc.Entity;
 
-import java.util.ArrayList;
 
 public abstract class JsonResponseWrapper <T>{
 
@@ -10,6 +9,7 @@ public abstract class JsonResponseWrapper <T>{
     public JsonResponseWrapper() {
         System.out.println("json constructed");
     }
+
 
     public abstract void setAction(String action);
 

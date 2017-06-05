@@ -18,7 +18,7 @@ import java.util.List;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan({"com.mvc.controller"})
+@ComponentScan({"com.mvc"})
 @Import({DaoConfig.class, ModelConfig.class})
 public class WebConfig extends WebMvcConfigurerAdapter{
 

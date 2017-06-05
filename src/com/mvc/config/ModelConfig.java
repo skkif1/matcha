@@ -8,23 +8,13 @@ import com.mvc.model.UserValidator;
 import com.mvc.model.Validator;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Scope;
+import org.springframework.context.annotation.ScopedProxyMode;
+import org.springframework.stereotype.Component;
+import org.springframework.web.context.WebApplicationContext;
 
 @Configuration
 public class ModelConfig {
 
-    @Bean
-    public AuthorizationManager getAuthorizationManager()
-    {
-        DaoConfig daoConfig = new DaoConfig();
-        return new AuthorizationManager(daoConfig.getUserDaoMysql(), new Hasher(), getUserValidator(), getJsonWrapper());
-    }
 
-    @Bean
-    public Validator getUserValidator()
-    {
-        return new UserValidator();
-    }
-
-    @Bean
-    public JsonResponseWrapper getJsonWrapper(){return new JsonResponse();}
 }

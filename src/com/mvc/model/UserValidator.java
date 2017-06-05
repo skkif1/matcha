@@ -2,6 +2,7 @@ package com.mvc.model;
 
 import com.mvc.Entity.User;
 import org.springframework.context.annotation.Scope;
+import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
@@ -11,6 +12,8 @@ import java.util.regex.Pattern;
 /**
  * Validation Framework or Libraries are not allowd in this project among as ORM Frameworks
  */
+@Service
+@Scope(value = "request", proxyMode = ScopedProxyMode.TARGET_CLASS)
 
 public class UserValidator implements Validator {
 
@@ -21,6 +24,7 @@ public class UserValidator implements Validator {
     private static final String PASSWORD_PATTERN = "^[a-z0-9_-]{6,15}$";
 
     public UserValidator() {
+        System.out.println("Validator constracted");
     }
 
     public void setUser(User user) {
@@ -61,7 +65,6 @@ public class UserValidator implements Validator {
 
     private void validateLogin()
     {
-        System.out.println("size " + errors.size());
         if (user == null)
             errors.add("empty user");
 
@@ -71,7 +74,6 @@ public class UserValidator implements Validator {
 
         pattern = Pattern.compile(LOGIN_PATTERN);
         Pattern emailPattern = Pattern.compile(EMAIL_PATTERN);
-        System.out.println(!pattern.matcher(user.getLogin()).matches());
         if ((StringUtils.isEmpty(user.getLogin()) || !pattern.matcher(user.getLogin()).matches()))
             if (!emailPattern.matcher(user.getLogin()).matches())
                 errors.add("Invalid Login or Email");

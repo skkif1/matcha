@@ -1,6 +1,15 @@
 package com.mvc.Entity;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class JsonResponse extends JsonResponseWrapper{
+
+    public JsonResponse()
+    {
+        System.out.println("from controller " + super.action);
+        System.out.println("JsonResponse.constructed");
+    }
 
     @Override
     public void setAction(String action) {
@@ -21,4 +30,5 @@ public class JsonResponse extends JsonResponseWrapper{
     public Object getData() {
         return super.data;
     }
+
 }

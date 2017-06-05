@@ -2,9 +2,7 @@ package com.mvc.DaoImpl;
 
 import com.mvc.DAO.UserDao;
 import com.mvc.Entity.User;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
-import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 
@@ -26,7 +24,7 @@ public class UserDaoImpl implements UserDao{
        String sql = "INSERT INTO user (login, password, email, salt) VALUES (?,?,?,?)";
         int res = template.update(sql, user.getLogin(), user.getPassword(), user.getEmail(), user.getSalt());
         System.out.println("saved : " + res);
-        return res < 0;
+        return res > 0;
     }
 
     @Override
