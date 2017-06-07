@@ -24,7 +24,16 @@
     Password: <input class="password" name="email" type="text">
 </form>
 <button onclick="loginUser()">SignUp</button>
-<div id="error"></div>
+<div class="error"></div>
 
+<form id="reset_form">
+   Email: <input class="email" name="email" type="text">
+</form>
+<button onclick="resetPasswrd()">SignUp</button>
+<div class="error"></div>
+
+<div class="status">
+
+</div>
 </body>
 </html>

@@ -2,9 +2,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>Ups....</title>
 </head>
 <body>
-hello
+There is no page on this url
 </body>
 </html>
