@@ -23,7 +23,13 @@ public class UserDaoImpl implements UserDao{
     public boolean saveUser(User user) {
        String sql = "INSERT INTO user (login, password, email, salt) VALUES (?,?,?,?)";
         int res = template.update(sql, user.getLogin(), user.getPassword(), user.getEmail(), user.getSalt());
-        System.out.println("saved : " + res);
+        return res > 0;
+    }
+
+    @Override
+    public boolean updateUser(User user) {
+        String sql = "UPDATE user SET login = ?, password = ?, email = ?, salt = ?, confirm = ? WHERE id = ?";
+        int res = template.update(sql, user.getLogin(), user.getPassword(), user.getEmail(), user.getSalt(), user.getConfirm(), user.getId());
         return res > 0;
     }
 
@@ -36,6 +42,7 @@ public class UserDaoImpl implements UserDao{
             user = template.queryForObject(sql, new BeanPropertyRowMapper<>(User.class), new String[]{login});
         }catch (DataAccessException ex)
         {
+            System.out.println(ex.getMessage());
             return null;
         }
         return user;
@@ -51,6 +58,7 @@ public class UserDaoImpl implements UserDao{
             user = template.queryForObject(sql, new BeanPropertyRowMapper<>(User.class), new String[]{email});
         }catch (DataAccessException ex)
         {
+            System.out.println(ex.getMessage());
             return null;
         }
         return user;

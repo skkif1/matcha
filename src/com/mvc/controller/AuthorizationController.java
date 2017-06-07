@@ -34,18 +34,33 @@ public class AuthorizationController {
         return "authorization";
     }
 
+
     @RequestMapping(value = "/signUp", method = RequestMethod.POST, consumes = "application/json")
-    public @ResponseBody JsonResponseWrapper signUp(@RequestBody User user) throws InterruptedException {
+    public @ResponseBody String signUp(@RequestBody User user) throws InterruptedException {
         JsonResponseWrapper json = authorizationManager.signUpUser(user);
-        System.out.println(user.toString());
-        System.out.println(json.getAction());
-        return (JsonResponse)json;
+        return json.toString();
+    }
+
+    @RequestMapping(value = "/confirm/{email}/{salt}", method = RequestMethod.GET)
+    public String confirmEmail(@PathVariable("email")String email, @PathVariable("salt") String salt)
+    {
+        if (!authorizationManager.confirmEmail(email, salt))
+          return "404";
+        return "authorization";
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.POST, produces = "application/json")
-    public @ResponseBody JsonResponseWrapper login(@RequestBody User user) throws InterruptedException {
-        System.out.println(user.toString());
+    public @ResponseBody String login(@RequestBody User user) throws InterruptedException {
         JsonResponseWrapper json = authorizationManager.login(user);
-        return json;
+        return json.toString();
     }
+
+    @RequestMapping(value = "/resetPassword", method = RequestMethod.POST, produces = "application/json")
+    public @ResponseBody String reset(@RequestBody User user)
+    {
+        JsonResponseWrapper json = authorizationManager.resetUserPassword(user);
+        return json.toString();
+    }
+
+
 }

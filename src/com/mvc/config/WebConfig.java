@@ -19,7 +19,7 @@ import java.util.List;
 @Configuration
 @EnableWebMvc
 @ComponentScan({"com.mvc"})
-@Import({DaoConfig.class, ModelConfig.class})
+@Import({DaoConfig.class, ModelConfig.class, EmailConfig.class, FreeMarkerConfig.class})
 public class WebConfig extends WebMvcConfigurerAdapter{
 
     @Override

@@ -1,6 +1,8 @@
 package com.mvc.Entity;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 public abstract class JsonResponseWrapper <T>{
 
     String action;
@@ -18,4 +20,5 @@ public abstract class JsonResponseWrapper <T>{
     public abstract T getData();
 
     public abstract void setData(T data);
+
 }

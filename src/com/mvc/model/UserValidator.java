@@ -14,7 +14,6 @@ import java.util.regex.Pattern;
  */
 @Service
 @Scope(value = "request", proxyMode = ScopedProxyMode.TARGET_CLASS)
-
 public class UserValidator implements Validator {
 
     private User user;

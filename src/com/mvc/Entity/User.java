@@ -2,21 +2,39 @@ package com.mvc.Entity;
 
 public class User {
 
+    private String id;
     private String login;
     private String email;
     private String password;
     private String salt;
+    private Boolean confirm;
 
     public User() {
     }
 
-    public User(String login, String email, String password, String salt) {
+    public User(String login, String email, String password, String salt, Boolean confirm) {
         this.login = login;
         this.email = email;
         this.password = password;
         this.salt = salt;
+        this.confirm = confirm;
     }
 
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public Boolean getConfirm() {
+        return confirm;
+    }
+
+    public void setConfirm(Boolean confirm) {
+        this.confirm = confirm;
+    }
 
     public String getLogin() {
         return login;
@@ -52,8 +70,12 @@ public class User {
 
     @Override
     public String toString() {
-        return "login :" + this.getLogin() + "\n" +
-                "email :" + this.getEmail() + "\n" +
-                "password :" + this.getPassword() + "\n";
+        return "User{" +
+                "login='" + login + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", salt='" + salt + '\'' +
+                ", confirm=" + confirm +
+                '}';
     }
 }
