@@ -11,10 +11,7 @@ import org.springframework.stereotype.Component;
 public class JsonResponse extends JsonResponseWrapper{
 
     public JsonResponse()
-    {
-        System.out.println("from controller " + super.action);
-        System.out.println("JsonResponse.constructed");
-    }
+    {}
 
     @Override
     public void setAction(String action) {

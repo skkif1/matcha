@@ -5,6 +5,7 @@ import com.mvc.Entity.JsonResponseWrapper;
 import com.mvc.Entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -58,10 +59,7 @@ public class AuthorizationManager {
             mailModel.put("email",user.getEmail());
             emailSender.send("confirmationEmail.ftl", "confirmation email on Matcha.com", user.getEmail(), mailModel);
             if (userDao.saveUser(user))
-            {
                 jsonResponse.setAction("confirm");
-                return jsonResponse;
-            }
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
             jsonResponse.setAction("Bderror");
@@ -90,6 +88,7 @@ public class AuthorizationManager {
         if (hasher.compareValues(user.getPassword(), selected.getPassword(), selected.getSalt()))
         {
             jsonResponse.setAction("confirm");
+            jsonResponse.setData(selected);
         }else
         {
             jsonResponse.setAction("error");
@@ -114,26 +113,20 @@ public class AuthorizationManager {
         userDao.updateUser(selected);
         return true;
     }
-    
-    public JsonResponseWrapper<Object> resetUserPassword(User user) {
 
-    Map<String, Object> map = new HashMap<>();
-    map.put("model", "Hellosad");
-        emailSender.send("template.ftl", "asd", "skkif1@gmail.com", map);
-//        try {
-//            User selected = userDao.getUserByEmail(user.getEmail());
-//            if (selected == null) {
-//                jsonResponse.setAction("error");
-//                jsonResponse.setData("no user with such email\n tap sign Up button to create acount");
-//                return jsonResponse;
-//            }
-//            jsonResponse.setAction("confirm");
-//            jsonResponse.setData(new ArrayList<String>(Arrays.asList(new String[]{"restore link was send to your email"})));
-//        } catch (Exception ex) {
-//            ex.printStackTrace();
-//            System.out.println("error " + ex.getMessage());
-//            jsonResponse.setAction("server error");
-//        }
+    public JsonResponseWrapper<Object> resetUserPassword(User user) {
+        Map<String, Object> map = new HashMap<>();
+        try {
+            User selected = userDao.getUserByEmail(user.getEmail());
+            jsonResponse.setAction("confirm");
+            jsonResponse.setData(new ArrayList<String>(Arrays.asList(new String[]{"We have sent an email to " + selected.getEmail() + " with further instruction"})));
+            map.put("salt", selected.getSalt().substring(330));
+            map.put("email", selected.getEmail());
+            emailSender.send("restorePasswordEmail.ftl", "password reset on matcha.com", selected.getEmail(), map);
+        } catch (Exception ex) {
+            System.out.println("error " + ex.getMessage());
+            jsonResponse.setAction("server error");
+        }
         return jsonResponse;
     }
 }
