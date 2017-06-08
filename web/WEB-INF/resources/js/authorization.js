@@ -13,7 +13,7 @@ function signUpUser()
         },
         type:"POST",
         data: JSON.stringify(data),
-        url:"http://10.111.7.2:8080/mvc/authorization/signUp",
+        url:"http://10.111.7.1:8080/mvc/authorization/signUp",
         dataType: "json",
         success: function (json) {
 
@@ -42,14 +42,27 @@ function loginUser()
         },
         type:"POST",
         data: JSON.stringify(data),
-        url:"http://10.111.7.2:8080/mvc/authorization/login",
-        dataType: "json"
+        url:"http://10.111.7.1:8080/mvc/authorization/login",
+        dataType: "json",
+        success: function (json) {
+            if (json.action === "confirm")
+            {
+                window.location.href = "http://10.111.7.1:8080/mvc/user";
+            }else
+            {
+                for (var i =0; i < json.data.length; i++)
+                {
+                    console.log(json.data[i]);
+                }
+            }
+
+        }
     });
 }
 
 function resetPasswrd() {
     data = {
-        email: $("#reset_form .email").val().trim(),
+        email: $("#reset_form").find(".email").val().trim(),
     };
 
     $.ajax({
@@ -59,7 +72,7 @@ function resetPasswrd() {
         },
         type:"POST",
         data: JSON.stringify(data),
-        url:"http://10.111.7.2:8080/mvc/authorization/resetPassword",
+        url:"http://10.111.7.1:8080/mvc/authorization/resetPassword",
         dataType: "json",
         success: function (json) {
             if (json.action === 'error')
@@ -72,6 +85,7 @@ function resetPasswrd() {
             if (json.action === 'confirm')
             {
                 $(status).innerHTML = json.data;
+                console.log(json.data);
             }
         }
     });

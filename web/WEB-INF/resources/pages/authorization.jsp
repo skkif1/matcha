@@ -8,6 +8,7 @@
     <title>Welcome to matcha</title>
     <script src="//code.jquery.com/jquery-2.1.0.min.js"></script>
     <script src="<c:url value="/resources/js/authorization.js" />"></script>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 </head>
 <body>
 
