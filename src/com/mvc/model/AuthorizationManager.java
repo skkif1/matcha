@@ -129,4 +129,17 @@ public class AuthorizationManager {
         }
         return jsonResponse;
     }
+
+    public Boolean requestOnchangePassword(String email, String salt)
+    {
+        User selected = userDao.getUserByEmail(email);
+        if (selected != null)
+        {
+            if (salt.equals(selected.getSalt().substring(330)))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
 }

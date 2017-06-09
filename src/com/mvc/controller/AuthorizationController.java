@@ -77,9 +77,30 @@ public class AuthorizationController {
     }
 
     @RequestMapping(value = "/change/{email}/{salt}", method = RequestMethod.GET)
-    public String changePassword(@PathVariable("email")String email, @PathVariable("salt")String salt)
+    public ModelAndView requestOnchangePassword(@PathVariable("email")String email, @PathVariable("salt")String salt, ModelAndView model, HttpSession session)
     {
+        System.out.println("salt--->>> " + salt);
+        if (authorizationManager.requestOnchangePassword(email, salt))
+        {
+            model.setViewName("changePassword");
+            session.setAttribute("hash", salt);
+        }
+        else
+        {
+            model.setViewName("404");
+        }
+        return model;
+    }
 
-        return "changePassword";
+    @RequestMapping(value = "/change", method = RequestMethod.POST)
+    public String changePassword(@RequestBody String hash, HttpSession session)
+    {
+        System.out.println(session.getAttribute("hash"));
+        System.out.println("in change");
+
+            System.out.println("preseent" + hash);
+
+
+        return "authorization";
     }
 }
