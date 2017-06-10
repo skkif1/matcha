@@ -16,6 +16,7 @@ import org.springframework.web.servlet.HttpServletBean;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.enterprise.inject.Produces;
+import javax.jws.soap.SOAPBinding;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.Enumeration;
@@ -27,14 +28,16 @@ import java.util.Map;
 public class AuthorizationController {
 
     private AuthorizationManager authorizationManager;
+    private JsonResponseWrapper jsonResponse;
 
     public AuthorizationController() {
 
     }
 
     @Autowired
-    public AuthorizationController(AuthorizationManager authorizationManager) {
+    public AuthorizationController(AuthorizationManager authorizationManager, JsonResponseWrapper jsonResponse) {
         this.authorizationManager = authorizationManager;
+        this.jsonResponse = jsonResponse;
     }
 
     @RequestMapping(method = RequestMethod.GET)
@@ -50,10 +53,10 @@ public class AuthorizationController {
         return json.toString();
     }
 
-    @RequestMapping(value = "/confirm/{email}/{salt}", method = RequestMethod.GET)
-    public String confirmEmail(@PathVariable("email")String email, @PathVariable("salt") String salt)
+    @RequestMapping(value = "/confirm/", method = RequestMethod.POST)
+    public String confirmEmail(HttpServletRequest request)
     {
-        if (!authorizationManager.confirmEmail(email, salt))
+        if (!authorizationManager.confirmEmail((String)request.getParameter("email"), (String)request.getParameter("salt")))
           return "404";
         return "authorization";
     }
@@ -76,14 +79,16 @@ public class AuthorizationController {
         return json.toString();
     }
 
-    @RequestMapping(value = "/change/{email}/{salt}", method = RequestMethod.GET)
-    public ModelAndView requestOnchangePassword(@PathVariable("email")String email, @PathVariable("salt")String salt, ModelAndView model, HttpSession session)
+    @RequestMapping(value = "/changeRequest", method = RequestMethod.POST)
+    public ModelAndView requestOnchangePassword(HttpServletRequest request, ModelAndView model, HttpSession session)
     {
-        System.out.println("salt--->>> " + salt);
+        String email = request.getParameter("email");
+        String salt = request.getParameter("salt");
         if (authorizationManager.requestOnchangePassword(email, salt))
         {
             model.setViewName("changePassword");
-            session.setAttribute("hash", salt);
+            session.setAttribute("email", email);
+            session.setAttribute("salt", salt);
         }
         else
         {
@@ -92,15 +97,13 @@ public class AuthorizationController {
         return model;
     }
 
-    @RequestMapping(value = "/change", method = RequestMethod.POST)
-    public String changePassword(@RequestBody String hash, HttpSession session)
+    @RequestMapping(value = "/changePassword", method = RequestMethod.POST, produces = "application/json" )
+    public @ResponseBody String changePassword(HttpServletRequest request, HttpSession session)
     {
-        System.out.println(session.getAttribute("hash"));
-        System.out.println("in change");
-
-            System.out.println("preseent" + hash);
-
-
-        return "authorization";
+        if (authorizationManager.changePassword((String)request.getParameter("password"), (String)session.getAttribute("email"), (String)session.getAttribute("salt")))
+            jsonResponse.setAction("confirm");
+        else
+            jsonResponse.setAction("error");
+        return jsonResponse.toString();
     }
 }

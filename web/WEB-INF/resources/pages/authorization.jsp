@@ -30,7 +30,7 @@
 <form id="reset_form">
    Email: <input class="email" name="email" type="text">
 </form>
-<button onclick="resetPasswrd()">SignUp</button>
+<button onclick="resetPassword()">SignUp</button>
 <div class="error"></div>
 
 <div class="status">

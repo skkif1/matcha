@@ -85,14 +85,18 @@ public class AuthorizationManager {
                     return jsonResponse;
                 }
             }
-        if (hasher.compareValues(user.getPassword(), selected.getPassword(), selected.getSalt()))
-        {
+        if (hasher.compareValues(user.getPassword(), selected.getPassword(), selected.getSalt())) {
             jsonResponse.setAction("confirm");
             jsonResponse.setData(selected);
         }else
         {
             jsonResponse.setAction("error");
             jsonResponse.setData("Invalid password! Tap forgot password to restore your password");
+        }
+        if (!selected.getConfirm())
+        {
+            jsonResponse.setAction("error");
+            jsonResponse.setData(new ArrayList<String>(Arrays.asList(new String[]{"Confirm your email. The confirmation letter was send to your email."})));
         }
         return jsonResponse;
 
@@ -141,5 +145,30 @@ public class AuthorizationManager {
             }
         }
         return false;
+    }
+
+
+    public Boolean changePassword(String password, String email, String hash)
+    {
+        System.out.println(password);
+        System.out.println(email);
+        System.out.println(hash);
+        try {
+            User selected = userDao.getUserByEmail(email);
+            if (selected == null || !selected.getSalt().substring(330).equals(hash))
+                return false;
+            System.out.println(password);
+            String saltPassword = hasher.hashSaltPassword(password);
+            String []passwordSalt = saltPassword.split("\\&");
+            selected.setSalt(passwordSalt[0]);
+            selected.setPassword(passwordSalt[1]);
+            userDao.updateUser(selected);
+            return true;
+        }catch (Exception ex)
+        {
+            ex.printStackTrace();
+            System.out.println(ex.getMessage());
+            return false;
+        }
     }
 }

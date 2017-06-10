@@ -1,4 +1,5 @@
 
+var home = "http://10.111.7.1:8080/mvc";
 function signUpUser()
 {
     data ={
@@ -13,7 +14,7 @@ function signUpUser()
         },
         type:"POST",
         data: JSON.stringify(data),
-        url:"http://10.111.7.1:8080/mvc/authorization/signUp",
+        url:home + "/authorization/signUp",
         dataType: "json",
         success: function (json) {
 
@@ -42,12 +43,12 @@ function loginUser()
         },
         type:"POST",
         data: JSON.stringify(data),
-        url:"http://10.111.7.1:8080/mvc/authorization/login",
+        url: home + "/authorization/login",
         dataType: "json",
         success: function (json) {
             if (json.action === "confirm")
             {
-                window.location.href = "http://10.111.7.1:8080/mvc/user";
+                window.location.href = home + "/user";
             }else
             {
                 for (var i =0; i < json.data.length; i++)
@@ -60,7 +61,7 @@ function loginUser()
     });
 }
 
-function resetPasswrd() {
+function resetPassword() {
     data = {
         email: $("#reset_form").find(".email").val().trim(),
     };
@@ -72,7 +73,7 @@ function resetPasswrd() {
         },
         type:"POST",
         data: JSON.stringify(data),
-        url:"http://10.111.7.1:8080/mvc/authorization/resetPassword",
+        url: home + "/authorization/resetPassword",
         dataType: "json",
         success: function (json) {
             if (json.action === 'error')

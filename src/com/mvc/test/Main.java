@@ -7,6 +7,7 @@ import com.mvc.Entity.JsonResponse;
 import com.mvc.Entity.User;
 import com.mvc.config.WebConfig;
 import com.mvc.model.EmailSender;
+import com.mvc.model.Hasher;
 import com.mvc.model.UserValidator;
 import com.sun.deploy.util.ArrayUtil;
 import com.sun.tools.javac.util.ArrayUtils;
@@ -36,46 +37,10 @@ public class Main {
 
     public static void main(String[] args) throws SQLException, ClassNotFoundException, InvalidKeySpecException, NoSuchAlgorithmException, InterruptedException, JsonProcessingException {
 
-//
-//        DriverManagerDataSource dataSource = new DriverManagerDataSource();
-//        dataSource.setDriverClassName("com.mysql.jdbc.Driver");
-//        dataSource.setUrl("jdbc:mysql://localhost:3306/matcha");
-//        dataSource.setUsername("root");
-//        dataSource.setPassword("75g03f24");
-//
-//
-//        JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
-//        mailSender.setHost("smtp.gmail.com");
-//        mailSender.setPort(587);
-//        mailSender.setUsername("matchamefast@gmail.com");
-//        mailSender.setPassword("75g03f24");
-//
-//        Properties javaMailProperties = new Properties();
-//        javaMailProperties.put("mail.smtp.starttls.enable", "true");
-//        javaMailProperties.put("mail.smtp.auth", "true");
-//        javaMailProperties.put("mail.transport.protocol", "smtp");
-//        javaMailProperties.put("mail.debug", "true");//Prints out everything on screen
-//
-//        mailSender.setJavaMailProperties(javaMailProperties);
-//
-//        MimeMessagePreparator preparator = new MimeMessagePreparator() {
-//            @Override
-//            public void prepare(MimeMessage mimeMessage) throws Exception {
-//                mimeMessage.setFrom(new InternetAddress("matchamefast@gmail.com"));
-//                mimeMessage.setRecipient(Message.RecipientType.TO, new InternetAddress("skkif1@gmail.com"));
-//                mimeMessage.setText("Hello");
-//                mimeMessage.setSubject("Hello eodfkspo");
-//            }
-//        };
-//
-//        mailSender.send(preparator);
-//    }
+        Hasher hasher = new Hasher();
 
+        boolean res = hasher.compareValues("password", "4Xi9Veya/NMxJUYVJAEyAdvEy3ye25b4X0BM0IUXLS8=", "cj9y7vHrr3oYhI0a3gd54cgWjedNntIWnq0SzTwTpRQL/blzV9rWC2w6tuhbictcMUamx26ZUUZYEWJXcO42BYVl6dWp+TGCEfn8/UiVCn2cOm6auv49D8gN8qOlWR5CP4A089Twi/QiamIhrOfTIGyJ7gVT3fCY0Lu+02pU48xqZhEyDYpM4b09Wnk7OW9WGZYZGvYp9zdRse1A9PE3KOtwfiWLHfwDKQQxNHV2u4UvhdGmJRC3NIohODPMca3mjOQ/HfUvfdDMbTOorBoyBUVV1YlhEqBEVI3T5MJL3KUHIV/mfgGQ3hqfUkzACgPwPuJUEdeZOcl6JK7UYmnRtA==");
+        System.out.println(res);
 
-//        AbstractApplicationContext context = new AnnotationConfigApplicationContext(WebConfig.class);
-//
-//        EmailSender orderService = (EmailSender) context.getBean("emailSender");
-//        orderService.send("sad", "asd", "asd");
-//        ((AbstractApplicationContext) context).close();
     }
 }

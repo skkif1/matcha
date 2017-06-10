@@ -23,7 +23,6 @@ public class UserValidator implements Validator {
     private static final String PASSWORD_PATTERN = "^[a-z0-9_-]{6,15}$";
 
     public UserValidator() {
-        System.out.println("Validator constracted");
     }
 
     public void setUser(User user) {

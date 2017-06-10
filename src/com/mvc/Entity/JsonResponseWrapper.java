@@ -9,7 +9,7 @@ public abstract class JsonResponseWrapper <T>{
     T data;
 
     public JsonResponseWrapper() {
-        System.out.println("json constructed");
+
     }
 
 

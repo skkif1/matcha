@@ -25,7 +25,6 @@ public class Hasher {
     }
 
     public boolean compareValues(String password, String stored, String salt) throws InvalidKeySpecException, NoSuchAlgorithmException {
-
         byte[] decodedSalt = Base64.getDecoder().decode(salt);
         return hash(password, decodedSalt).equals(stored);
     }
