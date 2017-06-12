@@ -1,4 +1,4 @@
-var home = "http://10.111.7.1:8080/mvc";
+var home = "http://10.111.8.3:8080/mvc";
 
 function changePassword()
 {
@@ -9,18 +9,6 @@ function changePassword()
         console.log("passwords are differ");
         return ;
     }
-
-
-    // $.post({
-    //     type:"POST",
-    //     data: "password=" + password,
-    //     url: home + "/authorization/changePassword",
-    //     accepts: "application/json",
-    //     success: function(json)
-    //     {
-    //
-    //     }
-    // });
 
     $.post( home + "/authorization/changePassword", { password: password})
         .done(function( json ) {

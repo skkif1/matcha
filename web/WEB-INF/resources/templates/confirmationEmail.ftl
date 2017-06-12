@@ -4,7 +4,7 @@
 
     To activate your account, simply click on the following link:</h2>
 
-<form method="post" action="http://10.111.7.1:8080/mvc/authorization/confirm/">
+<form method="post" action="http://10.111.7.3:8080/mvc/authorization/confirm/">
     <input type="hidden" name="email" value="${email}">
     <input type="hidden" name="salt" value="${salt}">
 

@@ -15,6 +15,8 @@
 <form id="signup_form">
     Login: <input class="login" name="login" type="text">
     Password: <input class="password" name="email" type="text">
+    First name :<input class="first_name" name="firstName" type="text">
+    Last name :<input class="last_name" name="lastName" type="text">
     Email: <input class="email" name="password" type="text">
 </form>
 <button onclick="signUpUser()">SignUp</button>

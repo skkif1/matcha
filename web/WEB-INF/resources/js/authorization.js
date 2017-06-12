@@ -1,11 +1,14 @@
 
-var home = "http://10.111.7.1:8080/mvc";
+var home = "http://10.111.8.3:8080/mvc";
+
 function signUpUser()
 {
     data ={
         login: $("#signup_form .login").val().trim(),
         password: $("#signup_form .password").val().trim(),
-        email: $("#signup_form .email").val().trim()
+        email: $("#signup_form .email").val().trim(),
+        firstName: $("#signup_form .first_name").val().trim(),
+        lastName: $("#signup_form .last_name").val().trim(),
     };
     $.ajax({
         headers: {
