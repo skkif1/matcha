@@ -150,9 +150,6 @@ public class AuthorizationManager {
 
     public Boolean changePassword(String password, String email, String hash)
     {
-        System.out.println(password);
-        System.out.println(email);
-        System.out.println(hash);
         try {
             User selected = userDao.getUserByEmail(email);
             if (selected == null || !selected.getSalt().substring(330).equals(hash))

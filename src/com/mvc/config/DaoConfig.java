@@ -1,7 +1,7 @@
 package com.mvc.config;
 
 import com.mvc.DAO.UserDao;
-import com.mvc.DaoImpl.UserDaoImpl;
+import com.mvc.DaoImplMysql.UserDaoImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
@@ -20,7 +20,7 @@ public class DaoConfig extends WebMvcConfigurerAdapter{
         dataSource.setDriverClassName("com.mysql.jdbc.Driver");
         dataSource.setUrl("jdbc:mysql://localhost:3306/matcha");
         dataSource.setUsername("root");
-        dataSource.setPassword("75g03f24");
+        dataSource.setPassword("password");
         return dataSource;
     }
 
