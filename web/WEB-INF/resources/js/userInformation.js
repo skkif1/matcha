@@ -1,4 +1,8 @@
-var home = "http://10.111.8.3:8080/mvc";
+var home = "http://localhost:8080/mvc";
+
+window.onload = function () {
+
+};
 
 function changeUserInfo()
 {
@@ -36,5 +40,24 @@ function changeUserInfo()
             }
         }
     );
+}
+
+
+
+
+function uploadData()
+{
+    var files = $(".loader").files;
+    console.log(files.length);
+}
+
+
+function btceRequest()
+{
+
+    $.get("https://btc-e.com/api/3/trades/btc_usd", function(data)
+    {
+        console.log(data.toString());
+    });
 
 }

@@ -1,4 +1,4 @@
-var home = "http://10.111.8.3:8080/mvc";
+var home = "http://localhost:8080/mvc";
 
 function changePassword()
 {

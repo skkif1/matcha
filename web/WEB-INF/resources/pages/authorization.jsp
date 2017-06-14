@@ -34,8 +34,10 @@
 </form>
 <button onclick="resetPassword()">SignUp</button>
 <div class="error"></div>
-
 <div class="status">
+
+
+
 
 </div>
 </body>
