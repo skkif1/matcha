@@ -1,5 +1,6 @@
 package com.mvc.Entity;
 
+
 public class User {
 
     private Integer id;
@@ -10,6 +11,7 @@ public class User {
     private String password;
     private String salt;
     private Boolean confirm;
+    private UserInformation information;
 
     public User() {
     }
@@ -19,7 +21,8 @@ public class User {
         this.lastName = lastName;
     }
 
-    public User(Integer id, String login, String firstName, String lastName, String email, String password, String salt, Boolean confirm) {
+
+    public User(Integer id, String login, String firstName, String lastName, String email, String password, String salt, Boolean confirm, UserInformation information) {
         this.id = id;
         this.login = login;
         this.firstName = firstName;
@@ -28,6 +31,15 @@ public class User {
         this.password = password;
         this.salt = salt;
         this.confirm = confirm;
+        this.information = information;
+    }
+
+    public UserInformation getInformation() {
+        return information;
+    }
+
+    public void setInformation(UserInformation information) {
+        this.information = information;
     }
 
     public String getFirstName() {
@@ -101,6 +113,7 @@ public class User {
                 ", email='" + email + "\n" +
                 ", password='" + password + "\n" +
                 ", salt='" + salt + "\n" +
-                ", confirm=" + confirm + "\n";
+                ", confirm=" + confirm + "\n" +
+                ", confirm=" + information.toString() + "\n";
     }
 }

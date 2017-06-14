@@ -14,15 +14,15 @@ import javax.sql.DataSource;
 public class DaoConfig extends WebMvcConfigurerAdapter{
 
     @Bean
-    public DataSource getMysqlDataSource()
-    {
-        DriverManagerDataSource dataSource = new DriverManagerDataSource();
-        dataSource.setDriverClassName("com.mysql.jdbc.Driver");
-        dataSource.setUrl("jdbc:mysql://localhost:3306/matcha");
-        dataSource.setUsername("root");
-        dataSource.setPassword("password");
-        return dataSource;
-    }
+        public DataSource getMysqlDataSource()
+        {
+            DriverManagerDataSource dataSource = new DriverManagerDataSource();
+            dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
+            dataSource.setUrl("jdbc:mysql://127.0.0.1:3306/matcha?useSSL=false");
+            dataSource.setUsername("root");
+            dataSource.setPassword("password");
+            return dataSource;
+        }
 
 
     @Bean(name = "getUserDaoMysql")
@@ -30,4 +30,6 @@ public class DaoConfig extends WebMvcConfigurerAdapter{
     {
         return new UserDaoImpl(getMysqlDataSource());
     }
+
+
 }
