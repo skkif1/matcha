@@ -8,4 +8,6 @@ public interface UserDao {
     public boolean updateUser(User user);
     public User getUserByLogin(String login);
     public User getUserByEmail(String email);
+    public Integer addEmailUpdateRequest(User user);
+    public Integer getEmailUpdateRequest(Integer id);
 }

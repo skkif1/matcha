@@ -15,41 +15,48 @@
 
 
 <div id="user_info">
+
+
+
+    <label>name :</label>
+    <input class="input_info" name="age"/>
+
+    <label>last name :</label>
+    <input class="input_info" name="age"/>
+
+
     <label>sex :</label>
-    <select class="input_info sex" name="sex">
+    <select class="input_info" name="sex">
         <option>Man</option>
         <option>Women</option>
         <option>Trans</option>
-
     </select>
 
     <label>age :</label>
-    <input class="input_info age" name="age">age </input>
+    <input class="input_info" name="age"/>
 
     <label>country :</label>0
-    <input class="input_info " id="country" name="country">country </input>
+    <input class="input_info" id="country" name="country"/>
 
     <label>state :</label>
-    <input class="input_info state" name="state">state</input>
+    <input class="input_info" name="state"/>
 
     <label>about me :</label>
-    <input class="input_info about_me" name="aboutMe">about me</input>
+    <input class="input_info" name="aboutMe"/>
 
     <label>intrests :</label>
-    <input class="input_info intrest" name="interests">intrests </input>
+    <input class="input_info" name="interests"/>
 
     <label>sex prefernces :</label>
     <select class="input_info sex_pref" name="sexPref">
-
         <option>Heterosexual</option>
         <option>Homosexual</option>
         <option>Bisexual</option>
         <option>Transgender</option>
-
     </select>
 
 
-    <button id="edit_info" onclick="changeUserInfo()">Save changes</button>
+    <button id="edit_info" onclick="changeUserInfo()">save</button>
 </div>
 
 
@@ -63,11 +70,19 @@
         <input type="file"  class="loader" multiple>
     </div>
 
-    <button  onclick="uploadData()">submit changes</button>
+    <button  onclick="uploadPhoto()">submit changes</button>
 
 </div>
 
-<button onclick="btceRequest(this)">btce</button>
+
+<div id="edit_email">
+
+    <label>email :</label>
+    <input class="input_email_info" name="lastName"/>
+
+</div>
+
+<button onclick="editUser()">save</button>
 
 </body>
 </html>

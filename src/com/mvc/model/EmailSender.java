@@ -31,6 +31,7 @@ public class EmailSender {
 
     public void send(String templateName, String subject, String to, Map<String, Object> model)
     {
+        System.out.println(to);
         sender.send(prepareMessage(templateName,subject, to, model));
     }
 

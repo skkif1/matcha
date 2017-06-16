@@ -15,7 +15,7 @@ public class UserInformationDesializer extends JsonDeserializer {
 
 
     @Override
-    public Object deserialize(JsonParser jsonParser, DeserializationContext deserializationContext) throws IOException, JsonProcessingException {
+    public Object deserialize(JsonParser jsonParser, DeserializationContext deserializationContext) throws IOException {
 
         JsonNode node = jsonParser.getCodec().readTree(jsonParser);
         String sex = node.get("sex").asText();

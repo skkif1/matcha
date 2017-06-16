@@ -4,12 +4,15 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.context.annotation.*;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
+import org.springframework.web.multipart.MultipartResolver;
+import org.springframework.web.multipart.support.StandardServletMultipartResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 
+import javax.servlet.MultipartConfigElement;
 import java.util.List;
 
 
@@ -19,9 +22,6 @@ import java.util.List;
 @ComponentScan({"com.mvc"})
 @Import({DaoConfig.class, ModelConfig.class, EmailConfig.class, FreeMarkerConfig.class})
 public class WebConfig extends WebMvcConfigurerAdapter{
-
-
-
 
     @Override
     public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
@@ -50,5 +50,10 @@ public class WebConfig extends WebMvcConfigurerAdapter{
         ObjectMapper objectMapper = new ObjectMapper();
         jsonConverter.setObjectMapper(objectMapper);
         return jsonConverter;
+    }
+
+    @Bean
+    public MultipartResolver multipartResolver() {
+        return new StandardServletMultipartResolver();
     }
 }

@@ -5,8 +5,15 @@ import com.mvc.Entity.User;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.PreparedStatementCreator;
+import org.springframework.jdbc.support.GeneratedKeyHolder;
+import org.springframework.jdbc.support.KeyHolder;
 
 import javax.sql.DataSource;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 public class UserDaoImpl implements UserDao{
 
@@ -64,4 +71,37 @@ public class UserDaoImpl implements UserDao{
         }
         return user;
     }
+
+    @Override
+    public Integer addEmailUpdateRequest(User user) {
+        String sqlDelete = "DELETE FROM email_on_update WHERE user_id = ?";
+        String sqlInsert = "INSERT INTO email_on_update (user_id, email_on_update) VALUES (?, ?)";
+
+        KeyHolder holder = new GeneratedKeyHolder();
+        template.update(sqlDelete, user.getId());
+        template.update(new PreparedStatementCreator() {
+            @Override
+            public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
+                PreparedStatement st =  con.prepareStatement(sqlInsert, Statement.RETURN_GENERATED_KEYS);
+                st.setInt(1, user.getId());
+                st.setString(2, user.getEmail());
+                return st;
+            }
+        }, holder);
+        return holder.getKey().intValue();
+    }
+
+    public Integer getEmailUpdateRequest(Integer id)
+    {
+        String sql = "SELECT user_id FROM email_on_update WHERE id = ?";
+
+        Integer email = template.queryForObject(sql, new Object[]{id}, Integer.class);
+        return email;
+    }
+
+
+    /*
+    *
+    *
+    * */
 }

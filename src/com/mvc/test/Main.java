@@ -1,9 +1,13 @@
 package com.mvc.test;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.mvc.DAO.PhotoDao;
 import com.mvc.DaoImplMysql.UserInformationDaoImpl;
+import com.mvc.DaoImplPhoto.PhotoDaoImpl;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.*;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
 import java.sql.SQLException;
@@ -11,7 +15,7 @@ import java.util.ArrayList;
 
 public class Main {
 
-    public static void main(String[] args) throws SQLException, ClassNotFoundException, InvalidKeySpecException, NoSuchAlgorithmException, InterruptedException, JsonProcessingException {
+    public static void main(String[] args) throws SQLException, ClassNotFoundException, InvalidKeySpecException, NoSuchAlgorithmException, InterruptedException, IOException {
 
         ArrayList<String> interests = new ArrayList<>();
 
@@ -26,8 +30,13 @@ public class Main {
         dataSource.setUsername("root");
         dataSource.setPassword("password");
 
+        PhotoDao dao = new PhotoDaoImpl();
 
-        UserInformationDaoImpl dao = new UserInformationDaoImpl(dataSource);
+        BufferedInputStream in = new BufferedInputStream(new FileInputStream(new File("/nfs/2016/o/omotyliu/Desktop/Aleksandr_Motyliuk.pdf.PDF")));
+
+        byte [] file = new byte[in.available()];
+
+        in.read(file, 0, in.available());
 
     }
 }
