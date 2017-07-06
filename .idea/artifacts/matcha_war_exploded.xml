@@ -1,0 +1,25 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="matcha:war exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/matcha_war_exploded</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="matcha/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="matcha" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="Spring-4.3.9.RELEASE" />
+          <element id="library" level="project" name="Spring MVC-4.3.9.RELEASE" />
+          <element id="file-copy" path="$USER_HOME$/java/jar/jackson-databind-2.9.0.pr3.jar" />
+          <element id="file-copy" path="$USER_HOME$/java/jar/jackson-core-2.9.0.pr3.jar" />
+          <element id="file-copy" path="$USER_HOME$/java/jar/jackson-annotations-2.9.0.pr3.jar" />
+          <element id="file-copy" path="$USER_HOME$/java/jar/jackson-mapper-asl-1.9.13.jar" />
+          <element id="file-copy" path="$USER_HOME$/java/jar/mysql-connector-java-6.0.6.jar" />
+          <element id="file-copy" path="$USER_HOME$/java/jar/freemarker-2.3.24-atlassian-2.jar" />
+          <element id="file-copy" path="$USER_HOME$/java/jar/mail-1.4.jar" />
+          <element id="file-copy" path="$USER_HOME$/java/jar/log4j-1.2.17 (1).jar" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>

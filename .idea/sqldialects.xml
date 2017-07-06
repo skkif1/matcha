@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="SqlDialectMappings">
+    <file url="file://$PROJECT_DIR$/src/com/matcha/dao/mysqlImpl/InformationDaoImpl.java" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/src/com/matcha/dao/mysqlImpl/UserDaoImpl.java" dialect="MySQL" />
+    <file url="file://$APPLICATION_CONFIG_DIR$/consoles/db/7722c190-4b13-4739-9495-8a7375a6cadb/console.sql" dialect="MySQL" />
+  </component>
+</project>
