@@ -50,7 +50,6 @@
     <button id="edit_info" onclick="changeUserInfo()">save</button>
 </div>
 
-
 <div id="user_photo">
     <label>photo :</label>
     <div class="photo_info">

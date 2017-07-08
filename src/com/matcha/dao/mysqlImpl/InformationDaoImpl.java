@@ -62,11 +62,11 @@ public class InformationDaoImpl implements InformationDao{
     @Override
     public void savePhoto(MultipartFile[] photos, Integer userId) throws IOException {
         int photoName = 0;
-
         File userDirectory = new File(CDN_SERVER_ADDRESS + userId);
-        System.out.println(userDirectory.getAbsolutePath());
         if(!userDirectory.exists())
-            System.out.println(userDirectory.mkdirs());
+            userDirectory.mkdirs();
+        else
+            photoName = countPhoto(userId);
         for (MultipartFile photo: photos)
         {
             Files.write(Paths.get(userDirectory.getAbsolutePath() + "/" + photoName++ + "." + photo.getContentType().split("\\/")[1]), photo.getBytes());
@@ -74,8 +74,12 @@ public class InformationDaoImpl implements InformationDao{
     }
 
     @Override
-    public Integer countPhoto(Integer UserId) {
-        return null;
+    public Integer countPhoto(Integer userId)
+    {
+        File userDirectory = new File(CDN_SERVER_ADDRESS + userId);
+        if(!userDirectory.exists())
+            return 0;
+        return userDirectory.list().length;
     }
 
     @Override

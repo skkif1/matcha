@@ -39,6 +39,7 @@ public class UserInformationController {
     @RequestMapping(value = "/updatePhoto")
     public @ResponseBody String updateUserPhoto(@RequestParam("files")MultipartFile[] photos, HttpSession session)
     {
+        System.out.println("update");
         JsonResponseWrapper ajax = infoManager.savePhoto(photos, session);
         return ajax.toString();
     }

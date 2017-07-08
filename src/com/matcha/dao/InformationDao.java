@@ -8,11 +8,11 @@ import java.util.List;
 
 public interface InformationDao {
 
-    final String CDN_SERVER_ADDRESS = System.getProperty("user.dir") + "/resources/";
+    final String CDN_SERVER_ADDRESS = "/nfs/2016/o/omotyliu/Library/Containers/MAMP/apache2/htdocs/cdn/";
 
     public void saveUserInfo(UserInformation info, Integer userId);
     public UserInformation getUserInfoByUserId(Integer userId);
     public void savePhoto(MultipartFile[] photos, Integer userId) throws IOException;
-    public Integer countPhoto(Integer UserId);
+    public Integer countPhoto(Integer userId);
     public Integer countIntrests();
 }

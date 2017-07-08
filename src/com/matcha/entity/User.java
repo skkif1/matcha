@@ -115,6 +115,6 @@ public class User {
                 ", password='" + password + "\n" +
                 ", salt='" + salt + "\n" +
                 ", confirm=" + confirm + "\n" +
-                ", userInfo = " + information.toString();
+                ", userInfo = " + information;
     }
 }
