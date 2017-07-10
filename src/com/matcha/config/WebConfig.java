@@ -21,7 +21,7 @@ import java.util.List;
 @Configuration
 @EnableWebMvc
 @ComponentScan({"com.matcha"})
-@Import({DaoConfig.class, MailConfig.class})
+@Import({DaoConfig.class, MailConfig.class, WebSocketConfig.class})
 public class WebConfig extends WebMvcConfigurerAdapter{
 
     @Override

@@ -44,12 +44,12 @@ public class ChatController {
     @RequestMapping(value = "/conversation", method = RequestMethod.POST)
     public @ResponseBody JsonResponseWrapper getConversationMessages(@RequestParam Integer id, HttpSession session)
     {
-        JsonResponseWrapper ajax = chatManager.getConversationMessages(id, 0);
+        JsonResponseWrapper ajax = chatManager.getConversationMessages(id, 0, session);
         ArrayList<Conversation> conv = (ArrayList) session.getAttribute("conversationList");
         conv.forEach(conversation ->
         {
             if (conversation.getId() == id)
-                session.setAttribute("currenConversation", conversation);
+                session.setAttribute("currentConversation", conversation);
         });
         return ajax;
     }
@@ -59,7 +59,7 @@ public class ChatController {
     {
         JsonResponseWrapper ajax = new JsonResponseWrapper();
         ajax.setStatus("Error");
-        Conversation current  = (Conversation) session.getAttribute("currenConversation");
+        Conversation current  = (Conversation) session.getAttribute("currentConversation");
         message.setConversationId(current.getId());
         message.setReciver(current.getUser2().getId());
         message.setAuthor(current.getUser1().getId());
@@ -70,14 +70,4 @@ public class ChatController {
             }
         return ajax;
     }
-
-    @MessageMapping(value = "/{topic}")
-    @SendTo("/topic/messages")
-    public JsonResponseWrapper socketHandler(@DestinationVariable("topic") String topic)
-    {
-        System.out.println("here");
-        System.out.println(topic);
-        return new JsonResponseWrapper();
-    }
-
 }

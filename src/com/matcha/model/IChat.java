@@ -11,5 +11,5 @@ public interface IChat {
     Integer MESSAGE_LIMIT = 5;
     public List<Conversation> getConversations(HttpSession session);
     public Boolean sendMessage(Message message);
-    public JsonResponseWrapper getConversationMessages(Integer id, Integer offset);
+    public JsonResponseWrapper getConversationMessages(Integer id, Integer offset, HttpSession session);
 }
