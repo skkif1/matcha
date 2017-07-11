@@ -2,15 +2,24 @@ package com.matcha.model;
 
 import com.matcha.dao.UserDao;
 import com.matcha.entity.User;
+import com.sun.javaws.exceptions.InvalidArgumentException;
+import com.sun.mail.smtp.SMTPAddressFailedException;
+import com.sun.tools.corba.se.idl.InvalidArgument;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
+import org.springframework.dao.DuplicateKeyException;
+import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.mail.MailSendException;
 import org.springframework.stereotype.Component;
 
 import javax.servlet.http.HttpSession;
+import java.security.InvalidParameterException;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.Map;
 
 /*
 * need add of Hasher component
@@ -42,17 +51,33 @@ public class AuthorizationManager {
 
     public JsonResponseWrapper signUpUser(User user) throws InvalidKeySpecException, NoSuchAlgorithmException {
         HashMap<String, Object> mailModel = new HashMap<>();
+        JsonResponseWrapper json = new JsonResponseWrapper();
 
         String[] saltAndPassword = hasher.getSaltAndPassword(user.getPassword());
         user.setSalt(saltAndPassword[0]);
         user.setPassword(saltAndPassword[1]);
-        mailModel.put("salt", user.getSalt().substring(330));
-        mailModel.put("email", user.getEmail());
-        emailSender.send("confirmationEmail.ftl","confirmation email on Matcha.com", user.getEmail(), mailModel);
-        Integer userId = userDao.saveUser(user);
-        user.setId(userId);
-        json.setStatus("OK");
-        json.setData(user);
+
+        try {
+            Integer userId = userDao.saveUser(user);
+            mailModel.put("salt", user.getSalt().substring(330));
+            mailModel.put("email", user.getEmail());
+            emailSender.send("confirmationEmail.ftl", "confirmation email on Matcha.com", user.getEmail(), mailModel);
+            user.setId(userId);
+            json.setStatus("OK");
+        } catch (DataAccessException ex)
+        {
+            if (ex instanceof DuplicateKeyException) {
+                json.setStatus("Error");
+                json.setData(new ArrayList<String>(Arrays.asList(new String[]{"user with such email allready exist"})));
+                return json;
+            }
+            throw ex;
+        }catch (MailSendException ex)
+        {
+            json.setStatus("Error");
+            json.setData(new ArrayList<String>(Arrays.asList(new String[]{"invalid email"})));
+            return json;
+        }
         return json;
     }
 
@@ -72,12 +97,12 @@ public class AuthorizationManager {
     public JsonResponseWrapper logInUser(User user, HttpSession session) throws InvalidKeySpecException, NoSuchAlgorithmException {
 
         User storedUser = checkIfUserExist(user);
+        JsonResponseWrapper json = new JsonResponseWrapper();
         String error;
         if (storedUser == null)
         {
-            System.out.println("asdasd");
             json.setStatus("Error");
-            json.setData(new ArrayList<String>(Arrays.asList(new String[]{"No such user< check your login or email"})));
+            json.setData(new ArrayList<String>(Arrays.asList(new String[]{"No such user check your email"})));
             return json;
         }
         if ((error = checkConfirmation(storedUser)) != null)
@@ -97,6 +122,33 @@ public class AuthorizationManager {
         return json;
     }
 
+    public JsonResponseWrapper resetUserPassword(User user) {
+        Map<String, Object> mailModelMap = new HashMap<>();
+        JsonResponseWrapper json = new JsonResponseWrapper();
+        try {
+            User selected = userDao.getUserByEmail(user.getEmail());
+            json.setStatus("OK");
+            json.setData(new ArrayList<String>(Arrays.asList(new String[]{"We have sent an email to " + selected.getEmail() + " with further instruction"})));
+            mailModelMap.put("salt", selected.getSalt().substring(330));
+            mailModelMap.put("email", selected.getEmail());
+            emailSender.send("restorePassword.ftl", "password reset on matcha.com", selected.getEmail(), mailModelMap);
+        } catch (Exception ex) {
+            json.setStatus("Error");
+        }
+        return json;
+    }
+
+    public Boolean changePasswordRequest(String email, String salt)
+    {
+        User selected = userDao.getUserByEmail(email);
+        if (selected != null)
+        {
+            if (salt.equals(selected.getSalt().substring(330)))
+                return true;
+        }
+        return false;
+    }
+
     private String checkConfirmation(User user)
     {
         if (user.getConfirm())
@@ -114,9 +166,14 @@ public class AuthorizationManager {
     private User checkIfUserExist(User user)
     {
         User storedUser;
-        storedUser = userDao.getUserByLogin(user.getLogin());
-        if (storedUser == null)
+        try {
             storedUser = userDao.getUserByEmail(user.getEmail());
+        }catch (DataAccessException ex)
+        {
+            if (ex instanceof EmptyResultDataAccessException)
+                return null;
+            throw ex;
+        }
         return storedUser;
     }
 }

@@ -1,22 +1,17 @@
 var home = "http://localhost:8080/matcha";
-$(document).load(function () {
-    var wsocket = new SockJS(home + '/chat');
-    var client = Stomp.over(wsocket);
-    client.connect({}, function(frame) {
-        client.subscribe('/topic/messages', function (message) {
-            showMessage(console.log(message));
-        });
-    });
 
-    client.send("/app/chat/" + 10, {}, JSON.stringify({
-    }));
-});
+var socket;
+var client;
 
-
+function send() {
+    console.log("sending");
+    client.send("/topic/1",{},JSON.stringify({data:"adasd"}))
+}
 
 function sendMessage() {
     var text = $("#message_input").val();
     var id = $(".message_list").attr("id");
+
     data =
         {
             message: text,
@@ -61,13 +56,23 @@ function getMessages(id) {
             });
             var list = $(".message_list")[0];
             var hiden = $("#hiden_message");
-            $.each(json.data, function (index, value) {
-             insertMessage(list, value, hiden);
-            });
+            $.each(json.data.mess, function (index, value) {
+             insertMessage(list, value, hiden);});
+             connnectToConversation(json.data.conv, json.data.wsacode);
         }
     });
 }
 
+function connnectToConversation(sec, code) {
+    socket = new SockJS('/matcha/conversation');
+    client = Stomp.over(socket);
+    client.connect(null, null, function () {
+        client.subscribe("/topic/" + sec, function(message) {
+            console.log("thometind");
+            console.log(message);
+        }, {code:code});
+    });
+}
 
 function insertMessage(list, value, hiden) {
     var message = hiden.clone();
@@ -75,4 +80,3 @@ function insertMessage(list, value, hiden) {
     message.text(value.message);
     message.prependTo(list);
 }
-

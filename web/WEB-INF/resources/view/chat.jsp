@@ -5,6 +5,8 @@
 <head>
     <title>Dialogs</title>
 
+    <script src="https://cdn.jsdelivr.net/sockjs/1.1.4/sockjs.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
     <script src="//code.jquery.com/jquery-2.1.0.min.js"></script>
     <script src="<c:url value="/resources/js/chat.js" />"></script>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
@@ -40,5 +42,6 @@
     <button onclick="sendMessage()">send</button>
 </div>
 
+<button onclick="send()">Test</button>
 </body>
 </html>

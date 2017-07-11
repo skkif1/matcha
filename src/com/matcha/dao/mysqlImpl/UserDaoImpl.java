@@ -30,16 +30,15 @@ public class UserDaoImpl implements UserDao{
     {
         KeyHolder keyHolder = new GeneratedKeyHolder();
 
-        String sql = "INSERT INTO user (login, password, email, salt, last_name, first_name) VALUES (?,?,?,?,?,?)";
+        String sql = "INSERT INTO user (password, email, salt, last_name, first_name) VALUES (?,?,?,?,?)";
         template.update((Connection conn)->
         {
                PreparedStatement ps = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-               ps.setString(1, user.getLogin());
-               ps.setString(2, user.getPassword());
-               ps.setString(3, user.getEmail());
-               ps.setString(4, user.getSalt());
-               ps.setString(5, user.getLastName());
-               ps.setString(6, user.getFirstName());
+               ps.setString(1, user.getPassword());
+               ps.setString(2, user.getEmail());
+               ps.setString(3, user.getSalt());
+               ps.setString(4, user.getLastName());
+               ps.setString(5, user.getFirstName());
                return ps;
         }, keyHolder);
         return keyHolder.getKey().intValue();
@@ -47,9 +46,9 @@ public class UserDaoImpl implements UserDao{
 
     @Override
     public void updateUser(User user) {
-        String sql = "UPDATE user SET login = ?, email = ?, password = ?, salt = ?, confirm = ?,salt = ?, " +
+        String sql = "UPDATE user SET  email = ?, password = ?, salt = ?, confirm = ?,salt = ?, " +
                 "first_name = ?, last_name = ? where id = ?";
-        template.update(sql, user.getLogin(), user.getEmail(), user.getPassword(), user.getSalt(), user.getConfirm(),
+        template.update(sql, user.getEmail(), user.getPassword(), user.getSalt(), user.getConfirm(),
                 user.getSalt(), user.getFirstName(), user.getLastName(), user.getId());
     }
 

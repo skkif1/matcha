@@ -33,17 +33,19 @@
             margin-left: 45%;
         }
     </style>
+
 </head>
 
-<h2>Thanks for signing up.</h2>
+<body>
 
-    <p>We require you to "confirm" your registration to ensure that the E-mail address you entered is correct. This prevents unwanted spam and malicious abuse.
+<h2>password reset on matcha.com</h2>
 
-        To activate your account, simply click on the following link:</p>
+<p>You (or someone else) entered this email address when trying to change the password on matcha account.
+    If you want to reset your password tap on link bellow to create new password.</p>
 
-<form method="post" action="http://localhost:8080/matcha/authorization/confirm/">
+<form method="post" action="http://localhost:8080/matcha/authorization/change/">
     <input type="hidden" name="email" value="${email}">
     <input type="hidden" name="salt" value="${salt}">
-
-    <input class="btn" type="submit" value="Activate acount">
+    <input class="btn"type="submit" value="Change password">
 </form>
+</body>

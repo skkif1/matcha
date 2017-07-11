@@ -4,7 +4,6 @@ package com.matcha.entity;
 public class User {
 
     private Integer id;
-    private String login;
     private String firstName;
     private String lastName;
     private String email;
@@ -22,10 +21,9 @@ public class User {
         this.lastName = lastName;
     }
 
-    public User(Integer id, String login, String firstName, String lastName, String email, String password,
+    public User(Integer id,  String firstName, String lastName, String email, String password,
                 String salt, Boolean confirm, UserInformation info) {
         this.id = id;
-        this.login = login;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -75,14 +73,6 @@ public class User {
         this.confirm = confirm;
     }
 
-    public String getLogin() {
-        return login;
-    }
-
-    public void setLogin(String login) {
-        this.login = login;
-    }
-
     public String getEmail() {
         return email;
     }
@@ -110,7 +100,6 @@ public class User {
     @Override
     public String toString() {
         return "User" + "\n" +
-                "login='" + login + "\n" +
                 ", email='" + email + "\n" +
                 ", password='" + password + "\n" +
                 ", salt='" + salt + "\n" +
