@@ -1,0 +1,44 @@
+html
+{
+    background: rgb(245,245,245);
+}
+
+body
+{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.content
+{
+    width: 920px;
+    display: flex;
+    flex-direction: column;
+}
+
+.info
+{
+    flex-direction: column;
+    text-align: center;
+}
+
+.user_photo
+{
+    text-align: center;
+    display: none;
+}
+
+.user
+{
+    display: none;
+}
+
+.nav_bar
+{
+    width:190px;
+    cursor: pointer;
+    margin-left: 30px;
+    text-align: center;
+}
+

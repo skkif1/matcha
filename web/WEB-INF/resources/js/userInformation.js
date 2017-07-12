@@ -1,7 +1,15 @@
 var home = "http://localhost:8080/matcha";
 
 window.onload = function () {
+    $('.chips').material_chip(
+        {
+            placeholder: '+Interes'
+        }
+    );
 
+    $('.carousel').carousel();
+    $('select').material_select();
+    $('#file').change(uploadFiles());
 };
 
 function changeUserInfo()
@@ -86,4 +94,29 @@ function editUser() {
             })
         }
     });
+}
+
+
+function uploadFiles() {
+        var files = $('#file').prop('files');
+        var photoContainer = $('.carousel').prop('children');
+
+        for (var i = 0; i < files.length; i++) {
+            console.log(files[i]);
+        }
+}
+
+
+function changeCategory(elem)
+{
+    var category = $('.collection').children;
+    console.log(category.length);
+    console.log(elem);
+
+    for (var i = 0; i < category.length; i++)
+    {
+        category.addClass("active");
+
+    }
+
 }

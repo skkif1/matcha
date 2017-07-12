@@ -1,15 +1,11 @@
 package com.matcha.controller;
 
-
 import com.matcha.entity.User;
 import com.matcha.model.AuthorizationManager;
 import com.matcha.model.JsonResponseWrapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
@@ -68,19 +64,26 @@ public class AuthorizationController {
     }
 
     @RequestMapping(value = "/change", method = RequestMethod.POST)
-    public ModelAndView changePasswordRequest(HttpServletRequest request, ModelAndView model)
+    public ModelAndView changePasswordRequest(HttpServletRequest request, ModelAndView model, HttpSession session)
     {
         String email = request.getParameter("email");
         String salt = request.getParameter("salt");
         if (authorizationManager.changePasswordRequest(email, salt))
         {
-            System.out.println("asdaf");
             model.setViewName("passwordReset");
+            session.setAttribute("email", email);
         }
         else
-        {
             model.setViewName("404");
-        }
         return model;
+    }
+
+
+    @RequestMapping(value = "/newPassword", method = RequestMethod.POST, produces = "application/json")
+    public @ResponseBody String newPassword(@RequestParam("password") String password, HttpSession session)
+    {
+        System.out.println(password);
+        JsonResponseWrapper ajax = authorizationManager.changePassword(password, session);
+        return ajax.toString();
     }
 }

@@ -17,6 +17,7 @@
 
 <body>
 
+
 <div id="content">
     <div class="form_wrapper scale-transition scale-out" id="auth">
         <form id="signup_form">

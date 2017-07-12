@@ -27,8 +27,6 @@ function signUpUser()
             loader.css("visibility", "hiden");
             if (json.status === "OK")
             {
-                console.log("sadasdasdasdofj[aoisdjhg");
-                console.log($('#onSuccess'));
                 $('#onSuccess').modal('open');
             }else
             {
@@ -82,8 +80,8 @@ function loginUser()
 
 function resetPassword()
 {
-    var loader = $("#loader_reset");
-    loader.css("visibility", "visible");
+        var loader = $("#loader_reset");
+        loader.css("visibility", "visible");
 
     data ={
         email: $("#reset .email").val().trim()

@@ -1,7 +1,10 @@
 package com.matcha.model;
 
+import com.matcha.dao.InformationDao;
 import com.matcha.dao.UserDao;
 import com.matcha.entity.User;
+import com.matcha.entity.UserInformation;
+import com.mysql.cj.api.Session;
 import com.sun.javaws.exceptions.InvalidArgumentException;
 import com.sun.mail.smtp.SMTPAddressFailedException;
 import com.sun.tools.corba.se.idl.InvalidArgument;
@@ -37,13 +40,15 @@ public class AuthorizationManager {
     private UserDao userDao;
     private IHasher hasher;
     private EmailSender emailSender;
+    private InformationDao infoDao;
 
     public AuthorizationManager() {
     }
 
     @Autowired
-    public AuthorizationManager(JsonResponseWrapper json, UserDao userDao, IHasher hasher, EmailSender emailSender) {
+    public AuthorizationManager(JsonResponseWrapper json, UserDao userDao, IHasher hasher, EmailSender emailSender, InformationDao dao) {
         this.json = json;
+        this.infoDao = dao;
         this.userDao = userDao;
         this.hasher = hasher;
         this.emailSender = emailSender;
@@ -97,6 +102,7 @@ public class AuthorizationManager {
     public JsonResponseWrapper logInUser(User user, HttpSession session) throws InvalidKeySpecException, NoSuchAlgorithmException {
 
         User storedUser = checkIfUserExist(user);
+        UserInformation info;
         JsonResponseWrapper json = new JsonResponseWrapper();
         String error;
         if (storedUser == null)
@@ -117,6 +123,8 @@ public class AuthorizationManager {
             json.setData(new ArrayList<String>(Arrays.asList(new String[]{error})));
             return json;
         }
+        info = infoDao.getUserInfoByUserId(storedUser.getId());
+        storedUser.setInformation(info);
         session.setAttribute("user", storedUser);
         json.setStatus("OK");
         return json;
@@ -147,6 +155,27 @@ public class AuthorizationManager {
                 return true;
         }
         return false;
+    }
+
+    public JsonResponseWrapper changePassword(String password, HttpSession session)
+    {
+        String email;
+        User user;
+        JsonResponseWrapper json = new JsonResponseWrapper();
+
+        if ((email = (String) session.getAttribute("email")) != null)
+        {
+            user = userDao.getUserByEmail(email);
+            String[] saltPassword = hasher.getSaltAndPassword(password);
+            user.setSalt(saltPassword[0]);
+            user.setPassword(saltPassword[1]);
+            userDao.updateUser(user);
+            session.removeAttribute("email");
+            json.setStatus("OK");
+            return json;
+        }
+        json.setStatus("Error");
+        return json;
     }
 
     private String checkConfirmation(User user)
