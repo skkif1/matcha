@@ -106,8 +106,8 @@ public class UserInformation {
                     " country=" + country + "\n" +
                     " state=" + state + "\n" +
                     " aboutMe=" + aboutMe + "\n" +
-                    " interests=" + interests.toString() + "\n" +
+                    " interests=" + interests + "\n" +
                     " sexPref=" + sexPref + "\n" +
-                    "photos= " + photos.toString() + "\n";
+                    "photos= " + photos + "\n";
         }
 }

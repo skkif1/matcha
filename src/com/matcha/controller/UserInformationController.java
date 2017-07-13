@@ -46,6 +46,4 @@ public class UserInformationController {
         JsonResponseWrapper ajax = infoManager.savePhoto(photos, session);
         return ajax.toString();
     }
-
-
 }

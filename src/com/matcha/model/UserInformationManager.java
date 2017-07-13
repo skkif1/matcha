@@ -34,6 +34,8 @@ public class UserInformationManager {
             return json;
         }
         informationDao.saveUserInfo(userInfo, user.getId());
+        user.setInformation(userInfo);
+        session.setAttribute("user", user);
         json.setStatus("OK");
         json.setData(new ArrayList<String>(Arrays.asList(new String[]{"Information updated"})));
         return json;
