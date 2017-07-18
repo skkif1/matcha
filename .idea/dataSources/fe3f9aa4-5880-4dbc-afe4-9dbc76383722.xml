@@ -6,139 +6,124 @@
       <Current>1</Current>
       <Visible>1</Visible>
     </schema>
-    <schema id="3" parent="1" name="camagru"/>
-    <schema id="4" parent="1" name="information_schema"/>
-    <schema id="5" parent="1" name="mysql"/>
-    <schema id="6" parent="1" name="performance_schema"/>
-    <schema id="7" parent="1" name="rush00"/>
-    <schema id="8" parent="1" name="sys"/>
-    <table id="9" parent="2" name="interests"/>
-    <table id="10" parent="2" name="interests_list"/>
-    <table id="11" parent="2" name="user"/>
-    <table id="12" parent="2" name="user_information"/>
-    <column id="13" parent="9" name="id">
+    <schema id="3" parent="1" name="information_schema"/>
+    <schema id="4" parent="1" name="mysql"/>
+    <schema id="5" parent="1" name="performance_schema"/>
+    <schema id="6" parent="1" name="test"/>
+    <table id="7" parent="2" name="interests"/>
+    <table id="8" parent="2" name="interests_list"/>
+    <table id="9" parent="2" name="user"/>
+    <table id="10" parent="2" name="user_information"/>
+    <column id="11" parent="7" name="id">
       <Position>1</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="14" parent="9" name="name">
+    <column id="12" parent="7" name="name">
       <Position>2</Position>
       <DataType>varchar(32)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="15" parent="9" name="interests_name_uindex">
+    <index id="13" parent="7" name="interests_name_uindex">
       <ColNames>name</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="16" parent="9" name="PRIMARY">
+    <key id="14" parent="7" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="17" parent="9" name="interests_name_uindex">
+    <key id="15" parent="7" name="interests_name_uindex">
       <ColNames>name</ColNames>
       <UnderlyingIndexName>interests_name_uindex</UnderlyingIndexName>
     </key>
-    <column id="18" parent="10" name="user_id">
+    <column id="16" parent="8" name="user_id">
       <Position>1</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="19" parent="10" name="interest_id">
+    <column id="17" parent="8" name="interest_id">
       <Position>2</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="20" parent="11" name="id">
+    <column id="18" parent="9" name="id">
       <Position>1</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="21" parent="11" name="login">
+    <column id="19" parent="9" name="email">
       <Position>2</Position>
-      <DataType>varchar(32)|0</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <column id="22" parent="11" name="email">
-      <Position>3</Position>
       <DataType>varchar(255)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="23" parent="11" name="password">
-      <Position>4</Position>
+    <column id="20" parent="9" name="password">
+      <Position>3</Position>
       <DataType>varchar(45)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="24" parent="11" name="salt">
-      <Position>5</Position>
+    <column id="21" parent="9" name="salt">
+      <Position>4</Position>
       <DataType>varchar(345)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="25" parent="11" name="confirm">
-      <Position>6</Position>
+    <column id="22" parent="9" name="confirm">
+      <Position>5</Position>
       <DataType>tinyint(1)|0</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>&apos;0&apos;</DefaultExpression>
     </column>
-    <column id="26" parent="11" name="first_name">
+    <column id="23" parent="9" name="first_name">
+      <Position>6</Position>
+      <DataType>varchar(32)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="24" parent="9" name="last_name">
       <Position>7</Position>
       <DataType>varchar(32)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="27" parent="11" name="last_name">
-      <Position>8</Position>
-      <DataType>varchar(32)|0</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <index id="28" parent="11" name="user_email_uindex">
+    <index id="25" parent="9" name="user_email_uindex">
       <ColNames>email</ColNames>
       <Unique>1</Unique>
     </index>
-    <index id="29" parent="11" name="user_login_uindex">
-      <ColNames>login</ColNames>
-      <Unique>1</Unique>
-    </index>
-    <key id="30" parent="11" name="PRIMARY">
+    <key id="26" parent="9" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="31" parent="11" name="user_login_uindex">
-      <ColNames>login</ColNames>
-      <UnderlyingIndexName>user_login_uindex</UnderlyingIndexName>
-    </key>
-    <key id="32" parent="11" name="user_email_uindex">
+    <key id="27" parent="9" name="user_email_uindex">
       <ColNames>email</ColNames>
       <UnderlyingIndexName>user_email_uindex</UnderlyingIndexName>
     </key>
-    <column id="33" parent="12" name="user_id">
+    <column id="28" parent="10" name="user_id">
       <Position>1</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="34" parent="12" name="sex">
+    <column id="29" parent="10" name="sex">
       <Position>2</Position>
       <DataType>varchar(32)|0</DataType>
     </column>
-    <column id="35" parent="12" name="age">
+    <column id="30" parent="10" name="age">
       <Position>3</Position>
       <DataType>int(11)|0</DataType>
     </column>
-    <column id="36" parent="12" name="country">
+    <column id="31" parent="10" name="country">
       <Position>4</Position>
       <DataType>varchar(32)|0</DataType>
     </column>
-    <column id="37" parent="12" name="state">
+    <column id="32" parent="10" name="state">
       <Position>5</Position>
       <DataType>varchar(32)|0</DataType>
     </column>
-    <column id="38" parent="12" name="aboutMe">
+    <column id="33" parent="10" name="aboutMe">
       <Position>6</Position>
       <DataType>varchar(1000)|0</DataType>
     </column>
-    <column id="39" parent="12" name="sexPref">
+    <column id="34" parent="10" name="sexPref">
       <Position>7</Position>
       <DataType>varchar(32)|0</DataType>
     </column>

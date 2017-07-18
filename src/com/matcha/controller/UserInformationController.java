@@ -29,6 +29,8 @@ public class UserInformationController {
     public ModelAndView getUserInfo(ModelAndView model, HttpSession session)
     {
         model.setViewName("userInformation");
+        UserInformation userInfo = infoManager.getUserInfo((User) session.getAttribute("user"));
+        model.addObject("information", userInfo);
         model.addObject("user", session.getAttribute("user"));
         return model;
     }
@@ -45,5 +47,18 @@ public class UserInformationController {
         System.out.println("update");
         JsonResponseWrapper ajax = infoManager.savePhoto(photos, session);
         return ajax.toString();
+    }
+
+    @RequestMapping(value = "/getInfo")
+    public @ResponseBody String getUserInfo(HttpSession session)
+    {
+        JsonResponseWrapper json = new JsonResponseWrapper();
+        User user = (User)session.getAttribute("user");
+        if (user != null)
+        {
+            json.setStatus("OK");
+            json.setData(user.getInformation());
+        }
+        return json.toString();
     }
 }

@@ -20,7 +20,7 @@ public class DaoConfig{
         dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
         dataSource.setUrl("jdbc:mysql://127.0.0.1:3306/matcha?useSSL=false");
         dataSource.setUsername("root");
-        dataSource.setPassword("root");
+        dataSource.setPassword("password");
         return dataSource;
     }
 }

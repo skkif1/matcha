@@ -1,4 +1,5 @@
 <%@ page import="com.matcha.entity.User" %>
+<%@ page import="java.util.Iterator" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
@@ -25,34 +26,33 @@
                 <i class="material-icons prefix">account_circle</i>
 
                 <label>age:</label>
-                <input maxlength="3" class="input_info" value="${user.information.age}" name="age" type="text"/>
+                <input maxlength="3" class="input_info" value="${information.age}" name="age" type="text" placeholder=""/>
             </div>
 
             <div class="input-field col s6">
                 <i class="material-icons prefix">location_on</i>
                 <label>country:</label>
-                <input maxlength="32" class="input_info" value="${user.information.country}" id="country" name="country" type="text"/>
+                <input maxlength="32" class="input_info" value="${information.country}" id="country" name="country" type="text" placeholder=""/>
             </div>
             <div class="input-field col s6">
                 <i class="material-icons prefix">location_on</i>
                 <label>state:</label>
-                <input maxlength="32"class="input_info" name="state" type="text" value="${user.information.state}"/>
+                <input maxlength="32"class="input_info" name="state" type="text" value="${information.state}" placeholder=""/>
             </div>
             <div class="input-field col s6">
                 <i class="material-icons prefix">comment</i>
                 <label>about me:</label>
-                <textarea maxlength="1000"class="input_info materialize-textarea" maxlength="1000" name="aboutMe">
-                    ${user.information.aboutMe}
+                <textarea maxlength="1000"class="input_info materialize-textarea" maxlength="1000" name="aboutMe" id="aboutMe" placeholder="">
                 </textarea>
             </div>
 
             <div class="input-field col s6">
                 <i class="material-icons prefix bad">local_play</i>
-                <label>interests:</label>
                 <div class="chips chips-placeholder input_info">
 
-
                 </div>
+                <span>Type your interest and press Enter key</span>
+
             </div>
 
 
@@ -146,19 +146,6 @@
         <a onclick="changeCategory(this)" class="collection-item">photo</a>
         <a onclick="changeCategory(this)" class="collection-item">user</a>
     </div>
-</div>
-
-<div class="hiden">
-   <%
-
-       User user = (User) request.getAttribute("user");
-
-       String interests = new String("");
-       user.getInformation().getInterests().forEach(str ->
-       {
-         interests.concat(str).concat("#");
-       });
-   %>
 </div>
 
 </body>

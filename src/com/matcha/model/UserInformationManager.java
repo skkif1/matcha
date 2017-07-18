@@ -34,11 +34,18 @@ public class UserInformationManager {
             return json;
         }
         informationDao.saveUserInfo(userInfo, user.getId());
+        userInfo = informationDao.getUserInfoByUserId(user.getId());
         user.setInformation(userInfo);
         session.setAttribute("user", user);
         json.setStatus("OK");
         json.setData(new ArrayList<String>(Arrays.asList(new String[]{"Information updated"})));
         return json;
+    }
+
+    public UserInformation getUserInfo(User user)
+    {
+        UserInformation info = informationDao.getUserInfoByUserId(user.getId());
+        return info;
     }
 
     public JsonResponseWrapper savePhoto(MultipartFile[] photos, HttpSession session)

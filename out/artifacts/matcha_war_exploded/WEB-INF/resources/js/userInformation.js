@@ -3,13 +3,12 @@ var home = "http://localhost:8080/matcha";
 window.onload = function () {
     $('.chips').material_chip(
         {
-            placeholder: '+Interes'
+            placeholder: 'Type your interest and press enter',
+            secondaryPlaceholder: 'Type your interest and press enter'
         }
     );
-    var chips = $(".chip");
-    chips.each(function (index, chip) {
-    $(chip).prependTo('.chips');
-    });
+
+    getUserInfo();
     $('.carousel').carousel();
     $('#file').change(uploadFiles());
 };
@@ -28,7 +27,8 @@ function changeUserInfo()
     };
 
     for (var i = 0; i < select_info.length; i++)
-        data[select_info[i].name] = select_info.eq(i).val();
+        data[select_info[i].name] = select_info.eq(i).val().trim();
+    data.age = parseInt(data.age, 10);
 
     sexInput.each(function (index, node) {
         if (node.checked)
@@ -39,10 +39,19 @@ function changeUserInfo()
             data.sexPref = node.id;
     });
     var res = '';
+    if (interests.length > 10)
+    {
+        Materialize.toast('you can declare only 10 interests', 7000);
+        return ;
+    }
+
     for(var i = 0; i < interests.length; i++)
     {
-        if(i == 10)
-            break;
+        if ($(interests[i]).text().length > 32)
+        {
+            Materialize.toast('you interest max length is 32', 7000);
+            return ;
+        }
         res += $(interests[i]).text();
     }
     data.interests = res.replace(new RegExp("close",'g'),"#");
@@ -166,4 +175,37 @@ function changeCategory(item)
             }, 300);
             break;
     }
+}
+
+function getUserInfo() {
+    var chipsHolder = $('.chips');
+    var aboutHolder = $('#aboutMe');
+
+    $.ajax(
+        {
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            type:"POST",
+            dataType: "json",
+            url: home + "/info/getInfo/",
+            success: function (json) {
+                if (json.status === "OK") {
+                   for (var i = json.data.interests.length - 1; i >=0;  i--)
+                   {
+                       chipsHolder.prepend(
+                           '<div class="chip">' + json.data.interests[i] +
+                           '<i class="material-icons close">close</i>' + '</div>'
+                       );
+                       aboutHolder.val('');
+                       aboutHolder.val(json.data.aboutMe);
+                       $('#' + json.data.sex).attr('checked', true);
+                       $('#' + json.data.sexPref).attr('checked', true);
+                   }
+                }
+            }
+        }
+    );
+
 }
