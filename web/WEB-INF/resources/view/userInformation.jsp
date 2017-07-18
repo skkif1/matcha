@@ -9,9 +9,9 @@
 
     <title>Welcome to matcha</title>
     <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
-    <link href="<c:url value="/resources/css/userInformation.css" />" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/css/materialize.css">
+    <link href="<c:url value="/resources/css/userInformation.css" />" rel="stylesheet">
 
 </head>
 <body>
@@ -26,24 +26,29 @@
                 <i class="material-icons prefix">account_circle</i>
 
                 <label>age:</label>
-                <input maxlength="3" class="input_info" value="${information.age}" name="age" type="text" placeholder=""/>
+                <input maxlength="3" class="input_info" value="${information.age}" name="age" type="text"
+                       placeholder=""/>
             </div>
 
             <div class="input-field col s6">
                 <i class="material-icons prefix">location_on</i>
                 <label>country:</label>
-                <input maxlength="32" class="input_info" value="${information.country}" id="country" name="country" type="text" placeholder=""/>
+                <input maxlength="32" class="input_info" value="${information.country}" id="country" name="country"
+                       type="text" placeholder=""/>
             </div>
             <div class="input-field col s6">
                 <i class="material-icons prefix">location_on</i>
                 <label>state:</label>
-                <input maxlength="32"class="input_info" name="state" type="text" value="${information.state}" placeholder=""/>
+                <input maxlength="32" class="input_info" name="state" type="text" value="${information.state}"
+                       placeholder=""/>
             </div>
             <div class="input-field col s6">
                 <i class="material-icons prefix">comment</i>
-                <label>about me:</label>
-                <textarea maxlength="1000"class="input_info materialize-textarea" maxlength="1000" name="aboutMe" id="aboutMe" placeholder="">
+                <textarea maxlength="1000" class="input_info materialize-textarea" name="aboutMe" id="aboutMe"
+                          placeholder="">
                 </textarea>
+                <span>Type few words about yourself</span>
+
             </div>
 
             <div class="input-field col s6">
@@ -54,7 +59,6 @@
                 <span>Type your interest and press Enter key</span>
 
             </div>
-
 
 
             <div class="sex_wrapper">
@@ -98,18 +102,18 @@
 
     <div class="user_photo scale-transition">
         <div class="carousel">
-            <a class="carousel-item" href="#one!"><img src="https://lorempixel.com/250/250/nature/1"></a>
-            <a class="carousel-item" href="#two!"><img src="https://lorempixel.com/250/250/nature/2"></a>
-            <a class="carousel-item" href="#three!"><img src="https://lorempixel.com/250/250/nature/3"></a>
-            <a class="carousel-item" href="#four!"><img src="https://lorempixel.com/250/250/nature/4"></a>
-            <a class="carousel-item" href="#five!"><img src="https://lorempixel.com/250/250/nature/5"></a>
+            <a class="carousel-item" href="#one!"><img class="standart" src="http://localhost:8081/cdn/general/User.png"></a>
+            <a class="carousel-item " href="#two!"><img class="standart" src="http://localhost:8081/cdn/general/User.png"></a>
+                <a class="carousel-item " href="#three!"><img class="standart" src="http://localhost:8081/cdn/general/User.png"></a>
+                <a class="carousel-item " href="#four!"><img class="standart" src="http://localhost:8081/cdn/general/User.png"></a>
+                <a class="carousel-item " href="#five!"><img class="standart" src="http://localhost:8081/cdn/general/User.png"></a>
         </div>
 
 
         <div class="file-field input-field">
             <div class="btn">
                 <span>Upload</span>
-                <input type="file" id="file" accept="image/jpeg">
+                <input type="file" id="file">
             </div>
             <div class="file-path-wrapper">
                 <input class="file-path validate" type="text" id="file-path">

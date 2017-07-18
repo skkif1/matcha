@@ -30,6 +30,7 @@ public class UserInformationController {
     {
         model.setViewName("userInformation");
         UserInformation userInfo = infoManager.getUserInfo((User) session.getAttribute("user"));
+        session.setAttribute("info", userInfo);
         model.addObject("information", userInfo);
         model.addObject("user", session.getAttribute("user"));
         return model;
@@ -44,8 +45,14 @@ public class UserInformationController {
     @RequestMapping(value = "/updatePhoto")
     public @ResponseBody String updateUserPhoto(@RequestParam("files")MultipartFile[] photos, HttpSession session)
     {
-        System.out.println("update");
         JsonResponseWrapper ajax = infoManager.savePhoto(photos, session);
+        return ajax.toString();
+    }
+
+    @RequestMapping(value = "/dellPhoto")
+    public @ResponseBody String deletePhoto(@RequestParam("path") String path, HttpSession session)
+    {
+        JsonResponseWrapper ajax = infoManager.delletePhoto(path, session);
         return ajax.toString();
     }
 
@@ -53,11 +60,11 @@ public class UserInformationController {
     public @ResponseBody String getUserInfo(HttpSession session)
     {
         JsonResponseWrapper json = new JsonResponseWrapper();
-        User user = (User)session.getAttribute("user");
+        UserInformation user = (UserInformation) session.getAttribute("info");
         if (user != null)
         {
             json.setStatus("OK");
-            json.setData(user.getInformation());
+            json.setData(user);
         }
         return json.toString();
     }

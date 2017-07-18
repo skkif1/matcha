@@ -7,10 +7,10 @@ window.onload = function () {
             secondaryPlaceholder: 'Type your interest and press enter'
         }
     );
-
     getUserInfo();
     $('.carousel').carousel();
     $('#file').change(uploadFiles());
+
 };
 
 function changeUserInfo()
@@ -78,28 +78,39 @@ function changeUserInfo()
 
 function uploadPhoto()
 {
-    var files = $(".loader")[0].files;
+    var files = $("#file").prop('files');
+    var amount = $('.standart');
     var form = new FormData();
 
-    $.each(files, function (i, file) {
-        form.append("files", file);
-        console.log(i);
-    });
-
+    if (amount.length === 0)
+    {
+        Materialize.toast('You can download 5 photo with max size of 10MB');
+        return;
+    }
+    form.append('files', files[0]);
+    files = "";
     $.ajax(
         {
+            headers: {
+                'Accept': 'application/json',
+            },
             url: home + "/info/updatePhoto",
             data: form,
             type: 'POST',
             processData: false,
             contentType: false,
             success: function (json) {
-                $.each(json.data, function (i, message) {
-                    console.log(message);
-                })
+                if (json.status === 'OK')
+                {
+                    var images = $('.carousel-item');
+                    $.each(images, function (index, item) {
+                        item.children[0].className = 'standart';
+                        item.children[0].src = 'http://localhost:8081/cdn/general/User.png';
+                    });
+                    getUserInfo();
+                }
             }
         });
-    console.log(form);
 }
 
 
@@ -122,17 +133,6 @@ function editUser() {
         }
     });
 }
-
-
-function uploadFiles() {
-        var files = $('#file').prop('files');
-        var photoContainer = $('.carousel').prop('children');
-
-        for (var i = 0; i < files.length; i++) {
-            console.log(files[i]);
-        }
-}
-
 
 function changeCategory(item)
 {
@@ -180,6 +180,7 @@ function changeCategory(item)
 function getUserInfo() {
     var chipsHolder = $('.chips');
     var aboutHolder = $('#aboutMe');
+    var gallery = $('.standart');
 
     $.ajax(
         {
@@ -203,9 +204,46 @@ function getUserInfo() {
                        $('#' + json.data.sex).attr('checked', true);
                        $('#' + json.data.sexPref).attr('checked', true);
                    }
+                   for (var i = 0; i < json.data.photos.length;  i++)
+                   {
+                       $(gallery[i]).attr('src', json.data.photos[i]);
+                        $(gallery[i]).removeClass();
+                   }
+
                 }
             }
         }
     );
+}
 
+
+function dellPhoto(image)
+{
+    console.log(image);
+    if (image.className === 'standart')
+        return  ;
+    var path = image.src;
+    $('#modal1').modal('open');
+
+    data =
+        {
+            path : path
+        };
+
+    $.ajax(
+        {
+            headers: {
+                'Accept': 'application/json',
+            },
+            data: data,
+            type:"POST",
+            url: home + "/info/dellPhoto/",
+            success: function (json) {
+                if (json.status === "OK") {
+                    image.src = 'http://localhost:8081/cdn/general/User.png';
+                    image.className = 'standart';
+                }
+            }
+        }
+    );
 }

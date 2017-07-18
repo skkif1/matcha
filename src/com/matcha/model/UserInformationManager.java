@@ -19,16 +19,14 @@ public class UserInformationManager {
     private JsonResponseWrapper json;
 
     @Autowired
-    public UserInformationManager(InformationDao informationDao, JsonResponseWrapper json)
-    {
+    public UserInformationManager(InformationDao informationDao, JsonResponseWrapper json) {
         this.informationDao = informationDao;
         this.json = json;
     }
 
     public JsonResponseWrapper updateUserInfo(UserInformation userInfo, HttpSession session) throws IOException {
         User user = (User) session.getAttribute("user");
-        if (user == null)
-        {
+        if (user == null) {
             json.setStatus("Error");
             json.setData(new ArrayList<String>(Arrays.asList(new String[]{"out of session"})));
             return json;
@@ -42,28 +40,35 @@ public class UserInformationManager {
         return json;
     }
 
-    public UserInformation getUserInfo(User user)
-    {
+    public UserInformation getUserInfo(User user) {
         UserInformation info = informationDao.getUserInfoByUserId(user.getId());
         return info;
     }
 
-    public JsonResponseWrapper savePhoto(MultipartFile[] photos, HttpSession session)
-    {
+    public JsonResponseWrapper savePhoto(MultipartFile[] photos, HttpSession session) {
         User user = (User) session.getAttribute("user");
-        if (user == null)
-        {
+        if (user == null) {
             json.setStatus("Error");
             json.setData(new ArrayList<String>(Arrays.asList(new String[]{"out of session"})));
             return json;
         }
         try {
             informationDao.savePhoto(photos, user.getId());
-        }catch (IOException ex)
-        {
+            json.setStatus("OK");
+            session.setAttribute("info", informationDao.getUserInfoByUserId(user.getId()));
+        } catch (IOException ex) {
             json.setStatus("Error");
             json.setData("IOException");
         }
+        return json;
+    }
+
+    public JsonResponseWrapper delletePhoto(String path, HttpSession session)
+    {
+        JsonResponseWrapper json = new JsonResponseWrapper();
+        User user = (User) session.getAttribute("user");
+        informationDao.deletePhoto(path, user.getId());
+        json.setStatus("OK");
         return json;
     }
 }

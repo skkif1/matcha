@@ -54,6 +54,7 @@ public class InformationDaoImpl implements InformationDao {
         try {
             userInfo = template.queryForObject(sql, new BeanPropertyRowMapper<>(UserInformation.class), new Integer[]{userId});
             userInfo.setInterests((ArrayList<String>) selectUserInterestList(userId));
+            userInfo.setPhotos((ArrayList<String>) getUserPhoto(userId));
         } catch (DataAccessException ex) {
             return null;
         }
@@ -69,8 +70,24 @@ public class InformationDaoImpl implements InformationDao {
         else
             photoName = countPhoto(userId);
         for (MultipartFile photo : photos) {
-            Files.write(Paths.get(userDirectory.getAbsolutePath() + "/" + photoName++ + "." + photo.getContentType().split("\\/")[1]), photo.getBytes());
+            Files.write(Paths.get(userDirectory.getAbsolutePath() + "/" + photoName++ + "." + photo.getContentType()
+                    .split("\\/")[1]), photo.getBytes());
+        savePhoto(CDN_WEB_ADDRESS + userId + "/" + (photoName - 1) + "." + photo.getContentType().split("\\/")[1], userId);
         }
+    }
+
+    @Override
+    public void deletePhoto(String path, Integer userId) {
+        String sql = "DELETE FROM user_photo WHERE path = ? AND user_id = ?";
+        template.update(sql, path, userId);
+        File photo = new File(CDN_SERVER_ADDRESS + path.substring(26));
+        photo.delete();
+    }
+
+    @Override
+    public void savePhoto(String address, Integer id) {
+        String sql = "INSERT INTO user_photo (path, user_id) VALUES (?,?)";
+        template.update(sql, address, id);
     }
 
     @Override
@@ -131,6 +148,17 @@ public class InformationDaoImpl implements InformationDao {
         template.query(sql, new Integer[]{userId}, (ResultSet rs) ->
         {
             res.add(rs.getString(1));
+        });
+        return res;
+    }
+
+    private List<String> getUserPhoto(Integer userId)
+    {
+        ArrayList<String> res = new ArrayList<>(11);
+        String sql = "SELECT * FROM USER_PHOTO WHERE user_id = ?";
+        template.query(sql, new Integer[]{userId}, (ResultSet rs) ->
+        {
+            res.add(rs.getString("path"));
         });
         return res;
     }
