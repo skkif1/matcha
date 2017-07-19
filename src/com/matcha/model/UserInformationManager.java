@@ -1,9 +1,11 @@
 package com.matcha.model;
 
 import com.matcha.dao.InformationDao;
+import com.matcha.dao.UserDao;
 import com.matcha.entity.User;
 import com.matcha.entity.UserInformation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 import javax.servlet.http.HttpSession;
@@ -17,11 +19,13 @@ public class UserInformationManager {
 
     private InformationDao informationDao;
     private JsonResponseWrapper json;
+    private UserDao userDao;
 
     @Autowired
-    public UserInformationManager(InformationDao informationDao, JsonResponseWrapper json) {
+    public UserInformationManager(InformationDao informationDao, JsonResponseWrapper json, UserDao userDao) {
         this.informationDao = informationDao;
         this.json = json;
+        this.userDao = userDao;
     }
 
     public JsonResponseWrapper updateUserInfo(UserInformation userInfo, HttpSession session) throws IOException {
@@ -37,6 +41,18 @@ public class UserInformationManager {
         session.setAttribute("user", user);
         json.setStatus("OK");
         json.setData(new ArrayList<String>(Arrays.asList(new String[]{"Information updated"})));
+        return json;
+    }
+
+    public JsonResponseWrapper updateUserData(User user, HttpSession session)
+    {
+        JsonResponseWrapper json = new JsonResponseWrapper();
+        User currentUser = (User) session.getAttribute("user");
+        currentUser.setFirstName(user.getFirstName());
+        currentUser.setLastName(user.getLastName());
+        currentUser.setEmail(user.getEmail());
+        userDao.updateUser(currentUser);
+        json.setStatus("OK");
         return json;
     }
 
@@ -56,9 +72,9 @@ public class UserInformationManager {
             informationDao.savePhoto(photos, user.getId());
             json.setStatus("OK");
             session.setAttribute("info", informationDao.getUserInfoByUserId(user.getId()));
-        } catch (IOException ex) {
+        } catch (Exception ex) {
             json.setStatus("Error");
-            json.setData("IOException");
+            json.setData(new ArrayList<String>(Arrays.asList(new String[]{"You allready have photo with such name"})));
         }
         return json;
     }

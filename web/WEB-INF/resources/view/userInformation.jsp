@@ -102,13 +102,14 @@
 
     <div class="user_photo scale-transition">
         <div class="carousel">
-            <a class="carousel-item" href="#one!"><img class="standart" src="http://localhost:8081/cdn/general/User.png"></a>
+
+            <a class="carousel-item" onmousedown="displayButton()" href="#one!"><img class="standart" src="http://localhost:8081/cdn/general/User.png"></a>
             <a class="carousel-item " href="#two!"><img class="standart" src="http://localhost:8081/cdn/general/User.png"></a>
                 <a class="carousel-item " href="#three!"><img class="standart" src="http://localhost:8081/cdn/general/User.png"></a>
                 <a class="carousel-item " href="#four!"><img class="standart" src="http://localhost:8081/cdn/general/User.png"></a>
                 <a class="carousel-item " href="#five!"><img class="standart" src="http://localhost:8081/cdn/general/User.png"></a>
         </div>
-
+        <button onclick="dellPhoto()" class="dell_button btn-floating btn-large waves-effect waves-light scale-transition scale-out"><i class="material-icons">clear</i></button>
 
         <div class="file-field input-field">
             <div class="btn">
@@ -131,15 +132,15 @@
 
         <div class="input-field col s6" id="edit_name">
             <label>first name: </label>
-            <input class="input_info" value="${user.firstName}" name="lastName" type="text"/>
+            <input class="input_info" value="${user.firstName}" name="firstName" type="text"/>
         </div>
 
         <div class="input-field col s6" id="edit_lastName">
             <label>last name: </label>
-            <input class="input_info" name="lastName" type="text"/>
+            <input class="input_info" value="${user.lastName}" name="lastName" type="text"/>
         </div>
 
-        <button class="waves-effect waves-light btn" onclick="editUser()">save</button>
+        <button class="waves-effect waves-light btn" onclick="changeUserData()">save</button>
     </div>
 
 </div>

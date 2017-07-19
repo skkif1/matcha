@@ -36,6 +36,13 @@ public class UserInformationController {
         return model;
     }
 
+    @RequestMapping(value = "/user", method = RequestMethod.POST)
+    public @ResponseBody String changeUserData(@RequestBody User user, HttpSession session)
+    {
+        JsonResponseWrapper json = infoManager.updateUserData(user, session);
+        return json.toString();
+    }
+
     @RequestMapping(value = "/update", method = RequestMethod.POST)
     public @ResponseBody String updateUserInfo(@RequestBody UserInformation userinfo, HttpSession session, HttpServletResponse resp) throws IOException {
         JsonResponseWrapper ajax = infoManager.updateUserInfo(userinfo, session);

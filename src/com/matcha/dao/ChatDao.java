@@ -14,3 +14,4 @@ public interface ChatDao {
     public List<Conversation> getUserConversations(User user);
     public List<Message> getConversationMessages(Integer id, Integer offset, Integer limit);
 }
+//

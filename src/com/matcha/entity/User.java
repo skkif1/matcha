@@ -104,6 +104,8 @@ public class User {
                 ", password='" + password + "\n" +
                 ", salt='" + salt + "\n" +
                 ", confirm=" + confirm + "\n" +
-                ", userInfo = " + information;
+                ", userInfo = " + information + "\n" +
+                ", first = " + firstName + "\n" +
+                ", last = " + lastName + "\n";
     }
 }

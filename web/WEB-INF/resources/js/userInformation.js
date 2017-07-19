@@ -9,8 +9,6 @@ window.onload = function () {
     );
     getUserInfo();
     $('.carousel').carousel();
-    $('#file').change(uploadFiles());
-
 };
 
 function changeUserInfo()
@@ -84,7 +82,7 @@ function uploadPhoto()
 
     if (amount.length === 0)
     {
-        Materialize.toast('You can download 5 photo with max size of 10MB');
+        Materialize.toast('You can download 5 photo with max size of 10MB', 7000);
         return;
     }
     form.append('files', files[0]);
@@ -108,30 +106,17 @@ function uploadPhoto()
                         item.children[0].src = 'http://localhost:8081/cdn/general/User.png';
                     });
                     getUserInfo();
+                    $('.carousel').carousel();
+                }else
+                {
+                    for (var i = 0; i < json.data.length; i++)
+                    {
+                        console.log(json.data[i]);
+                        Materialize.toast(json.data[i], 7000);
+                    }
                 }
             }
         });
-}
-
-
-function editUser() {
-
-    var data =
-        {
-            email: $(".input_email_info")[0].value.trim()
-        };
-
-    $.ajax({
-        url: home + "/info/updateEmail",
-        data: data,
-        type: "POST",
-        success: function (json) {
-            json = JSON.parse(json);
-            $.each(json.data, function (i, message) {
-                console.log(message);
-            })
-        }
-    });
 }
 
 function changeCategory(item)
@@ -217,13 +202,13 @@ function getUserInfo() {
 }
 
 
-function dellPhoto(image)
+function dellPhoto()
 {
-    console.log(image);
-    if (image.className === 'standart')
+    var toDell = $('.active img')[0];
+
+    if (toDell.className === 'standart')
         return  ;
-    var path = image.src;
-    $('#modal1').modal('open');
+    var path = toDell.src;
 
     data =
         {
@@ -240,10 +225,47 @@ function dellPhoto(image)
             url: home + "/info/dellPhoto/",
             success: function (json) {
                 if (json.status === "OK") {
-                    image.src = 'http://localhost:8081/cdn/general/User.png';
-                    image.className = 'standart';
+                    toDell.src = 'http://localhost:8081/cdn/general/User.png';
+                    toDell.className = 'standart';
+                }
+
+            }
+        }
+    );
+}
+
+function changeUserData() {
+    var userData = $(".user input");
+    var data = {};
+
+    for (var i = 0; i < userData.length; i++)
+    {
+        if ($(userData[i]).val().trim() === '')
+            continue;
+        data[userData[i].name] = $(userData[i]).val().trim();
+    }
+    $.ajax(
+        {
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            data: JSON.stringify(data),
+            type:"POST",
+            url: home + "/info/user/",
+            success: function (json) {
+                if (json.status === "OK") {
+                    Materialize.toast("You data was successfuly change", 7000);
                 }
             }
         }
     );
+}
+
+function displayButton()
+{
+    if ($('.active img').hasClass('standart'))
+        $('.dell_button').addClass('scale-out');
+    else
+        $('.dell_button').removeClass('scale-out');
 }
