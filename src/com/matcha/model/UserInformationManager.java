@@ -87,4 +87,13 @@ public class UserInformationManager {
         json.setStatus("OK");
         return json;
     }
+
+    public JsonResponseWrapper setAvatar(String path, HttpSession session)
+    {
+        JsonResponseWrapper json = new JsonResponseWrapper();
+        User user = (User) session.getAttribute("user");
+        informationDao.saveAvatar(path, user.getId());
+        json.setStatus("OK");
+        return json;
+    }
 }

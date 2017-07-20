@@ -182,8 +182,7 @@ function getUserInfo() {
                    {
                        chipsHolder.prepend(
                            '<div class="chip">' + json.data.interests[i] +
-                           '<i class="material-icons close">close</i>' + '</div>'
-                       );
+                           '<i class="material-icons close">close</i>' + '</div>');
                        aboutHolder.val('');
                        aboutHolder.val(json.data.aboutMe);
                        $('#' + json.data.sex).attr('checked', true);
@@ -262,10 +261,32 @@ function changeUserData() {
     );
 }
 
-function displayButton()
-{
-    if ($('.active img').hasClass('standart'))
-        $('.dell_button').addClass('scale-out');
-    else
-        $('.dell_button').removeClass('scale-out');
+function setAvatar() {
+    var avatar = $('.active img')[0];
+
+    if (avatar.className === 'standart')
+        return  ;
+    var path = avatar.src;
+
+    data =
+        {
+            path : path
+        };
+
+    $.ajax(
+        {
+            headers: {
+                'Accept': 'application/json',
+            },
+            data: data,
+            type:"POST",
+            url: home + "/info/setAvatar/",
+            success: function (json) {
+                if (json.status === "OK") {
+                    Materialize.toast("Your avatar has been set", 7000);
+                }
+
+            }
+        }
+    );
 }

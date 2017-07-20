@@ -1,5 +1,3 @@
-<%@ page import="com.matcha.entity.User" %>
-<%@ page import="java.util.Iterator" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
@@ -103,13 +101,14 @@
     <div class="user_photo scale-transition">
         <div class="carousel">
 
-            <a class="carousel-item" onmousedown="displayButton()" href="#one!"><img class="standart" src="http://localhost:8081/cdn/general/User.png"></a>
+            <a class="carousel-item"  href="#one!"><img class="standart" src="http://localhost:8081/cdn/general/User.png"></a>
             <a class="carousel-item " href="#two!"><img class="standart" src="http://localhost:8081/cdn/general/User.png"></a>
                 <a class="carousel-item " href="#three!"><img class="standart" src="http://localhost:8081/cdn/general/User.png"></a>
                 <a class="carousel-item " href="#four!"><img class="standart" src="http://localhost:8081/cdn/general/User.png"></a>
                 <a class="carousel-item " href="#five!"><img class="standart" src="http://localhost:8081/cdn/general/User.png"></a>
         </div>
-        <button onclick="dellPhoto()" class="dell_button btn-floating btn-large waves-effect waves-light scale-transition scale-out"><i class="material-icons">clear</i></button>
+        <button onclick="dellPhoto()" class="dell_button btn-floating btn-large waves-effect waves-light scale-transition"><i class="material-icons">clear</i></button>
+        <button onclick="setAvatar()" class="set_button btn-floating btn-large waves-effect waves-light scale-transition"><i class="material-icons">done</i></button>
 
         <div class="file-field input-field">
             <div class="btn">

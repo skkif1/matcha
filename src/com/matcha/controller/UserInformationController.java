@@ -63,6 +63,13 @@ public class UserInformationController {
         return ajax.toString();
     }
 
+    @RequestMapping(value = "/setAvatar")
+    public @ResponseBody String setAvatar(@RequestParam("path") String path, HttpSession session)
+    {
+        JsonResponseWrapper json = infoManager.setAvatar(path, session);
+                return json.toString();
+    }
+
     @RequestMapping(value = "/getInfo")
     public @ResponseBody String getUserInfo(HttpSession session)
     {

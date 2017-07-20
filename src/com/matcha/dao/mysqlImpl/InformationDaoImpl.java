@@ -85,6 +85,12 @@ public class InformationDaoImpl implements InformationDao {
     }
 
     @Override
+    public void saveAvatar(String path, Integer userId) {
+        String sql = "UPDATE user_information SET photo_id = (SELECT id FROM user_photo WHERE path = ?)WHERE user_id = ?";
+        template.update(sql, path, userId);
+    }
+
+    @Override
     public void savePhoto(String address, Integer id) {
         String sql = "INSERT INTO user_photo (path, user_id) VALUES (?,?)";
         template.update(sql, address, id);

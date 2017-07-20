@@ -1,0 +1,175 @@
+body
+{
+    width: 100%;
+    height:100%;
+    margin: 0;
+    background: rgb(245,245,245);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+
+.content
+{
+    width: 920px;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+
+}
+
+.side_bar
+{
+    margin-right: 10px;
+}
+
+
+.photo_wrapper
+{
+    background: white;
+    padding: 10px;
+    flex: 2;
+}
+
+.photo_wrapper img
+{
+    width: 200px;
+    height: 200px;
+}
+
+.photo_wrapper a
+{
+    margin-top: 10px;
+}
+
+.like
+{
+    display: flex;
+    flex-direction: column;
+}
+
+.user_info
+{
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px;
+}
+
+.user_name
+{
+    background: white;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+span
+{
+    color:#9e9e9e;
+    margin-left: 10px;
+}
+
+.photo
+{
+    margin-top: 10px;
+    padding: 10px;
+    background: white;
+}
+
+.location
+{
+    background: white;
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+.age
+{
+    margin-top: 10px;
+    background: white;
+    display: flex;
+}
+
+.age span
+{
+    margin-right: 27px;
+}
+
+.sex
+{
+    margin-top: 10px;
+    background: white;
+    display: flex;
+
+}
+
+.sex span
+{
+    margin-right: 27px;
+
+}
+
+.pref
+{
+    background: white;
+    display: flex;
+}
+
+.pref span
+{
+    margin-right: 24px;
+}
+
+.state
+{
+    display: flex;
+
+}
+
+.state span
+{
+    margin-right: 20px;
+}
+.country span
+{
+    margin-right: 5px;
+}
+
+.country
+{
+    display: flex;
+    margin-right: 10px;
+}
+
+.about_me
+{
+    background: white;
+    margin-top: 10px;
+}
+
+.about_me .info
+{
+    margin-left: 10px;
+}
+hr
+{
+    border-color: rgb(42, 185, 171);
+}
+
+.chip
+{
+    margin: 10px;
+}
+
+
+.interests
+{
+    background: white;
+    margin-top: 10px;
+}
+

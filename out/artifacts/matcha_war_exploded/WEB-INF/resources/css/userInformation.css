@@ -17,6 +17,8 @@ body
     flex-direction: column;
 }
 
+
+
 .info
 {
     flex-direction: column;
@@ -90,6 +92,13 @@ span
     top: 39px;
     position: absolute;
     left: 45%;
+}
+
+.set_button
+{
+    position: absolute;
+    left: 45%;
+    top: 305px;
 }
 
 

@@ -16,6 +16,7 @@ public interface InformationDao {
     public void savePhoto(MultipartFile[] photos, Integer userId) throws IOException;
     public void savePhoto(String address, Integer id);
     public void deletePhoto(String path, Integer userId);
+    public void saveAvatar(String path, Integer userId);
     public Integer countPhoto(Integer userId);
     public Integer countIntrests();
 }
