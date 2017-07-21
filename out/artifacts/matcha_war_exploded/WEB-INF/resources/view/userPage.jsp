@@ -8,7 +8,7 @@
     <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/css/materialize.css">
-    <link href="<c:url value="/resources/css/userPage.css" />" rel="stylesheet">
+    <link href="<c:url value="/resources/css/userPage.css"/>" rel="stylesheet">
 </head>
 <body>
 
@@ -23,12 +23,28 @@
             <div class="photo">
             <img src="http://localhost:8081/cdn/general/User.png">
             </div>
-            <div class="like">
-                <a class="waves-effect waves-light btn"><i class="material-icons left">cloud</i>button</a>
-                <a class="waves-effect waves-light btn"><i class="material-icons left">cloud</i>button</a>
-            </div>
+        </div>
+
+        <div class="rate">
+            <span>rate:</span><div class="info">95</div>
+        </div>
+
+
+        <div class="recomendations">
+            <span>our recomendations</span>
+            <ul class="collection">
+                <li class="collection-item avatar">
+                    <img src="images/yuna.jpg" alt="" class="circle">
+                    <span class="title">Title</span>
+                    <p>First Line <br>
+                        Second Line
+                    </p>
+                    <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+                </li>
+            </ul>
         </div>
     </div>
+
     <div class="user_info">
         <div class="user_name"><h5>Alex Cross</h5><div class="status">online</div></div>
 

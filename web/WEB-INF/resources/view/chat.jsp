@@ -5,43 +5,68 @@
 <head>
     <title>Dialogs</title>
 
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
     <script src="https://cdn.jsdelivr.net/sockjs/1.1.4/sockjs.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
     <script src="//code.jquery.com/jquery-2.1.0.min.js"></script>
-    <script src="<c:url value="/resources/js/chat.js" />"></script>
-    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/css/materialize.css">
+    <link href="<c:url value="/resources/css/chat.css"/>" rel="stylesheet">
+
 
 </head>
 <body>
 
+<%@include file="header.jsp" %>
 
+<div class="content">
+    <%@include file="side_bar.jsp" %>
 
-
-<div class="conversation_list">
-
-    <div class="conversation" id="hiden_conversation" onclick="getMessages(this.id)">
-
+    <div class="conversation_list list">
+        <ul class="collection">
+            <li class="collection-item avatar">
+                <img src="images/yuna.jpg" alt="" class="circle">
+                <span class="title">Title</span>
+                <p>First Line <br>
+                    Second Line
+                </p>
+                <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+            </li>
+        </ul>
     </div>
 
+    <div class="conversation_messages list">
+        <div class="messages_list">
+            <div class="user_message">
+              <img src="">
+                <div class="message">
 
-    <c:forEach items="${sessionScope.get('conversationList')}" var="conv">
-        <div class="conversation" onclick="getMessages(this.id)" id=${conv.id}>
-            ${conv.user1.firstName}
+                </div>
+            </div>
+            <div class="message">
+              <img src="">
+                <div class="message">
+
+                </div>
+            </div>
         </div>
-    </c:forEach>
-</div>
-
-<div class="message_list" id="13">
-
-    <div class="message" id="hiden_message">
-        <div class="message"></div>
+        <div class="message_form">
+            <div class="input-field col s6">
+                <input id="last_name" type="text" class="validate">
+                <label for="last_name">message</label>
+            </div>
+            <a class="waves-effect waves-light btn"><i class="material-icons left">cloud</i></a>
+        </div>
     </div>
-</div>
-<div class="message_form">
-    <input id="message_input" type="text"/>
-    <button onclick="sendMessage()">send</button>
+
+
 </div>
 
-<button onclick="send()">Test</button>
+
 </body>
+<script src="//code.jquery.com/jquery-2.1.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/js/materialize.min.js"></script>
+<script src="<c:url value="/resources/js/chat.js" />"></script>
+
 </html>

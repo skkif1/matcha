@@ -7,9 +7,9 @@
 <div class="menu">
         <div class="collection">
             <a href="#!" class="collection-item">my page</a>
-            <a href="#!" class="collection-item active">Alvin</a>
-            <a href="#!" class="collection-item">Alvin</a>
-            <a href="#!" class="collection-item">Alvin</a>
+            <a href="#!" class="collection-item">search</a>
+            <a href="#!" class="collection-item">messages</a>
+            <a href="#!" class="collection-item">history</a>
         </div>
     </div>
 </body>
