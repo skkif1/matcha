@@ -6,10 +6,11 @@
 <body>
 <div class="menu">
         <div class="collection">
-            <a href="#!" class="collection-item">my page</a>
-            <a href="#!" class="collection-item">search</a>
+            <a href="http://localhost:8080/matcha" class="collection-item">my page</a>
+            <a href="http://localhost:8080/matcha/search" class="collection-item">search</a>
             <a href="#!" class="collection-item">messages</a>
             <a href="#!" class="collection-item">history</a>
+            <a href="http://localhost:8080/matcha/info" class="collection-item">information</a>
         </div>
     </div>
 </body>

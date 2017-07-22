@@ -79,6 +79,12 @@ public class UserInformationManager {
         return json;
     }
 
+
+    public String getPhotoById(Integer photoId)
+    {
+        return informationDao.getPhotoById(photoId);
+    }
+
     public JsonResponseWrapper delletePhoto(String path, HttpSession session)
     {
         JsonResponseWrapper json = new JsonResponseWrapper();
@@ -96,4 +102,5 @@ public class UserInformationManager {
         json.setStatus("OK");
         return json;
     }
+
 }

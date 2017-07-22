@@ -3,7 +3,6 @@ package com.matcha.dao.mysqlImpl;
 import com.matcha.dao.UserDao;
 import com.matcha.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
@@ -14,6 +13,7 @@ import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.Statement;
+import java.util.List;
 
 @Component
 public class UserDaoImpl implements UserDao{
@@ -74,5 +74,11 @@ public class UserDaoImpl implements UserDao{
         String sql = "SELECT * FROM user WHERE email = ?";
         user = template.queryForObject(sql, new BeanPropertyRowMapper<>(User.class), new String[]{email});
         return user;
+    }
+
+    @Override
+    public List<User> searchUser(Integer minAge, Integer maxAge) {
+        String sql = "SELECT * FROM user WHERE age > ? AND age < ?";
+        return null;
     }
 }

@@ -50,11 +50,13 @@ public class InformationDaoImpl implements InformationDao {
     @Override
     public UserInformation getUserInfoByUserId(Integer userId) {
         String sql = "SELECT * FROM user_information WHERE user_id = ?";
+        String avatarSql = "SELECT path FROM user_photo WHERE id = (SELECT photo_id FROM user_information WHERE user_id = ?)";
         UserInformation userInfo;
         try {
             userInfo = template.queryForObject(sql, new BeanPropertyRowMapper<>(UserInformation.class), new Integer[]{userId});
             userInfo.setInterests((ArrayList<String>) selectUserInterestList(userId));
             userInfo.setPhotos((ArrayList<String>) getUserPhoto(userId));
+            userInfo.setAvatar(template.queryForObject(avatarSql, new Integer[]{userId}, String.class));
         } catch (DataAccessException ex) {
             return null;
         }
@@ -75,6 +77,12 @@ public class InformationDaoImpl implements InformationDao {
         }
 
     }
+    @Override
+    public void savePhoto(String address, Integer id) {
+        String sql = "INSERT INTO user_photo (path, user_id) VALUES (?,?)";
+        template.update(sql, address, id);
+    }
+
 
     @Override
     public void deletePhoto(String path, Integer userId) {
@@ -91,22 +99,9 @@ public class InformationDaoImpl implements InformationDao {
     }
 
     @Override
-    public void savePhoto(String address, Integer id) {
-        String sql = "INSERT INTO user_photo (path, user_id) VALUES (?,?)";
-        template.update(sql, address, id);
-    }
-
-    @Override
-    public Integer countPhoto(Integer userId) {
-        File userDirectory = new File(CDN_SERVER_ADDRESS + userId);
-        if (!userDirectory.exists())
-            return 0;
-        return userDirectory.list().length;
-    }
-
-    @Override
-    public Integer countIntrests() {
-        return null;
+    public String getPhotoById(Integer photoId) {
+        String sql = "SELECT path FROm user_photo WHERE id = ?";
+        return template.queryForObject(sql, new Integer[]{photoId}, String.class);
     }
 
     private void saveIntrests(List<String> interests) {

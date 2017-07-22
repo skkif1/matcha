@@ -2,6 +2,8 @@ package com.matcha.dao;
 
 import com.matcha.entity.User;
 
+import java.util.List;
+
 public interface UserDao {
 
     public Integer saveUser(User user);
@@ -9,4 +11,5 @@ public interface UserDao {
     public User getUserById(Integer id);
     public User getUserByLogin(String login);
     public User getUserByEmail(String email);
+    public List<User> searchUser(Integer minAge, Integer maxAge);
 }

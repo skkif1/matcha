@@ -17,6 +17,7 @@ public class UserInformation {
         private ArrayList<String> interests;
         private String sexPref;
         private ArrayList<String> photos;
+        private String avatar;
 
 
         public UserInformation() {
@@ -96,7 +97,15 @@ public class UserInformation {
             this.interests = interests;
         }
 
-        @Override
+        public String getAvatar() {
+        return avatar;
+        }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
+    }
+
+    @Override
         public String toString()
         {
             return super.toString() + "\n" +
@@ -110,4 +119,5 @@ public class UserInformation {
                     " sexPref=" + sexPref + "\n" +
                     "photos= " + photos + "\n";
         }
+
 }

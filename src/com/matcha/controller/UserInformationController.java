@@ -74,11 +74,11 @@ public class UserInformationController {
     public @ResponseBody String getUserInfo(HttpSession session)
     {
         JsonResponseWrapper json = new JsonResponseWrapper();
-        UserInformation user = (UserInformation) session.getAttribute("info");
-        if (user != null)
+        UserInformation userInfo = infoManager.getUserInfo((User) session.getAttribute("user"));
+        if (userInfo != null)
         {
             json.setStatus("OK");
-            json.setData(user);
+            json.setData(userInfo);
         }
         return json.toString();
     }
