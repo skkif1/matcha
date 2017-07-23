@@ -1,0 +1,68 @@
+body
+{
+    width: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: rgb(245,245,245);
+}
+
+.content
+{
+    margin-top: 10px;
+    width: 920px;
+    display: flex;
+}
+
+.search
+{
+    flex: 2;
+    margin-left: 10px;
+}
+
+.search_creeterea
+{
+    background: white;
+}
+
+.nav-wrapper
+{
+    background: rgb(42, 185, 171);
+    margin-bottom: 10px;
+}
+
+.sort
+{
+    width: 100%;
+}
+
+.gap_creeterea
+{
+    display: flex;
+    justify-content: space-between;
+    margin: 10px;
+}
+
+.button_wrapper
+{
+    text-align: center;
+}
+
+.result
+{
+    margin-top: 10px;
+    width: 100%;
+}
+
+.collection
+{
+    margin: 10px;
+    width: 100%;
+}
+
+.collection li
+{
+    margin-top: 10px;
+}
+
