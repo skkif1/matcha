@@ -1,0 +1,57 @@
+create table interests
+(
+	id int auto_increment
+		primary key,
+	name varchar(32) not null,
+	constraint interests_name_uindex
+		unique (name)
+)
+;
+
+create table interests_list
+(
+	user_id int not null,
+	interest_id int not null
+)
+;
+
+create table user
+(
+	id int auto_increment
+		primary key,
+	email varchar(255) not null,
+	password varchar(45) not null,
+	salt varchar(345) not null,
+	confirm tinyint(1) default '0' not null,
+	first_name varchar(32) not null,
+	last_name varchar(32) not null,
+	constraint user_email_uindex
+		unique (email)
+)
+;
+
+create table user_information
+(
+	user_id int not null,
+	sex varchar(32) null,
+	age int null,
+	country varchar(32) null,
+	state varchar(32) null,
+	aboutMe varchar(1000) null,
+	sexPref varchar(32) null,
+	photo_id int null,
+	rate int null
+)
+;
+
+create table user_photo
+(
+	id int auto_increment
+		primary key,
+	path varchar(52) not null,
+	user_id int not null,
+	constraint user_photo_path_uindex
+		unique (path)
+)
+;
+
