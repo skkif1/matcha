@@ -31,14 +31,17 @@
             <div class="input-field col s6">
                 <i class="material-icons prefix">location_on</i>
                 <label>country:</label>
-                <input maxlength="32" class="input_info" value="${information.country}" id="country" name="country"
-                       type="text" placeholder=""/>
+                <input maxlength="32" class="input_info"  value="${information.country}" id="country" name="country"
+                       type="text" onblur="checkState(this)" placeholder=""/>
             </div>
             <div class="input-field col s6">
                 <i class="material-icons prefix">location_on</i>
                 <label>state:</label>
-                <input maxlength="32" class="input_info" name="state" type="text" value="${information.state}"
-                       placeholder=""/>
+                <input maxlength="32" class="input_info" id="state" name="state" type="text" value="${information.state}"
+                       onblur="checkState(this)" placeholder=""/>
+            </div>
+            <div class="location_buttoon">
+                <button class="waves-effect waves-light btn" onclick="getPosition()">find me</button>
             </div>
             <div class="input-field col s6">
                 <i class="material-icons prefix">comment</i>
@@ -140,6 +143,9 @@
         </div>
 
         <button class="waves-effect waves-light btn" onclick="changeUserData()">save</button>
+    </div>
+    <div id="demo">
+
     </div>
 
 </div>

@@ -9,7 +9,10 @@ window.onload = function () {
     );
     getUserInfo();
     $('.carousel').carousel();
+   getPosition();
 };
+
+
 
 function changeUserInfo()
 {
@@ -53,6 +56,27 @@ function changeUserInfo()
         res += $(interests[i]).text();
     }
     data.interests = res.replace(new RegExp("close",'g'),"#");
+
+    $.ajax(
+        {
+            headers: {
+                'Accept': 'application/json',
+            },
+            type:"POST",
+            url: "https://maps.googleapis.com/maps/api/geocode/json?address=" + $('#state').val().trim() + "&key=AIzaSyBX9jTJ5ltH5t_Tqtw_gXzVV-DYtHdenQQ",
+            async: false,
+            success: function (json) {
+                if (json.status === "ZERO_RESULTS")
+                {
+                    console.log("null");
+                }
+                data.langitude = json.results[0].geometry.location.lng;
+                data.latitude = json.results[0].geometry.location.lat;
+                console.log(data);
+            }
+        });
+
+
     $.ajax(
         {
             headers: {
@@ -243,6 +267,7 @@ function changeUserData() {
             continue;
         data[userData[i].name] = $(userData[i]).val().trim();
     }
+
     $.ajax(
         {
             headers: {
@@ -289,4 +314,59 @@ function setAvatar() {
             }
         }
     );
+}
+
+function getPosition()
+{
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function (position) {
+                    $.ajax(
+                        {
+                            headers: {
+                                'Accept': 'application/json',
+                            },
+                            type:"POST",
+                            url: "https://maps.googleapis.com/maps/api/geocode/json?latlng=" + position.coords.latitude +
+                            "," + position.coords.longitude +"&key=AIzaSyBX9jTJ5ltH5t_Tqtw_gXzVV-DYtHdenQQ",
+                            success: function (json) {
+                               if (json.status === "OK")
+                               {
+                                   $("#country").val(json.results[2].address_components[3].long_name);
+                                   $("#state").val(json.results[3].address_components[1].long_name);
+                               }
+                            }
+                        }
+                    );
+            });
+        }
+}
+
+function checkState(input) {
+    if (input.id === 'state')
+        var state = $(input).val().trim();
+    else
+        var state = $(input).val().trim();
+    $.ajax(
+        {
+            headers: {
+                'Accept': 'application/json',
+            },
+            type:"POST",
+            url: "https://maps.googleapis.com/maps/api/geocode/json?address=" + state + "&key=AIzaSyBX9jTJ5ltH5t_Tqtw_gXzVV-DYtHdenQQ",
+            success: function (json) {
+                if (json.status === "ZERO_RESULTS")
+                {
+                    Materialize.toast("Such state do not exist. Check input or use geolocation button.", 7000);
+                    $(input).val('');
+                }
+            }
+        }
+    );
+}
+
+
+function setPosition(position) {
+    // pos[latitude] = position.coords.latitude;
+    // pos[longitude] = position.coords.longitude;
+    console.log(pos);
 }

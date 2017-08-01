@@ -82,4 +82,19 @@ public class UserInformationController {
         }
         return json.toString();
     }
+
+    @RequestMapping(value = "/getInfo/{id}")
+    public @ResponseBody String getUserInfo(@PathVariable("id") Integer id, HttpSession session)
+    {
+        JsonResponseWrapper json = new JsonResponseWrapper();
+        User user = new User();
+        user.setId(id);
+        UserInformation userInfo = infoManager.getUserInfo(user);
+        if (userInfo != null)
+        {
+            json.setStatus("OK");
+            json.setData(userInfo);
+        }
+        return json.toString();
+    }
 }

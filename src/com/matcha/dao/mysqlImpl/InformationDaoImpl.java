@@ -32,14 +32,16 @@ public class InformationDaoImpl implements InformationDao {
 
     @Override
     public void saveUserInfo(UserInformation info, Integer userId) {
-        String sql = "INSERT INTO user_information (user_id, sex, age, country, state, aboutMe, sexPref) VALUES (?,?,?,?,?,?,?)";
-        String updateSql = "UPDATE user_information SET sex = ?, age = ?, country = ?, state = ?, aboutMe = ?, sexPref = ? WHERE user_id = ?";
+        String sql = "INSERT INTO user_information (user_id, sex, age, country, state, aboutMe, sexPref, latitude, longitude) VALUES (?,?,?,?,?,?,?,?,?)";
+        String updateSql = "UPDATE user_information SET sex = ?, age = ?, country = ?, state = ?, aboutMe = ?, sexPref = ?, latitude = ?, longitude = ? WHERE user_id = ?";
+        System.out.println(info);
         if (getUserInfoByUserId(userId) == null) {
-            template.update(sql, userId, info.getSex(), info.getAge(), info.getCountry(), info.getState(), info.getAboutMe(), info.getSexPref());
+
+            template.update(sql, userId, info.getSex(), info.getAge(), info.getCountry(), info.getState(), info.getAboutMe(), info.getSexPref(), info.getLatitude(), info.getLangitude());
             saveIntrests(info.getInterests());
             saveIntrestList(info.getInterests(), userId);
         } else {
-            template.update(updateSql, info.getSex(), info.getAge(), info.getCountry(), info.getState(), info.getAboutMe(), info.getSexPref(), userId);
+            template.update(updateSql, info.getSex(), info.getAge(), info.getCountry(), info.getState(), info.getAboutMe(), info.getSexPref(), info.getLatitude(), info.getLangitude(), userId);
             ArrayList<String> temp = new ArrayList<>(info.getInterests());
             temp.removeAll(selectUserInterestList(userId));
             saveIntrests(temp);

@@ -4,18 +4,6 @@ $(document).ready(function(){
     buildPage();
     $('.carousel').carousel();
 
-    if (navigator.geolocation) {
-        console.log('Geolocation is supported!');
-    navigator.geolocation.getCurrentPosition(function (position) {
-        console.log(position.coords);
-    });
-    }
-    else {
-        console.log('Geolocation is not supported for this Browser/OS version yet.');
-    }
-
-
-
 });
 
 
@@ -23,6 +11,14 @@ function buildPage() {
 
     var gallery = $('.carousel img');
     var chipsHolder = $('.interests .info');
+    var url = home + "/info/getInfo/";
+
+    if (location.href.indexOf("/acount/") !== 0)
+    {
+        mass = location.href.split("/");
+        url = url + mass[mass.length - 1];
+    }
+
     $.ajax(
         {
             headers: {
@@ -31,7 +27,7 @@ function buildPage() {
             },
             type: "POST",
             dataType: "json",
-            url: home + "/info/getInfo/",
+            url: url,
             success: function (json) {
                 if (json.status === "OK") {
                     for (var i = json.data.interests.length - 1; i >=0;  i--)

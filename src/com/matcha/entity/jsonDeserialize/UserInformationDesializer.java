@@ -26,8 +26,9 @@ public class UserInformationDesializer extends JsonDeserializer {
         ArrayList<String> interests  = new ArrayList<>(Arrays.asList(intrestsJson.split("\\#")));
         interests.removeAll(Arrays.asList(""));
         String sexPref = node.get("sexPref").asText();
-        UserInformation info = new UserInformation(sex, age,
-                country, state, aboutMe, interests, sexPref);
+        Double latitude = node.get("latitude").asDouble();
+        Double langitude = node.get("langitude").asDouble();
+        UserInformation info = new UserInformation(sex, age, country, state, aboutMe, interests, sexPref, langitude, latitude);
         return info;
     }
 }
