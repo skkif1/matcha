@@ -20,12 +20,14 @@ public class UserInformation {
     private String avatar;
     private Double langitude;
     private Double latitude;
+    private Integer likeCount;
 
 
     public UserInformation() {
     }
 
-    public UserInformation(String sex, Integer age, String country, String state, String aboutMe, ArrayList<String> interests, String sexPref, ArrayList<String> photos, String avatar, Double langitude, Double latitude) {
+    public UserInformation(String sex, Integer age, String country, String state, String aboutMe,
+                           ArrayList<String> interests, String sexPref, Double langitude, Double latitude, Integer likeCount ) {
         this.sex = sex;
         this.age = age;
         this.country = country;
@@ -33,22 +35,17 @@ public class UserInformation {
         this.aboutMe = aboutMe;
         this.interests = interests;
         this.sexPref = sexPref;
-        this.photos = photos;
-        this.avatar = avatar;
         this.langitude = langitude;
         this.latitude = latitude;
+        this.likeCount = likeCount;
     }
 
-    public UserInformation(String sex, Integer age, String country, String state, String aboutMe, ArrayList<String> interests, String sexPref, Double langitude, Double latitude) {
-        this.sex = sex;
-        this.age = age;
-        this.country = country;
-        this.state = state;
-        this.aboutMe = aboutMe;
-        this.interests = interests;
-        this.sexPref = sexPref;
-        this.langitude = langitude;
-        this.latitude = latitude;
+    public Integer getLikeCount() {
+        return likeCount;
+    }
+
+    public void setLikeCount(Integer likeCount) {
+        this.likeCount = likeCount;
     }
 
     public Double getLangitude() {

@@ -26,13 +26,13 @@
         </div>
 
         <div class="rate">
-            <span>rate:</span><div class="info">95</div>
+            <span>rate:</span><div class="info" id="rate_val"></div>
         </div>
 
-        <nav>
-            <button>like</button>
-            <button>send message</button>
-        </nav>
+        <div class="nav">
+            <button class="waves-effect waves-light btn" onclick="likeUser()">like</button>
+            <button class="waves-effect waves-light btn">send message</button>
+        </div>
 
     </div>
 
@@ -80,8 +80,6 @@
 
     </div>
 </div>
-
-
 
 
 </body>

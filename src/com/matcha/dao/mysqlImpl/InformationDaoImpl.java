@@ -34,9 +34,8 @@ public class InformationDaoImpl implements InformationDao {
     public void saveUserInfo(UserInformation info, Integer userId) {
         String sql = "INSERT INTO user_information (user_id, sex, age, country, state, aboutMe, sexPref, latitude, longitude) VALUES (?,?,?,?,?,?,?,?,?)";
         String updateSql = "UPDATE user_information SET sex = ?, age = ?, country = ?, state = ?, aboutMe = ?, sexPref = ?, latitude = ?, longitude = ? WHERE user_id = ?";
-        System.out.println(info);
         if (getUserInfoByUserId(userId) == null) {
-
+            System.out.println("null -->> userInfo go to save");
             template.update(sql, userId, info.getSex(), info.getAge(), info.getCountry(), info.getState(), info.getAboutMe(), info.getSexPref(), info.getLatitude(), info.getLangitude());
             saveIntrests(info.getInterests());
             saveIntrestList(info.getInterests(), userId);
@@ -53,13 +52,16 @@ public class InformationDaoImpl implements InformationDao {
     public UserInformation getUserInfoByUserId(Integer userId) {
         String sql = "SELECT * FROM user_information WHERE user_id = ?";
         String avatarSql = "SELECT path FROM user_photo WHERE id = (SELECT photo_id FROM user_information WHERE user_id = ?)";
-        UserInformation userInfo;
+        UserInformation userInfo = null;
         try {
             userInfo = template.queryForObject(sql, new BeanPropertyRowMapper<>(UserInformation.class), new Integer[]{userId});
             userInfo.setInterests((ArrayList<String>) selectUserInterestList(userId));
             userInfo.setPhotos((ArrayList<String>) getUserPhoto(userId));
             userInfo.setAvatar(template.queryForObject(avatarSql, new Integer[]{userId}, String.class));
+            userInfo.setLikeCount(getLikeNumber(userId));
         } catch (DataAccessException ex) {
+            if (userInfo != null)
+                return userInfo;
             return null;
         }
         return userInfo;
@@ -106,6 +108,8 @@ public class InformationDaoImpl implements InformationDao {
         return template.queryForObject(sql, new Integer[]{photoId}, String.class);
     }
 
+
+
     private void saveIntrests(List<String> interests) {
         String batchSql = "INSERT INTO interests (name) VALUES (?)";
         try {
@@ -122,6 +126,38 @@ public class InformationDaoImpl implements InformationDao {
             });
         } catch (DuplicateKeyException ex) {
             //    NOP
+        }
+    }
+
+
+    @Override
+    public Boolean likeUser(Integer userId, Integer authorId) {
+
+        String like = "INSERT INTO `like` (author_id, user_id) VALUES (?,?)";
+        String ifExist = "SELECT EXISTS(SELECT * FROM `like` WHERE author_id = ? AND user_id = ?)";
+
+        if (template.queryForObject(ifExist, new Integer[]{authorId, userId}, Integer.class) == 0)
+        {
+            template.update(like, authorId,  userId);
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public Integer getLikeNumber(Integer userId) {
+
+        String sql = "SELECT COUNT(*) FROM `like` WHERE user_id = ?";
+        return  template.queryForObject(sql, new Integer[]{userId}, Integer.class);
+    }
+
+    @Override
+    public void saveVisit(Integer visitorId, Integer userId) {
+        String ifExist = "SELECT EXISTS(SELECT * FROM visits WHERE time < now() + INTERVAL 1 DAY AND visitor_id = ? AND user_id = ?)";
+        String sql = "INSERT INTO visits (visitor_id, user_id) VALUES (?,?)";
+        if (template.queryForObject(sql, new Integer[]{visitorId, userId}, Integer.class) == 0)
+        {
+            template.update(sql, visitorId, userId);
         }
     }
 
@@ -144,6 +180,8 @@ public class InformationDaoImpl implements InformationDao {
             }
         });
     }
+
+
 
     private List<String> selectUserInterestList(Integer userId) {
         List<String> res = new ArrayList<>(13);

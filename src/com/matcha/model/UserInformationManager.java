@@ -30,11 +30,6 @@ public class UserInformationManager {
 
     public JsonResponseWrapper updateUserInfo(UserInformation userInfo, HttpSession session) throws IOException {
         User user = (User) session.getAttribute("user");
-        if (user == null) {
-            json.setStatus("Error");
-            json.setData(new ArrayList<String>(Arrays.asList(new String[]{"out of session"})));
-            return json;
-        }
         informationDao.saveUserInfo(userInfo, user.getId());
         userInfo = informationDao.getUserInfoByUserId(user.getId());
         user.setInformation(userInfo);

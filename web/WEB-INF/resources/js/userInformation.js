@@ -57,6 +57,7 @@ function changeUserInfo()
     }
     data.interests = res.replace(new RegExp("close",'g'),"#");
 
+    if ($('#state').val().trim() !== '')
     $.ajax(
         {
             headers: {
@@ -66,13 +67,17 @@ function changeUserInfo()
             url: "https://maps.googleapis.com/maps/api/geocode/json?address=" + $('#state').val().trim() + "&key=AIzaSyBX9jTJ5ltH5t_Tqtw_gXzVV-DYtHdenQQ",
             async: false,
             success: function (json) {
-                if (json.status === "ZERO_RESULTS")
+                if (json.status === "OK")
                 {
-                    console.log("null");
+                    data.langitude = json.results[0].geometry.location.lng;
+                    data.latitude = json.results[0].geometry.location.lat;
+                }else
+                {
+                    console.log("asdfghj");
+                    data.langitude = 0;
+                    data.latitude = 0;
                 }
-                data.langitude = json.results[0].geometry.location.lng;
-                data.latitude = json.results[0].geometry.location.lat;
-                console.log(data);
+
             }
         });
 

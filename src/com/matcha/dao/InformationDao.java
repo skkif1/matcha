@@ -18,5 +18,8 @@ public interface InformationDao {
     public void deletePhoto(String path, Integer userId);
     public String getPhotoById(Integer photoId);
     public void saveAvatar(String path, Integer userId);
+    public Boolean likeUser(Integer userId, Integer authorId);
+    public Integer getLikeNumber(Integer userId);
+    public void saveVisit(Integer visitorId, Integer userId);
 
 }

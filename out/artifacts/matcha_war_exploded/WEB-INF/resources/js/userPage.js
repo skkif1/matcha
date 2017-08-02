@@ -46,8 +46,35 @@ function buildPage() {
                     $('.country .info')[0].innerHTML = (json.data.country === '') ? '-' : json.data.country;
                     $('.state .info')[0].innerHTML = (json.data.state === '') ? '-' : json.data.state;
                     $('.about_me .info')[0].innerHTML = (json.data.aboutMe === '') ? '-' : json.data.aboutMe;
+                    $('#rate_val')[0].innerHTML = (json.data.likeCount === '0') ? '-' : json.data.likeCount;
                 }
             }
         }
     );
+}
+
+
+function likeUser()
+{
+    mass = location.href.split("/");
+    $.ajax(
+        {
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            type: "POST",
+            dataType: "json",
+            url: home + "/acount/like/" + mass[mass.length - 1],
+            success: function (json) {
+                if (json.status === 'OK')
+                {
+                    $('#rate_val').text(json.data[0]);
+                    console.log(json.data[0]);
+                }else
+                {
+                    Materialize.toast("You allready rate this user", 7000);
+                }
+            }
+        });
 }
