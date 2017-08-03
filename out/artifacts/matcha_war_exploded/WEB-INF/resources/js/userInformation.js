@@ -57,6 +57,7 @@ function changeUserInfo()
     }
     data.interests = res.replace(new RegExp("close",'g'),"#");
 
+    if ($('#state').val().trim() !== '')
     $.ajax(
         {
             headers: {
@@ -66,13 +67,17 @@ function changeUserInfo()
             url: "https://maps.googleapis.com/maps/api/geocode/json?address=" + $('#state').val().trim() + "&key=AIzaSyBX9jTJ5ltH5t_Tqtw_gXzVV-DYtHdenQQ",
             async: false,
             success: function (json) {
-                if (json.status === "ZERO_RESULTS")
+                if (json.status === "OK")
                 {
-                    console.log("null");
+                    data.langitude = json.results[0].geometry.location.lng;
+                    data.latitude = json.results[0].geometry.location.lat;
+                }else
+                {
+                    console.log("asdfghj");
+                    data.langitude = 0;
+                    data.latitude = 0;
                 }
-                data.langitude = json.results[0].geometry.location.lng;
-                data.latitude = json.results[0].geometry.location.lat;
-                console.log(data);
+
             }
         });
 
@@ -330,7 +335,7 @@ function getPosition()
                             "," + position.coords.longitude +"&key=AIzaSyBX9jTJ5ltH5t_Tqtw_gXzVV-DYtHdenQQ",
                             success: function (json) {
                                if (json.status === "OK")
-                               {
+                                {
                                    $("#country").val(json.results[2].address_components[3].long_name);
                                    $("#state").val(json.results[3].address_components[1].long_name);
                                }
@@ -362,11 +367,4 @@ function checkState(input) {
             }
         }
     );
-}
-
-
-function setPosition(position) {
-    // pos[latitude] = position.coords.latitude;
-    // pos[longitude] = position.coords.longitude;
-    console.log(pos);
 }

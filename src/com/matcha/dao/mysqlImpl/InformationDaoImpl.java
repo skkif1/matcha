@@ -155,7 +155,7 @@ public class InformationDaoImpl implements InformationDao {
     public void saveVisit(Integer visitorId, Integer userId) {
         String ifExist = "SELECT EXISTS(SELECT * FROM visits WHERE time < now() + INTERVAL 1 DAY AND visitor_id = ? AND user_id = ?)";
         String sql = "INSERT INTO visits (visitor_id, user_id) VALUES (?,?)";
-        if (template.queryForObject(sql, new Integer[]{visitorId, userId}, Integer.class) == 0)
+        if (template.queryForObject(ifExist, new Integer[]{visitorId, userId}, Integer.class) == 0)
         {
             template.update(sql, visitorId, userId);
         }

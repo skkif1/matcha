@@ -3,9 +3,13 @@ var home = "http://localhost:8080/matcha";
 var socket;
 var client;
 
+$(document).ready(function () {
+    getConversations();
+});
+
 function send() {
-    console.log("sending");
-    client.send("/topic/1",{},JSON.stringify({data:"adasd"}))
+    // console.log("sending");
+    // client.send("/topic/1",{},JSON.stringify({data:"adasd"}))
 }
 
 function sendMessage() {
@@ -43,24 +47,25 @@ function sendMessage() {
 }
 
 function getMessages(id) {
-    $(".message_list")[0].id = id;
-    $.ajax({
-        type: "POST",
-        data: {id:id},
-        url: home + "/chat/conversation",
-        success: function (json) {
-            var conversations = $(".conversation");
-            conversations.each(function (index) {
-                if (this.id !== "hiden_conversation")
-                    this.remove();
-            });
-            var list = $(".message_list")[0];
-            var hiden = $("#hiden_message");
-            $.each(json.data.mess, function (index, value) {
-             insertMessage(list, value, hiden);});
-             connnectToConversation(json.data.conv, json.data.wsacode);
-        }
-    });
+    console.log("event");
+    // $(".message_list")[0].id = id;
+    // $.ajax({
+    //     type: "POST",
+    //     data: {id:id},
+    //     url: home + "/chat/conversation",
+    //     success: function (json) {
+    //         var conversations = $(".conversation");
+    //         conversations.each(function (index) {
+    //             if (this.id !== "hiden_conversation")
+    //                 this.remove();
+    //         });
+    //         var list = $(".message_list")[0];
+    //         var hiden = $("#hiden_message");
+    //         $.each(json.data.mess, function (index, value) {
+    //          insertMessage(list, value, hiden);});
+    //         connnectToConversation(json.data.conv, json.data.wsacode);
+    //     }
+    // });
 }
 
 function connnectToConversation(sec, code) {
@@ -79,4 +84,48 @@ function insertMessage(list, value, hiden) {
     message.id = value.id;
     message.text(value.message);
     message.prependTo(list);
+}
+
+
+function openConversation() {
+    var url = home + "/chat/";
+    mass = location.href.split("/");
+    console.log(mass);
+    location.href = url + mass[mass.length - 1];
+}
+
+
+function getConversations() {
+
+    $.ajax(
+        {
+            type: "POST",
+            url: home + "/chat/conversationList",
+            success: function (json) {
+               if (json.status === "OK")
+               {
+                   for (i = 0; i < json.data.length; i++)
+                   {
+                        var conversation = $("#hiden_conversation").clone();
+
+                        $(conversation).children('img').attr("src", json.data[i].user2.information.avatar);
+                        $(conversation).children('span').text(json.data[i].user2.firstName + ' ' + json.data[i].user2.lastName);
+
+                        if (json.data[i].user2.information.interests !== null)
+                        {
+                            for (var j = 0; j < json.data[i].user2.information.interests.length; j++) {
+                                $(conversation).children('p').text('#' + json.data[i].user2.information.interests[j] + ' ');
+                            }
+                        }
+
+                        $(conversation).removeClass('hiden')
+                                .attr('id', json.data[i].id)
+                                .click(function() {getMessages(this.id);})
+                                .appendTo('#conversation_collection');
+
+                   }
+               }
+            }
+        }
+    );
 }

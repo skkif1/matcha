@@ -37,8 +37,21 @@ public class ChatController {
     @RequestMapping(method = RequestMethod.GET)
     public String getChat(HttpSession session)
     {
-        session.setAttribute("conversationList", chatManager.getConversations(session));
         return "chat";
+    }
+
+    @RequestMapping(value = "/{partnerId}", method = RequestMethod.GET)
+    public String createConversation(@PathVariable("partnerId") Integer id,  HttpSession session)
+    {
+        chatManager.createConversation(id, session);
+        return "redirect:/chat";
+    }
+
+    @RequestMapping(value = "/conversationList", method = RequestMethod.POST)
+    public @ResponseBody JsonResponseWrapper getConversationList(HttpSession session)
+    {
+        JsonResponseWrapper ajax = chatManager.getConversationList(session);
+        return ajax;
     }
 
     @RequestMapping(value = "/conversation", method = RequestMethod.POST)

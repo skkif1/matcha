@@ -17,8 +17,11 @@ function buildPage() {
     {
         mass = location.href.split("/");
         url = url + mass[mass.length - 1];
+        console.log(url);
     }
 
+
+    console.log(url);
     $.ajax(
         {
             headers: {
@@ -39,7 +42,7 @@ function buildPage() {
                     {
                         $(gallery[i]).attr('src', json.data.photos[i]);
                     }
-                    $('.photo img')[0].src = (json.data.age === '"http://localhost:8081/cdn/general/User.png"') ? '-' : json.data.avatar;
+                    $('.photo img')[0].src = (json.data.avatar === null) ? "http://localhost:8081/cdn/general/User.png" : json.data.avatar;
                     $('.age .info')[0].innerHTML = (json.data.age === '') ? '-' : json.data.age;
                     $('.pref .info')[0].innerHTML = (json.data.sexPref === '') ? '-' : json.data.sexPref;
                     $('.sex .info')[0].innerHTML = (json.data.sex === '') ? '-' : json.data.sex;

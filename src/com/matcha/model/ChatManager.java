@@ -6,6 +6,8 @@ import com.matcha.entity.Message;
 import com.matcha.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import javax.jws.soap.SOAPBinding;
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -22,6 +24,24 @@ public class ChatManager implements IChat{
     public ChatManager(ChatDao chatDao, WebsocketPermisionsList repo) {
         this.chatDao = chatDao;
         this.repo = repo;
+    }
+
+    @Override
+    public Boolean createConversation(Integer partnerId, HttpSession session)
+    {
+        User user = (User) session.getAttribute("user");
+        chatDao.saveConversation(partnerId, user.getId());
+        return true;
+    }
+
+    @Override
+    public JsonResponseWrapper getConversationList(HttpSession session) {
+        JsonResponseWrapper json = new JsonResponseWrapper();
+        User user = (User) session.getAttribute("user");
+        List<Conversation> conversations = chatDao.getUserConversations(user);
+        json.setStatus("OK");
+        json.setData(conversations);
+        return json;
     }
 
     @Override

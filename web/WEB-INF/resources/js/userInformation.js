@@ -335,7 +335,7 @@ function getPosition()
                             "," + position.coords.longitude +"&key=AIzaSyBX9jTJ5ltH5t_Tqtw_gXzVV-DYtHdenQQ",
                             success: function (json) {
                                if (json.status === "OK")
-                               {
+                                {
                                    $("#country").val(json.results[2].address_components[3].long_name);
                                    $("#state").val(json.results[3].address_components[1].long_name);
                                }
@@ -367,11 +367,4 @@ function checkState(input) {
             }
         }
     );
-}
-
-
-function setPosition(position) {
-    // pos[latitude] = position.coords.latitude;
-    // pos[longitude] = position.coords.longitude;
-    console.log(pos);
 }

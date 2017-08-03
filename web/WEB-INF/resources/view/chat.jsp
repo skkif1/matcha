@@ -24,14 +24,11 @@
     <%@include file="side_bar.jsp" %>
 
     <div class="conversation_list list">
-        <ul class="collection">
-            <li class="collection-item avatar">
-                <img src="images/yuna.jpg" alt="" class="circle">
-                <span class="title">Title</span>
-                <p>First Line <br>
-                    Second Line
-                </p>
-                <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+        <ul class="collection" id="conversation_collection" >
+            <li class="collection-item hiden" id="hiden_conversation">
+                <img src="" alt="" class="circle">
+                <span class="title"></span>
+                <p></p>
             </li>
         </ul>
     </div>
