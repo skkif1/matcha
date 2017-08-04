@@ -2,26 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="502769e5-1514-4855-bce4-0338b0878ce8" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/matcha_war_exploded/WEB-INF/classes/com/matcha/dao/ChatDao.class" afterPath="$PROJECT_DIR$/out/artifacts/matcha_war_exploded/WEB-INF/classes/com/matcha/dao/ChatDao.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/matcha_war_exploded/WEB-INF/classes/com/matcha/dao/mysqlImpl/ChatDaoImpl.class" afterPath="$PROJECT_DIR$/out/artifacts/matcha_war_exploded/WEB-INF/classes/com/matcha/dao/mysqlImpl/ChatDaoImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/matcha_war_exploded/WEB-INF/classes/com/matcha/model/ChatManager.class" afterPath="$PROJECT_DIR$/out/artifacts/matcha_war_exploded/WEB-INF/classes/com/matcha/model/ChatManager.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/matcha_war_exploded/WEB-INF/classes/com/matcha/model/IChat.class" afterPath="$PROJECT_DIR$/out/artifacts/matcha_war_exploded/WEB-INF/classes/com/matcha/model/IChat.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/matcha/com/matcha/dao/ChatDao.class" afterPath="$PROJECT_DIR$/out/production/matcha/com/matcha/dao/ChatDao.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/matcha/com/matcha/dao/mysqlImpl/ChatDaoImpl.class" afterPath="$PROJECT_DIR$/out/production/matcha/com/matcha/dao/mysqlImpl/ChatDaoImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/matcha/com/matcha/model/ChatManager.class" afterPath="$PROJECT_DIR$/out/production/matcha/com/matcha/model/ChatManager.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/matcha/com/matcha/model/IChat.class" afterPath="$PROJECT_DIR$/out/production/matcha/com/matcha/model/IChat.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources/fe3f9aa4-5880-4dbc-afe4-9dbc76383722.xml" afterPath="$PROJECT_DIR$/.idea/dataSources/fe3f9aa4-5880-4dbc-afe4-9dbc76383722.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/matcha_war_exploded/WEB-INF/classes/com/matcha/controller/ChatController.class" afterPath="$PROJECT_DIR$/out/artifacts/matcha_war_exploded/WEB-INF/classes/com/matcha/controller/ChatController.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/matcha_war_exploded/WEB-INF/classes/com/matcha/dao/mysqlImpl/InformationDaoImpl.class" afterPath="$PROJECT_DIR$/out/artifacts/matcha_war_exploded/WEB-INF/classes/com/matcha/dao/mysqlImpl/InformationDaoImpl.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/matcha/com/matcha/controller/ChatController.class" afterPath="$PROJECT_DIR$/out/production/matcha/com/matcha/controller/ChatController.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/matcha/com/matcha/dao/mysqlImpl/InformationDaoImpl.class" afterPath="$PROJECT_DIR$/out/production/matcha/com/matcha/dao/mysqlImpl/InformationDaoImpl.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/matcha_war_exploded/WEB-INF/resources/css/chat.css" afterPath="$PROJECT_DIR$/out/artifacts/matcha_war_exploded/WEB-INF/resources/css/chat.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/matcha_war_exploded/WEB-INF/resources/js/chat.js" afterPath="$PROJECT_DIR$/out/artifacts/matcha_war_exploded/WEB-INF/resources/js/chat.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/matcha_war_exploded/WEB-INF/resources/view/chat.jsp" afterPath="$PROJECT_DIR$/out/artifacts/matcha_war_exploded/WEB-INF/resources/view/chat.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/matcha/controller/ChatController.java" afterPath="$PROJECT_DIR$/src/com/matcha/controller/ChatController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/matcha/dao/mysqlImpl/ChatDaoImpl.java" afterPath="$PROJECT_DIR$/src/com/matcha/dao/mysqlImpl/ChatDaoImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/matcha/model/ChatManager.java" afterPath="$PROJECT_DIR$/src/com/matcha/model/ChatManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/matcha/model/IChat.java" afterPath="$PROJECT_DIR$/src/com/matcha/model/IChat.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/WEB-INF/resources/css/chat.css" afterPath="$PROJECT_DIR$/web/WEB-INF/resources/css/chat.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/WEB-INF/resources/js/chat.js" afterPath="$PROJECT_DIR$/web/WEB-INF/resources/js/chat.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/WEB-INF/resources/view/chat.jsp" afterPath="$PROJECT_DIR$/web/WEB-INF/resources/view/chat.jsp" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -1332,7 +1317,7 @@
       <workItem from="1501667358661" duration="8077000" />
       <workItem from="1501682857090" duration="4609000" />
       <workItem from="1501762040688" duration="15691000" />
-      <workItem from="1501844954518" duration="5516000" />
+      <workItem from="1501844954518" duration="5623000" />
     </task>
     <task id="LOCAL-00001" summary="authorization">
       <created>1500378727327</created>
@@ -1432,11 +1417,18 @@
       <option name="project" value="LOCAL" />
       <updated>1501784402227</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="satrt webSocket impl">
+      <created>1501857569926</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1501857569926</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="189072000" />
+    <option name="totallyTimeSpent" value="189179000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="2560" height="1440" extended-state="0" />
