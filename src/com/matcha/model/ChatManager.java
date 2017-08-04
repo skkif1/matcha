@@ -44,13 +44,6 @@ public class ChatManager implements IChat{
         return json;
     }
 
-    @Override
-    public List<Conversation> getConversations(HttpSession session) {
-        User user = (User) session.getAttribute("user");
-        if (user == null)
-            return null;
-        return (ArrayList<Conversation>) chatDao.getUserConversations(user);
-    }
 
     @Override
     public Boolean sendMessage(Message message) {
@@ -61,15 +54,15 @@ public class ChatManager implements IChat{
     @Override
     public JsonResponseWrapper getConversationMessages(Integer id, Integer offset, HttpSession session)
     {
-        JsonResponseWrapper response = new JsonResponseWrapper();
+        JsonResponseWrapper json = new JsonResponseWrapper();
         Map<String, Object> conversationInfo = new HashMap<>();
         List<Message> convMessages = chatDao.getConversationMessages(id, offset, MESSAGE_LIMIT);
         conversationInfo.put("conv", id);
         conversationInfo.put("mess", convMessages);
         conversationInfo.put("wsacode", session.getId());
         repo.setPermission(session.getId());
-        response.setStatus("OK");
-        response.setData(conversationInfo);
-        return response;
+        json.setStatus("OK");
+        json.setData(conversationInfo);
+        return json;
     }
 }

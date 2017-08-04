@@ -19,10 +19,8 @@ function sendMessage() {
     data =
         {
             message: text,
-            conv_id: id,
+            conv_id: id
         };
-    console.log(data);
-
     $.ajax({
         headers: {
             'Accept': 'application/json',
@@ -46,26 +44,28 @@ function sendMessage() {
     });
 }
 
-function getMessages(id) {
-    console.log("event");
-    // $(".message_list")[0].id = id;
-    // $.ajax({
-    //     type: "POST",
-    //     data: {id:id},
-    //     url: home + "/chat/conversation",
-    //     success: function (json) {
-    //         var conversations = $(".conversation");
-    //         conversations.each(function (index) {
-    //             if (this.id !== "hiden_conversation")
-    //                 this.remove();
-    //         });
-    //         var list = $(".message_list")[0];
-    //         var hiden = $("#hiden_message");
-    //         $.each(json.data.mess, function (index, value) {
-    //          insertMessage(list, value, hiden);});
-    //         connnectToConversation(json.data.conv, json.data.wsacode);
-    //     }
-    // });
+function getMessages(event) {
+    var id = event.target.id;
+    $(".messages_list")[0].id = id;
+    $.ajax({
+        type: "POST",
+        data: {id:id},
+        url: home + "/chat/conversation",
+        success: function (json) {
+            var conversations = $(".conversation");
+            conversations.each(function (index) {
+                if (this.id !== "hiden_conversation")
+                    this.remove();
+            });
+            $('.conversation_list').addClass("hiden");
+            var list = $(".messages_list")[0];
+            var hiden = $("#hiden_message");
+            $.each(json.data.mess, function (index, value) {
+             insertMessage(list, value, hiden);});
+           $('.conversation_messages').removeClass('hiden');
+            connnectToConversation(json.data.conv, json.data.wsacode);
+        }
+    });
 }
 
 function connnectToConversation(sec, code) {
@@ -80,10 +80,12 @@ function connnectToConversation(sec, code) {
 }
 
 function insertMessage(list, value, hiden) {
+    console.log(list);
+    console.log(value);
+    console.log(hiden);
     var message = hiden.clone();
     message.id = value.id;
-    message.text(value.message);
-    message.prependTo(list);
+    message.text(value.message).removeClass('hiden').prependTo(list);
 }
 
 
@@ -120,7 +122,8 @@ function getConversations() {
 
                         $(conversation).removeClass('hiden')
                                 .attr('id', json.data[i].id)
-                                .click(function() {getMessages(this.id);})
+                                .addClass('conversation')
+                                .click(function() {getMessages(event);})
                                 .appendTo('#conversation_collection');
 
                    }

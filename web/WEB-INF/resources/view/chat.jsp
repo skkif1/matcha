@@ -33,14 +33,15 @@
         </ul>
     </div>
 
-    <div class="conversation_messages list">
+    <div class="conversation_messages list hiden">
         <div class="messages_list">
-            <div class="user_message">
+            <div class="user_message hiden" id="hiden_message">
               <img src="">
                 <div class="message">
 
                 </div>
             </div>
+
             <div class="message">
               <img src="">
                 <div class="message">
@@ -50,10 +51,10 @@
         </div>
         <div class="message_form">
             <div class="input-field col s6">
-                <input id="last_name" type="text" class="validate">
-                <label for="last_name">message</label>
+                <input id="message_input" type="text">
+                <label for="message_input">message</label>
             </div>
-            <a class="waves-effect waves-light btn"><i class="material-icons left">cloud</i></a>
+            <button class="waves-effect waves-light btn" onclick="sendMessage()"><i class="material-icons left">cloud</i></button>
         </div>
     </div>
 

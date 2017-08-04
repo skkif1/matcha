@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.handler.annotation.DestinationVariable;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
+import org.springframework.messaging.simp.SimpMessagingTemplate;
+import org.springframework.messaging.simp.user.UserDestinationMessageHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -29,10 +31,18 @@ public class ChatController {
 
     private IChat chatManager;
 
+    private SimpMessagingTemplate messagingTemplate;
+
     @Autowired
-    public ChatController(IChat chatManager) {
+    public ChatController(IChat chatManager, SimpMessagingTemplate messagingTemplate) {
         this.chatManager = chatManager;
+        this.messagingTemplate = messagingTemplate;
     }
+
+//    @Autowired
+//    public ChatController(IChat chatManager) {
+//        this.chatManager = chatManager;
+//    }
 
     @RequestMapping(method = RequestMethod.GET)
     public String getChat(HttpSession session)
@@ -51,6 +61,7 @@ public class ChatController {
     public @ResponseBody JsonResponseWrapper getConversationList(HttpSession session)
     {
         JsonResponseWrapper ajax = chatManager.getConversationList(session);
+        session.setAttribute("conversationList", ajax.getData());
         return ajax;
     }
 
@@ -68,6 +79,7 @@ public class ChatController {
     }
 
     @RequestMapping(value = "/send", method = RequestMethod.POST, consumes = "application/json")
+
     public @ResponseBody JsonResponseWrapper sendMessage(@RequestBody Message message, HttpSession session)
     {
         JsonResponseWrapper ajax = new JsonResponseWrapper();

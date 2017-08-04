@@ -24,7 +24,23 @@ body
 
 .conversation_list
 {
-    display: none;
+
+}
+
+.collection-item
+{
+    display: flex;
+    align-items: center;
+}
+
+.collection-item span
+{
+    align-self: flex-start;
+}
+
+.collection-item img
+{
+    width: 10%;
 }
 
 .conversation_messages
@@ -33,11 +49,16 @@ body
     display: flex;
     flex-direction: column;
 }
+.hiden
+{
+    display: none;
+}
 
 .messages_list
 {
     height: 92%;
     background: white;
+
 }
 
 .message_form

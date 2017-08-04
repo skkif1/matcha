@@ -39,7 +39,6 @@ public class ChatDaoImpl implements ChatDao{
     @Override
     public void saveMessage(Message message) {
         String sql = "INSERT INTO message (text, author, conversation_id, reciver_id) VALUES (?,?,?,?)";
-
         template.update(sql, message.getMessage(), message.getAuthor(), message.getConversationId(), message.getReciver());
     }
 
