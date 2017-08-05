@@ -33,16 +33,11 @@ public class ChatController {
 
     private SimpMessagingTemplate messagingTemplate;
 
-    @Autowired
-    public ChatController(IChat chatManager, SimpMessagingTemplate messagingTemplate) {
-        this.chatManager = chatManager;
-        this.messagingTemplate = messagingTemplate;
-    }
 
-//    @Autowired
-//    public ChatController(IChat chatManager) {
-//        this.chatManager = chatManager;
-//    }
+    @Autowired
+    public ChatController(IChat chatManager) {
+        this.chatManager = chatManager;
+    }
 
     @RequestMapping(method = RequestMethod.GET)
     public String getChat(HttpSession session)

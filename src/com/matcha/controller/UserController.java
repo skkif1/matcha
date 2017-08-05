@@ -21,4 +21,10 @@ public class UserController {
         modelAndView.setViewName("userPage");
         return modelAndView;
     }
+
+    @RequestMapping(value = "/test", method = RequestMethod.GET)
+    public String test()
+    {
+        return "test";
+    }
 }

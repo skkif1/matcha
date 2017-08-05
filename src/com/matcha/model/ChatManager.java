@@ -18,12 +18,10 @@ import java.util.Map;
 public class ChatManager implements IChat{
 
     private ChatDao chatDao;
-    private WebsocketPermisionsList repo;
 
     @Autowired
-    public ChatManager(ChatDao chatDao, WebsocketPermisionsList repo) {
+    public ChatManager(ChatDao chatDao) {
         this.chatDao = chatDao;
-        this.repo = repo;
     }
 
     @Override
@@ -60,7 +58,6 @@ public class ChatManager implements IChat{
         conversationInfo.put("conv", id);
         conversationInfo.put("mess", convMessages);
         conversationInfo.put("wsacode", session.getId());
-        repo.setPermission(session.getId());
         json.setStatus("OK");
         json.setData(conversationInfo);
         return json;
