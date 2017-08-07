@@ -4,6 +4,7 @@ import com.matcha.dao.ChatDao;
 import com.matcha.entity.Conversation;
 import com.matcha.entity.Message;
 import com.matcha.entity.User;
+import com.matcha.model.messageBroker.ImessageBroker;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -18,10 +19,12 @@ import java.util.Map;
 public class ChatManager implements IChat{
 
     private ChatDao chatDao;
+    private ImessageBroker messageBroker;
 
     @Autowired
-    public ChatManager(ChatDao chatDao) {
+    public ChatManager(ChatDao chatDao, ImessageBroker messageBroker) {
         this.chatDao = chatDao;
+        this.messageBroker = messageBroker;
     }
 
     @Override
@@ -45,7 +48,9 @@ public class ChatManager implements IChat{
 
     @Override
     public Boolean sendMessage(Message message) {
-        chatDao.saveMessage(message);
+        System.out.println("chat manager");
+        messageBroker.consumeMessage(message);
+      //  chatDao.saveMessage(message);
         return true;
     }
 

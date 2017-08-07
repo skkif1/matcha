@@ -4,6 +4,7 @@ import com.matcha.entity.Conversation;
 import com.matcha.entity.Message;
 import com.matcha.model.IChat;
 import com.matcha.model.JsonResponseWrapper;
+import com.matcha.model.messageBroker.ImessageBroker;
 import com.mysql.cj.api.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.handler.annotation.DestinationVariable;
@@ -31,8 +32,10 @@ public class ChatController {
 
     private IChat chatManager;
 
-    private SimpMessagingTemplate messagingTemplate;
 
+
+    public ChatController() {
+    }
 
     @Autowired
     public ChatController(IChat chatManager) {
@@ -74,9 +77,9 @@ public class ChatController {
     }
 
     @RequestMapping(value = "/send", method = RequestMethod.POST, consumes = "application/json")
-
     public @ResponseBody JsonResponseWrapper sendMessage(@RequestBody Message message, HttpSession session)
     {
+        System.out.println("chat controller");
         JsonResponseWrapper ajax = new JsonResponseWrapper();
         ajax.setStatus("Error");
         Conversation current  = (Conversation) session.getAttribute("currentConversation");

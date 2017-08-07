@@ -75,8 +75,6 @@ public class UserInformationController {
     {
         JsonResponseWrapper json = new JsonResponseWrapper();
         UserInformation userInfo = infoManager.getUserInfo((User) session.getAttribute("user"));
-        System.out.println(((User) session.getAttribute("user")).getId());
-        System.out.println(userInfo);
         if (userInfo != null)
         {
             json.setStatus("OK");

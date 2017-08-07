@@ -1,6 +1,9 @@
 package com.matcha.config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.matcha.controller.ChatController;
+import com.matcha.controller.UserController;
+import com.matcha.model.messageBroker.ApplicationMessageBroker;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;

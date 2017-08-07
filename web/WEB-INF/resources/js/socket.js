@@ -4,7 +4,6 @@ $(document).ready(function () {
     connect();
 });
 
-var ws;
 
 function connect() {
     ws = new WebSocket('ws://localhost:8080/matcha/user/');
@@ -13,14 +12,8 @@ function connect() {
     };
 }
 
-function disconnect() {
-    if (ws != null) {
-        ws.close();
-    }
-    console.log("Disconnected");
-}
 
-function sendName() {
+function test() {
 
     data =
         {
@@ -34,7 +27,7 @@ function sendName() {
         },
         type: "POST",
         data: JSON.stringify(data),
-        url: home + "/chat/send",
+        url: home + "/test",
         dataType: "json",
         success: function (json) {
             if (json.status === "OK")
@@ -42,18 +35,4 @@ function sendName() {
             }
         }
     });
-}
-
-
-
-function connectMore() {
-    ws = new WebSocket('ws://localhost:8080/matcha/more/');
-    ws.onmessage = function (data) {
-        console.log(data);
-    }
-}
-
-
-function sendMore() {
-    ws.send('to one more');
 }
