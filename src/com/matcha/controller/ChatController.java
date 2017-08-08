@@ -79,7 +79,6 @@ public class ChatController {
     @RequestMapping(value = "/send", method = RequestMethod.POST, consumes = "application/json")
     public @ResponseBody JsonResponseWrapper sendMessage(@RequestBody Message message, HttpSession session)
     {
-        System.out.println("chat controller");
         JsonResponseWrapper ajax = new JsonResponseWrapper();
         ajax.setStatus("Error");
         Conversation current  = (Conversation) session.getAttribute("currentConversation");

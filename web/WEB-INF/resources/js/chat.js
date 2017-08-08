@@ -1,16 +1,8 @@
 var home = "http://localhost:8080/matcha";
 
-var socket;
-var client;
-
 $(document).ready(function () {
     getConversations();
 });
-
-function send() {
-    // console.log("sending");
-    // client.send("/topic/1",{},JSON.stringify({data:"adasd"}))
-}
 
 function sendMessage() {
     var text = $("#message_input").val();
@@ -68,21 +60,12 @@ function getMessages(event) {
     });
 }
 
-function connnectToConversation(sec, code) {
-    socket = new SockJS('/matcha/conversation');
-    client = Stomp.over(socket);
-    client.connect(null, null, function () {
-        client.subscribe("/topic/" + sec, function(message) {
-            console.log("thometind");
-            console.log(message);
-        }, {code:code});
-    });
+function connnectToConversation()
+{
+  connect('ws://localhost:8080/matcha/conversation/');
 }
 
 function insertMessage(list, value, hiden) {
-    console.log(list);
-    console.log(value);
-    console.log(hiden);
     var message = hiden.clone();
     message.id = value.id;
     message.text(value.message).removeClass('hiden').prependTo(list);
@@ -92,7 +75,6 @@ function insertMessage(list, value, hiden) {
 function openConversation() {
     var url = home + "/chat/";
     mass = location.href.split("/");
-    console.log(mass);
     location.href = url + mass[mass.length - 1];
 }
 
@@ -106,17 +88,17 @@ function getConversations() {
             success: function (json) {
                if (json.status === "OK")
                {
+                   console.log(json.data);
                    for (i = 0; i < json.data.length; i++)
                    {
                         var conversation = $("#hiden_conversation").clone();
-
                         $(conversation).children('img').attr("src", json.data[i].user2.information.avatar);
                         $(conversation).children('span').text(json.data[i].user2.firstName + ' ' + json.data[i].user2.lastName);
 
                         if (json.data[i].user2.information.interests !== null)
                         {
                             for (var j = 0; j < json.data[i].user2.information.interests.length; j++) {
-                                $(conversation).children('p').text('#' + json.data[i].user2.information.interests[j] + ' ');
+                               $(conversation).children('p').text('#' + json.data[i].user2.information.interests[j] + ' ');
                             }
                         }
 

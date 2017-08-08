@@ -74,11 +74,16 @@ public class ChatDaoImpl implements ChatDao{
            conversation.setUser1(user);
            int id = rs.getInt("user1_id");
            if (user.getId() == id)
-               conversation.setUser2(userDao.getUserById(rs.getInt("user2_id")));
+           {
+               User user2 = userDao.getUserById(rs.getInt("user2_id"));
+               user2.setInformation(infoDao.getUserInfoByUserId(user2.getId()));
+               conversation.setUser2(user2);
+           }
            else
            {
                User user2 = userDao.getUserById(id);
                user2.setInformation(infoDao.getUserInfoByUserId(id));
+               System.out.println(user2.getInformation());
                conversation.setUser2(user2);
            }
             conversation.setId(rs.getInt("id"));

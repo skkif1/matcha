@@ -49,7 +49,6 @@ public class ChatManager implements IChat{
     @Override
     public Boolean sendMessage(Message message) {
         System.out.println("chat manager");
-        messageBroker.consumeMessage(message);
       //  chatDao.saveMessage(message);
         return true;
     }

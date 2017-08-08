@@ -3,6 +3,7 @@ package com.matcha.controller;
 import com.matcha.entity.Message;
 import com.matcha.entity.PageContext;
 import com.matcha.entity.User;
+import com.matcha.model.TextSocketHandler;
 import com.matcha.model.messageBroker.ApplicationMessageBroker;
 import com.matcha.model.messageBroker.ImessageBroker;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,8 +44,7 @@ public class UserController {
     @ResponseBody
     public String test(HttpSession session)
     {
-        System.out.println("test");
-        broker.consumeMessage(new TextMessage("Hello world!!"), (User) session.getAttribute("user"));
+        broker.consumeMessage(new TextMessage("Hello world!!"), ((User)session.getAttribute("user")).getId().toString(), TextSocketHandler.USER_ENDPOINT);
         return "test";
     }
 

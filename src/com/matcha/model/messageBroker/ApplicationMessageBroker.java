@@ -18,9 +18,6 @@ import java.util.*;
 public class ApplicationMessageBroker implements ImessageBroker {
 
     private Map<String, Endpoint> endpointStorage;
-    private static final String USER_ENDPOINT = "/user/";
-    private static final String CONVERSATION_ENDPOINT = "/conversation/";
-
 
     public ApplicationMessageBroker() {
         this.endpointStorage = new HashMap<>(5);
@@ -28,46 +25,33 @@ public class ApplicationMessageBroker implements ImessageBroker {
 
     public ApplicationMessageBroker(String... endPoints) {
         this.endpointStorage = new HashMap<>(5);
-
         for (String endPoint : endPoints) {
             this.endpointStorage.put(endPoint, new Endpoint());
-            System.out.println("add " + endPoint);
         }
-    }
-
-
-    @Override
-    public void addEndPoint(String endpoint) {
-        Endpoint endpointNode = new Endpoint();
-        this.endpointStorage.put(endpoint, endpointNode);
     }
 
     @Override
     public void addUser(WebSocketSession session, String endPointName, String subscriptionName) {
         addSubscription(endPointName, subscriptionName);
-        HashSet<WebSocketSession> subscribedSessions = endpointStorage.get(endPointName).getPointSubscriptions().get(subscriptionName);
+        List<WebSocketSession> subscribedSessions = endpointStorage.get(endPointName).getPointSubscriptions().get(subscriptionName);
         subscribedSessions.add(session);
     }
 
     @Override
-    public void removeUser(WebSocketSession session, String endPointName) {
-
+    public void removeUser(WebSocketSession session, String subscriptionName, String endPointName) {
+        Endpoint endpoint = this.endpointStorage.get(endPointName);
+        List<WebSocketSession> subscribers = endpoint.getPointSubscriptions().get(subscriptionName);
+        subscribers.remove(session);
     }
 
-    @Override
-    public void consumeMessage(Message message) {
-
-    }
 
     @Override
-    public void consumeMessage(TextMessage message, User user) {
-        Endpoint endpoint = this.endpointStorage.get(USER_ENDPOINT);
-        HashMap map = endpoint.getPointSubscriptions();
-        HashSet<WebSocketSession> userSubscription = (HashSet<WebSocketSession>) map.get(user.getId().toString());
-        userSubscription.forEach((session) ->
+    public void consumeMessage(TextMessage message, String subscriptionName, String endPointName) {
+        List<WebSocketSession> subscribers =  this.endpointStorage.get(endPointName).getPointSubscriptions().get(subscriptionName);
+        subscribers.forEach((subscriber) ->
         {
             try {
-                session.sendMessage(message);
+                subscriber.sendMessage(message);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -78,19 +62,26 @@ public class ApplicationMessageBroker implements ImessageBroker {
         Endpoint endpoint = this.endpointStorage.get(endPointName);
         if (endpoint == null)
             throw new NoSuchElementException("no endPoint with name " + endPointName);
-        HashMap<String, HashSet<WebSocketSession>> pointSubscriptions = endpoint.getPointSubscriptions();
-        pointSubscriptions.putIfAbsent(subscriptionName, new HashSet<>());
+        HashMap<String, List<WebSocketSession>> pointSubscriptions = endpoint.getPointSubscriptions();
+        pointSubscriptions.putIfAbsent(subscriptionName, new ArrayList<>(10));
     }
 
     private static class Endpoint {
-        private HashMap<String, HashSet<WebSocketSession>> endPointSubscriptions;
+        private HashMap<String, List<WebSocketSession>> endPointSubscriptions;
 
         Endpoint() {
             this.endPointSubscriptions = new HashMap<>();
         }
 
-        final HashMap<String, HashSet<WebSocketSession>> getPointSubscriptions() {
+        final HashMap<String, List<WebSocketSession>> getPointSubscriptions() {
             return this.endPointSubscriptions;
+        }
+
+        @Override
+        public String toString() {
+            return "Endpoint{" +
+                    "endPointSubscriptions=" + endPointSubscriptions +
+                    '}';
         }
     }
 

@@ -3,6 +3,7 @@ package com.matcha.entity;
 
 public class User {
 
+    public static final String USER_ATTRIBUTE_NAME = "user";
     private Integer id;
     private String firstName;
     private String lastName;
