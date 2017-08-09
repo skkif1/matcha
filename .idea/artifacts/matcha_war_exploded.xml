@@ -18,6 +18,9 @@
           <element id="file-copy" path="$USER_HOME$/java/jar/freemarker-2.3.24-atlassian-2.jar" />
           <element id="file-copy" path="$USER_HOME$/java/jar/mail-1.4.jar" />
           <element id="file-copy" path="$USER_HOME$/java/jar/log4j-1.2.17 (1).jar" />
+          <element id="file-copy" path="$USER_HOME$/java/jar/spring-messaging-5.0.0.M5 (1).jar" />
+          <element id="file-copy" path="$USER_HOME$/java/jar/spring-websocket-5.0.0.M5.jar" />
+          <element id="file-copy" path="$USER_HOME$/java/jar/jackson-core-asl-1.9.13.jar" />
         </element>
       </element>
     </root>

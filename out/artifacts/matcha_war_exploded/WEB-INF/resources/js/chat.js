@@ -1,4 +1,6 @@
 var home = "http://localhost:8080/matcha";
+var conversations;
+var currentConversation;
 
 $(document).ready(function () {
     getConversations();
@@ -36,6 +38,14 @@ function sendMessage() {
     });
 }
 
+function findConversationOnView(id) {
+    for (i = 0; i < conversations.length; i++)
+    {
+        if (conversations[i].id == id)
+            currentConversation = conversations[i];
+    }
+}
+
 function getMessages(event) {
     var id = event.target.id;
     $(".messages_list")[0].id = id;
@@ -52,25 +62,49 @@ function getMessages(event) {
             $('.conversation_list').addClass("hiden");
             var list = $(".messages_list")[0];
             var hiden = $("#hiden_message");
+            findConversationOnView(id);
             $.each(json.data.mess, function (index, value) {
-             insertMessage(list, value, hiden);});
-           $('.conversation_messages').removeClass('hiden');
-            connnectToConversation(json.data.conv, json.data.wsacode);
+             insertMessage(list, value);
+            });
+            connnectToConversation();
+            $('#conversation_messages').removeClass("hiden");
         }
     });
 }
 
 function connnectToConversation()
 {
-  connect('ws://localhost:8080/matcha/conversation/');
+    connect('ws://localhost:8080/matcha/conversation/', function (response) {
+
+        var message = JSON.parse(response.data);
+        console.log(message);
+        if (message.author == currentConversation.user1.id) {
+            avatar = currentConversation.user1.information.avatar;
+            name = currentConversation.user1.firstName + " " + currentConversation.user1.lastName;
+        }
+        else
+        {
+            avatar = currentConversation.user2.information.avatar;
+            name = currentConversation.user1.firstName + " " + currentConversation.user1.lastName;
+        }
+
+        $($('.messages_list')[0]).append('<div class="card horizontal user_message" id="'+ message.id +'">' +
+            ' <div class="message-image"> <img src="'+ avatar +'"> </div> ' +
+                +'<div class="author_name">'+ name +'</div>'+
+            '<div class="message">' + message.message +'</div>' + '</div>');
+    });
 }
 
-function insertMessage(list, value, hiden) {
-    var message = hiden.clone();
-    message.id = value.id;
-    message.text(value.message).removeClass('hiden').prependTo(list);
+function insertMessage(list, value) {
+    if (value.author == currentConversation.user1.id)
+        avatar = currentConversation.user1.information.avatar;
+    else
+        avatar = currentConversation.user2.information.avatar;
+    console.log(avatar);
+    $(list).prepend('<div class="card horizontal user_message" id="'+ value.id +'">' +
+                                ' <div class="message-image"> <img src="'+ avatar +'"> </div> ' +
+                    '<div class="message">' + value.message +'</div>' + '</div>');
 }
-
 
 function openConversation() {
     var url = home + "/chat/";
@@ -88,7 +122,7 @@ function getConversations() {
             success: function (json) {
                if (json.status === "OK")
                {
-                   console.log(json.data);
+                   conversations = json.data;
                    for (i = 0; i < json.data.length; i++)
                    {
                         var conversation = $("#hiden_conversation").clone();

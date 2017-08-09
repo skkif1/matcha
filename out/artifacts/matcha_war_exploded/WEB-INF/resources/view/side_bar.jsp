@@ -15,6 +15,13 @@
         </div>
     </div>
 </body>
+
 <script src="//code.jquery.com/jquery-2.1.0.min.js"></script>
 <script src="<c:url value="/resources/js/socket.js" />"></script>
+<script>
+
+    $(document).ready(function () {
+        connect('ws://localhost:8080/matcha/user/')
+    });
+</script>
 </html>

@@ -24,7 +24,7 @@
     <%@include file="side_bar.jsp" %>
 
     <div class="conversation_list list">
-        <ul class="collection" id="conversation_collection" >
+        <ul class="collection" id="conversation_collection">
             <li class="collection-item hiden" id="hiden_conversation">
                 <img src="" alt="" class="circle">
                 <span class="title"></span>
@@ -33,19 +33,18 @@
         </ul>
     </div>
 
-    <div class="conversation_messages list hiden">
+    <div class="list hiden" id="conversation_messages">
         <div class="messages_list">
-            <div class="user_message hiden" id="hiden_message">
-              <img src="">
-                <div class="message">
-
-                </div>
-            </div>
-
-            <div class="message">
-              <img src="">
-                <div class="message">
-
+            <div class="card horizontal user_message" id="'+ message.id +'">
+                <div class="message-image"><img src="http://localhost:8081/cdn/1/images1.jpeg"></div>
+                <div class="message_text">
+                    <div class="author_name"><b>John Dow</b></div>
+                    <div class="message">dfsansg'knf'nsad
+                        aoJSDOFIANOINGF[DOG
+                        ASDOPFMSGOHINDOndfs[goin
+                        asopfdgjdhopfj
+                        aosgfj'ofhonodfhoindsfg;hoinfg[o
+                    </div>
                 </div>
             </div>
         </div>
@@ -54,7 +53,8 @@
                 <input id="message_input" type="text">
                 <label for="message_input">message</label>
             </div>
-            <button class="waves-effect waves-light btn" onclick="sendMessage()"><i class="material-icons left">cloud</i></button>
+            <button class="waves-effect waves-light btn" onclick="sendMessage()"><i
+                    class="material-icons left">cloud</i></button>
         </div>
     </div>
 
@@ -65,7 +65,6 @@
 </body>
 <script src="//code.jquery.com/jquery-2.1.0.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/js/materialize.min.js"></script>
-<script src="<c:url value="/resources/js/chat.js" />"></script>
 <script src="<c:url value="/resources/js/socket.js" />"></script>
-
+<script src="<c:url value="/resources/js/chat.js" />"></script>
 </html>

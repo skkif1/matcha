@@ -85,11 +85,12 @@ public class ChatController {
         message.setConversationId(current.getId());
         message.setReciver(current.getUser2().getId());
         message.setAuthor(current.getUser1().getId());
-            if(chatManager.sendMessage(message))
-            {
-                ajax.setStatus("OK");
-                ajax.setData(message);
-            }
+
+        if(chatManager.sendMessage(message))
+        {
+            ajax.setStatus("OK");
+            ajax.setData(message);
+        }
         return ajax;
     }
 }

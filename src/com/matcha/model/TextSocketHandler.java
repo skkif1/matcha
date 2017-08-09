@@ -1,6 +1,7 @@
 package com.matcha.model;
 
 
+import com.matcha.entity.Conversation;
 import com.matcha.entity.User;
 import com.matcha.model.messageBroker.ImessageBroker;
 import com.matcha.model.messageBroker.SockSessionDecorator;
@@ -17,7 +18,6 @@ import java.util.ArrayList;
 @Component
 public class TextSocketHandler extends TextWebSocketHandler {
 
-    private ArrayList<WebSocketSession> sessions = new ArrayList<>();
     private ImessageBroker messageBroker;
 
     public static final String USER_ENDPOINT = "/user/";
@@ -44,13 +44,24 @@ public class TextSocketHandler extends TextWebSocketHandler {
             User user = (User) httpSession.getAttribute("user");
             messageBroker.addUser(new SockSessionDecorator(session), USER_ENDPOINT, user.getId().toString());
         }
+        if (session.getUri().toString().endsWith(CONVERSATION_ENDPOINT))
+        {
+            messageBroker.addUser(new SockSessionDecorator(session), CONVERSATION_ENDPOINT, ((Conversation)httpSession.getAttribute("currentConversation")).getId().toString());
+        }
     }
 
     @Override
     public void afterConnectionClosed(WebSocketSession session, CloseStatus status) throws Exception {
         HttpSession httpSession = (HttpSession) session.getAttributes().get("session");
-        User user = (User) httpSession.getAttribute("user");
-        messageBroker.removeUser(new SockSessionDecorator(session), user.getId().toString(), USER_ENDPOINT);
+        try
+        {
+            User user = (User) httpSession.getAttribute("user");
+            messageBroker.removeUser(new SockSessionDecorator(session), user.getId().toString(), USER_ENDPOINT);
+        }catch (Exception ex)
+        {
+            ex.printStackTrace();
+        }
+        messageBroker.removeUser(new SockSessionDecorator(session), ((Conversation)httpSession.getAttribute("currentConversation")).getId().toString(), CONVERSATION_ENDPOINT);
     }
 
 }

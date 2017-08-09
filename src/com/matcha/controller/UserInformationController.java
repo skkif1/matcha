@@ -36,6 +36,8 @@ public class UserInformationController {
         return model;
     }
 
+
+
     @RequestMapping(value = "/user", method = RequestMethod.POST)
     public @ResponseBody String changeUserData(@RequestBody User user, HttpSession session)
     {

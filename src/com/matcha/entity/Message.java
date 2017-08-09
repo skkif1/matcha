@@ -1,6 +1,11 @@
 package com.matcha.entity;
 
 
+import org.codehaus.jackson.map.JsonMappingException;
+import org.codehaus.jackson.map.ObjectMapper;
+import org.springframework.web.servlet.tags.EscapeBodyTag;
+
+import java.io.IOException;
 import java.sql.Timestamp;
 
 public class Message {
@@ -74,10 +79,14 @@ public class Message {
 
     @Override
     public String toString() {
-        return "Message{" +
-                "message='" + this.message + '\n' +
-                ", author=" + author + "\n" +
-                ", reciver=" + reciver +
-                '}';
+        ObjectMapper mapper = new ObjectMapper();
+
+        String res = "Message{"+ id +"}";
+        try {
+            res = mapper.writeValueAsString(this);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return res;
     }
 }

@@ -23,7 +23,7 @@ public class WebSocketConfig implements WebSocketConfigurer {
 
     @Override
     public void registerWebSocketHandlers(WebSocketHandlerRegistry webSocketHandlerRegistry) {
-        webSocketHandlerRegistry.addHandler(getTextHandler(), "/user/", "/conversation/").setHandshakeHandler(new DefaultHandshakeHandler(new TomcatRequestUpgradeStrategy()))
+        webSocketHandlerRegistry.addHandler(getTextHandler(), TextSocketHandler.USER_ENDPOINT, TextSocketHandler.CONVERSATION_ENDPOINT).setHandshakeHandler(new DefaultHandshakeHandler(new TomcatRequestUpgradeStrategy()))
                 .addInterceptors(new UserEndpointHandshakeInterceptor());
     }
 
@@ -36,6 +36,6 @@ public class WebSocketConfig implements WebSocketConfigurer {
     @Bean
     public ImessageBroker getMessageBroker()
     {
-        return new ApplicationMessageBroker("/user/", "/conversation/");
+        return new ApplicationMessageBroker(TextSocketHandler.USER_ENDPOINT, TextSocketHandler.CONVERSATION_ENDPOINT);
     }
 }

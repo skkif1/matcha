@@ -41,21 +41,26 @@ public class ApplicationMessageBroker implements ImessageBroker {
     public void removeUser(WebSocketSession session, String subscriptionName, String endPointName) {
         Endpoint endpoint = this.endpointStorage.get(endPointName);
         List<WebSocketSession> subscribers = endpoint.getPointSubscriptions().get(subscriptionName);
-        subscribers.remove(session);
+        if (subscribers != null && subscribers.contains(session))
+            subscribers.remove(session);
+        System.out.println(subscribers);
     }
 
 
     @Override
     public void consumeMessage(TextMessage message, String subscriptionName, String endPointName) {
         List<WebSocketSession> subscribers =  this.endpointStorage.get(endPointName).getPointSubscriptions().get(subscriptionName);
-        subscribers.forEach((subscriber) ->
+        if (subscribers != null)
         {
-            try {
-                subscriber.sendMessage(message);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        });
+            subscribers.forEach((subscriber) ->
+            {
+                try {
+                    subscriber.sendMessage(message);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            });
+        }
     }
 
     private void addSubscription(String endPointName, String subscriptionName) {

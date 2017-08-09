@@ -7,6 +7,7 @@ import com.matcha.entity.User;
 import com.matcha.model.messageBroker.ImessageBroker;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.web.socket.TextMessage;
 
 import javax.jws.soap.SOAPBinding;
 import javax.servlet.http.HttpSession;
@@ -48,8 +49,9 @@ public class ChatManager implements IChat{
 
     @Override
     public Boolean sendMessage(Message message) {
-        System.out.println("chat manager");
-      //  chatDao.saveMessage(message);
+        messageBroker.consumeMessage(new TextMessage(message.toString()), message.getConversationId().toString(),
+                TextSocketHandler.CONVERSATION_ENDPOINT);
+        chatDao.saveMessage(message);
         return true;
     }
 

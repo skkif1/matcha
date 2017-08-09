@@ -51,15 +51,17 @@ public class ChatDaoImpl implements ChatDao{
     public void saveConversation(Integer user1_id, Integer user2_id) {
         String sql = "INSERT INTO conversation (user1_id, user2_id)" +
                 "  SELECT * FROM (SELECT ?, ?) AS tmp" +
-                "  WHERE NOT EXISTS (" +
-                "      SELECT user1_id, user2_id FROM conversation WHERE user1_id = ? AND user2_id = ?" +
-                "  ) ";
+                "  WHERE NOT EXISTS(" +
+                "      SELECT user1_id, user2_id FROM conversation WHERE (user1_id = ? AND user2_id = ?)" +
+                "   OR (user1_id = ? AND user2_id = ?)) ";
         template.update(con -> {
             PreparedStatement statement = con.prepareStatement(sql);
             statement.setInt(1, user1_id);
             statement.setInt(2, user2_id);
             statement.setInt(3, user1_id);
             statement.setInt(4, user2_id);
+            statement.setInt(5, user2_id);
+            statement.setInt(6, user1_id);
             return statement;
         });
     }
@@ -83,7 +85,6 @@ public class ChatDaoImpl implements ChatDao{
            {
                User user2 = userDao.getUserById(id);
                user2.setInformation(infoDao.getUserInfoByUserId(id));
-               System.out.println(user2.getInformation());
                conversation.setUser2(user2);
            }
             conversation.setId(rs.getInt("id"));

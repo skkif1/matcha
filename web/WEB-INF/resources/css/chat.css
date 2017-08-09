@@ -22,11 +22,6 @@ body
     margin-left: 10px;
 }
 
-.conversation_list
-{
-
-}
-
 .collection-item
 {
     display: flex;
@@ -58,7 +53,35 @@ body
 {
     height: 92%;
     background: white;
+    padding: 10px 0px;
+    overflow: scroll;
+}
 
+.card
+{
+    margin: 5px 10px;
+    display: flex;
+}
+
+.card b
+{
+    color: rgb(43,187,173);
+}
+
+.message-image img
+{
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    margin: 10px;
+}
+
+.message
+{
+    border-left: dashed;
+    border-left-color: rgb(43,187,173);;
+    flex: 100%;
+    padding: 0 10px;
 }
 
 .message_form
@@ -82,5 +105,3 @@ textarea
 {
     border: none;
 }
-
-

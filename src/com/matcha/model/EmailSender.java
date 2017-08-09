@@ -54,7 +54,7 @@ public class EmailSender {
         try {
             content.append(FreeMarkerTemplateUtils.processTemplateIntoString(templateFactory.getTemplate(templateName), model));
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+           e.printStackTrace();
         }
         return content.toString();
     }

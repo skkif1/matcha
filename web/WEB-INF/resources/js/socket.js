@@ -1,8 +1,6 @@
 var home = "http://localhost:8080/matcha";
 
-function connect(addr) {
+function connect(addr, callback) {
     ws = new WebSocket(addr);
-    ws.onmessage = function(data){
-        console.log(data);
-    };
+    ws.onmessage = callback;
 }

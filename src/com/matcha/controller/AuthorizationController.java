@@ -82,7 +82,6 @@ public class AuthorizationController {
     @RequestMapping(value = "/newPassword", method = RequestMethod.POST, produces = "application/json")
     public @ResponseBody String newPassword(@RequestParam("password") String password, HttpSession session)
     {
-        System.out.println(password);
         JsonResponseWrapper ajax = authorizationManager.changePassword(password, session);
         return ajax.toString();
     }

@@ -35,7 +35,6 @@ public class InformationDaoImpl implements InformationDao {
         String sql = "INSERT INTO user_information (user_id, sex, age, country, state, aboutMe, sexPref, latitude, longitude) VALUES (?,?,?,?,?,?,?,?,?)";
         String updateSql = "UPDATE user_information SET sex = ?, age = ?, country = ?, state = ?, aboutMe = ?, sexPref = ?, latitude = ?, longitude = ? WHERE user_id = ?";
         if (getUserInfoByUserId(userId) == null) {
-            System.out.println("null -->> userInfo go to save");
             template.update(sql, userId, info.getSex(), info.getAge(), info.getCountry(), info.getState(), info.getAboutMe(), info.getSexPref(), info.getLatitude(), info.getLangitude());
             saveIntrests(info.getInterests());
             saveIntrestList(info.getInterests(), userId);
