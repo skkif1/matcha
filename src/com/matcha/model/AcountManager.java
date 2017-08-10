@@ -26,10 +26,12 @@ public class AcountManager {
         if (infoDao.likeUser(userId, author.getId()))
         {
             json.setStatus("OK");
-            json.setData(Arrays.asList(new Integer[]{infoDao.getLikeNumber(userId)}));
         }
         else
             json.setStatus("Error");
         return json;
     }
+
+
+
 }

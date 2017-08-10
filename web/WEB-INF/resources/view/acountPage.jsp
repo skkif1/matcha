@@ -26,11 +26,11 @@
         </div>
 
         <div class="rate">
-            <span>rate:</span><div class="info" id="rate_val"></div>
+            <span>rate:</span><div class="info" id="rate"></div>
         </div>
 
         <div class="nav">
-            <button class="waves-effect waves-light btn" onclick="likeUser()">like</button>
+            <button class="waves-effect waves-light btn scale-transition" onclick="likeUser()" id="like">like</button>
             <button class="waves-effect waves-light btn" onclick="openConversation()">send message</button>
         </div>
 

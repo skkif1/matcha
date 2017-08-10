@@ -6,7 +6,6 @@ import com.matcha.entity.jsonDeserialize.UserInformationDesializer;
 
 import java.util.ArrayList;
 
-@JsonDeserialize(using = UserInformationDesializer.class)
 public class UserInformation {
 
     private String sex;
@@ -20,14 +19,14 @@ public class UserInformation {
     private String avatar;
     private Double langitude;
     private Double latitude;
-    private Integer likeCount;
+    private Integer rate;
 
 
     public UserInformation() {
     }
 
     public UserInformation(String sex, Integer age, String country, String state, String aboutMe,
-                           ArrayList<String> interests, String sexPref, Double langitude, Double latitude, Integer likeCount ) {
+                           ArrayList<String> interests, String sexPref, Double langitude, Double latitude, Integer rate) {
         this.sex = sex;
         this.age = age;
         this.country = country;
@@ -37,15 +36,15 @@ public class UserInformation {
         this.sexPref = sexPref;
         this.langitude = langitude;
         this.latitude = latitude;
-        this.likeCount = likeCount;
+        this.rate = rate;
     }
 
-    public Integer getLikeCount() {
-        return likeCount;
+    public Integer getRate() {
+        return rate;
     }
 
-    public void setLikeCount(Integer likeCount) {
-        this.likeCount = likeCount;
+    public void setRate(Integer rate) {
+        this.rate = rate;
     }
 
     public Double getLangitude() {
@@ -138,16 +137,19 @@ public class UserInformation {
 
     @Override
     public String toString() {
-        return super.toString() + "\n" +
-                "Information" + "\n" +
-                "sex=" + sex + "\n" +
-                " age=" + age + "\n" +
-                " country=" + country + "\n" +
-                " state=" + state + "\n" +
-                " aboutMe=" + aboutMe + "\n" +
-                " interests=" + interests + "\n" +
-                " sexPref=" + sexPref + "\n" +
-                "photos= " + photos + "\n";
+        return "UserInformation{" +
+                "sex='" + sex + '\'' +
+                ", age=" + age +
+                ", country='" + country + '\'' +
+                ", state='" + state + '\'' +
+                ", aboutMe='" + aboutMe + '\'' +
+                ", interests=" + interests +
+                ", sexPref='" + sexPref + '\'' +
+                ", photos=" + photos +
+                ", avatar='" + avatar + '\'' +
+                ", langitude=" + langitude +
+                ", latitude=" + latitude +
+                ", rate=" + rate +
+                '}';
     }
-
 }

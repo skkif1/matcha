@@ -19,7 +19,6 @@ public interface InformationDao {
     public String getPhotoById(Integer photoId);
     public void saveAvatar(String path, Integer userId);
     public Boolean likeUser(Integer userId, Integer authorId);
-    public Integer getLikeNumber(Integer userId);
     public void saveVisit(Integer visitorId, Integer userId);
-
+    public Boolean checkIfUserLiked(Integer userId, Integer visitorId);
 }

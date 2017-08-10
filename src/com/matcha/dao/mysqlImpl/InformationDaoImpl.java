@@ -57,12 +57,13 @@ public class InformationDaoImpl implements InformationDao {
             userInfo.setInterests((ArrayList<String>) selectUserInterestList(userId));
             userInfo.setPhotos((ArrayList<String>) getUserPhoto(userId));
             userInfo.setAvatar(template.queryForObject(avatarSql, new Integer[]{userId}, String.class));
-            userInfo.setLikeCount(getLikeNumber(userId));
         } catch (DataAccessException ex) {
+            System.out.println(this.getClass() + " " + userInfo);
             if (userInfo != null)
                 return userInfo;
             return null;
         }
+        System.out.println(this.getClass() + " " + userInfo);
         return userInfo;
     }
 
@@ -138,21 +139,23 @@ public class InformationDaoImpl implements InformationDao {
         if (template.queryForObject(ifExist, new Integer[]{authorId, userId}, Integer.class) == 0)
         {
             template.update(like, authorId,  userId);
+            updateRate(userId);
             return true;
         }
         return false;
     }
 
     @Override
-    public Integer getLikeNumber(Integer userId) {
-
-        String sql = "SELECT COUNT(*) FROM `like` WHERE user_id = ?";
-        return  template.queryForObject(sql, new Integer[]{userId}, Integer.class);
+    public Boolean checkIfUserLiked(Integer userId, Integer visitorId) {
+        String sql = "SELECT COUNT(*) FROM `like` WHERE author_id = ? AND user_id = ?";
+        Integer res = template.queryForObject(sql, new Integer[]{visitorId, userId}, Integer.class);
+        return (res == 1);
     }
 
     @Override
     public void saveVisit(Integer visitorId, Integer userId) {
-        String ifExist = "SELECT EXISTS(SELECT * FROM visits WHERE time < now() + INTERVAL 1 DAY AND visitor_id = ? AND user_id = ?)";
+        String ifExist = "SELECT EXISTS(SELECT * FROM visits WHERE visitor_id = ? AND user_id = ? AND (SELECT count(*) " +
+                "FROM visits HAVING (time + INTERVAL 1 DAY) > now()) > 0);";
         String sql = "INSERT INTO visits (visitor_id, user_id) VALUES (?,?)";
         if (template.queryForObject(ifExist, new Integer[]{visitorId, userId}, Integer.class) == 0)
         {
@@ -181,6 +184,11 @@ public class InformationDaoImpl implements InformationDao {
     }
 
 
+    private void updateRate(Integer id)
+    {
+        String sql = "UPDATE user_information SET rate = (SELECT COUNT(*) FROM `like` WHERE user_id = ?) WHERE user_id = ?";
+        template.update(sql, id, id);
+    }
 
     private List<String> selectUserInterestList(Integer userId) {
         List<String> res = new ArrayList<>(13);

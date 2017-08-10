@@ -1,5 +1,6 @@
 package com.matcha.controller;
 
+import com.matcha.entity.AcountPageContext;
 import com.matcha.entity.User;
 import com.matcha.entity.UserInformation;
 import com.matcha.model.JsonResponseWrapper;
@@ -92,10 +93,11 @@ public class UserInformationController {
         User user = new User();
         user.setId(id);
         UserInformation userInfo = infoManager.getUserInfo(user);
+        AcountPageContext acountPageContext = infoManager.getAcountPageContext(id, ((User)session.getAttribute(User.USER_ATTRIBUTE_NAME)).getId());
         if (userInfo != null)
         {
             json.setStatus("OK");
-            json.setData(userInfo);
+            json.setData(new Object[] {userInfo, acountPageContext});
         }
         return json.toString();
     }

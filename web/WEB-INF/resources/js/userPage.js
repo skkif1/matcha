@@ -3,7 +3,6 @@ var home = "http://localhost:8080/matcha";
 $(document).ready(function(){
     buildPage();
     $('.carousel').carousel();
-
 });
 
 
@@ -12,16 +11,14 @@ function buildPage() {
     var gallery = $('.carousel img');
     var chipsHolder = $('.interests .info');
     var url = home + "/info/getInfo/";
+    var acountContext = null;
 
     if (location.href.indexOf("/acount/") !== 0)
     {
         mass = location.href.split("/");
         url = url + mass[mass.length - 1];
-        console.log(url);
     }
 
-
-    console.log(url);
     $.ajax(
         {
             headers: {
@@ -33,6 +30,11 @@ function buildPage() {
             url: url,
             success: function (json) {
                 if (json.status === "OK") {
+                    if (location.href.indexOf('acount') > 0)
+                    {
+                        acountContext = json.data[1];
+                        json.data = json.data[0];
+                    }
                     for (var i = json.data.interests.length - 1; i >=0;  i--)
                     {
                         chipsHolder.prepend('<div class="chip"> <img src="http://localhost:8081/cdn/general/User.png">' +
@@ -49,11 +51,23 @@ function buildPage() {
                     $('.country .info')[0].innerHTML = (json.data.country === '') ? '-' : json.data.country;
                     $('.state .info')[0].innerHTML = (json.data.state === '') ? '-' : json.data.state;
                     $('.about_me .info')[0].innerHTML = (json.data.aboutMe === '') ? '-' : json.data.aboutMe;
-                    $('#rate_val')[0].innerHTML = (json.data.likeCount === '0') ? '-' : json.data.likeCount;
+                    $('#rate')[0].innerHTML = (json.data.rate === '0') ? '-' : json.data.rate;
+
+                    buildAcountPage(acountContext);
                 }
             }
         }
     );
+}
+
+function buildAcountPage(context)
+{
+
+    if(context !== null && context.liked === true)
+    {
+        $('#like').remove();
+    }
+
 }
 
 
@@ -72,8 +86,11 @@ function likeUser()
             success: function (json) {
                 if (json.status === 'OK')
                 {
-                    $('#rate_val').text(json.data[0]);
-                    console.log(json.data[0]);
+                    $('#like').addClass('scale-out');
+                    setTimeout(function(){
+                        $('#like').remove();
+                    }, 250);
+
                 }else
                 {
                     Materialize.toast("You allready rate this user", 7000);
@@ -81,3 +98,5 @@ function likeUser()
             }
         });
 }
+
+

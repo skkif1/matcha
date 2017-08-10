@@ -2,6 +2,7 @@ package com.matcha.model;
 
 import com.matcha.dao.InformationDao;
 import com.matcha.dao.UserDao;
+import com.matcha.entity.AcountPageContext;
 import com.matcha.entity.User;
 import com.matcha.entity.UserInformation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -97,5 +98,13 @@ public class UserInformationManager {
         json.setStatus("OK");
         return json;
     }
+
+    public AcountPageContext getAcountPageContext(Integer userId, Integer visitorId)
+    {
+        AcountPageContext ctx = new AcountPageContext();
+        ctx.setLiked(informationDao.checkIfUserLiked(userId, visitorId));
+        return ctx;
+    }
+
 
 }

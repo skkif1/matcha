@@ -23,6 +23,7 @@ public class HistoryManager {
         else
         {
             infoDao.saveVisit(visitorId, userId);
+            System.out.println(this.getClass() + " \n requister visit \n");
         }
         return true;
     }

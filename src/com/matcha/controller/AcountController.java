@@ -37,6 +37,8 @@ public class AcountController {
     public String getAcount(@PathVariable("id") Integer id, HttpSession session)
     {
         User visitor = (User) session.getAttribute("user");
+        if (id == visitor.getId())
+            return "redirect:/";
         if (historytManager.requisterVisit(visitor.getId(), id))
             return "acountPage";
         return "404";
@@ -47,6 +49,13 @@ public class AcountController {
     public @ResponseBody String likeUser(@PathVariable("userId") Integer userId, HttpSession session)
     {
         JsonResponseWrapper json = acountManager.likeUser(userId, session);
+        return json.toString();
+    }
+
+    @RequestMapping(value = "/checkConnection/{userId}")
+    public @ResponseBody String checkConnection(@PathVariable("userId") Integer userToCheck, HttpSession session)
+    {
+        JsonResponseWrapper json = acountManager.likeUser(userToCheck, session);
         return json.toString();
     }
 }

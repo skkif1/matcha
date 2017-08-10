@@ -88,22 +88,41 @@ function connnectToConversation()
             name = currentConversation.user1.firstName + " " + currentConversation.user1.lastName;
         }
 
-        $($('.messages_list')[0]).append('<div class="card horizontal user_message" id="'+ message.id +'">' +
-            ' <div class="message-image"> <img src="'+ avatar +'"> </div> ' +
-                +'<div class="author_name">'+ name +'</div>'+
-            '<div class="message">' + message.message +'</div>' + '</div>');
-    });
+        date = new Date();
+        $($('.messages_list')[0]).append(' <div class="card horizontal user_message" id=""> ' +
+            '<div class="message-image"><img src="' + avatar + '"></div> ' +
+            '<div class="message_text"> ' +
+            '<div class="author_name"><b>'+ name +'</b></div> ' +
+            '<div class="time">' + date.toTimeString().substring(0, 8) + date.toDateString() + '</div>' +
+            '<div class="message"> '+ message.message +' </div> ' +
+            '</div> ' +
+            '</div>');
+})
 }
 
 function insertMessage(list, value) {
     if (value.author == currentConversation.user1.id)
+    {
         avatar = currentConversation.user1.information.avatar;
+        name = currentConversation.user1.firstName + " " + currentConversation.user1.lastName;
+    }
     else
+    {
         avatar = currentConversation.user2.information.avatar;
-    console.log(avatar);
-    $(list).prepend('<div class="card horizontal user_message" id="'+ value.id +'">' +
-                                ' <div class="message-image"> <img src="'+ avatar +'"> </div> ' +
-                    '<div class="message">' + value.message +'</div>' + '</div>');
+        name = currentConversation.user2.firstName + " " + currentConversation.user2.lastName;
+    }
+        time = new Date(value.time);
+
+
+    $(list).prepend(' <div class="card horizontal user_message" id=""> ' +
+        '<div class="message-image"><img src="' + avatar + '"></div> ' +
+        '<div class="message_text"> ' +
+        '<div class="author_name"><b>'+ name +'</b></div> ' +
+        '<div class="time">'+ time.toTimeString().substring(0, 8) + ' ' + time.toDateString() + '</div> ' +
+        '<div class="message">'+ value.message +'' +
+        '</div> ' +
+        '</div> ' +
+        '</div>');
 }
 
 function openConversation() {
@@ -112,6 +131,27 @@ function openConversation() {
     location.href = url + mass[mass.length - 1];
 }
 
+
+function getDate() {
+    var today = new Date();
+    var dd = today.getDate();
+    var mm = today.getMonth()+1;
+    var yyyy = today.getFullYear();
+    var hh = today.getHours();
+    var min = today.getMinutes();
+
+
+    if(dd<10) {
+        dd = '0'+dd
+    }
+
+    if(mm<10) {
+        mm = '0'+mm
+    }
+
+    today = hh + ':' + min + "  " +mm + '/' + dd + '/' + yyyy;
+    return today;
+}
 
 function getConversations() {
 

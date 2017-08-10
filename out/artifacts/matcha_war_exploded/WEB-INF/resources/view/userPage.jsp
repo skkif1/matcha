@@ -26,7 +26,7 @@
         </div>
 
         <div class="rate">
-            <span>rate:</span><div class="info">95</div>
+            <span>rate:</span><div class="info" id="rate">95</div>
         </div>
 
 

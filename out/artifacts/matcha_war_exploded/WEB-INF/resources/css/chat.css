@@ -76,12 +76,35 @@ body
     margin: 10px;
 }
 
+.message_text
+{
+    width: 100%;
+}
+
 .message
 {
     border-left: dashed;
     border-left-color: rgb(43,187,173);;
     flex: 100%;
     padding: 0 10px;
+    font-size: 1em;
+    margin-bottom: 10px;
+}
+
+.time
+{
+    text-align: right;
+    padding-right: 10px;
+    font-weight: 100;
+    color: grey;
+    font-size: 0.7em;
+    width: 100%;
+}
+
+.author_name
+{
+    font-family: 'Open Sans', sans-serif;
+    margin-left: 20px;
 }
 
 .message_form
