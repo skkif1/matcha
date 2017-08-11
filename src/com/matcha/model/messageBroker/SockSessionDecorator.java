@@ -19,7 +19,6 @@ public class SockSessionDecorator extends WebSocketSessionDecorator{
     @Override
     public int hashCode() {
         HttpSession session = (HttpSession) this.getDelegate().getAttributes().get("session");
-        System.out.println("sesssion hahcode --> " + ((User)session.getAttribute(User.USER_ATTRIBUTE_NAME)).getId());
         return ((User)session.getAttribute(User.USER_ATTRIBUTE_NAME)).getId();
     }
 

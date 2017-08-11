@@ -43,13 +43,18 @@ public class ApplicationMessageBroker implements ImessageBroker {
         List<WebSocketSession> subscribers = endpoint.getPointSubscriptions().get(subscriptionName);
         if (subscribers != null && subscribers.contains(session))
             subscribers.remove(session);
-        System.out.println(subscribers);
     }
 
 
     @Override
     public void consumeMessage(TextMessage message, String subscriptionName, String endPointName) {
-        List<WebSocketSession> subscribers =  this.endpointStorage.get(endPointName).getPointSubscriptions().get(subscriptionName);
+        List<WebSocketSession> subscribers;
+        Endpoint endpoint =  this.endpointStorage.get(endPointName);
+        if (endpoint != null)
+        {
+            subscribers = endpoint.getPointSubscriptions().get(subscriptionName);
+        }else
+            return;
         if (subscribers != null)
         {
             subscribers.forEach((subscriber) ->

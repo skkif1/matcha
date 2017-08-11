@@ -100,3 +100,43 @@ function likeUser()
 }
 
 
+function addToBlackList()
+{
+    mass = location.href.split("/");
+    $.ajax(
+        {
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            type: "POST",
+            dataType: "json",
+            url: home + "/acount/blackList/" + mass[mass.length - 1],
+            success: function (json) {
+                if (json.status === 'OK')
+                {
+                    $("#nav_bar").addClass('scale-out');
+                    setTimeout(function(){
+                        $('#nav_bar').remove();
+                    }, 250);
+                    Materialize.toast("This user will never disturb you!", 7000);
+                }
+            }
+        });
+}
+
+
+function renderNotification(notification)
+{
+    notification = JSON.parse(notification.data);
+    console.log(notification);
+        Materialize.toast(notification.body, 7000);
+    if (notification.category === "message")
+    {
+        $('#mess_notif').show().text(notification.history);
+
+    }else
+    {
+        $('#hist_notif').show().text(notification.history);
+    }
+}

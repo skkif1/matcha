@@ -52,6 +52,13 @@ public class AcountController {
         return json.toString();
     }
 
+    @RequestMapping(value = "/blackList/{userId}")
+    public @ResponseBody String addToBlackList(@PathVariable("userId") Integer userId, HttpSession session)
+    {
+        JsonResponseWrapper json = acountManager.addToBlackList(userId, session);
+        return json.toString();
+    }
+
     @RequestMapping(value = "/checkConnection/{userId}")
     public @ResponseBody String checkConnection(@PathVariable("userId") Integer userToCheck, HttpSession session)
     {

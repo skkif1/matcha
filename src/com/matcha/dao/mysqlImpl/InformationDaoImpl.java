@@ -58,12 +58,10 @@ public class InformationDaoImpl implements InformationDao {
             userInfo.setPhotos((ArrayList<String>) getUserPhoto(userId));
             userInfo.setAvatar(template.queryForObject(avatarSql, new Integer[]{userId}, String.class));
         } catch (DataAccessException ex) {
-            System.out.println(this.getClass() + " " + userInfo);
             if (userInfo != null)
                 return userInfo;
             return null;
         }
-        System.out.println(this.getClass() + " " + userInfo);
         return userInfo;
     }
 
@@ -153,14 +151,30 @@ public class InformationDaoImpl implements InformationDao {
     }
 
     @Override
-    public void saveVisit(Integer visitorId, Integer userId) {
+    public Boolean saveVisit(Integer visitorId, Integer userId) {
         String ifExist = "SELECT EXISTS(SELECT * FROM visits WHERE visitor_id = ? AND user_id = ? AND (SELECT count(*) " +
                 "FROM visits HAVING (time + INTERVAL 1 DAY) > now()) > 0);";
         String sql = "INSERT INTO visits (visitor_id, user_id) VALUES (?,?)";
         if (template.queryForObject(ifExist, new Integer[]{visitorId, userId}, Integer.class) == 0)
         {
             template.update(sql, visitorId, userId);
+            return true;
         }
+        return false;
+    }
+
+
+    @Override
+    public void addUserToBlackList(Integer authorId, Integer userId) {
+        String sql = "INSERT INTO blacklist (author_id, user_id)  VALUES (?, ?)";
+        template.update(sql, authorId, userId);
+    }
+
+    @Override
+    public void removeLike(Integer authorId, Integer userId) {
+        String sql = "DELETE FROM 'like' WHERE author_id = ? AND user_id = ?";
+        template.update(sql, authorId, userId);
+        updateRate(userId);
     }
 
     private void saveIntrestList(List<String> interestNames, Integer userId) {

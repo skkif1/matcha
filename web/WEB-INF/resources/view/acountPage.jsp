@@ -29,9 +29,17 @@
             <span>rate:</span><div class="info" id="rate"></div>
         </div>
 
-        <div class="nav">
+        <div class="nav scale-transition" id="nav_bar">
             <button class="waves-effect waves-light btn scale-transition" onclick="likeUser()" id="like">like</button>
             <button class="waves-effect waves-light btn" onclick="openConversation()">send message</button>
+
+            <a class="btn dropdown-button" href="#!" data-activates="dropdown2">more<i class="material-icons right">arrow_drop_down</i></a>
+
+            <ul id="dropdown2" class="dropdown-content">
+                <li><a onclick="addToBlackList()">add to blacklist</a></li>
+                <li><a href="#!">report as fake acount</a></li>
+            </ul>
+
         </div>
 
     </div>

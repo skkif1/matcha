@@ -3,6 +3,7 @@ package com.matcha.model;
 import com.matcha.dao.ChatDao;
 import com.matcha.entity.Conversation;
 import com.matcha.entity.Message;
+import com.matcha.entity.Notification;
 import com.matcha.entity.User;
 import com.matcha.model.messageBroker.ImessageBroker;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,6 +52,11 @@ public class ChatManager implements IChat{
     public Boolean sendMessage(Message message) {
         messageBroker.consumeMessage(new TextMessage(message.toString()), message.getConversationId().toString(),
                 TextSocketHandler.CONVERSATION_ENDPOINT);
+        Notification notification = new Notification();
+        notification.setCategory("message");
+        notification.setBody("You have new message!");
+        messageBroker.consumeMessage(new TextMessage(notification.toString()), message.getReciver().toString(),
+                TextSocketHandler.USER_ENDPOINT);
         chatDao.saveMessage(message);
         return true;
     }

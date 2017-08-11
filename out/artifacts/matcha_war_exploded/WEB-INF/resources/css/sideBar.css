@@ -9,8 +9,19 @@ body
 {
     margin: 0;
 }
+
+.collection a.collection
+{
+    display: flex;
+}
+
 .menu
 {
-    width: 120px;
+    width: 180px;
     margin: 0;
+}
+
+.new
+{
+    display: none;
 }
