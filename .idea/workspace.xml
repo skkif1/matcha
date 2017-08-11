@@ -1,49 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="502769e5-1514-4855-bce4-0338b0878ce8" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/matcha/entity/AcountPageContext.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/matcha_war_exploded/WEB-INF/classes/com/matcha/controller/ChatController.class" afterPath="$PROJECT_DIR$/out/artifacts/matcha_war_exploded/WEB-INF/classes/com/matcha/controller/ChatController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/matcha_war_exploded/WEB-INF/classes/com/matcha/controller/UserInformationController.class" afterPath="$PROJECT_DIR$/out/artifacts/matcha_war_exploded/WEB-INF/classes/com/matcha/controller/UserInformationController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/matcha_war_exploded/WEB-INF/classes/com/matcha/dao/InformationDao.class" afterPath="$PROJECT_DIR$/out/artifacts/matcha_war_exploded/WEB-INF/classes/com/matcha/dao/InformationDao.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/matcha_war_exploded/WEB-INF/classes/com/matcha/dao/mysqlImpl/ChatDaoImpl.class" afterPath="$PROJECT_DIR$/out/artifacts/matcha_war_exploded/WEB-INF/classes/com/matcha/dao/mysqlImpl/ChatDaoImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/matcha_war_exploded/WEB-INF/classes/com/matcha/dao/mysqlImpl/InformationDaoImpl$1.class" afterPath="$PROJECT_DIR$/out/artifacts/matcha_war_exploded/WEB-INF/classes/com/matcha/dao/mysqlImpl/InformationDaoImpl$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/matcha_war_exploded/WEB-INF/classes/com/matcha/dao/mysqlImpl/InformationDaoImpl$2.class" afterPath="$PROJECT_DIR$/out/artifacts/matcha_war_exploded/WEB-INF/classes/com/matcha/dao/mysqlImpl/InformationDaoImpl$2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/matcha_war_exploded/WEB-INF/classes/com/matcha/dao/mysqlImpl/InformationDaoImpl.class" afterPath="$PROJECT_DIR$/out/artifacts/matcha_war_exploded/WEB-INF/classes/com/matcha/dao/mysqlImpl/InformationDaoImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/matcha_war_exploded/WEB-INF/classes/com/matcha/entity/UserInformation.class" afterPath="$PROJECT_DIR$/out/artifacts/matcha_war_exploded/WEB-INF/classes/com/matcha/entity/UserInformation.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/matcha_war_exploded/WEB-INF/classes/com/matcha/model/EmailSender.class" afterPath="$PROJECT_DIR$/out/artifacts/matcha_war_exploded/WEB-INF/classes/com/matcha/model/EmailSender.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/matcha_war_exploded/WEB-INF/classes/com/matcha/model/UserInformationManager.class" afterPath="$PROJECT_DIR$/out/artifacts/matcha_war_exploded/WEB-INF/classes/com/matcha/model/UserInformationManager.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/matcha/com/matcha/controller/ChatController.class" afterPath="$PROJECT_DIR$/out/production/matcha/com/matcha/controller/ChatController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/matcha/com/matcha/controller/UserInformationController.class" afterPath="$PROJECT_DIR$/out/production/matcha/com/matcha/controller/UserInformationController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/matcha/com/matcha/dao/InformationDao.class" afterPath="$PROJECT_DIR$/out/production/matcha/com/matcha/dao/InformationDao.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/matcha/com/matcha/dao/mysqlImpl/ChatDaoImpl.class" afterPath="$PROJECT_DIR$/out/production/matcha/com/matcha/dao/mysqlImpl/ChatDaoImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/matcha/com/matcha/dao/mysqlImpl/InformationDaoImpl$1.class" afterPath="$PROJECT_DIR$/out/production/matcha/com/matcha/dao/mysqlImpl/InformationDaoImpl$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/matcha/com/matcha/dao/mysqlImpl/InformationDaoImpl$2.class" afterPath="$PROJECT_DIR$/out/production/matcha/com/matcha/dao/mysqlImpl/InformationDaoImpl$2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/matcha/com/matcha/dao/mysqlImpl/InformationDaoImpl.class" afterPath="$PROJECT_DIR$/out/production/matcha/com/matcha/dao/mysqlImpl/InformationDaoImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/matcha/com/matcha/entity/UserInformation.class" afterPath="$PROJECT_DIR$/out/production/matcha/com/matcha/entity/UserInformation.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/matcha/com/matcha/model/EmailSender.class" afterPath="$PROJECT_DIR$/out/production/matcha/com/matcha/model/EmailSender.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/matcha/com/matcha/model/UserInformationManager.class" afterPath="$PROJECT_DIR$/out/production/matcha/com/matcha/model/UserInformationManager.class" />
+    <list default="true" id="502769e5-1514-4855-bce4-0338b0878ce8" name="Default" comment="message broker impl">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/matcha_war_exploded/WEB-INF/resources/css/chat.css" afterPath="$PROJECT_DIR$/out/artifacts/matcha_war_exploded/WEB-INF/resources/css/chat.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/matcha_war_exploded/WEB-INF/resources/js/chat.js" afterPath="$PROJECT_DIR$/out/artifacts/matcha_war_exploded/WEB-INF/resources/js/chat.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/matcha_war_exploded/WEB-INF/resources/js/userPage.js" afterPath="$PROJECT_DIR$/out/artifacts/matcha_war_exploded/WEB-INF/resources/js/userPage.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/matcha_war_exploded/WEB-INF/resources/view/chat.jsp" afterPath="$PROJECT_DIR$/out/artifacts/matcha_war_exploded/WEB-INF/resources/view/chat.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/matcha_war_exploded/WEB-INF/resources/view/userPage.jsp" afterPath="$PROJECT_DIR$/out/artifacts/matcha_war_exploded/WEB-INF/resources/view/userPage.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/matcha/controller/AcountController.java" afterPath="$PROJECT_DIR$/src/com/matcha/controller/AcountController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/matcha/controller/UserInformationController.java" afterPath="$PROJECT_DIR$/src/com/matcha/controller/UserInformationController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/matcha/dao/InformationDao.java" afterPath="$PROJECT_DIR$/src/com/matcha/dao/InformationDao.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/matcha/dao/mysqlImpl/InformationDaoImpl.java" afterPath="$PROJECT_DIR$/src/com/matcha/dao/mysqlImpl/InformationDaoImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/matcha/entity/UserInformation.java" afterPath="$PROJECT_DIR$/src/com/matcha/entity/UserInformation.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/matcha/model/AcountManager.java" afterPath="$PROJECT_DIR$/src/com/matcha/model/AcountManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/matcha/model/HistoryManager.java" afterPath="$PROJECT_DIR$/src/com/matcha/model/HistoryManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/matcha/model/UserInformationManager.java" afterPath="$PROJECT_DIR$/src/com/matcha/model/UserInformationManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/WEB-INF/resources/css/acount.css" afterPath="$PROJECT_DIR$/web/WEB-INF/resources/css/acount.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/WEB-INF/resources/css/chat.css" afterPath="$PROJECT_DIR$/web/WEB-INF/resources/css/chat.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/WEB-INF/resources/js/chat.js" afterPath="$PROJECT_DIR$/web/WEB-INF/resources/js/chat.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/WEB-INF/resources/js/userPage.js" afterPath="$PROJECT_DIR$/web/WEB-INF/resources/js/userPage.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/WEB-INF/resources/view/acountPage.jsp" afterPath="$PROJECT_DIR$/web/WEB-INF/resources/view/acountPage.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/WEB-INF/resources/view/chat.jsp" afterPath="$PROJECT_DIR$/web/WEB-INF/resources/view/chat.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/WEB-INF/resources/view/userPage.jsp" afterPath="$PROJECT_DIR$/web/WEB-INF/resources/view/userPage.jsp" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -243,8 +202,10 @@
             <entry file="file://$PROJECT_DIR$/src/com/matcha/controller/AcountController.java">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="525">
-                  <caret line="50" column="51" lean-forward="true" selection-start-line="50" selection-start-column="51" selection-end-line="50" selection-end-column="51" />
-                  <folding />
+                  <caret line="50" column="51" lean-forward="false" selection-start-line="50" selection-start-column="51" selection-end-line="50" selection-end-column="51" />
+                  <folding>
+                    <element signature="imports" expanded="false" />
+                  </folding>
                 </state>
               </provider>
             </entry>
@@ -253,23 +214,27 @@
             <entry file="file://$PROJECT_DIR$/src/com/matcha/model/AcountManager.java">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="330">
-                  <caret line="31" column="20" lean-forward="true" selection-start-line="31" selection-start-column="20" selection-end-line="31" selection-end-column="20" />
-                  <folding />
+                  <caret line="31" column="20" lean-forward="false" selection-start-line="31" selection-start-column="20" selection-end-line="31" selection-end-column="20" />
+                  <folding>
+                    <element signature="imports" expanded="false" />
+                    <element signature="e#444#445#0" expanded="false" />
+                    <element signature="e#482#483#0" expanded="false" />
+                  </folding>
                 </state>
               </provider>
             </entry>
           </file>
           <file leaf-file-name="matcha.like" pinned="false" current-in-tab="false">
             <entry file="dbDummy://dbtable:/22ccc8fd/fe3f9aa4-5880-4dbc-afe4-9dbc76383722/matcha.like">
+              <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+                <state>
+                  <filtering enabled="true" />
+                </state>
+              </provider>
               <provider editor-type-id="text-editor">
                 <state relative-caret-position="0">
                   <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
                   <folding />
-                </state>
-              </provider>
-              <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-                <state>
-                  <filtering enabled="true" />
                 </state>
               </provider>
             </entry>
@@ -277,7 +242,7 @@
           <file leaf-file-name="userPage.js" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/web/WEB-INF/resources/js/userPage.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="696">
+                <state relative-caret-position="1058">
                   <caret line="90" column="44" lean-forward="false" selection-start-line="90" selection-start-column="44" selection-end-line="90" selection-end-column="44" />
                   <folding />
                 </state>
@@ -297,8 +262,8 @@
           <file leaf-file-name="authorization.css" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/web/WEB-INF/resources/css/authorization.css">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="776">
-                  <caret line="77" column="1" lean-forward="true" selection-start-line="77" selection-start-column="1" selection-end-line="77" selection-end-column="1" />
+                <state relative-caret-position="1155">
+                  <caret line="77" column="1" lean-forward="false" selection-start-line="77" selection-start-column="1" selection-end-line="77" selection-end-column="1" />
                   <folding />
                 </state>
               </provider>
@@ -308,7 +273,7 @@
             <entry file="file://$PROJECT_DIR$/web/WEB-INF/resources/view/acountPage.jsp">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="465">
-                  <caret line="31" column="25" lean-forward="true" selection-start-line="31" selection-start-column="25" selection-end-line="31" selection-end-column="25" />
+                  <caret line="31" column="25" lean-forward="false" selection-start-line="31" selection-start-column="25" selection-end-line="31" selection-end-column="25" />
                   <folding />
                 </state>
               </provider>
@@ -317,18 +282,18 @@
         </leaf>
       </split-first>
       <split-second>
-        <leaf>
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file leaf-file-name="matcha.like" pinned="false" current-in-tab="true">
             <entry file="dbDummy://dbtable:/22ccc8fd/fe3f9aa4-5880-4dbc-afe4-9dbc76383722/matcha.like">
+              <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+                <state>
+                  <filtering enabled="true" />
+                </state>
+              </provider>
               <provider editor-type-id="text-editor">
                 <state relative-caret-position="0">
                   <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
                   <folding />
-                </state>
-              </provider>
-              <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-                <state>
-                  <filtering enabled="true" />
                 </state>
               </provider>
             </entry>
@@ -462,7 +427,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -783,7 +748,7 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="PackagesPane" />
     </panes>
   </component>
@@ -1400,7 +1365,8 @@
       <workItem from="1502107961906" duration="17469000" />
       <workItem from="1502189443662" duration="15010000" />
       <workItem from="1502275060505" duration="20622000" />
-      <workItem from="1502367054823" duration="16600000" />
+      <workItem from="1502367054823" duration="16617000" />
+      <workItem from="1502451989344" duration="107000" />
     </task>
     <task id="LOCAL-00001" summary="authorization">
       <created>1500378727327</created>
@@ -1542,11 +1508,18 @@
       <option name="project" value="LOCAL" />
       <updated>1502302777186</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="message broker impl">
+      <created>1502389771177</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1502389771177</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="270549000" />
+    <option name="totallyTimeSpent" value="270673000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="2560" height="1440" extended-state="0" />
@@ -1566,17 +1539,16 @@
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23795621" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329927" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2751825" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2751825" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29927006" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329927" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329927" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329927" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13621922" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.329927" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13701351" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -1584,6 +1556,7 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23795621" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
@@ -1655,14 +1628,14 @@
   </component>
   <component name="editorHistoryManager">
     <entry file="dbDummy://dbtable:/22ccc8fd/fe3f9aa4-5880-4dbc-afe4-9dbc76383722/matcha.interests_list">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state>
           <filtering enabled="true" />
+        </state>
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -1684,14 +1657,14 @@
       </provider>
     </entry>
     <entry file="dbDummy://dbtable:/22ccc8fd/fe3f9aa4-5880-4dbc-afe4-9dbc76383722/matcha.conversation">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state>
           <filtering enabled="true" />
+        </state>
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -1699,6 +1672,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="900">
           <caret line="86" column="32" lean-forward="true" selection-start-line="86" selection-start-column="32" selection-end-line="86" selection-end-column="32" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1706,6 +1682,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
           <caret line="13" column="19" lean-forward="false" selection-start-line="13" selection-start-column="19" selection-end-line="13" selection-end-column="19" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1713,6 +1690,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
           <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1728,6 +1706,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="675">
           <caret line="56" column="31" lean-forward="false" selection-start-line="56" selection-start-column="31" selection-end-line="56" selection-end-column="31" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1796,19 +1775,18 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
           <caret line="4" column="27" lean-forward="true" selection-start-line="4" selection-start-column="27" selection-end-line="4" selection-end-column="27" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="dbDummy://dbtable:/22ccc8fd/fe3f9aa4-5880-4dbc-afe4-9dbc76383722/matcha.user">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state>
           <filtering enabled="true" />
+        </state>
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -1827,15 +1805,14 @@
       </provider>
     </entry>
     <entry file="dbDummy://dbtable:/22ccc8fd/fe3f9aa4-5880-4dbc-afe4-9dbc76383722/matcha.message">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state>
           <filtering enabled="true" />
+        </state>
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -1859,7 +1836,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="673">
           <caret line="96" column="23" lean-forward="false" selection-start-line="96" selection-start-column="23" selection-end-line="96" selection-end-column="23" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1867,7 +1843,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="281">
           <caret line="90" column="8" lean-forward="false" selection-start-line="90" selection-start-column="8" selection-end-line="90" selection-end-column="8" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1904,15 +1879,14 @@
       </provider>
     </entry>
     <entry file="dbDummy://dbtable:/22ccc8fd/fe3f9aa4-5880-4dbc-afe4-9dbc76383722/matcha.user_information">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state>
           <filtering enabled="true" />
+        </state>
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -1945,9 +1919,9 @@
         <state relative-caret-position="120">
           <caret line="8" column="30" lean-forward="false" selection-start-line="8" selection-start-column="30" selection-end-line="8" selection-end-column="30" />
           <folding>
-            <element signature="e#149#150#0" expanded="true" />
-            <element signature="e#192#193#0" expanded="true" />
-            <element signature="e#226#227#0" expanded="true" />
+            <element signature="e#149#150#0" expanded="false" />
+            <element signature="e#192#193#0" expanded="false" />
+            <element signature="e#226#227#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -2032,23 +2006,14 @@
       </provider>
     </entry>
     <entry file="dbDummy://dbtable:/22ccc8fd/fe3f9aa4-5880-4dbc-afe4-9dbc76383722/matcha.visits">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state>
           <filtering enabled="true" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/fe3f9aa4-5880-4dbc-afe4-9dbc76383722/console.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
-          <folding />
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -2063,29 +2028,22 @@
     <entry file="file://$PROJECT_DIR$/src/com/matcha/controller/AcountController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="525">
-          <caret line="50" column="51" lean-forward="true" selection-start-line="50" selection-start-column="51" selection-end-line="50" selection-end-column="51" />
-          <folding />
+          <caret line="50" column="51" lean-forward="false" selection-start-line="50" selection-start-column="51" selection-end-line="50" selection-end-column="51" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/matcha/model/AcountManager.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="330">
-          <caret line="31" column="20" lean-forward="true" selection-start-line="31" selection-start-column="20" selection-end-line="31" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="dbDummy://dbtable:/22ccc8fd/fe3f9aa4-5880-4dbc-afe4-9dbc76383722/matcha.like">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
+          <caret line="31" column="20" lean-forward="false" selection-start-line="31" selection-start-column="20" selection-end-line="31" selection-end-column="20" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#444#445#0" expanded="false" />
+            <element signature="e#482#483#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -2093,14 +2051,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="455">
           <caret line="125" column="16" lean-forward="true" selection-start-line="121" selection-start-column="4" selection-end-line="125" selection-end-column="16" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web/WEB-INF/resources/view/acountPage.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="465">
-          <caret line="31" column="25" lean-forward="true" selection-start-line="31" selection-start-column="25" selection-end-line="31" selection-end-column="25" />
+          <caret line="31" column="25" lean-forward="false" selection-start-line="31" selection-start-column="25" selection-end-line="31" selection-end-column="25" />
           <folding />
         </state>
       </provider>
@@ -2115,16 +2072,37 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/web/WEB-INF/resources/css/authorization.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="776">
-          <caret line="77" column="1" lean-forward="true" selection-start-line="77" selection-start-column="1" selection-end-line="77" selection-end-column="1" />
+        <state relative-caret-position="1155">
+          <caret line="77" column="1" lean-forward="false" selection-start-line="77" selection-start-column="1" selection-end-line="77" selection-end-column="1" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web/WEB-INF/resources/js/userPage.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="696">
+        <state relative-caret-position="1058">
           <caret line="90" column="44" lean-forward="false" selection-start-line="90" selection-start-column="44" selection-end-line="90" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/fe3f9aa4-5880-4dbc-afe4-9dbc76383722/console.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="8" lean-forward="false" selection-start-line="7" selection-start-column="8" selection-end-line="7" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbtable:/22ccc8fd/fe3f9aa4-5880-4dbc-afe4-9dbc76383722/matcha.like">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
