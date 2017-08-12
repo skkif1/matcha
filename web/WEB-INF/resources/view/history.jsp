@@ -14,9 +14,34 @@
 <%@include file="header.jsp" %>
 
 <div class="content">
+
     <%@include file="side_bar.jsp" %>
+
+    <div class="history">
+        <ul class="collapsible" data-collapsible="accordion">
+            <li>
+                <div class="collapsible-header"><span class="new badge">4</span><i class="material-icons">person pin</i>visitors
+                </div>
+                <div class="collapsible-body" id="visitors">
+                </div>
+            </li>
+            <li>
+                <div class="collapsible-header"><span class="new badge">1</span><i
+                        class="material-icons">local_activity</i>likes
+                </div>
+                <div class="collapsible-body" id="likes"><p>Lorem ipsum dolor sit amet.</p></div>
+            </li>
+            <li>
+                <div class="collapsible-header" ><span class="new badge">1</span><i class="material-icons">done_all</i>last connections</div>
+                <div class="collapsible-body" id="connections"><p>Lorem ipsum dolor sit amet.</p></div>
+            </li>
+        </ul>
+    </div>
+
 </div>
-
-
 </body>
+<script src="//code.jquery.com/jquery-2.1.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/js/materialize.min.js"></script>
+<script src="<c:url value="/resources/js/history.js" />"></script>
+
 </html>

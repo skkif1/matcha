@@ -99,6 +99,34 @@ function likeUser()
         });
 }
 
+function dislikeUser()
+{
+    mass = location.href.split("/");
+    $.ajax(
+        {
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            type: "POST",
+            dataType: "json",
+            url: home + "/acount/dislike/" + mass[mass.length - 1],
+            success: function (json) {
+                if (json.status === 'OK')
+                {
+                    $('#like').addClass('scale-out');
+                    setTimeout(function(){
+                        $('#like').remove();
+                    }, 250);
+                    Materialize.toast("Connection with user interrupted!", 7000);
+                }else
+                {
+                    Materialize.toast("You allready interrupt this connection", 7000);
+                }
+            }
+        });
+}
+
 
 function addToBlackList()
 {

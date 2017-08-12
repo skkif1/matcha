@@ -1,19 +1,15 @@
 package com.matcha.controller;
 
 import com.matcha.entity.User;
-import com.matcha.entity.UserInformation;
 import com.matcha.model.AcountManager;
-import com.matcha.model.HistoryManager;
 import com.matcha.model.JsonResponseWrapper;
 import com.matcha.model.UserInformationManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
 
@@ -23,14 +19,12 @@ public class AcountController {
 
     private UserInformationManager userInfo;
     private AcountManager acountManager;
-    private HistoryManager historytManager;
 
 
     @Autowired
-    public AcountController(UserInformationManager userInfo, AcountManager acountManager, HistoryManager historytManager) {
+    public AcountController(UserInformationManager userInfo, AcountManager acountManager) {
         this.userInfo = userInfo;
         this.acountManager = acountManager;
-        this.historytManager = historytManager;
     }
 
     @RequestMapping(value = "{id}", method = RequestMethod.GET)
@@ -39,7 +33,7 @@ public class AcountController {
         User visitor = (User) session.getAttribute("user");
         if (id == visitor.getId())
             return "redirect:/";
-        if (historytManager.requisterVisit(visitor.getId(), id))
+        if (acountManager.requisterVisit(visitor.getId(), id))
             return "acountPage";
         return "404";
     }
@@ -50,6 +44,13 @@ public class AcountController {
     {
         JsonResponseWrapper json = acountManager.likeUser(userId, session);
         return json.toString();
+    }
+
+    @RequestMapping(value = "/dislike/{userId}")
+    public @ResponseBody String dislikeUser(@PathVariable("userId") Integer authorId, HttpSession session)
+    {
+        JsonResponseWrapper jsonResponseWrapper = acountManager.dislikeUser(authorId, session);
+        return jsonResponseWrapper.toString();
     }
 
     @RequestMapping(value = "/blackList/{userId}")

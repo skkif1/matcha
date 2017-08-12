@@ -2,6 +2,8 @@ package com.matcha.dao.mysqlImpl;
 
 
 import com.matcha.dao.InformationDao;
+import com.matcha.entity.Notification;
+import com.matcha.entity.User;
 import com.matcha.entity.UserInformation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
@@ -163,6 +165,26 @@ public class InformationDaoImpl implements InformationDao {
         return false;
     }
 
+    @Override
+    public List<User> getUserVisitors(Integer userId) {
+        List<User> visitors = new ArrayList<>(20);
+        String sql = "SELECT *" +
+                "FROM user" +
+                " INNER JOIN visits ON user.id = visits.visitor_id AND user_id = ? LIMIT 20";
+
+        template.query(sql,(ResultSet rs) -> {
+            User user = new User();
+            UserInformation info;
+            user.setId(rs.getInt(1));
+            user.setFirstName(rs.getString(6));
+            user.setLastName(rs.getString(7));
+            info = this.getUserInfoByUserId(user.getId());
+            user.setInformation(info);
+            visitors.add(user);
+        }, userId);
+
+        return visitors;
+    }
 
     @Override
     public void addUserToBlackList(Integer authorId, Integer userId) {
@@ -172,7 +194,7 @@ public class InformationDaoImpl implements InformationDao {
 
     @Override
     public void removeLike(Integer authorId, Integer userId) {
-        String sql = "DELETE FROM 'like' WHERE author_id = ? AND user_id = ?";
+        String sql = "DELETE FROM `like` WHERE author_id = ? AND user_id = ?";
         template.update(sql, authorId, userId);
         updateRate(userId);
     }
@@ -197,6 +219,20 @@ public class InformationDaoImpl implements InformationDao {
         });
     }
 
+    @Override
+    public Boolean checkIfMatchedWith(Integer thisUserId, Integer userId) {
+        String sql = "SELECT EXISTS(SELECT * FROM matched WHERE (user1_id = ? AND  user2_id = ?) OR" +
+                "(user1_id = ? AND user2_id = ?))";
+        Integer res = template.queryForObject(sql, new Object []{thisUserId, userId, userId, thisUserId}, Integer.class);
+        return res > 0;
+    }
+
+    @Override
+    public void requisterMathedConnection(Integer thisUserId, Integer userId) {
+
+        String sql = "INSERT INTO matched (user1_id, user2_id) VALUES (?,?)";
+        template.update(sql, thisUserId, userId);
+    }
 
     private void updateRate(Integer id)
     {

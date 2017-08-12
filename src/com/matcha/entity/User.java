@@ -100,13 +100,15 @@ public class User {
 
     @Override
     public String toString() {
-        return "User" + "\n" +
-                ", email='" + email + "\n" +
-                ", password='" + password + "\n" +
-                ", salt='" + salt + "\n" +
-                ", confirm=" + confirm + "\n" +
-                ", userInfo = " + information + "\n" +
-                ", first = " + firstName + "\n" +
-                ", last = " + lastName + "\n";
+        return "User{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", salt='" + salt + '\'' +
+                ", confirm=" + confirm +
+                ", information=" + information +
+                '}';
     }
 }

@@ -36,6 +36,7 @@
             <a class="btn dropdown-button" href="#!" data-activates="dropdown2">more<i class="material-icons right">arrow_drop_down</i></a>
 
             <ul id="dropdown2" class="dropdown-content">
+                <li><a onclick="dislikeUser()">dislike user</a></li>
                 <li><a onclick="addToBlackList()">add to blacklist</a></li>
                 <li><a href="#!">report as fake acount</a></li>
             </ul>
