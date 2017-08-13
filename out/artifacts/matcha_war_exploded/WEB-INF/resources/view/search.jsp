@@ -20,17 +20,6 @@
     <div class="search">
         <div class="search_creeterea">
             <nav>
-                <div class="nav-wrapper">
-                    <form>
-                        <div class="input-field">
-                            <input id="search" type="search" required>
-                            <label class="label-icon" for="search"><i class="material-icons">search</i></label>
-                            <i class="material-icons">close</i>
-                        </div>
-                    </form>
-                </div>
-            </nav>
-            <nav>
                 <div class="nav-wrapper sort">
                     <ul class="left hide-on-med-and-down sort_creeterea">
                         <li><a href="">age</a></li>
@@ -47,11 +36,11 @@
                         <input placeholder="min age" id="age_min" type="text" class="validate">
                     </div>
                     <div class="input-field col s6">
-                        <input placeholder="min age" id="age_max" type="text" class="validate">
+                        <input placeholder="max age" id="age_max" type="text" class="validate">
                     </div>
                 </div>
                 <div class="creeterea">
-                    <label>location</label>
+                    <label>location range</label>
                     <div class="input-field col s6">
                         <input placeholder="location" id="location" type="text" class="validate">
                     </div>
@@ -62,25 +51,30 @@
                         <input placeholder="min rating" id="rating" type="text" class="validate">
                     </div>
                 </div>
+                <div class="creeterea">
+                    <label>tag</label>
+                    <div class="input-field col s6">
+                        <input placeholder="type and press enter" id="tag" type="text" class="validate" onkeypress="addTag(event);">
+                    </div>
+                    <div id="tag_holder">
+                    </div>
+                </div>
             </div>
             <div class="button_wrapper">
-            <a class="waves-effect waves-light btn"><i class="material-icons left">cloud</i>button</a>
+                <a class="waves-effect waves-light btn" onclick="searchRequest()"><i class="material-icons left"">cloud</i>button</a>
             </div>
+            <div id="tip"></div>
         </div>
     <div class="result">
-        <ul class="collection">
-            <li class="collection-item avatar">
-                <img src="images/yuna.jpg" alt="" class="circle">
-                <span class="title">Title</span>
-                <p>First Line <br>
-                    Second Line
-                </p>
-                <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
-            </li>
+        <ul class="collection" id="result_collection">
+
         </ul>
     </div>
     </div>
 
 </div>
 </body>
+<script src="//code.jquery.com/jquery-2.1.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/js/materialize.min.js"></script>
+<script src="<c:url value="/resources/js/search.js" />"></script>
 </html>

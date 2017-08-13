@@ -100,7 +100,11 @@ public class AcountManager {
         User user = (User) session.getAttribute(User.USER_ATTRIBUTE_NAME);
         HistoryPageContext ctx = new HistoryPageContext();
         List<User> visitors = infoDao.getUserVisitors(user.getId());
+        List<User> likeAuthors = infoDao.getLikeAuthors(user.getId());
+        List<User> connectdUsers = infoDao.getUserConnections(user.getId());
         ctx.setVisitors(visitors);
+        ctx.setLikes(likeAuthors);
+        ctx.setLastConnections(connectdUsers);
         return ctx;
     }
 }

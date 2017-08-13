@@ -29,8 +29,9 @@ function buildHistoryPage() {
 
                 if (json.lastConnections !== null) {
                     for (i = 0; i < json.lastConnections.length; i++)
-                        renderCard($('#likes'), json.lastConnections[i]);
+                        renderCard($('#connections'), json.lastConnections[i]);
                 }
+
                 $('.card').click(function (event) {
                     location.href = event.currentTarget.id;
                 })

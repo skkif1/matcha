@@ -18,10 +18,11 @@ public class SearchController {
         return "search";
     }
 
-//    @RequestMapping("search/getUsers")
-//    public @ResponseBody JsonResponseWrapper getUsers(@RequestBody SearchRequest request)
-//    {
-//
-//    }
-
+    @RequestMapping(value = "/getUsers", method = RequestMethod.POST)
+    public @ResponseBody JsonResponseWrapper getUsers(@RequestBody SearchRequest request)
+    {
+        System.out.println(request);
+        System.out.println("OK");
+        return new JsonResponseWrapper();
+    }
 }

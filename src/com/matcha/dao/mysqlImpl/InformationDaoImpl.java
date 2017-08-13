@@ -72,8 +72,7 @@ public class InformationDaoImpl implements InformationDao {
         File userDirectory = new File(CDN_SERVER_ADDRESS + userId);
         if (!userDirectory.exists())
             userDirectory.mkdirs();
-        else
-        {
+        else {
             for (MultipartFile photo : photos) {
                 Files.write(Paths.get(userDirectory.getAbsolutePath() + "/" + photo.getOriginalFilename()), photo.getBytes());
                 savePhoto(CDN_WEB_ADDRESS + userId + "/" + photo.getOriginalFilename(), userId);
@@ -81,6 +80,7 @@ public class InformationDaoImpl implements InformationDao {
         }
 
     }
+
     @Override
     public void savePhoto(String address, Integer id) {
         String sql = "INSERT INTO user_photo (path, user_id) VALUES (?,?)";
@@ -104,10 +104,9 @@ public class InformationDaoImpl implements InformationDao {
 
     @Override
     public String getPhotoById(Integer photoId) {
-        String sql = "SELECT path FROm user_photo WHERE id = ?";
+        String sql = "SELECT path FROM user_photo WHERE id = ?";
         return template.queryForObject(sql, new Integer[]{photoId}, String.class);
     }
-
 
 
     private void saveIntrests(List<String> interests) {
@@ -136,9 +135,8 @@ public class InformationDaoImpl implements InformationDao {
         String like = "INSERT INTO `like` (author_id, user_id) VALUES (?,?)";
         String ifExist = "SELECT EXISTS(SELECT * FROM `like` WHERE author_id = ? AND user_id = ?)";
 
-        if (template.queryForObject(ifExist, new Integer[]{authorId, userId}, Integer.class) == 0)
-        {
-            template.update(like, authorId,  userId);
+        if (template.queryForObject(ifExist, new Integer[]{authorId, userId}, Integer.class) == 0) {
+            template.update(like, authorId, userId);
             updateRate(userId);
             return true;
         }
@@ -153,12 +151,34 @@ public class InformationDaoImpl implements InformationDao {
     }
 
     @Override
+    public List<User> getLikeAuthors(Integer userId) {
+
+        List<User> likeAuthors = new ArrayList<>(20);
+        String sql = "SELECT * FROM user " +
+                " INNER JOIN `like`" +
+                " ON user.id = `like`.author_id AND user_id = ? " +
+                " LIMIT 20";
+
+        template.query(sql, (ResultSet rs) -> {
+            User user = new User();
+            UserInformation info;
+            user.setId(rs.getInt(1));
+            user.setFirstName(rs.getString(6));
+            user.setLastName(rs.getString(7));
+            info = this.getUserInfoByUserId(user.getId());
+            user.setInformation(info);
+            likeAuthors.add(user);
+        }, userId);
+
+        return likeAuthors;
+    }
+
+    @Override
     public Boolean saveVisit(Integer visitorId, Integer userId) {
         String ifExist = "SELECT EXISTS(SELECT * FROM visits WHERE visitor_id = ? AND user_id = ? AND (SELECT count(*) " +
                 "FROM visits HAVING (time + INTERVAL 1 DAY) > now()) > 0);";
         String sql = "INSERT INTO visits (visitor_id, user_id) VALUES (?,?)";
-        if (template.queryForObject(ifExist, new Integer[]{visitorId, userId}, Integer.class) == 0)
-        {
+        if (template.queryForObject(ifExist, new Integer[]{visitorId, userId}, Integer.class) == 0) {
             template.update(sql, visitorId, userId);
             return true;
         }
@@ -169,10 +189,10 @@ public class InformationDaoImpl implements InformationDao {
     public List<User> getUserVisitors(Integer userId) {
         List<User> visitors = new ArrayList<>(20);
         String sql = "SELECT *" +
-                "FROM user" +
+                " FROM user" +
                 " INNER JOIN visits ON user.id = visits.visitor_id AND user_id = ? LIMIT 20";
 
-        template.query(sql,(ResultSet rs) -> {
+        template.query(sql, (ResultSet rs) -> {
             User user = new User();
             UserInformation info;
             user.setId(rs.getInt(1));
@@ -223,8 +243,29 @@ public class InformationDaoImpl implements InformationDao {
     public Boolean checkIfMatchedWith(Integer thisUserId, Integer userId) {
         String sql = "SELECT EXISTS(SELECT * FROM matched WHERE (user1_id = ? AND  user2_id = ?) OR" +
                 "(user1_id = ? AND user2_id = ?))";
-        Integer res = template.queryForObject(sql, new Object []{thisUserId, userId, userId, thisUserId}, Integer.class);
+        Integer res = template.queryForObject(sql, new Object[]{thisUserId, userId, userId, thisUserId}, Integer.class);
         return res > 0;
+    }
+
+    @Override
+    public List<User> getUserConnections(Integer userId) {
+        List<User> connectedUsers = new ArrayList<>(20);
+        String sql = "SELECT * FROM user" +
+                " INNER JOIN matched" +
+                " ON (user.id = matched.user1_id OR user.id = matched.user2_id) AND user.id != ?" +
+                " LIMIT 20";
+
+        template.query(sql, (ResultSet rs) -> {
+            User user = new User();
+            UserInformation info;
+            user.setId(rs.getInt(1));
+            user.setFirstName(rs.getString(6));
+            user.setLastName(rs.getString(7));
+            info = this.getUserInfoByUserId(user.getId());
+            user.setInformation(info);
+            connectedUsers.add(user);
+        }, userId);
+        return connectedUsers;
     }
 
     @Override
@@ -234,8 +275,7 @@ public class InformationDaoImpl implements InformationDao {
         template.update(sql, thisUserId, userId);
     }
 
-    private void updateRate(Integer id)
-    {
+    private void updateRate(Integer id) {
         String sql = "UPDATE user_information SET rate = (SELECT COUNT(*) FROM `like` WHERE user_id = ?) WHERE user_id = ?";
         template.update(sql, id, id);
     }
@@ -250,8 +290,7 @@ public class InformationDaoImpl implements InformationDao {
         return res;
     }
 
-    private List<String> getUserPhoto(Integer userId)
-    {
+    private List<String> getUserPhoto(Integer userId) {
         ArrayList<String> res = new ArrayList<>(11);
         String sql = "SELECT * FROM USER_PHOTO WHERE user_id = ?";
         template.query(sql, new Integer[]{userId}, (ResultSet rs) ->

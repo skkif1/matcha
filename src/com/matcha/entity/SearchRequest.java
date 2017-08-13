@@ -7,7 +7,14 @@ public class SearchRequest {
     private Integer minAge;
     private Integer maxAge;
     private Integer rate;
+    private Double locationRange;
     private List<String> interests;
+    private Double latitude;
+    private Double longitude;
+
+
+    public SearchRequest() {
+    }
 
     public SearchRequest(Integer minAge, Integer maxAge, Integer rate, List<String> interests) {
         this.minAge = minAge;
@@ -49,13 +56,40 @@ public class SearchRequest {
         this.interests = interests;
     }
 
+    public Double getLocationRange() {
+        return locationRange;
+    }
+
+    public void setLocationRange(Double locationRange) {
+        this.locationRange = locationRange;
+    }
+
+    public Double getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(Double latitude) {
+        this.latitude = latitude;
+    }
+
+    public Double getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(Double longitude) {
+        this.longitude = longitude;
+    }
+
     @Override
     public String toString() {
         return "SearchRequest{" +
                 "minAge=" + minAge +
                 ", maxAge=" + maxAge +
                 ", rate=" + rate +
+                ", locationRange=" + locationRange +
                 ", interests=" + interests +
+                ", latitude=" + latitude +
+                ", longitude=" + longitude +
                 '}';
     }
 }

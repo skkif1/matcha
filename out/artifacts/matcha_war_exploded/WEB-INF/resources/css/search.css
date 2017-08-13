@@ -26,6 +26,12 @@ body
     background: white;
 }
 
+.btn
+{
+    margin-bottom: 10px;
+}
+
+
 .nav-wrapper
 {
     background: rgb(42, 185, 171);
@@ -49,6 +55,13 @@ body
     text-align: center;
 }
 
+#tag_holder
+{
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
 .result
 {
     margin-top: 10px;
@@ -65,4 +78,43 @@ body
 {
     margin-top: 10px;
 }
+
+.card
+{
+    margin:0;
+    display: flex;
+}
+
+
+.message-image img
+{
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    margin: 10px;
+}
+
+.message_text
+{
+    width: 100%;
+}
+
+.message
+{
+    border-left: dashed;
+    border-left-color: rgb(43,187,173);;
+    flex: 100%;
+    padding: 0 10px;
+    font-size: 1em;
+    margin-bottom: 10px;
+}
+
+.author_name
+{
+    font-family: 'Open Sans', sans-serif;
+    margin-left: 20px;
+    color:rgb(43,187,173);
+    width: 100%;
+}
+
 

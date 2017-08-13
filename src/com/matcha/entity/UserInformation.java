@@ -6,6 +6,7 @@ import com.matcha.entity.jsonDeserialize.UserInformationDesializer;
 
 import java.util.ArrayList;
 
+@JsonDeserialize(using = UserInformationDesializer.class)
 public class UserInformation {
 
     private String sex;
