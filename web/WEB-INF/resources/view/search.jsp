@@ -61,7 +61,7 @@
                 </div>
             </div>
             <div class="button_wrapper">
-                <a class="waves-effect waves-light btn" onclick="searchRequest()"><i class="material-icons left"">cloud</i>button</a>
+                <a class="waves-effect waves-light btn" onclick="searchRequest()"><i class="material-icons left">cloud</i>button</a>
             </div>
             <div id="tip"></div>
         </div>

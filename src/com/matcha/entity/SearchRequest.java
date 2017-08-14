@@ -11,9 +11,11 @@ public class SearchRequest {
     private List<String> interests;
     private Double latitude;
     private Double longitude;
+    private Integer offset;
 
 
     public SearchRequest() {
+
     }
 
     public SearchRequest(Integer minAge, Integer maxAge, Integer rate, List<String> interests) {
@@ -23,6 +25,14 @@ public class SearchRequest {
         this.interests = interests;
     }
 
+
+    public Integer getOffset() {
+        return offset;
+    }
+
+    public void setOffset(Integer offset) {
+        this.offset = offset;
+    }
 
     public Integer getMinAge() {
         return minAge;
@@ -90,6 +100,7 @@ public class SearchRequest {
                 ", interests=" + interests +
                 ", latitude=" + latitude +
                 ", longitude=" + longitude +
+                ", offset=" + offset +
                 '}';
     }
 }

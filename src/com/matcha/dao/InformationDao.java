@@ -1,6 +1,7 @@
 package com.matcha.dao;
 
 import com.matcha.entity.Notification;
+import com.matcha.entity.SearchRequest;
 import com.matcha.entity.User;
 import com.matcha.entity.UserInformation;
 import org.springframework.web.multipart.MultipartFile;
@@ -13,6 +14,7 @@ public interface InformationDao {
     final String CDN_SERVER_ADDRESS = "/nfs/2016/o/omotyliu/Library/Containers/MAMP/apache2/htdocs/cdn/";
     final String CDN_WEB_ADDRESS = "http://localhost:8081/cdn/";
 
+    public List<User> searchUsersWith(SearchRequest searchParams);
     public void saveUserInfo(UserInformation info, Integer userId);
     public UserInformation getUserInfoByUserId(Integer userId);
     public void savePhoto(MultipartFile[] photos, Integer userId) throws IOException;
@@ -30,4 +32,5 @@ public interface InformationDao {
     public Boolean checkIfMatchedWith(Integer thisUserId, Integer userId);
     public List<User> getUserConnections(Integer userId);
     public void requisterMathedConnection(Integer thisUserId, Integer userId);
+
 }

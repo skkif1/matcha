@@ -27,9 +27,9 @@ public class UserInformationDesializer extends JsonDeserializer {
         interests.removeAll(Arrays.asList(""));
         String sexPref = node.get("sexPref").asText();
         Double latitude = (node.get("latitude") == null) ? 0 :node.get("latitude").asDouble();
-        Double langitude = (node.get("langitude") == null) ? 0 : node.get("langitude").asDouble();
+        Double longitude = (node.get("langitude") == null) ? 0 : node.get("langitude").asDouble();
         Integer likeNumber = (node.get("likeCount") == null) ? 0 : node.get("likeCount").asInt();
-        UserInformation info = new UserInformation(sex, age, country, state, aboutMe, interests, sexPref, langitude, latitude, likeNumber);
+        UserInformation info = new UserInformation(sex, age, country, state, aboutMe, interests, sexPref, longitude, latitude, likeNumber);
         return info;
     }
 }

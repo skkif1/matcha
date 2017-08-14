@@ -3,20 +3,7 @@ var geoLocation = [];
 
 
 $(document).ready(function () {
-
     findMe();
-
-    var list = $('#result_collection');
-    var user = {
-        firstName: 'Oleksandr',
-        lastName: 'Motyliuk',
-        id:3,
-        information: {
-            avatar: 'http://localhost:8081/cdn/1/images1.jpeg',
-            age:24
-        }
-    };
-    addUserToList(list, user);
 });
 
 function addTag(event) {
@@ -75,7 +62,8 @@ function searchRequest()
             rate: rate,
             interests:interests,
             latitude: geoLocation.lat,
-            longitude: geoLocation.long
+            longitude: geoLocation.long,
+            offset: $('.card').length - 1
         };
 
     $.ajax(
@@ -87,13 +75,24 @@ function searchRequest()
             type: "POST",
             dataType: "json",
             data: JSON.stringify(data),
-            url: home + "/search/getUsers",
+            url: home + "/search/searchForUsers",
             success: function (json) {
-                console.log(json);
+               if (json.status === "OK")
+               {
+                   for (i = 0; i < json.data.length; i++)
+                   {
+                       addUserToList($('#result_collection'), json.data[i]);
+                   }
+               }
             }
         }
     );
 }
+
+function countUsers() {
+
+}
+
 
 function findMe(){
     if (navigator.geolocation) {

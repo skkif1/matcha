@@ -3,6 +3,7 @@ package com.matcha.dao.mysqlImpl;
 
 import com.matcha.dao.InformationDao;
 import com.matcha.entity.Notification;
+import com.matcha.entity.SearchRequest;
 import com.matcha.entity.User;
 import com.matcha.entity.UserInformation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,16 +33,36 @@ public class InformationDaoImpl implements InformationDao {
         this.template = new JdbcTemplate(dataSource);
     }
 
+
+    @Override
+    public List<User> searchUsersWith(SearchRequest searchParams) {
+
+        List<User> foundUsers = new ArrayList<>(20);
+        String sql = "SELECT * FROM user WHERE user.id IN (SELECT user_id FROM user_information" +
+                " WHERE age >= ? AND age <= ? AND rate >= ?)";
+
+        template.query(sql, (ResultSet rs) ->
+        {
+            User user = new User();
+            user.setId(rs.getInt("id"));
+            user.setFirstName(rs.getString("first_name"));
+            user.setLastName(rs.getString("last_name"));
+            user.setInformation(this.getUserInfoByUserId(user.getId()));
+            foundUsers.add(user);
+        }, searchParams.getMinAge(), searchParams.getMaxAge(), searchParams.getRate());
+        return foundUsers;
+    }
+
     @Override
     public void saveUserInfo(UserInformation info, Integer userId) {
         String sql = "INSERT INTO user_information (user_id, sex, age, country, state, aboutMe, sexPref, latitude, longitude) VALUES (?,?,?,?,?,?,?,?,?)";
         String updateSql = "UPDATE user_information SET sex = ?, age = ?, country = ?, state = ?, aboutMe = ?, sexPref = ?, latitude = ?, longitude = ? WHERE user_id = ?";
         if (getUserInfoByUserId(userId) == null) {
-            template.update(sql, userId, info.getSex(), info.getAge(), info.getCountry(), info.getState(), info.getAboutMe(), info.getSexPref(), info.getLatitude(), info.getLangitude());
+            template.update(sql, userId, info.getSex(), info.getAge(), info.getCountry(), info.getState(), info.getAboutMe(), info.getSexPref(), info.getLatitude(), info.getLongitude());
             saveIntrests(info.getInterests());
             saveIntrestList(info.getInterests(), userId);
         } else {
-            template.update(updateSql, info.getSex(), info.getAge(), info.getCountry(), info.getState(), info.getAboutMe(), info.getSexPref(), info.getLatitude(), info.getLangitude(), userId);
+            template.update(updateSql, info.getSex(), info.getAge(), info.getCountry(), info.getState(), info.getAboutMe(), info.getSexPref(), info.getLatitude(), info.getLongitude(), userId);
             ArrayList<String> temp = new ArrayList<>(info.getInterests());
             temp.removeAll(selectUserInterestList(userId));
             saveIntrests(temp);

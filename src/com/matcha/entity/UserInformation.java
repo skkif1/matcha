@@ -18,7 +18,7 @@ public class UserInformation {
     private String sexPref;
     private ArrayList<String> photos;
     private String avatar;
-    private Double langitude;
+    private Double longitude;
     private Double latitude;
     private Integer rate;
 
@@ -26,8 +26,7 @@ public class UserInformation {
     public UserInformation() {
     }
 
-    public UserInformation(String sex, Integer age, String country, String state, String aboutMe,
-                           ArrayList<String> interests, String sexPref, Double langitude, Double latitude, Integer rate) {
+    public UserInformation(String sex, Integer age, String country, String state, String aboutMe, ArrayList<String> interests, String sexPref, Double longitude, Double latitude, Integer likeNumber) {
         this.sex = sex;
         this.age = age;
         this.country = country;
@@ -35,9 +34,8 @@ public class UserInformation {
         this.aboutMe = aboutMe;
         this.interests = interests;
         this.sexPref = sexPref;
-        this.langitude = langitude;
+        this.longitude = longitude;
         this.latitude = latitude;
-        this.rate = rate;
     }
 
     public Integer getRate() {
@@ -48,12 +46,12 @@ public class UserInformation {
         this.rate = rate;
     }
 
-    public Double getLangitude() {
-        return langitude;
+    public Double getLongitude() {
+        return longitude;
     }
 
-    public void setLangitude(Double langitude) {
-        this.langitude = langitude;
+    public void setLongitude(Double longitude) {
+        this.longitude = longitude;
     }
 
     public Double getLatitude() {
@@ -148,7 +146,7 @@ public class UserInformation {
                 ", sexPref='" + sexPref + '\'' +
                 ", photos=" + photos +
                 ", avatar='" + avatar + '\'' +
-                ", langitude=" + langitude +
+                ", langitude=" + longitude +
                 ", latitude=" + latitude +
                 ", rate=" + rate +
                 '}';
