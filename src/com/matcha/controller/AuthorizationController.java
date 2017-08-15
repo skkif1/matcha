@@ -43,6 +43,7 @@ public class AuthorizationController {
     @RequestMapping(value = "/confirm", method = RequestMethod.POST)
     public String confirmUserRegistration(HttpServletRequest request)
     {
+        System.out.println("confirm");
         if(authorizationManager.confirmEmail(request.getParameter("email"), request.getParameter("salt")))
         {
             return "redirect:/authorization";

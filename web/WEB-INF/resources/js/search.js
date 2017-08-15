@@ -79,6 +79,7 @@ function searchRequest()
             success: function (json) {
                if (json.status === "OK")
                {
+                   console.log(json.data);
                    for (i = 0; i < json.data.length; i++)
                    {
                        addUserToList($('#result_collection'), json.data[i]);

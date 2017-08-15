@@ -1,3 +1,12 @@
+
+@media only screen and (max-width: 500px)
+{
+    #content
+    {
+        background: red;
+    }
+}
+
 html
 {
     background: rgb(245,245,245);
@@ -75,6 +84,9 @@ body
 .toast
 {
     background: rgb(43,187,173);
+    opacity: 0;
+    z-index: -1;
+    width: 5%;
 }
 
 .progress

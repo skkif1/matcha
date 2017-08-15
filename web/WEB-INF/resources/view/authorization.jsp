@@ -13,6 +13,8 @@
     <script src="<c:url value="/resources/js/validation.js" />"></script>
     <link href="<c:url value="/resources/css/authorization.css" />" rel="stylesheet">
     <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width" />
 </head>
 
 <body>
@@ -41,8 +43,8 @@
 
     <div class="form_wrapper scale-transition" id="log">
         <form id="login_form">
-            <label>Email:</label> <input onblur="validateEmail(this)" class="email" name="email" type="text">
-            <label>Password:</label> <input onblur="validatePassword(this)" class="password" name="email" type="text">
+            <label>Email:</label> <input onblur="validateEmail(this)" class="email" name="email" type="text" autocomplete="off">
+            <label>Password:</label> <input onblur="validatePassword(this)" class="password" name="email" type="password" autocomplete="off">
         </form>
         <nav class="nav">
             <button class="waves-effect waves-light btn" onclick="validateLoginForm()">log in</button>
@@ -79,8 +81,6 @@
     </div>
 
 </div>
-
-<%--<button id="tets" class="lolll" onclick="test()">loll</button>--%>
 
 </body>
 </html>

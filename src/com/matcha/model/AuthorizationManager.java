@@ -92,10 +92,12 @@ public class AuthorizationManager {
         User user = userDao.getUserByEmail(email);
         if(user.getEmail().equals(email) && user.getSalt().substring(330).equals(salt))
         {
+            System.out.println("true");
             user.setConfirm(true);
             userDao.updateUser(user);
             return true;
         }
+        System.out.println("false");
         return false;
     }
 

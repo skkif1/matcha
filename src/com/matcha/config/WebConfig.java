@@ -2,6 +2,7 @@ package com.matcha.config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.matcha.controller.ChatController;
+import com.matcha.controller.SecurityInterceptor;
 import com.matcha.controller.UserController;
 import com.matcha.model.messageBroker.ApplicationMessageBroker;
 import org.springframework.context.annotation.Bean;
@@ -14,6 +15,7 @@ import org.springframework.ui.freemarker.FreeMarkerConfigurationFactoryBean;
 import org.springframework.web.multipart.MultipartResolver;
 import org.springframework.web.multipart.support.StandardServletMultipartResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
@@ -31,6 +33,11 @@ public class WebConfig extends WebMvcConfigurerAdapter{
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/resources/**").addResourceLocations("/WEB-INF/resources/");
         super.addResourceHandlers(registry);
+    }
+
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        registry.addInterceptor(new SecurityInterceptor()).addPathPatterns("/**").excludePathPatterns("/", "/authorization/**");
     }
 
     @Bean

@@ -2,10 +2,7 @@ package com.matcha.model;
 
 import com.matcha.dao.InformationDao;
 import com.matcha.dao.UserDao;
-import com.matcha.entity.HistoryPageContext;
-import com.matcha.entity.Notification;
-import com.matcha.entity.SearchRequest;
-import com.matcha.entity.User;
+import com.matcha.entity.*;
 import com.matcha.model.messageBroker.ImessageBroker;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -118,30 +115,93 @@ public class AcountManager {
 
     public List<User> searchForUsers(SearchRequest searchParams, HttpSession session)
     {
+        String searchedSex;
         User userWhoSearch = (User) session.getAttribute(User.USER_ATTRIBUTE_NAME);
-        List<User> foundUsers = infoDao.searchUsersWith(searchParams);
 
-        foundUsers = foundUsers.stream().limit(2).filter(user ->
+        searchedSex = getSearchedSex(userWhoSearch);
+
+        List<User> foundUsers = infoDao.searchUsersWith(searchedSex, userWhoSearch.getInformation().getSexPref(),
+                searchParams.getMinAge(), searchParams.getMaxAge(), searchParams.getRate());
+
+        foundUsers = foundUsers.stream().filter(user ->
         {
             if(filterSearchResult(searchParams, userWhoSearch, user))
                  return true;
             return false;
         }).collect(Collectors.toList());
-        if (foundUsers.size() > searchParams.getOffset() + 20)
-            foundUsers = foundUsers.subList(searchParams.getOffset(), searchParams.getOffset() + 20);
+        session.setAttribute("searchResult", foundUsers);
         return foundUsers;
     }
 
-    private boolean filterSearchResult(SearchRequest searchRequest, User userWhoSearch, User resultUser)
+    public List<User> searchForUsers(HttpSession session)
+    {
+        String sex;
+        Integer minAge;
+        Integer maxAge;
+        User user = (User) session.getAttribute(User.USER_ATTRIBUTE_NAME);
+
+        if (user.getInformation().getSex().equals("man"))
+        {
+            minAge = user.getInformation().getAge() - 10;
+            maxAge = user.getInformation().getAge() + 2;
+        }else
+        {
+            minAge = user.getInformation().getAge();
+            maxAge = user.getInformation().getAge() + 10;
+        }
+
+        List<User>foundUsers = infoDao.searchUsersWith(getSearchedSex(user),
+                user.getInformation().getSexPref(), minAge, maxAge, 0);
+        foundUsers = sortByLocation(foundUsers, user);
+
+        return foundUsers;
+    }
+
+
+        private boolean filterSearchResult(SearchRequest searchRequest, User userWhoSearch, User resultUser)
     {
         DistanceCalculator.Point userWhoSearchLocation = new DistanceCalculator.Point(searchRequest.getLatitude(), searchRequest.getLongitude());
-        System.out.println(resultUser.getInformation());
         DistanceCalculator.Point userLocation = new DistanceCalculator.Point(resultUser.getInformation().getLatitude(), resultUser.getInformation().getLongitude());
 
-        if (!Collections.disjoint(resultUser.getInformation().getInterests(), searchRequest.getInterests()) &&
-                resultUser.getId() != userWhoSearch.getId() &&
-                distanceCalculator.calculateDistanceTo(userWhoSearchLocation, userLocation) <= searchRequest.getLocationRange())
-            return true;
-        return false;
+        if (searchRequest.getInterests().size() != 0)
+        if (Collections.disjoint(resultUser.getInformation().getInterests(), searchRequest.getInterests()))
+            return false;
+        if (resultUser.getId() == userWhoSearch.getId())
+            return false;
+        if (distanceCalculator.calculateDistanceTo(userWhoSearchLocation, userLocation) <= searchRequest.getLocationRange())
+            return false;
+        return true;
     }
+
+    private String getSearchedSex(User user)
+    {
+        String sex = null;
+        if (user.getInformation().getSex().equals("")|| user.getInformation().getSexPref().equals(""))
+            throw new IllegalArgumentException("sex or sexPrferences are not specified");
+        if (user.getInformation().getSexPref().equals("'homosexual'"))
+            sex = user.getInformation().getSex();
+        if (user.getInformation().getSexPref().equals("heterosexual"))
+            sex = (user.getInformation().getSex().equals("man")) ? "'woman'" : "'man'";
+        if (user.getInformation().getSexPref().equals("bisexual"))
+            sex = "'man, woman'";
+        return sex;
+    }
+
+    private List<User> sortByLocation(List<User> users, User userWhoSearch)
+    {
+        DistanceCalculator.Point userWhoSearchLocation = new DistanceCalculator.Point(userWhoSearch.getInformation().getLatitude(),
+                userWhoSearch.getInformation().getLongitude());
+
+        users = users.stream().sorted((user1, user2) ->
+        {
+            DistanceCalculator.Point user1Location = new DistanceCalculator.Point(user1.getInformation().getLatitude(),
+                    user1.getInformation().getLongitude());
+            DistanceCalculator.Point user2Location = new DistanceCalculator.Point(user2.getInformation().getLatitude(),
+                    user2.getInformation().getLongitude());
+            return (int) (distanceCalculator.calculateDistanceTo(userWhoSearchLocation, user1Location) -
+                                distanceCalculator.calculateDistanceTo(userWhoSearchLocation, user2Location));
+        }).collect(Collectors.toList());
+        return users;
+    }
+
 }

@@ -31,16 +31,27 @@ public class SearchController {
         return "search";
     }
 
+    @RequestMapping(value = "/suggestions", method = RequestMethod.GET)
+    public String getSuggetstions()
+    {
+        return "suggestions";
+    }
+
     @RequestMapping(value = "/searchForUsers", method = RequestMethod.POST)
     public @ResponseBody JsonResponseWrapper searchForUsers(@RequestBody SearchRequest request, HttpSession session)
     {
         JsonResponseWrapper json = new JsonResponseWrapper();
         List<User> foundUsers  = acountManager.searchForUsers(request, session);
-
         json.setStatus("OK");
         json.setData(foundUsers);
-
-        System.out.println(request);
         return json;
     }
+
+
+//    @RequestMapping(value = "/suggest", method = RequestMethod.POST)
+//    public @ResponseBody JsonResponseWrapper suggestUserProfiles(HttpSession session)
+//    {
+//        JsonResponseWrapper json = new JsonResponseWrapper();
+//        List<User> suggestedUsers = acountManager.searchForUsers();
+//    }
 }

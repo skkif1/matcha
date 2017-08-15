@@ -33,14 +33,11 @@ public class InformationDaoImpl implements InformationDao {
         this.template = new JdbcTemplate(dataSource);
     }
 
-
-    @Override
-    public List<User> searchUsersWith(SearchRequest searchParams) {
+    public List<User> searchUsersWith(String sqls) {
 
         List<User> foundUsers = new ArrayList<>(20);
-        String sql = "SELECT * FROM user WHERE user.id IN (SELECT user_id FROM user_information" +
-                " WHERE age >= ? AND age <= ? AND rate >= ?)";
-
+        String sql = "SELECT * FROM user WHERE user.id IN " + "("+  sqls +")";
+        System.out.println("start");
         template.query(sql, (ResultSet rs) ->
         {
             User user = new User();
@@ -49,7 +46,27 @@ public class InformationDaoImpl implements InformationDao {
             user.setLastName(rs.getString("last_name"));
             user.setInformation(this.getUserInfoByUserId(user.getId()));
             foundUsers.add(user);
-        }, searchParams.getMinAge(), searchParams.getMaxAge(), searchParams.getRate());
+        }, sqls);
+        System.out.println("found = "  + foundUsers);
+        return foundUsers;
+    }
+
+    @Override
+    public List<User> searchUsersWith(String sex, String sexPref, Integer minAge, Integer maxAge, Integer minRate) {
+
+        List<User> foundUsers = new ArrayList<>(20);
+        String sql = "SELECT * FROM user WHERE user.id IN (SELECT user_id FROM user_information" +
+                " WHERE age >= ? AND age <= ? AND rate >= ? AND sex IN ("+ sex +") AND sexPref = ?)";
+        System.out.println(sql);
+        template.query(sql, (ResultSet rs) ->
+        {
+            User user = new User();
+            user.setId(rs.getInt("id"));
+            user.setFirstName(rs.getString("first_name"));
+            user.setLastName(rs.getString("last_name"));
+            user.setInformation(this.getUserInfoByUserId(user.getId()));
+            foundUsers.add(user);
+        }, minAge, maxAge, minRate,sexPref);
         return foundUsers;
     }
 
