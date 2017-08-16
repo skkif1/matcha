@@ -2,9 +2,13 @@
 function validateUserName(input)
 {
     input = $(input);
-    if (input.val().length > 32 || input.val().length < 3)
+    req = new RegExp("^[a-z0-9_-]{3,32}$");
+    if (!req.test(input.val()))
     {
-        Materialize.toast('min length of user name is 3 char and max 32 char', 7000);
+
+        removeToast();
+        Materialize.toast('min length of user name is 3 char and max 32 char and contain only alphabetical letters, disgits, ' +
+            'and "_" , "-"', 7000);
         return false;
     }
     return true;
@@ -13,8 +17,11 @@ function validateUserName(input)
 function validateEmail(input)
 {
     input = $(input);
+
     if(input.val().length < 3 || input.val().length > 255)
     {
+
+        removeToast();
         Materialize.toast('email can contains minimum 3 and maximum 255 chars<br>', 7000);
         return false;
     }
@@ -27,7 +34,9 @@ function validatePassword(input)
     reg = new RegExp("^(?=.*[a-z])(?=.*[0-9])(?=.{8,})");
     if(!reg.test(input.val()))
     {
-        Materialize.toast('Password must contain one numeric charecter one lowacase charecter<br>' +
+
+        removeToast();
+        Materialize.toast('Password must contain one numeric charecter one lowercase charecter<br>' +
             'and has minimum 8 char length', 7000);
         return false;
     }
@@ -46,6 +55,7 @@ function validatePasswords(input) {
 
     if(input.val() !== repeat.val())
     {
+        removeToast();
         Materialize.toast('passwords do not match', 7000);
         return false;
     }
@@ -59,4 +69,12 @@ function validateAuthForm() {
     {
       signUpUser();
     }
+}
+
+function removeToast()
+{
+    if($('.toast').length === 3)
+        $('.toast').each(function () {
+            this.remove();
+        });
 }

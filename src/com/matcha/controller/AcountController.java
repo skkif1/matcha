@@ -66,4 +66,5 @@ public class AcountController {
         JsonResponseWrapper json = acountManager.likeUser(userToCheck, session);
         return json.toString();
     }
+
 }

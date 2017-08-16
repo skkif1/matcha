@@ -36,7 +36,7 @@ public class UserController {
         if (session.getAttribute("user") == null)
             modelAndView.setViewName("authorization");
         else
-        modelAndView.setViewName("userPage");
+            modelAndView.setViewName("userPage");
         return modelAndView;
     }
 

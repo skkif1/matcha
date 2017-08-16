@@ -21,6 +21,7 @@
           <element id="file-copy" path="$USER_HOME$/java/jar/spring-messaging-5.0.0.M5 (1).jar" />
           <element id="file-copy" path="$USER_HOME$/java/jar/spring-websocket-5.0.0.M5.jar" />
           <element id="file-copy" path="$USER_HOME$/java/jar/jackson-core-asl-1.9.13.jar" />
+          <element id="file-copy" path="$USER_HOME$/java/jar/commons-lang-2.3.jar" />
         </element>
       </element>
     </root>

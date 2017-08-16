@@ -14,7 +14,6 @@ function changePassword()
 
         data =
             {
-
                 password:pass.val()
             };
         $.ajax({
@@ -27,6 +26,7 @@ function changePassword()
             success: function (json) {
                 loader.css("visibility", "hiden");
                 if (json.status === "OK") {
+                    console.log(json);
                     $('#onSuccess').modal('open');
                 } else {
                     for (var i = 0; i < json.data.length; i++) {

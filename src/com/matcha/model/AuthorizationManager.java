@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.mail.MailException;
 import org.springframework.mail.MailSendException;
 import org.springframework.stereotype.Component;
 
@@ -63,10 +64,10 @@ public class AuthorizationManager {
         user.setPassword(saltAndPassword[1]);
 
         try {
-            Integer userId = userDao.saveUser(user);
             mailModel.put("salt", user.getSalt().substring(330));
             mailModel.put("email", user.getEmail());
             emailSender.send("confirmationEmail.ftl", "confirmation email on Matcha.com", user.getEmail(), mailModel);
+            Integer userId = userDao.saveUser(user);
             user.setId(userId);
             json.setStatus("OK");
         } catch (DataAccessException ex)
@@ -77,8 +78,9 @@ public class AuthorizationManager {
                 return json;
             }
             throw ex;
-        }catch (MailSendException ex)
+        }catch (MailException ex)
         {
+            ex.printStackTrace();
             json.setStatus("Error");
             json.setData(new ArrayList<String>(Arrays.asList(new String[]{"invalid email"})));
             return json;
@@ -137,11 +139,11 @@ public class AuthorizationManager {
         JsonResponseWrapper json = new JsonResponseWrapper();
         try {
             User selected = userDao.getUserByEmail(user.getEmail());
-            json.setStatus("OK");
             json.setData(new ArrayList<String>(Arrays.asList(new String[]{"We have sent an email to " + selected.getEmail() + " with further instruction"})));
             mailModelMap.put("salt", selected.getSalt().substring(330));
             mailModelMap.put("email", selected.getEmail());
             emailSender.send("restorePassword.ftl", "password reset on matcha.com", selected.getEmail(), mailModelMap);
+            json.setStatus("OK");
         } catch (Exception ex) {
             json.setStatus("Error");
         }

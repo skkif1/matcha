@@ -1,22 +1,18 @@
 
-@media only screen and (max-width: 500px)
-{
-    #content
-    {
-        background: red;
-    }
-}
 
 html
 {
     background: rgb(245,245,245);
+    width: 100%;
 }
 
 body
 {
     width: 100%;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items: center;
 }
 
 #content
@@ -84,12 +80,24 @@ body
 .toast
 {
     background: rgb(43,187,173);
-    opacity: 0;
-    z-index: -1;
-    width: 5%;
 }
 
 .progress
 {
     visibility: hidden;
+}
+
+
+@media only screen and (max-width: 920px) {
+
+    #content
+    {
+        width: 100%;
+    }
+
+    .form_wrapper
+    {
+        width: 100%;
+        margin: 20px;
+    }
 }

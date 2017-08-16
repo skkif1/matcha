@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.matcha.controller.ChatController;
 import com.matcha.controller.SecurityInterceptor;
 import com.matcha.controller.UserController;
+import com.matcha.entity.jsonDeserialize.EscapeInterceptor;
 import com.matcha.model.messageBroker.ApplicationMessageBroker;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -38,6 +39,7 @@ public class WebConfig extends WebMvcConfigurerAdapter{
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(new SecurityInterceptor()).addPathPatterns("/**").excludePathPatterns("/", "/authorization/**");
+        registry.addInterceptor(new EscapeInterceptor()).addPathPatterns("/authorization/signUp");
     }
 
     @Bean

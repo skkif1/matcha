@@ -86,4 +86,13 @@ public class AuthorizationController {
         JsonResponseWrapper ajax = authorizationManager.changePassword(password, session);
         return ajax.toString();
     }
+
+    @RequestMapping(value = "/logout", method = RequestMethod.GET)
+    public String logOut(HttpSession session)
+    {
+        System.out.println("logout");
+        session.removeAttribute(User.USER_ATTRIBUTE_NAME);
+        System.out.println(session.getAttribute(User.USER_ATTRIBUTE_NAME));
+        return "authorization";
+    }
 }

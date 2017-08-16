@@ -5,29 +5,34 @@
 
 <head>
     <title>Welcome to matcha</title>
-    <script src="//code.jquery.com/jquery-2.1.0.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/js/materialize.min.js"></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/css/materialize.css">
-    <script src="<c:url value="/resources/js/authorization.js" />"></script>
-    <script src="<c:url value="/resources/js/validation.js" />"></script>
     <link href="<c:url value="/resources/css/authorization.css" />" rel="stylesheet">
+    <link href="<c:url value="/resources/css/header.css" />" rel="stylesheet">
+    <script src="//code.jquery.com/jquery-2.1.0.min.js"></script>
     <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; minimum-scale=1.0; user-scalable=no; target-densityDpi=device-dpi" />
+
 </head>
 
 <body>
 
+<%@include file="header.jsp" %>
+
+<script>
+    $('#logout').remove();
+</script>
+
 
 <div id="content">
+
     <div class="form_wrapper scale-transition scale-out" id="auth">
         <form id="signup_form">
-            <label>Email:</label><input onblur="validateEmail(this)" class="email" name="password" type="text">
-            <label>First name:</label><input onblur="validateUserName(this)" class="first_name" name="firstName" type="text">
-            <label>Last name:</label><input onblur="validateUserName(this)" class="last_name" name="lastName" type="text">
-            <label>Password:</label> <input type="password" onblur="validatePassword(this)" class="password"  name="password">
-            <label>Password:</label> <input type="password" onblur="validatePasswords(this)" class="password_repeat" name="password_repeat">
+            <label>Email:</label><input onblur="validateEmail(this)" class="email" name="password" type="text" maxlength="255">
+            <label>First name:</label><input onblur="validateUserName(this)" class="first_name" name="firstName" type="text" maxlength="32">
+            <label>Last name:</label><input onblur="validateUserName(this)" class="last_name" name="lastName" type="text" maxlength="32">
+            <label>Password:</label> <input type="password" onblur="validatePassword(this)" class="password"  name="password" maxlength="255">
+            <label>Password:</label> <input type="password" onblur="validatePasswords(this)" class="password_repeat" name="password_repeat" maxlength="255">
         </form>
         <nav>
             <button class="waves-effect waves-light btn" onclick="validateAuthForm()">
@@ -43,8 +48,8 @@
 
     <div class="form_wrapper scale-transition" id="log">
         <form id="login_form">
-            <label>Email:</label> <input onblur="validateEmail(this)" class="email" name="email" type="text" autocomplete="off">
-            <label>Password:</label> <input onblur="validatePassword(this)" class="password" name="email" type="password" autocomplete="off">
+            <label>Email:</label> <input onblur="validateEmail(this)" class="email" name="email" type="text" autocomplete="off" maxlength="255">
+            <label>Password:</label> <input onblur="validatePassword(this)" class="password" name="email" type="password" autocomplete="off" maxlength="255">
         </form>
         <nav class="nav">
             <button class="waves-effect waves-light btn" onclick="validateLoginForm()">log in</button>
@@ -63,12 +68,12 @@
             <p>You should confirm your email address befor login. Thank you an have a goo day!</p>
         </div>
         <div class="modal-footer">
-            <a href="http://localhost:8080/matcha" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+            <a href="http://localhost:8080/matcha" class="modal-action modal-close waves-effect waves-green btn-flat">ok</a>
         </div>
     </div>
 
     <div class="form_wrapper scale-transition" id="reset">
-        <label>Email:</label> <input onblur="validateEmail(this)" class="email" name="email" type="text">
+        <label>Email:</label> <input onblur="validateEmail(this)" class="email" name="email" type="text" maxlength="255">
         <nav>
             <button class="waves-effect waves-light btn" onclick="resetPassword()">
                 <i class="material-icons left">check</i>change</button>
@@ -79,8 +84,11 @@
             <div class="indeterminate"></div>
         </div>
     </div>
-
 </div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/js/materialize.min.js"></script>
+<script src="<c:url value="/resources/js/authorization.js" />"></script>
+<script src="<c:url value="/resources/js/validation.js" />"></script>
 
 </body>
 </html>

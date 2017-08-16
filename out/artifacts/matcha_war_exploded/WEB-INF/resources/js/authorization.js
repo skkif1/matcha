@@ -103,13 +103,10 @@ function resetPassword()
             loader.css("visibility", "hiden");
             if (json.status === "OK")
             {
-
+                Materialize.toast("We send you email with fether instructions", 7000);
             }else
             {
-                for (var i = 0; i < json.data.length; i++)
-                {
-                    Materialize.toast(json.data[i], 7000);
-                }
+                Materialize.toast("something go wrong check your email", 7000);
             }
         }
     });
