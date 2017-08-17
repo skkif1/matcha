@@ -10,12 +10,18 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/css/materialize.css">
     <link href="<c:url value="/resources/css/userInformation.css" />" rel="stylesheet">
+    <link href="<c:url value="/resources/css/sideBar.css" />" rel="stylesheet">
+    <link href="<c:url value="/resources/css/header.css" />" rel="stylesheet">
 
 </head>
 <body>
+
+<%@include file="header.jsp" %>
+
 <div class="content">
 
-    <div class="user_navigation">
+    <div class="side_bar">
+        <%@include file="side_bar.jsp" %>
     </div>
 
     <div class="info scale-transition">
@@ -31,13 +37,14 @@
             <div class="input-field col s6">
                 <i class="material-icons prefix">location_on</i>
                 <label>country:</label>
-                <input maxlength="32" class="input_info"  value="${information.country}" id="country" name="country"
+                <input maxlength="32" class="input_info" value="${information.country}" id="country" name="country"
                        type="text" onblur="checkState(this)" placeholder=""/>
             </div>
             <div class="input-field col s6">
                 <i class="material-icons prefix">location_on</i>
                 <label>state:</label>
-                <input maxlength="32" class="input_info" id="state" name="state" type="text" value="${information.state}"
+                <input maxlength="32" class="input_info" id="state" name="state" type="text"
+                       value="${information.state}"
                        onblur="checkState(this)" placeholder=""/>
             </div>
             <div class="location_buttoon">
@@ -100,18 +107,26 @@
             <button id="edit_info" class="waves-effect waves-light btn" onclick="changeUserInfo()">save</button>
         </div>
     </div>
-
     <div class="user_photo scale-transition">
+
         <div class="carousel">
 
-            <a class="carousel-item"  href="#one!"><img class="standart" src="http://localhost:8081/cdn/general/User.png"></a>
-            <a class="carousel-item " href="#two!"><img class="standart" src="http://localhost:8081/cdn/general/User.png"></a>
-                <a class="carousel-item " href="#three!"><img class="standart" src="http://localhost:8081/cdn/general/User.png"></a>
-                <a class="carousel-item " href="#four!"><img class="standart" src="http://localhost:8081/cdn/general/User.png"></a>
-                <a class="carousel-item " href="#five!"><img class="standart" src="http://localhost:8081/cdn/general/User.png"></a>
+            <a class="carousel-item" href="#one!"><img class="standart"
+                                                       src="http://localhost:8081/cdn/general/User.png"></a>
+            <a class="carousel-item " href="#two!"><img class="standart"
+                                                        src="http://localhost:8081/cdn/general/User.png"></a>
+            <a class="carousel-item " href="#three!"><img class="standart"
+                                                          src="http://localhost:8081/cdn/general/User.png"></a>
+            <a class="carousel-item " href="#four!"><img class="standart"
+                                                         src="http://localhost:8081/cdn/general/User.png"></a>
+            <a class="carousel-item " href="#five!"><img class="standart"
+                                                         src="http://localhost:8081/cdn/general/User.png"></a>
         </div>
-        <button onclick="dellPhoto()" class="dell_button btn-floating btn-large waves-effect waves-light scale-transition"><i class="material-icons">clear</i></button>
-        <button onclick="setAvatar()" class="set_button btn-floating btn-large waves-effect waves-light scale-transition"><i class="material-icons">done</i></button>
+
+        <nav>
+            <button onclick="dellPhoto()" class="dell_button  waves-effect waves-light btn">remove photo</button>
+            <button onclick="setAvatar()" class="set_button  waves-effect waves-light btn">set avatar</button>
+        </nav>
 
         <div class="file-field input-field">
             <div class="btn">
@@ -122,9 +137,10 @@
                 <input class="file-path validate" type="text" id="file-path">
             </div>
         </div>
-        <button class="waves-effect waves-light btn" onclick="uploadPhoto()">save</button>
-    </div>
 
+        <button class="waves-effect waves-light btn" onclick="uploadPhoto()">save</button>
+
+    </div>
     <div class="user scale-transition">
 
         <div class="input-field col s6" id="edit_email">
@@ -142,21 +158,22 @@
             <input class="input_info" value="${user.lastName}" name="lastName" type="text"/>
         </div>
 
+
         <button class="waves-effect waves-light btn" onclick="changeUserData()">save</button>
-    </div>
-    <div id="demo">
 
+    </div>
+
+
+    <div class="nav_bar">
+        <div class="collection">
+            <a onclick="changeCategory(this)" class="collection-item  active">general</a>
+            <a onclick="changeCategory(this)" class="collection-item">photo</a>
+            <a onclick="changeCategory(this)" class="collection-item">user</a>
+        </div>
     </div>
 
 </div>
 
-<div class="nav_bar">
-    <div class="collection">
-        <a onclick="changeCategory(this)" class="collection-item  active">general</a>
-        <a onclick="changeCategory(this)" class="collection-item">photo</a>
-        <a onclick="changeCategory(this)" class="collection-item">user</a>
-    </div>
-</div>
 
 </body>
 <script src="//code.jquery.com/jquery-2.1.0.min.js"></script>

@@ -1,8 +1,5 @@
 package com.matcha.model.messageBroker;
 
-import com.matcha.entity.Message;
-import com.matcha.entity.PageContext;
-import com.matcha.entity.User;
 import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketSession;
 

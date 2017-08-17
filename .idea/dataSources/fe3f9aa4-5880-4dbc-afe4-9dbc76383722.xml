@@ -15,7 +15,7 @@
     <table id="9" parent="2" name="interests"/>
     <table id="10" parent="2" name="interests_list"/>
     <table id="11" parent="2" name="like"/>
-    <table id="12" parent="2" name="matched"/>
+    <table id="12" parent="2" name="matches"/>
     <table id="13" parent="2" name="message"/>
     <table id="14" parent="2" name="user"/>
     <table id="15" parent="2" name="user_information"/>

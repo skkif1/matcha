@@ -8,6 +8,8 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/css/materialize.css">
     <link href="<c:url value="/resources/css/history.css"/>" rel="stylesheet">
+    <link href="<c:url value="/resources/css/sideBar.css" />" rel="stylesheet">
+    <link href="<c:url value="/resources/css/header.css" />" rel="stylesheet">
 </head>
 <body>
 

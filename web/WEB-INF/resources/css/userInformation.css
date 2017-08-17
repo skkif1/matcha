@@ -11,13 +11,20 @@ body
     align-items: center;
 }
 
+
 .content
 {
     width: 920px;
     display: flex;
-    justify-content:center;
+    margin-top: 10px;
+    justify-content:space-between;
 }
 
+.scale-transition
+{
+    margin: 0 10px;
+    flex:2;
+}
 
 
 .info
@@ -30,6 +37,7 @@ body
 {
     text-align: center;
 }
+
 .sex_wrapper
 {
     display: flex;
@@ -49,6 +57,25 @@ body
     display: none;
 }
 
+.user_photo nav
+{
+    all: initial;
+    display: flex;
+    justify-content: space-between;
+}
+
+.user_photo nav button
+{
+    margin: 5px;
+}
+
+
+.user_photo nav button i
+{
+    display: block;
+    margin: 5px;
+}
+
 .user
 {
     display: none;
@@ -64,7 +91,6 @@ body
 {
     width:190px;
     cursor: pointer;
-    margin-left: 30px;
     text-align: center;
 }
 
@@ -87,22 +113,3 @@ span
 {
     color: #9e9e9e;
 }
-
-.dell_button
-{
-    top: 39px;
-    position: absolute;
-    left: 45%;
-}
-
-.set_button
-{
-    position: absolute;
-    left: 45%;
-    top: 305px;
-}
-
-
-
-
-

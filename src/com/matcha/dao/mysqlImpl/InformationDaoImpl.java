@@ -279,7 +279,7 @@ public class InformationDaoImpl implements InformationDao {
 
     @Override
     public Boolean checkIfMatchedWith(Integer thisUserId, Integer userId) {
-        String sql = "SELECT EXISTS(SELECT * FROM matched WHERE (user1_id = ? AND  user2_id = ?) OR" +
+        String sql = "SELECT EXISTS(SELECT * FROM matches WHERE (user1_id = ? AND  user2_id = ?) OR" +
                 "(user1_id = ? AND user2_id = ?))";
         Integer res = template.queryForObject(sql, new Object[]{thisUserId, userId, userId, thisUserId}, Integer.class);
         return res > 0;
@@ -289,8 +289,8 @@ public class InformationDaoImpl implements InformationDao {
     public List<User> getUserConnections(Integer userId) {
         List<User> connectedUsers = new ArrayList<>(20);
         String sql = "SELECT * FROM user" +
-                " INNER JOIN matched" +
-                " ON (user.id = matched.user1_id OR user.id = matched.user2_id) AND user.id != ?" +
+                " INNER JOIN matches " +
+                " ON (user.id = matches.user1_id OR user.id = matches.user2_id) AND user.id != ?" +
                 " LIMIT 20";
 
         template.query(sql, (ResultSet rs) -> {
@@ -309,7 +309,7 @@ public class InformationDaoImpl implements InformationDao {
     @Override
     public void requisterMathedConnection(Integer thisUserId, Integer userId) {
 
-        String sql = "INSERT INTO matched (user1_id, user2_id) VALUES (?,?)";
+        String sql = "INSERT INTO matches (user1_id, user2_id) VALUES (?,?)";
         template.update(sql, thisUserId, userId);
     }
 
