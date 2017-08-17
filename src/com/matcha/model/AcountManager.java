@@ -15,6 +15,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
+
 import com.matcha.model.DistanceCalculator;
 
 @Component
@@ -33,17 +34,14 @@ public class AcountManager {
         this.distanceCalculator = new DistanceCalculator();
     }
 
-    public JsonResponseWrapper likeUser(Integer userId, HttpSession session)
-    {
+    public JsonResponseWrapper likeUser(Integer userId, HttpSession session) {
         JsonResponseWrapper json = new JsonResponseWrapper();
-        User author = (User)session.getAttribute("user");
-        if (infoDao.likeUser(userId, author.getId()))
-        {
+        User author = (User) session.getAttribute("user");
+        if (infoDao.likeUser(userId, author.getId())) {
             Notification notification = new Notification();
             User user = userDao.getUserById(userId);
 
-            if (infoDao.checkIfUserLiked(author.getId(), userId))
-            {
+            if (infoDao.checkIfUserLiked(author.getId(), userId)) {
                 infoDao.requisterMathedConnection(author.getId(), userId);
                 notification.setCategory("matched");
                 notification.setBody("now you are matched with " + user.getFirstName() + " " + user.getLastName());
@@ -53,14 +51,12 @@ public class AcountManager {
             notification.setCategory("like");
             json.setStatus("OK");
             messageBroker.consumeMessage(new TextMessage(notification.toString()), userId.toString(), TextSocketHandler.USER_ENDPOINT);
-        }
-        else
+        } else
             json.setStatus("Error");
         return json;
     }
 
-    public JsonResponseWrapper dislikeUser(Integer userId, HttpSession session)
-    {
+    public JsonResponseWrapper dislikeUser(Integer userId, HttpSession session) {
         JsonResponseWrapper json = new JsonResponseWrapper();
         User author = (User) session.getAttribute(User.USER_ATTRIBUTE_NAME);
         infoDao.removeLike(author.getId(), userId);
@@ -72,23 +68,19 @@ public class AcountManager {
         return json;
     }
 
-    public JsonResponseWrapper addToBlackList(Integer userId, HttpSession session)
-    {
+    public JsonResponseWrapper addToBlackList(Integer userId, HttpSession session) {
         JsonResponseWrapper json = new JsonResponseWrapper();
-        User author = (User)session.getAttribute("user");
+        User author = (User) session.getAttribute("user");
         infoDao.addUserToBlackList(author.getId(), userId);
         json.setStatus("OK");
         return json;
     }
 
-    public Boolean requisterVisit(Integer visitorId, Integer userId)
-    {
+    public Boolean requisterVisit(Integer visitorId, Integer userId) {
         if (infoDao.getUserInfoByUserId(userId) == null)
             return false;
-        else
-        {
-            if (infoDao.saveVisit(visitorId, userId))
-            {
+        else {
+            if (infoDao.saveVisit(visitorId, userId)) {
                 Notification notification = new Notification();
                 User user = userDao.getUserById(userId);
                 notification.setCategory("visit");
@@ -99,8 +91,7 @@ public class AcountManager {
         return true;
     }
 
-    public HistoryPageContext getHistoryPageContext(HttpSession session)
-    {
+    public HistoryPageContext getHistoryPageContext(HttpSession session) {
         User user = (User) session.getAttribute(User.USER_ATTRIBUTE_NAME);
         HistoryPageContext ctx = new HistoryPageContext();
         List<User> visitors = infoDao.getUserVisitors(user.getId());
@@ -112,9 +103,17 @@ public class AcountManager {
         return ctx;
     }
 
-
-    public List<User> searchForUsers(SearchRequest searchParams, HttpSession session)
+    public Boolean checkIfUserEligableForSearch(User user)
     {
+        UserInformation info = infoDao.getUserInfoByUserId(user.getId());
+        if (info == null || info.getSex() == null || info.getAvatar() == null)
+            return false;
+        return true;
+    }
+
+
+
+    public List<User> searchForUsers(SearchRequest searchParams, HttpSession session) {
         String searchedSex;
         User userWhoSearch = (User) session.getAttribute(User.USER_ATTRIBUTE_NAME);
 
@@ -125,32 +124,29 @@ public class AcountManager {
 
         foundUsers = foundUsers.stream().filter(user ->
         {
-            if(filterSearchResult(searchParams, userWhoSearch, user))
-                 return true;
+            if (filterSearchResult(searchParams, userWhoSearch, user))
+                return true;
             return false;
         }).collect(Collectors.toList());
         session.setAttribute("searchResult", foundUsers);
         return foundUsers;
     }
 
-    public List<User> searchForUsers(HttpSession session)
-    {
+    public List<User> searchForUsers(HttpSession session) {
         String sex;
         Integer minAge;
         Integer maxAge;
         User user = (User) session.getAttribute(User.USER_ATTRIBUTE_NAME);
 
-        if (user.getInformation().getSex().equals("man"))
-        {
+        if (user.getInformation().getSex().equals("man")) {
             minAge = user.getInformation().getAge() - 10;
             maxAge = user.getInformation().getAge() + 2;
-        }else
-        {
+        } else {
             minAge = user.getInformation().getAge();
             maxAge = user.getInformation().getAge() + 10;
         }
 
-        List<User>foundUsers = infoDao.searchUsersWith(getSearchedSex(user),
+        List<User> foundUsers = infoDao.searchUsersWith(getSearchedSex(user),
                 user.getInformation().getSexPref(), minAge, maxAge, 0);
         foundUsers = sortByLocation(foundUsers, user);
 
@@ -158,14 +154,13 @@ public class AcountManager {
     }
 
 
-        private boolean filterSearchResult(SearchRequest searchRequest, User userWhoSearch, User resultUser)
-    {
+    private boolean filterSearchResult(SearchRequest searchRequest, User userWhoSearch, User resultUser) {
         DistanceCalculator.Point userWhoSearchLocation = new DistanceCalculator.Point(searchRequest.getLatitude(), searchRequest.getLongitude());
         DistanceCalculator.Point userLocation = new DistanceCalculator.Point(resultUser.getInformation().getLatitude(), resultUser.getInformation().getLongitude());
 
         if (searchRequest.getInterests().size() != 0)
-        if (Collections.disjoint(resultUser.getInformation().getInterests(), searchRequest.getInterests()))
-            return false;
+            if (Collections.disjoint(resultUser.getInformation().getInterests(), searchRequest.getInterests()))
+                return false;
         if (resultUser.getId() == userWhoSearch.getId())
             return false;
         if (distanceCalculator.calculateDistanceTo(userWhoSearchLocation, userLocation) <= searchRequest.getLocationRange())
@@ -173,10 +168,9 @@ public class AcountManager {
         return true;
     }
 
-    private String getSearchedSex(User user)
-    {
+    private String getSearchedSex(User user) {
         String sex = null;
-        if (user.getInformation().getSex().equals("")|| user.getInformation().getSexPref().equals(""))
+        if (user.getInformation().getSex().equals("") || user.getInformation().getSexPref().equals(""))
             throw new IllegalArgumentException("sex or sexPrferences are not specified");
         if (user.getInformation().getSexPref().equals("'homosexual'"))
             sex = user.getInformation().getSex();
@@ -187,8 +181,7 @@ public class AcountManager {
         return sex;
     }
 
-    private List<User> sortByLocation(List<User> users, User userWhoSearch)
-    {
+    private List<User> sortByLocation(List<User> users, User userWhoSearch) {
         DistanceCalculator.Point userWhoSearchLocation = new DistanceCalculator.Point(userWhoSearch.getInformation().getLatitude(),
                 userWhoSearch.getInformation().getLongitude());
 
@@ -199,7 +192,7 @@ public class AcountManager {
             DistanceCalculator.Point user2Location = new DistanceCalculator.Point(user2.getInformation().getLatitude(),
                     user2.getInformation().getLongitude());
             return (int) (distanceCalculator.calculateDistanceTo(userWhoSearchLocation, user1Location) -
-                                distanceCalculator.calculateDistanceTo(userWhoSearchLocation, user2Location));
+                    distanceCalculator.calculateDistanceTo(userWhoSearchLocation, user2Location));
         }).collect(Collectors.toList());
         return users;
     }

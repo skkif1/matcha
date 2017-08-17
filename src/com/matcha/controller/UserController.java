@@ -1,21 +1,15 @@
 package com.matcha.controller;
 
-import com.matcha.entity.Message;
-import com.matcha.entity.PageContext;
 import com.matcha.entity.User;
-import com.matcha.model.TextSocketHandler;
-import com.matcha.model.messageBroker.ApplicationMessageBroker;
+import com.matcha.entity.UserPageContext;
+import com.matcha.model.AcountManager;
 import com.matcha.model.messageBroker.ImessageBroker;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.socket.TextMessage;
-
 import javax.servlet.http.HttpSession;
 
 @Controller
@@ -23,11 +17,12 @@ import javax.servlet.http.HttpSession;
 public class UserController {
 
     private ImessageBroker broker;
-
+    private AcountManager acountManager;
 
     @Autowired
-    public UserController(ImessageBroker broker) {
+    public UserController(ImessageBroker broker, AcountManager infoManager) {
         this.broker = broker;
+        this.acountManager = infoManager;
     }
 
     @RequestMapping( method = RequestMethod.GET)
@@ -40,12 +35,14 @@ public class UserController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/test", method = RequestMethod.POST, produces = "application/json")
-    @ResponseBody
-    public String test(HttpSession session)
+    @RequestMapping(value = "/context", method = RequestMethod.POST)
+    public @ResponseBody UserPageContext getUserPageContext(HttpSession session)
     {
-        broker.consumeMessage(new TextMessage("Hello world!!"), ((User)session.getAttribute("user")).getId().toString(), TextSocketHandler.USER_ENDPOINT);
-        return "test";
+        UserPageContext ctx = new UserPageContext();
+        User user = (User) session.getAttribute(User.USER_ATTRIBUTE_NAME);
+        ctx.setPermissionForSearch(acountManager.checkIfUserEligableForSearch(user));
+        return ctx;
     }
+
 
 }

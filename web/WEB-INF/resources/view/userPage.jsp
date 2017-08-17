@@ -9,6 +9,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/css/materialize.css">
     <link href="<c:url value="/resources/css/userPage.css"/>" rel="stylesheet">
+    <link href="<c:url value="/resources/css/sideBar.css" />" rel="stylesheet">
 </head>
 <body>
 
@@ -26,27 +27,12 @@
         </div>
 
         <div class="rate">
-            <span>rate:</span><div class="info" id="rate">95</div>
+            <span>rate:</span><div class="info" id="rate"></div>
         </div>
-
-
-        <%--<div class="recomendations">--%>
-            <%--<span>our recomendations</span>--%>
-            <%--<ul class="collection">--%>
-                <%--<li class="collection-item avatar">--%>
-                    <%--<img src="images/yuna.jpg" alt="" class="circle">--%>
-                    <%--<span class="title">Title</span>--%>
-                    <%--<p>First Line <br>--%>
-                        <%--Second Line--%>
-                    <%--</p>--%>
-                    <%--<a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>--%>
-                <%--</li>--%>
-            <%--</ul>--%>
-        <%--</div>--%>
     </div>
 
     <div class="user_info">
-        <div class="user_name"><h5>Alex Cross</h5><div class="status">online</div></div>
+        <div class="user_name"><h5></h5><div class="status">online</div></div>
 
             <div class="photo">
                 <div class="carousel">
@@ -90,11 +76,18 @@
     </div>
 </div>
 
+    <script src="//code.jquery.com/jquery-2.1.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/js/materialize.min.js"></script>
+    <script src="<c:url value="/resources/js/socket.js" />"></script>
+    <script src="<c:url value="/resources/js/userPage.js" />"></script>
 
-
-
+    <script>
+        $(document).ready(function () {
+            connect('ws://localhost:8080/matcha/user/', function(data)
+            {
+                renderNotification(data);
+            })
+        });
+    </script>
 </body>
-<script src="//code.jquery.com/jquery-2.1.0.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/js/materialize.min.js"></script>
-<script src="<c:url value="/resources/js/userPage.js" />"></script>
 </html>

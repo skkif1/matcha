@@ -10,13 +10,19 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/css/materialize.css">
     <link href="<c:url value="/resources/css/userInformation.css" />" rel="stylesheet">
+    <link href="<c:url value="/resources/css/sideBar.css" />" rel="stylesheet">
+    <link href="<c:url value="/resources/css/header.css" />" rel="stylesheet">
 
 </head>
 <body>
+
+<%@include file="header.jsp" %>
+
 <div class="content">
 
-    <div class="user_navigation">
-    </div>
+        <div class="side_bar">
+            <%@include file="side_bar.jsp" %>
+        </div>
 
     <div class="info scale-transition">
         <div id="user_info">
@@ -100,6 +106,7 @@
             <button id="edit_info" class="waves-effect waves-light btn" onclick="changeUserInfo()">save</button>
         </div>
     </div>
+</div>
 
     <div class="user_photo scale-transition">
         <div class="carousel">
@@ -144,10 +151,6 @@
 
         <button class="waves-effect waves-light btn" onclick="changeUserData()">save</button>
     </div>
-    <div id="demo">
-
-    </div>
-
 </div>
 
 <div class="nav_bar">

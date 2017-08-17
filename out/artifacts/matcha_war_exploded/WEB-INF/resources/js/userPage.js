@@ -1,7 +1,11 @@
 var home = "http://localhost:8080/matcha";
 
+var userPageContext;
+
+
 $(document).ready(function(){
     buildPage();
+    buildUserPageContext();
     $('.carousel').carousel();
 });
 
@@ -35,7 +39,7 @@ function buildPage() {
                         acountContext = json.data[1];
                         json.data = json.data[0];
                     }
-                    for (var i = json.data.interests.length - 1; i >=0;  i--)
+                    for (var i = json.data.interests.length - 1; i >= 0;  i--)
                     {
                         chipsHolder.prepend('<div class="chip"> <img src="http://localhost:8081/cdn/general/User.png">' +
                             json.data.interests[i] + '</div>');
@@ -59,6 +63,32 @@ function buildPage() {
         }
     );
 }
+
+
+function buildUserPageContext()
+{
+    $.ajax(
+        {
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            type: "POST",
+            dataType: "json",
+            url: home + '/context',
+            success: function (context) {
+                userPageContext = context;
+                if (context.permissionForSearch === true)
+                {
+
+                }else {
+                    Materialize.toast("You need fill minimum requaired information about yourself.\n" +
+                        "To have full access for application", 7000)
+                }
+            }
+        })
+}
+
 
 function buildAcountPage(context)
 {

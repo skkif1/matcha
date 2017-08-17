@@ -1,8 +1,6 @@
 package com.matcha.controller;
 
 import com.matcha.entity.HistoryPageContext;
-import com.matcha.entity.PageContext;
-import com.matcha.entity.User;
 import com.matcha.model.AcountManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

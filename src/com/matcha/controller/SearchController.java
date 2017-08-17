@@ -26,15 +26,23 @@ public class SearchController {
     }
 
     @RequestMapping(method = RequestMethod.GET)
-    public String getSearch()
+    public String getSearch(HttpSession session)
     {
-        return "search";
+        User user = (User) session.getAttribute(User.USER_ATTRIBUTE_NAME);
+        if (acountManager.checkIfUserEligableForSearch(user))
+            return "search";
+        else
+            return "redirect:/";
     }
 
     @RequestMapping(value = "/suggestions", method = RequestMethod.GET)
-    public String getSuggetstions()
+    public String getSuggetstions(HttpSession session)
     {
-        return "suggestions";
+        User user = (User) session.getAttribute(User.USER_ATTRIBUTE_NAME);
+        if (acountManager.checkIfUserEligableForSearch(user))
+            return "suggestions";
+        else
+            return "redirect:/";
     }
 
     @RequestMapping(value = "/searchForUsers", method = RequestMethod.POST)
