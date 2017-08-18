@@ -8,6 +8,8 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/css/materialize.css">
     <link href="<c:url value="/resources/css/history.css"/>" rel="stylesheet">
+    <link href="<c:url value="/resources/css/sideBar.css" />" rel="stylesheet">
+    <link href="<c:url value="/resources/css/header.css" />" rel="stylesheet">
 </head>
 <body>
 
@@ -29,11 +31,11 @@
                 <div class="collapsible-header"><span class="new badge">1</span><i
                         class="material-icons">local_activity</i>likes
                 </div>
-                <div class="collapsible-body" id="likes"><p>Lorem ipsum dolor sit amet.</p></div>
+                <div class="collapsible-body" id="likes"></div>
             </li>
             <li>
                 <div class="collapsible-header" ><span class="new badge">1</span><i class="material-icons">done_all</i>last connections</div>
-                <div class="collapsible-body" id="connections"><p>Lorem ipsum dolor sit amet.</p></div>
+                <div class="collapsible-body" id="connections"></div>
             </li>
         </ul>
     </div>

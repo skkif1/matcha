@@ -31,11 +31,11 @@
                 <div class="collapsible-header"><span class="new badge">1</span><i
                         class="material-icons">local_activity</i>likes
                 </div>
-                <div class="collapsible-body" id="likes"><p>Lorem ipsum dolor sit amet.</p></div>
+                <div class="collapsible-body" id="likes"></div>
             </li>
             <li>
                 <div class="collapsible-header" ><span class="new badge">1</span><i class="material-icons">done_all</i>last connections</div>
-                <div class="collapsible-body" id="connections"><p>Lorem ipsum dolor sit amet.</p></div>
+                <div class="collapsible-body" id="connections"></div>
             </li>
         </ul>
     </div>

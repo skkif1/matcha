@@ -2,7 +2,7 @@
 function validateUserName(input)
 {
     input = $(input);
-    req = new RegExp("^[a-z0-9_-]{3,32}$");
+    req = new RegExp("^[a-zA-Z0-9_-]{3,32}$");
     if (!req.test(input.val()))
     {
 
@@ -77,4 +77,19 @@ function removeToast()
         $('.toast').each(function () {
             this.remove();
         });
+}
+
+function validateTags(tag)
+{
+    tag = $(tag);
+    req = new RegExp("^[a-zA-Z0-9_-]{3,32}$");
+    if (!req.test(tag.val()))
+    {
+
+        removeToast();
+        Materialize.toast('min length of #tag is 3 char and max 32 char <br/> and contain only alphabetical letters, disgits, ' +
+            'and "_" , "-"', 7000);
+        return false;
+    }
+    return true;
 }

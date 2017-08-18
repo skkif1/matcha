@@ -8,8 +8,10 @@
     <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/css/materialize.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="<c:url value="/resources/css/userPage.css"/>" rel="stylesheet">
     <link href="<c:url value="/resources/css/sideBar.css" />" rel="stylesheet">
+    <link href="<c:url value="/resources/css/header.css" />" rel="stylesheet">
 </head>
 <body>
 
@@ -27,7 +29,7 @@
         </div>
 
         <div class="rate">
-            <span>rate:</span><div class="info" id="rate"></div>
+            <span>rate: </span><img src="<c:url value="/resources/img/grade_do.svg"/>"><div class="info" id="rate"></div>
         </div>
     </div>
 

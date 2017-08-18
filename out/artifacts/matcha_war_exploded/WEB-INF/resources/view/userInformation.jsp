@@ -7,11 +7,13 @@
 
     <title>Welcome to matcha</title>
     <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; minimum-scale=1.0; user-scalable=no; target-densityDpi=device-dpi" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/css/materialize.css">
     <link href="<c:url value="/resources/css/userInformation.css" />" rel="stylesheet">
     <link href="<c:url value="/resources/css/sideBar.css" />" rel="stylesheet">
     <link href="<c:url value="/resources/css/header.css" />" rel="stylesheet">
+
 
 </head>
 <body>
@@ -20,9 +22,8 @@
 
 <div class="content">
 
-    <div class="side_bar">
         <%@include file="side_bar.jsp" %>
-    </div>
+
 
     <div class="info scale-transition">
         <div id="user_info">
@@ -30,21 +31,21 @@
                 <i class="material-icons prefix">account_circle</i>
 
                 <label>age:</label>
-                <input maxlength="3" class="input_info" value="${information.age}" name="age" type="text"
+                <input maxlength="3" class="input_info" id="age" value="" name="age" type="text"
                        placeholder=""/>
             </div>
 
             <div class="input-field col s6">
                 <i class="material-icons prefix">location_on</i>
                 <label>country:</label>
-                <input maxlength="32" class="input_info" value="${information.country}" id="country" name="country"
+                <input maxlength="32" class="input_info" value="" id="country" name="country"
                        type="text" onblur="checkState(this)" placeholder=""/>
             </div>
             <div class="input-field col s6">
                 <i class="material-icons prefix">location_on</i>
                 <label>state:</label>
                 <input maxlength="32" class="input_info" id="state" name="state" type="text"
-                       value="${information.state}"
+                       value=""
                        onblur="checkState(this)" placeholder=""/>
             </div>
             <div class="location_buttoon">
@@ -145,25 +146,23 @@
 
         <div class="input-field col s6" id="edit_email">
             <label>email: </label>
-            <input class="input_info" value="${user.email}" name="email" type="text"/>
+            <input class="input_info" value="${user.email}" name="email" type="text" maxlength="255"/>
         </div>
 
         <div class="input-field col s6" id="edit_name">
             <label>first name: </label>
-            <input class="input_info" value="${user.firstName}" name="firstName" type="text"/>
+            <input class="input_info" value="${user.firstName}" name="firstName" type="text" maxlength="32"/>
         </div>
 
         <div class="input-field col s6" id="edit_lastName">
             <label>last name: </label>
-            <input class="input_info" value="${user.lastName}" name="lastName" type="text"/>
+            <input class="input_info" value="${user.lastName}" name="lastName" type="text" maxlength="32"/>
         </div>
 
 
         <button class="waves-effect waves-light btn" onclick="changeUserData()">save</button>
 
     </div>
-
-
     <div class="nav_bar">
         <div class="collection">
             <a onclick="changeCategory(this)" class="collection-item  active">general</a>
@@ -177,6 +176,8 @@
 
 </body>
 <script src="//code.jquery.com/jquery-2.1.0.min.js"></script>
+<script src="//js.maxmind.com/js/apis/geoip2/v2.1/geoip2.js" type="text/javascript"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/js/materialize.min.js"></script>
 <script src="<c:url value="/resources/js/userInformation.js" />"></script>
+<script src="<c:url value="/resources/js/validation.js" />"></script>
 </html>

@@ -48,13 +48,27 @@ body
 {
     display: flex;
     justify-content: space-between;
+    align-items: stretch;
     margin-top: 10px;
-    background: white;
+    padding: 10px 0;
+    background: rgb(42, 185, 171);
+    color: white;
+    border-radius: 2px;
 }
 
 .rate .info
 {
     margin-right: 10px;
+}
+
+.rate span
+{
+    color: white;
+}
+
+.rate img
+{
+    align-self: center;
 }
 
 

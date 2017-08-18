@@ -30,3 +30,21 @@ body
 {
     text-decoration-color: grey;
 }
+
+
+@media only screen and (max-width: 920px) {
+
+    .content
+    {
+        width: 100%;
+    }
+
+    .menu
+    {
+        position: fixed;
+        margin-top: -10px;
+        width: 100%;
+        z-index: 10;
+        display: none;
+    }
+}
