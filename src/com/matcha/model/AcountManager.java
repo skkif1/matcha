@@ -4,6 +4,7 @@ import com.matcha.dao.InformationDao;
 import com.matcha.dao.UserDao;
 import com.matcha.entity.*;
 import com.matcha.model.messageBroker.ImessageBroker;
+import com.sun.tools.internal.xjc.reader.xmlschema.bindinfo.BIConversion;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.socket.TextMessage;
@@ -91,6 +92,7 @@ public class AcountManager {
         return true;
     }
 
+
     public HistoryPageContext getHistoryPageContext(HttpSession session) {
         User user = (User) session.getAttribute(User.USER_ATTRIBUTE_NAME);
         HistoryPageContext ctx = new HistoryPageContext();
@@ -121,7 +123,6 @@ public class AcountManager {
         searchedSex = getSearchedSex(userWhoSearch);
         List<User> foundUsers = infoDao.searchUsersWith(searchedSex, userWhoSearch.getInformation().getSexPref(),
                 searchParams.getMinAge(), searchParams.getMaxAge(), searchParams.getRate());
-
         foundUsers = foundUsers.stream().filter(user ->
         {
             if (filterSearchResult(searchParams, userWhoSearch, user))
@@ -135,22 +136,53 @@ public class AcountManager {
     public List<User> searchForUsers(HttpSession session) {
         Integer minAge;
         Integer maxAge;
+        Integer rate;
         User user = (User) session.getAttribute(User.USER_ATTRIBUTE_NAME);
 
         if (user.getInformation().getSex().equals("man")) {
             minAge = user.getInformation().getAge() - 10;
             maxAge = user.getInformation().getAge() + 2;
+            rate = user.getInformation().getRate() - 5;
         } else {
             minAge = user.getInformation().getAge();
             maxAge = user.getInformation().getAge() + 10;
+            rate = user.getInformation().getRate() - 1;
         }
 
         List<User> foundUsers = infoDao.searchUsersWith(getSearchedSex(user),
-                user.getInformation().getSexPref(), minAge, maxAge, 0);
-        System.out.println(foundUsers);
-        foundUsers = sortByLocation(foundUsers, user);
+                user.getInformation().getSexPref(), minAge, maxAge, rate);
 
+        foundUsers = foundUsers.stream().filter(user1 ->
+        {
+            if (infoDao.checkIfUserVisit(user.getId(), user1.getId()) || infoDao.checkIfUserVisit(user1.getId(), user.getId()))
+                return false;
+            return true;
+        }).collect(Collectors.toList());
         return foundUsers;
+    }
+
+    public List<User> sortSuggestedUsers(List<User> suggestedUsers, User userWhoSearch, String sortType)
+    {
+        List<User> res;
+
+        switch (sortType)
+        {
+            case "age":
+                res = UserSearchFiltrator.sortByAge(suggestedUsers);
+                break;
+            case "location":
+                res = UserSearchFiltrator.sortByLocation(suggestedUsers, userWhoSearch);
+                break;
+            case "rating":
+                res = UserSearchFiltrator.sortByRate(suggestedUsers);
+                break;
+            case "interests":
+                res = UserSearchFiltrator.sortByTags(suggestedUsers, userWhoSearch);
+                break;
+            default:
+                    res = suggestedUsers;
+        }
+        return res;
     }
 
     private boolean filterSearchResult(SearchRequest searchRequest, User userWhoSearch, User resultUser) {
@@ -162,7 +194,7 @@ public class AcountManager {
                 return false;
         if (resultUser.getId() == userWhoSearch.getId())
             return false;
-        if (distanceCalculator.calculateDistanceTo(userWhoSearchLocation, userLocation) <= searchRequest.getLocationRange())
+        if (distanceCalculator.calculateDistanceTo(userWhoSearchLocation, userLocation) < searchRequest.getLocationRange())
             return false;
         return true;
     }
@@ -179,6 +211,7 @@ public class AcountManager {
             sex = "'man, woman'";
         return sex;
     }
+
 
     private List<User> sortByLocation(List<User> users, User userWhoSearch) {
         DistanceCalculator.Point userWhoSearchLocation = new DistanceCalculator.Point(userWhoSearch.getInformation().getLatitude(),

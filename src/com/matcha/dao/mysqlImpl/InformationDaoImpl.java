@@ -140,6 +140,7 @@ public class InformationDaoImpl implements InformationDao {
         template.update(sql, path, userId);
     }
 
+
     @Override
     public String getPhotoById(Integer photoId) {
         String sql = "SELECT path FROM user_photo WHERE id = ?";
@@ -221,6 +222,12 @@ public class InformationDaoImpl implements InformationDao {
             return true;
         }
         return false;
+    }
+
+    @Override
+    public Boolean checkIfUserVisit(Integer visitorId, Integer userId) {
+        String sql = "SELECT count(*) FROM visits WHERE (visitor_id = ? AND user_id = ?)";
+        return template.queryForObject(sql, new Integer[] {visitorId, userId}, Integer.class) > 0;
     }
 
     @Override

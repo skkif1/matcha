@@ -86,6 +86,7 @@ public class UserInformationManager {
         JsonResponseWrapper json = new JsonResponseWrapper();
         User user = (User) session.getAttribute("user");
         informationDao.deletePhoto(path, user.getId());
+        informationDao.saveAvatar(null, user.getId());
         json.setStatus("OK");
         return json;
     }

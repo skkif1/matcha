@@ -26,10 +26,10 @@
             <nav>
                 <div class="nav-wrapper sort">
                     <ul class="left hide-on-med-and-down sort_creeterea">
-                        <li><a href="">age</a></li>
-                        <li><a href="">location</a></li>
-                        <li><a href="">rating</a></li>
-                        <li><a href="">interests</a></li>
+                        <li><a onclick="sortUsersLsit(event)"  name="age">age</a></li>
+                        <li><a onclick="sortUsersLsit(event)"  name="location">location</a></li>
+                        <li><a onclick="sortUsersLsit(event)"  name="rating">rating</a></li>
+                        <li><a onclick="sortUsersLsit(event)"  name="interests">interests</a></li>
                     </ul>
                 </div>
             </nav>

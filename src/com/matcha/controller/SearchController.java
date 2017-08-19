@@ -6,10 +6,7 @@ import com.matcha.model.AcountManager;
 import com.matcha.model.JsonResponseWrapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
@@ -61,8 +58,25 @@ public class SearchController {
     {
         JsonResponseWrapper json = new JsonResponseWrapper();
         List<User> suggestedUsers = acountManager.searchForUsers(session);
+        session.setAttribute("suggested", suggestedUsers);
         json.setData(suggestedUsers);
         json.setStatus("OK");
         return json;
     }
+
+    @RequestMapping(value = "/sort/{sortType}", method = RequestMethod.POST)
+    public @ResponseBody JsonResponseWrapper sortSuggestions(@PathVariable("sortType") String sortType, HttpSession session)
+    {
+        System.out.println(sortType);
+        JsonResponseWrapper json = new JsonResponseWrapper();
+        List<User> suggestedUsers = (List<User>) session.getAttribute("suggested");
+        User userWhoSearch = (User) session.getAttribute(User.USER_ATTRIBUTE_NAME);
+
+        suggestedUsers = acountManager.sortSuggestedUsers(suggestedUsers, userWhoSearch, sortType);
+        json.setData(suggestedUsers);
+        json.setStatus("OK");
+        return json;
+    }
+
+
 }

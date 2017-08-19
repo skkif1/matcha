@@ -577,6 +577,7 @@
     <column id="205" parent="15" name="rate">
       <Position>9</Position>
       <DataType>int(11)|0</DataType>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
     </column>
     <column id="206" parent="15" name="latitude">
       <Position>10</Position>

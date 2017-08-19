@@ -26,6 +26,7 @@ public interface InformationDao {
     public List<User> getLikeAuthors(Integer userId);
     public void removeLike(Integer authorId, Integer userId);
     public Boolean saveVisit(Integer visitorId, Integer userId);
+    public Boolean checkIfUserVisit(Integer visitorId, Integer userId);
     public List<User> getUserVisitors(Integer userId);
     public void addUserToBlackList(Integer authorId, Integer userId);
     public Boolean checkIfUserLiked(Integer userId, Integer visitorId);

@@ -42,7 +42,7 @@ function addUserToList(list, user)
         "</div><div class='message_part'>location: " + user.information.country + ", " + user.information.state + "<br/>preferences: " + user.information.sexPref +
         "<br/>interests : " + interests + "</div>";
 
-    $(list).prepend(
+    $(list).append(
         '     <div class="card horizontal history_message" id="' + url + '"> ' +
         '<div class="message-image"><img src="' + avatar + '"></div>' +
 
@@ -132,6 +132,41 @@ function suggest()
                     for (i = 0; i < json.data.length; i++)
                     {
                         addUserToList($('#result_collection'), json.data[i]);
+                    }
+
+
+                    $('.card').click(function (event) {
+                        location.href = event.currentTarget.id;
+                    })
+                }
+            }
+        }
+    );
+}
+
+function sortUsersLsit(event) {
+
+    $.ajax(
+        {
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            type: "POST",
+            dataType: "json",
+            url: home + "/search/sort/" + event.target.name,
+
+            success: function (json) {
+                if (json.status === "OK")
+                {
+                    $('.card').each(function () {
+                        this.remove();
+                    });
+
+                    for (i = 0; i < json.data.length; i++)
+                    {
+                        addUserToList($('#result_collection'), json.data[i]);
+                        console.log('asfa');
                     }
 
 
