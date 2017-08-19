@@ -56,10 +56,13 @@ public class SearchController {
     }
 
 
-//    @RequestMapping(value = "/suggest", method = RequestMethod.POST)
-//    public @ResponseBody JsonResponseWrapper suggestUserProfiles(HttpSession session)
-//    {
-//        JsonResponseWrapper json = new JsonResponseWrapper();
-//        List<User> suggestedUsers = acountManager.searchForUsers();
-//    }
+    @RequestMapping(value = "/suggest", method = RequestMethod.POST)
+    public @ResponseBody JsonResponseWrapper suggestUserProfiles(HttpSession session)
+    {
+        JsonResponseWrapper json = new JsonResponseWrapper();
+        List<User> suggestedUsers = acountManager.searchForUsers(session);
+        json.setData(suggestedUsers);
+        json.setStatus("OK");
+        return json;
+    }
 }

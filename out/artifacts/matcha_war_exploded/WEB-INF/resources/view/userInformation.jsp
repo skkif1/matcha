@@ -3,12 +3,14 @@
 
 <html>
 <head>
-    <title>Your profile info</title>
+    <title>profile info</title>
 
-    <title>Welcome to matcha</title>
+
+    <link rel="shortcut icon" href="<c:url value="/resources/favicon.ico"/>" type="image/x-icon" />
     <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
     <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; minimum-scale=1.0; user-scalable=no; target-densityDpi=device-dpi" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Faustina|Saira+Semi+Condensed" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/css/materialize.css">
     <link href="<c:url value="/resources/css/userInformation.css" />" rel="stylesheet">
     <link href="<c:url value="/resources/css/sideBar.css" />" rel="stylesheet">
@@ -22,8 +24,7 @@
 
 <div class="content">
 
-        <%@include file="side_bar.jsp" %>
-
+    <%@include file="side_bar.jsp" %>
 
     <div class="info scale-transition">
         <div id="user_info">
@@ -80,10 +81,6 @@
                         <input class="with-gap" name="group1" type="radio" id="woman"/>
                         <label for="woman">woman</label>
                     </p>
-                    <p>
-                        <input class="with-gap" name="group1" type="radio" id="trans"/>
-                        <label for="trans">trans</label>
-                    </p>
                 </div>
 
                 <div class="preferences">
@@ -98,10 +95,6 @@
                     <p>
                         <input class="with-gap" name="group2" type="radio" id="bisexual"/>
                         <label for="bisexual">Bisexual</label>
-                    </p>
-                    <p>
-                        <input class="with-gap" name="group2" type="radio" id="transgender"/>
-                        <label for="transgender">Transgender</label>
                     </p>
                 </div>
             </div>
@@ -163,6 +156,7 @@
         <button class="waves-effect waves-light btn" onclick="changeUserData()">save</button>
 
     </div>
+
     <div class="nav_bar">
         <div class="collection">
             <a onclick="changeCategory(this)" class="collection-item  active">general</a>
@@ -171,7 +165,11 @@
         </div>
     </div>
 
+
 </div>
+
+
+
 
 
 </body>

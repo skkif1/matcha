@@ -8,9 +8,11 @@ window.onload = function () {
             secondaryPlaceholder: 'Type your interest and press enter'
         }
     );
-   getUserInfo();
+
+    getUserInfo();
     $('.carousel').carousel();
-   getPosition();
+    getPosition();
+
 };
 
 
@@ -348,9 +350,6 @@ function getPositionViaAPI() {
     geoip2.insights(function (json) {
         UserInformationContext['latitude'] = json.location.latitude;
         UserInformationContext['longitude'] = json.location.longitude;
-
-        console.log(UserInformationContext);
-            console.log(json);
     });
 }
 

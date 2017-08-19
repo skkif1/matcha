@@ -83,6 +83,7 @@ body
 {
     margin:0;
     display: flex;
+    cursor: pointer;
 }
 
 
@@ -107,6 +108,19 @@ body
     padding: 0 10px;
     font-size: 1em;
     margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.message div
+{
+    width: 50%;
+    color: grey;
+}
+
+.message_part
+{
+    text-align: left;
 }
 
 .author_name
@@ -116,5 +130,3 @@ body
     color:rgb(43,187,173);
     width: 100%;
 }
-
-

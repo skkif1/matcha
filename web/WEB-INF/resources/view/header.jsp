@@ -1,15 +1,15 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; minimum-scale=1.0; user-scalable=no; target-densityDpi=device-dpi" />
+
 
 
 <div class="header">
     <div class="content_holder">
         <div id="logo">
-            <div id="res_menu">
+            <div id="res_menu" class="waves-effect waves-light" onclick="displayMenu()">
                 <i class="material-icons">&#xE5D2;</i>
             </div>
-            <span>Matcha</span>
+            <span onclick="location.href = 'http://localhost:8080/matcha'">Matcha</span>
         </div>
         <div id="logout">
             <ul id="dropdown1" class="dropdown-content">
@@ -23,3 +23,4 @@
         </div>
     </div>
 </div>
+

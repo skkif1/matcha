@@ -117,8 +117,8 @@ public class AcountManager {
         String searchedSex;
         User userWhoSearch = (User) session.getAttribute(User.USER_ATTRIBUTE_NAME);
 
+        System.out.println(searchParams);
         searchedSex = getSearchedSex(userWhoSearch);
-
         List<User> foundUsers = infoDao.searchUsersWith(searchedSex, userWhoSearch.getInformation().getSexPref(),
                 searchParams.getMinAge(), searchParams.getMaxAge(), searchParams.getRate());
 
@@ -133,7 +133,6 @@ public class AcountManager {
     }
 
     public List<User> searchForUsers(HttpSession session) {
-        String sex;
         Integer minAge;
         Integer maxAge;
         User user = (User) session.getAttribute(User.USER_ATTRIBUTE_NAME);
@@ -148,11 +147,11 @@ public class AcountManager {
 
         List<User> foundUsers = infoDao.searchUsersWith(getSearchedSex(user),
                 user.getInformation().getSexPref(), minAge, maxAge, 0);
+        System.out.println(foundUsers);
         foundUsers = sortByLocation(foundUsers, user);
 
         return foundUsers;
     }
-
 
     private boolean filterSearchResult(SearchRequest searchRequest, User userWhoSearch, User resultUser) {
         DistanceCalculator.Point userWhoSearchLocation = new DistanceCalculator.Point(searchRequest.getLatitude(), searchRequest.getLongitude());

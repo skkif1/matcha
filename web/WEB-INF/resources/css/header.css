@@ -1,8 +1,3 @@
-@media only screen and (max-width: 920px)
-{
-
-}
-
 
 .header
 {
@@ -30,6 +25,7 @@
     color: white;
     font-family: 'Sedgwick Ave Display', cursive;
     font-size: 2em;
+    cursor: pointer;
 }
 
 #logo
@@ -45,6 +41,11 @@
     border-radius: 4px;
     margin-right: 10px;
     display: none;
+}
+
+.dropdown-button
+{
+    cursor: pointer;
 }
 
 @media only screen and (max-width: 920px) {

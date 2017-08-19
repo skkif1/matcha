@@ -4,9 +4,13 @@
 <head>
     <title>we recomend you</title>
     <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; minimum-scale=1.0; user-scalable=no; target-densityDpi=device-dpi" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/css/materialize.css">
     <link href="<c:url value="/resources/css/search.css"/>" rel="stylesheet">
+    <link href="<c:url value="/resources/css/sideBar.css" />" rel="stylesheet">
+    <link href="<c:url value="/resources/css/header.css" />" rel="stylesheet">
+
 
 </head>
 <body>
@@ -76,5 +80,5 @@
 </body>
 <script src="//code.jquery.com/jquery-2.1.0.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/js/materialize.min.js"></script>
-<script src="<c:url value="/resources/js/suggestions.js" />"></script>
+<script src="<c:url value="/resources/js/search.js" />"></script>
 </html>
