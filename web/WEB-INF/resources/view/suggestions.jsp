@@ -7,9 +7,9 @@
     <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; minimum-scale=1.0; user-scalable=no; target-densityDpi=device-dpi" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/css/materialize.css">
+    <link href="<c:url value="/resources/css/header.css" />" rel="stylesheet">
     <link href="<c:url value="/resources/css/search.css"/>" rel="stylesheet">
     <link href="<c:url value="/resources/css/sideBar.css" />" rel="stylesheet">
-    <link href="<c:url value="/resources/css/header.css" />" rel="stylesheet">
 
 
 </head>
@@ -25,7 +25,7 @@
         <div class="search_creeterea">
             <nav>
                 <div class="nav-wrapper sort">
-                    <ul class="left hide-on-med-and-down sort_creeterea">
+                    <ul class="sort_creeterea">
                         <li><a onclick="sortUsersLsit(event)"  name="age">age</a></li>
                         <li><a onclick="sortUsersLsit(event)"  name="location">location</a></li>
                         <li><a onclick="sortUsersLsit(event)"  name="rating">rating</a></li>
@@ -65,9 +65,11 @@
                 </div>
             </div>
             <div class="button_wrapper">
-                <a class="waves-effect waves-light btn" onclick="searchRequest()"><i class="material-icons left">cloud</i>button</a>
+                <a class="waves-effect waves-light btn" onclick="searchRequest('/search/filter')"><i class="material-icons left">cloud</i>filter</a>
             </div>
-            <div id="tip"></div>
+            <div id="tip">
+
+            </div>
         </div>
         <div class="result">
             <ul class="collection" id="result_collection">

@@ -185,6 +185,17 @@ public class AcountManager {
         return res;
     }
 
+
+    public List<User> filterSuggestedUsers(List<User> suggestedUsers, User userWhoSearch, SearchRequest request)
+    {
+        List<User> res;
+            res = UserSearchFiltrator.filterByAge(suggestedUsers, request.getMinAge(), request.getMaxAge());
+            res = UserSearchFiltrator.filterByLocation(res, request.getLocationRange(), userWhoSearch);
+            res = UserSearchFiltrator.filterByRating(res, request.getRate());
+            res = UserSearchFiltrator.filterByTag(res, request.getInterests());
+        return res;
+    }
+
     private boolean filterSearchResult(SearchRequest searchRequest, User userWhoSearch, User resultUser) {
         DistanceCalculator.Point userWhoSearchLocation = new DistanceCalculator.Point(searchRequest.getLatitude(), searchRequest.getLongitude());
         DistanceCalculator.Point userLocation = new DistanceCalculator.Point(resultUser.getInformation().getLatitude(), resultUser.getInformation().getLongitude());
@@ -211,22 +222,4 @@ public class AcountManager {
             sex = "'man, woman'";
         return sex;
     }
-
-
-    private List<User> sortByLocation(List<User> users, User userWhoSearch) {
-        DistanceCalculator.Point userWhoSearchLocation = new DistanceCalculator.Point(userWhoSearch.getInformation().getLatitude(),
-                userWhoSearch.getInformation().getLongitude());
-
-        users = users.stream().sorted((user1, user2) ->
-        {
-            DistanceCalculator.Point user1Location = new DistanceCalculator.Point(user1.getInformation().getLatitude(),
-                    user1.getInformation().getLongitude());
-            DistanceCalculator.Point user2Location = new DistanceCalculator.Point(user2.getInformation().getLatitude(),
-                    user2.getInformation().getLongitude());
-            return (int) (distanceCalculator.calculateDistanceTo(userWhoSearchLocation, user1Location) -
-                    distanceCalculator.calculateDistanceTo(userWhoSearchLocation, user2Location));
-        }).collect(Collectors.toList());
-        return users;
-    }
-
 }

@@ -38,16 +38,16 @@ public class SearchRequest {
         return minAge;
     }
 
-    public void setMinAge(Integer minAge) {
-        this.minAge = minAge;
+    public void setMinAge(Integer minAge)
+    {
+        this.minAge = (minAge == null) ? 0 : minAge;
     }
 
-    public Integer getMaxAge() {
-        return maxAge;
-    }
+    public Integer getMaxAge() {return maxAge;}
 
-    public void setMaxAge(Integer maxAge) {
-        this.maxAge = maxAge;
+    public void setMaxAge(Integer maxAge)
+    {
+        this.maxAge = (maxAge == null) ? 128 : maxAge;
     }
 
     public Integer getRate() {
@@ -55,7 +55,7 @@ public class SearchRequest {
     }
 
     public void setRate(Integer rate) {
-        this.rate = rate;
+        this.rate = (rate == null) ? 0 : rate;
     }
 
     public List<String> getInterests() {
@@ -63,15 +63,17 @@ public class SearchRequest {
     }
 
     public void setInterests(List<String> interests) {
-        this.interests = interests;
+
+        this.interests = (interests.size() == 0) ? null : interests;
     }
 
     public Double getLocationRange() {
         return locationRange;
     }
 
-    public void setLocationRange(Double locationRange) {
-        this.locationRange = locationRange;
+    public void setLocationRange(Double locationRange)
+    {
+        this.locationRange = (locationRange == null) ? 2000 : locationRange;
     }
 
     public Double getLatitude() {

@@ -67,7 +67,6 @@ public class SearchController {
     @RequestMapping(value = "/sort/{sortType}", method = RequestMethod.POST)
     public @ResponseBody JsonResponseWrapper sortSuggestions(@PathVariable("sortType") String sortType, HttpSession session)
     {
-        System.out.println(sortType);
         JsonResponseWrapper json = new JsonResponseWrapper();
         List<User> suggestedUsers = (List<User>) session.getAttribute("suggested");
         User userWhoSearch = (User) session.getAttribute(User.USER_ATTRIBUTE_NAME);
@@ -77,6 +76,19 @@ public class SearchController {
         json.setStatus("OK");
         return json;
     }
+
+    @RequestMapping(value = "/filter", method = RequestMethod.POST)
+    public @ResponseBody JsonResponseWrapper sortSuggestions(@RequestBody SearchRequest request, HttpSession session)
+    {
+        JsonResponseWrapper json = new JsonResponseWrapper();
+        List<User> suggestedUsers = (List<User>) session.getAttribute("suggested");
+        User userWhoSearch = (User) session.getAttribute(User.USER_ATTRIBUTE_NAME);
+        json.setData(acountManager.filterSuggestedUsers(suggestedUsers, userWhoSearch, request));
+        json.setStatus("OK");
+        return json;
+    }
+
+
 
 
 }

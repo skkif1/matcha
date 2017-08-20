@@ -26,7 +26,7 @@ public class UserSearchFiltrator {
                 .sorted((o1, o2) ->
                 {
                     DistanceCalculator.Point user1Location =
-                            new DistanceCalculator.Point(o1.getInformation().getLatitude(), o2.getInformation().getLongitude());
+                            new DistanceCalculator.Point(o1.getInformation().getLatitude(), o1.getInformation().getLongitude());
                     DistanceCalculator.Point user2Location =
                             new DistanceCalculator.Point(o2.getInformation().getLatitude(), o2.getInformation().getLongitude());
                     DistanceCalculator.Point userWhoSortLocation =
@@ -42,9 +42,9 @@ public class UserSearchFiltrator {
 
     public static  List<User> sortByRate(List<User> listOfUsers)
     {
-        listOfUsers = listOfUsers.stream()
-                .sorted(Comparator.comparingInt(o -> o.getInformation().getRate()))
-                .collect(Collectors.toList());
+        listOfUsers.sort((o1, o2) -> {
+            return o2.getInformation().getRate() - o1.getInformation().getRate();
+        });
         return listOfUsers;
     }
 
@@ -66,4 +66,80 @@ public class UserSearchFiltrator {
                 .collect(Collectors.toList());
         return listOfUsers;
     }
+
+    // /*
+    //           all filter methods return new allocated list
+    // */
+
+    public static List<User> filterByLocation(List<User> listOfUsers, Double locationRange, User userWhoSearch)
+    {
+        DistanceCalculator calculator = new DistanceCalculator();
+        List<User> res;
+
+        DistanceCalculator.Point userWhoSearchLocation =
+                new DistanceCalculator.Point(userWhoSearch.getInformation().getLatitude(), userWhoSearch.getInformation().getLongitude());
+        res = listOfUsers.stream().filter(user ->
+        {
+            DistanceCalculator.Point userPoint =
+                    new DistanceCalculator.Point(userWhoSearch.getInformation().getLatitude(), user.getInformation().getLongitude());
+            return calculator.calculateDistanceTo(userPoint, userWhoSearchLocation) <= locationRange;
+        }).collect(Collectors.toList());
+        return res;
+    }
+
+
+    public static List<User> filterByAge(List<User> listOfUsers, Integer minAge, Integer maxAge)
+    {
+        List<User> res = new ArrayList<>(listOfUsers);
+        res.removeIf(user ->
+                minAge > user.getInformation().getAge() || user.getInformation().getAge() > maxAge);
+        return res;
+    }
+
+
+    public static List<User> filterByRating(List<User>listOfUsers, Integer rate)
+    {
+        List<User> res = new ArrayList<>(listOfUsers);
+        res.removeIf(user -> user.getInformation().getRate() < rate);
+        return res;
+    }
+
+
+    public static List<User> filterByTag(List<User> listOfUsers, List<String> tagList)
+    {
+        if (tagList == null)
+            return listOfUsers;
+
+        List<User> res = new ArrayList<User>(listOfUsers);
+
+        res.removeIf(user ->
+                !user.getInformation().getInterests().containsAll(tagList));
+        return res;
+    }
+
+    public static void main(String[] args) {
+
+        List<Integer> res = new ArrayList<>();
+
+        long now = System.currentTimeMillis();
+
+        for (int i = 0; i < 1000; i++) {
+               res.add(produceAndAdd());
+        }
+
+        long time = System.currentTimeMillis() - now;
+        System.out.println(time);
+    }
+
+    static Integer produceAndAdd()
+    {
+        Integer res = new Integer(0);
+
+        for (int i = 0; i < 100_000_000; i++) {
+            res++;
+        }
+        return res;
+    }
 }
+
+

@@ -24,6 +24,7 @@ function addTag(event) {
       '<i class="close material-icons">close</i> ' +
       '</div>'
     );
+        $('#tag').val('');
 }
 
 
@@ -52,8 +53,9 @@ function addUserToList(list, user)
         '</div>');
 }
 
-function searchRequest()
+function searchRequest(url)
 {
+
     var minAge = $('#age_min').val();
     var maxAge = $('#age_max').val();
     var location = $('#location').val();
@@ -67,7 +69,13 @@ function searchRequest()
         interests.push(interest);
     });
 
-    $('#tip').text('we are searching for user between ' + minAge + ' years old');
+    $('#tip').text('We are searching for user between ' + minAge + ' and ' + maxAge +
+        ' years old, with minimum rate of '+ rate +'. Who located in nearest ' + location + 'km. And interested in ' + interests);
+
+    if (url)
+        url = home + url;
+    else
+        url = home + '/search/suggestions';
 
     data =
         {
@@ -90,10 +98,14 @@ function searchRequest()
             type: "POST",
             dataType: "json",
             data: JSON.stringify(data),
-            url: home + "/search/searchForUsers",
+            url: url,
             success: function (json) {
                if (json.status === "OK")
                {
+                   $('.card').each(function () {
+                       this.remove();
+                   });
+
                    for (i = 0; i < json.data.length; i++)
                    {
                        addUserToList($('#result_collection'), json.data[i]);

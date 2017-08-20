@@ -63,7 +63,7 @@ function changeUserInfo()
         res += $(interests[i]).text();
     }
 
-    console.log(res);
+
     data.interests = res.replace(new RegExp("close",'g'),"#");
     data.langitude = UserInformationContext.longitude;
     data.latitude = UserInformationContext.latitude;
@@ -372,6 +372,11 @@ function checkState(input) {
                    if (json.status === "ZERO_RESULTS") {
                        Materialize.toast("Such state do not exist. Check input or use geolocation button.", 7000);
                        $(input).val('');
+                   }else
+                   {
+                       console.log(json);
+                       UserInformationContext.latitude = json.results[0].geometry.location.lat;
+                       UserInformationContext.longitude = json.results[0].geometry.location.lng;
                    }
                }
            }
