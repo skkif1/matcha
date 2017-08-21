@@ -26,10 +26,10 @@
             <nav>
                 <div class="nav-wrapper sort">
                     <ul class="sort_creeterea">
-                        <li><a onclick="sortUsersLsit(event)"  name="age">age</a></li>
-                        <li><a onclick="sortUsersLsit(event)"  name="location">location</a></li>
-                        <li><a onclick="sortUsersLsit(event)"  name="rating">rating</a></li>
-                        <li><a onclick="sortUsersLsit(event)"  name="interests">interests</a></li>
+                        <li><a onclick="sortUsersList(event)" name="age">age</a></li>
+                        <li><a onclick="sortUsersList(event)" name="location">location</a></li>
+                        <li><a onclick="sortUsersList(event)" name="rating">rating</a></li>
+                        <li><a onclick="sortUsersList(event)" name="interests">interests</a></li>
                     </ul>
                 </div>
             </nav>
@@ -65,7 +65,7 @@
                 </div>
             </div>
             <div class="button_wrapper">
-                <a class="waves-effect waves-light btn" onclick="searchRequest('/search/filter')"><i class="material-icons left">cloud</i>filter</a>
+                <a class="waves-effect waves-light btn" onclick="searchRequest('/search/filter')">filter</a>
             </div>
             <div id="tip">
 

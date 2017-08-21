@@ -50,10 +50,6 @@ body
     margin: 10px;
 }
 
-.button_wrapper
-{
-    text-align: center;
-}
 
 #tag_holder
 {
@@ -85,7 +81,23 @@ body
     display: flex;
     cursor: pointer;
 }
+.sort_creeterea
+{
+    display: flex;
+    justify-content: space-around;
+    align-items: stretch;
+}
 
+.sort_creeterea li
+{
+    flex: 1;
+    text-align: center;
+}
+
+.button_wrapper
+{
+    text-align: center;
+}
 
 .message-image img
 {
@@ -129,4 +141,26 @@ body
     margin-left: 20px;
     color:rgb(43,187,173);
     width: 100%;
+}
+
+#tip
+{
+    text-align: center;
+    color: gray;
+    word-wrap: break-word;
+}
+
+@media only screen and (max-width: 920px) {
+
+    .search
+    {
+        width: 100%;
+        margin: 0 10px;
+    }
+
+    .gap_creeterea
+    {
+        flex-wrap: wrap;
+    }
+
 }

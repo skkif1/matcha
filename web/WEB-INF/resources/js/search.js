@@ -4,7 +4,8 @@ var geoLocation = [];
 
 $(document).ready(function () {
     findMe();
-    suggest();
+    if (location.href.indexOf('suggestions') > 0)
+        suggest();
 });
 
 function addTag(event) {
@@ -55,7 +56,7 @@ function addUserToList(list, user)
 
 function searchRequest(url)
 {
-
+    console.log("request");
     var minAge = $('#age_min').val();
     var maxAge = $('#age_max').val();
     var location = $('#location').val();
@@ -111,18 +112,14 @@ function searchRequest(url)
                        addUserToList($('#result_collection'), json.data[i]);
                    }
 
-
-                   $('.card').click(function (event) {
-                       location.href = event.currentTarget.id;
-                   })
+                   $('.card').click(function (event)
+                   {
+                       window.location.href = event.currentTarget.id;
+                   });
                }
             }
         }
     );
-}
-
-function countUsers() {
-
 }
 
 
@@ -156,7 +153,14 @@ function suggest()
     );
 }
 
-function sortUsersLsit(event) {
+function sortUsersList(event, list ) {
+
+    url = home + '/search/sort/';
+
+    if (list === 'searched')
+        url = url + '/searched/' + event.target.name;
+    else
+        url = url + event.target.name;
 
     $.ajax(
         {
@@ -166,7 +170,7 @@ function sortUsersLsit(event) {
             },
             type: "POST",
             dataType: "json",
-            url: home + "/search/sort/" + event.target.name,
+            url:url,
 
             success: function (json) {
                 if (json.status === "OK")

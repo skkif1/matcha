@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/css/materialize.css">
     <link href="<c:url value="/resources/css/userPage.css"/>" rel="stylesheet">
     <link href="<c:url value="/resources/css/acount.css"/>" rel="stylesheet">
+    <link href="<c:url value="/resources/css/header.css"/>" rel="stylesheet">
+    <link href="<c:url value="/resources/css/sideBar.css"/>" rel="stylesheet">
 </head>
 <body>
 

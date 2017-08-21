@@ -38,6 +38,7 @@ public class AcountManager {
     public JsonResponseWrapper likeUser(Integer userId, HttpSession session) {
         JsonResponseWrapper json = new JsonResponseWrapper();
         User author = (User) session.getAttribute("user");
+
         if (infoDao.likeUser(userId, author.getId())) {
             Notification notification = new Notification();
             User user = userDao.getUserById(userId);
@@ -99,8 +100,10 @@ public class AcountManager {
         List<User> visitors = infoDao.getUserVisitors(user.getId());
         List<User> likeAuthors = infoDao.getLikeAuthors(user.getId());
         List<User> connectdUsers = infoDao.getUserConnections(user.getId());
+        List<User> visitedUsers = infoDao.getUserVisits(user.getId());
         ctx.setVisitors(visitors);
         ctx.setLikes(likeAuthors);
+        ctx.setVisited(visitedUsers);
         ctx.setLastConnections(connectdUsers);
         return ctx;
     }
@@ -123,13 +126,8 @@ public class AcountManager {
         searchedSex = getSearchedSex(userWhoSearch);
         List<User> foundUsers = infoDao.searchUsersWith(searchedSex, userWhoSearch.getInformation().getSexPref(),
                 searchParams.getMinAge(), searchParams.getMaxAge(), searchParams.getRate());
-        foundUsers = foundUsers.stream().filter(user ->
-        {
-            if (filterSearchResult(searchParams, userWhoSearch, user))
-                return true;
-            return false;
-        }).collect(Collectors.toList());
-        session.setAttribute("searchResult", foundUsers);
+
+        foundUsers = filterSuggestedUsers(foundUsers, userWhoSearch, searchParams);
         return foundUsers;
     }
 
@@ -200,7 +198,7 @@ public class AcountManager {
         DistanceCalculator.Point userWhoSearchLocation = new DistanceCalculator.Point(searchRequest.getLatitude(), searchRequest.getLongitude());
         DistanceCalculator.Point userLocation = new DistanceCalculator.Point(resultUser.getInformation().getLatitude(), resultUser.getInformation().getLongitude());
 
-        if (searchRequest.getInterests().size() != 0)
+        if (searchRequest.getInterests() != null && searchRequest.getInterests().size() != 0)
             if (Collections.disjoint(resultUser.getInformation().getInterests(), searchRequest.getInterests()))
                 return false;
         if (resultUser.getId() == userWhoSearch.getId())

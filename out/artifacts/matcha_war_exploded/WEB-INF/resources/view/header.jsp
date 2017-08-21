@@ -24,3 +24,15 @@
     </div>
 </div>
 
+
+<script>
+
+    function displayMenu()
+    {
+        var menu = $('#menu');
+        if (menu.css('display') === 'none')
+            menu.css('display', 'block');
+        else
+            menu.css('display', 'none');
+    }
+</script>

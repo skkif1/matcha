@@ -57,7 +57,17 @@
 
     .content_holder
     {
-        padding: 0 10px;
+        width: 100%;
+    }
+
+    #logout
+    {
+        margin-right: 10px;
+    }
+
+    #logo
+    {
+        margin-left: 10px;
     }
 
 }

@@ -33,6 +33,11 @@ function buildHistoryPage() {
                         renderCard($('#connections'), json.lastConnections[i]);
                 }
 
+                if (json.lastConnections !== null) {
+                    for (i = 0; i < json.visited.length; i++)
+                        renderCard($('#visited'), json.visited[i]);
+                }
+
                 $('.card').click(function (event) {
                     location.href = event.currentTarget.id;
                 })

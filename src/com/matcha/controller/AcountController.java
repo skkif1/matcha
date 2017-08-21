@@ -17,13 +17,11 @@ import javax.servlet.http.HttpSession;
 @RequestMapping(value = "/acount")
 public class AcountController {
 
-    private UserInformationManager userInfo;
     private AcountManager acountManager;
 
 
     @Autowired
-    public AcountController(UserInformationManager userInfo, AcountManager acountManager) {
-        this.userInfo = userInfo;
+    public AcountController(AcountManager acountManager) {
         this.acountManager = acountManager;
     }
 
@@ -31,7 +29,8 @@ public class AcountController {
     public String getAcount(@PathVariable("id") Integer id, HttpSession session)
     {
         User visitor = (User) session.getAttribute("user");
-        if (id == visitor.getId())
+        System.out.println(acountManager.checkIfUserEligableForSearch(visitor));
+        if (id == visitor.getId() || !acountManager.checkIfUserEligableForSearch(visitor))
             return "redirect:/";
         if (acountManager.requisterVisit(visitor.getId(), id))
             return "acountPage";

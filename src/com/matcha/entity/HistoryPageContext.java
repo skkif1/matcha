@@ -5,6 +5,7 @@ import java.util.List;
 public class HistoryPageContext {
 
     private List<User> likes;
+    private List<User> visited;
     private List<User> visitors;
     private List<User> lastConnections;
 
@@ -39,5 +40,13 @@ public class HistoryPageContext {
 
     public void setLastConnections(List<User> lastConnections) {
         this.lastConnections = lastConnections;
+    }
+
+    public List<User> getVisited() {
+        return visited;
+    }
+
+    public void setVisited(List<User> visited) {
+        this.visited = visited;
     }
 }

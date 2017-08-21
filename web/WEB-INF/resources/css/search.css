@@ -50,23 +50,6 @@ body
     margin: 10px;
 }
 
-.sort_creeterea
-{
-    display: flex;
-    justify-content: space-around;
-    align-items: stretch;
-}
-
-.sort_creeterea li
-{
-    flex: 1;
-    text-align: center;
-}
-
-.button_wrapper
-{
-    text-align: center;
-}
 
 #tag_holder
 {
@@ -98,7 +81,23 @@ body
     display: flex;
     cursor: pointer;
 }
+.sort_creeterea
+{
+    display: flex;
+    justify-content: space-around;
+    align-items: stretch;
+}
 
+.sort_creeterea li
+{
+    flex: 1;
+    text-align: center;
+}
+
+.button_wrapper
+{
+    text-align: center;
+}
 
 .message-image img
 {

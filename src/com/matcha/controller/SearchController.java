@@ -49,6 +49,7 @@ public class SearchController {
         List<User> foundUsers  = acountManager.searchForUsers(request, session);
         json.setStatus("OK");
         json.setData(foundUsers);
+        session.setAttribute("searched", foundUsers);
         return json;
     }
 
@@ -65,17 +66,36 @@ public class SearchController {
     }
 
     @RequestMapping(value = "/sort/{sortType}", method = RequestMethod.POST)
-    public @ResponseBody JsonResponseWrapper sortSuggestions(@PathVariable("sortType") String sortType, HttpSession session)
+    public @ResponseBody JsonResponseWrapper sortSuggestions(@PathVariable(value = "sortType") String sortType, HttpSession session)
     {
         JsonResponseWrapper json = new JsonResponseWrapper();
-        List<User> suggestedUsers = (List<User>) session.getAttribute("suggested");
-        User userWhoSearch = (User) session.getAttribute(User.USER_ATTRIBUTE_NAME);
+        List<User> suggestedUsers;
 
+        suggestedUsers  = (List<User>) session.getAttribute("suggested");
+        User userWhoSearch = (User) session.getAttribute(User.USER_ATTRIBUTE_NAME);
         suggestedUsers = acountManager.sortSuggestedUsers(suggestedUsers, userWhoSearch, sortType);
         json.setData(suggestedUsers);
         json.setStatus("OK");
         return json;
     }
+
+    @RequestMapping(value = "/sort/searched/{sortType}", method = RequestMethod.POST)
+    public @ResponseBody JsonResponseWrapper sortSearched(@PathVariable(value = "sortType") String sortType, HttpSession session)
+    {
+        JsonResponseWrapper json = new JsonResponseWrapper();
+        List<User> searchedUsers;
+
+        searchedUsers  = (List<User>) session.getAttribute("searched");
+        if (searchedUsers != null && searchedUsers.size() > 0)
+        {
+            User userWhoSearch = (User) session.getAttribute(User.USER_ATTRIBUTE_NAME);
+            searchedUsers = acountManager.sortSuggestedUsers(searchedUsers, userWhoSearch, sortType);
+            json.setData(searchedUsers);
+        }
+        json.setStatus("OK");
+        return json;
+    }
+
 
     @RequestMapping(value = "/filter", method = RequestMethod.POST)
     public @ResponseBody JsonResponseWrapper sortSuggestions(@RequestBody SearchRequest request, HttpSession session)
@@ -87,8 +107,6 @@ public class SearchController {
         json.setStatus("OK");
         return json;
     }
-
-
 
 
 }

@@ -33,30 +33,13 @@ public class InformationDaoImpl implements InformationDao {
         this.template = new JdbcTemplate(dataSource);
     }
 
-    public List<User> searchUsersWith(String sqls) {
-
-        List<User> foundUsers = new ArrayList<>(20);
-        String sql = "SELECT * FROM user WHERE user.id IN " + "("+  sqls +")";
-        System.out.println("start");
-        template.query(sql, (ResultSet rs) ->
-        {
-            User user = new User();
-            user.setId(rs.getInt("id"));
-            user.setFirstName(rs.getString("first_name"));
-            user.setLastName(rs.getString("last_name"));
-            user.setInformation(this.getUserInfoByUserId(user.getId()));
-            foundUsers.add(user);
-        }, sqls);
-        System.out.println("found = "  + foundUsers);
-        return foundUsers;
-    }
-
     @Override
     public List<User> searchUsersWith(String sex, String sexPref, Integer minAge, Integer maxAge, Integer minRate) {
 
         List<User> foundUsers = new ArrayList<>(20);
         String sql = "SELECT * FROM user WHERE user.id IN (SELECT user_id FROM user_information" +
                 " WHERE age >= ? AND age <= ? AND rate >= ? AND sex IN ("+ sex +") AND sexPref = ?)";
+        System.out.println(sex + " " + minAge+ " " + maxAge + " " + minRate);
         System.out.println(sql);
         template.query(sql, (ResultSet rs) ->
         {
@@ -67,6 +50,7 @@ public class InformationDaoImpl implements InformationDao {
             user.setInformation(this.getUserInfoByUserId(user.getId()));
             foundUsers.add(user);
         }, minAge, maxAge, minRate,sexPref);
+        System.out.println(foundUsers);
         return foundUsers;
     }
 
@@ -247,8 +231,29 @@ public class InformationDaoImpl implements InformationDao {
             user.setInformation(info);
             visitors.add(user);
         }, userId);
-
         return visitors;
+    }
+
+    @Override
+    public List<User> getUserVisits(Integer userId) {
+        List<User> users = new ArrayList<>();
+        String sql = "SELECT *" +
+                " FROM user" +
+                " INNER JOIN visits ON user.id = visits.user_id AND visitor_id = ? LIMIT 20";;
+
+        template.query(sql, (ResultSet rs)->
+        {
+            User user = new User();
+            UserInformation info;
+            user.setId(rs.getInt(1));
+            user.setFirstName(rs.getString(6));
+            user.setLastName(rs.getString(7));
+            info = this.getUserInfoByUserId(user.getId());
+            user.setInformation(info);
+            users.add(user);
+            user.setInformation(info);
+        }, userId);
+        return users;
     }
 
     @Override

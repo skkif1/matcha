@@ -28,6 +28,12 @@
                 </div>
             </li>
             <li>
+                <div class="collapsible-header"><span class="new badge">4</span><i class="material-icons">person pin</i>visited
+                </div>
+                <div class="collapsible-body" id="visited">
+                </div>
+            </li>
+            <li>
                 <div class="collapsible-header"><span class="new badge">1</span><i
                         class="material-icons">local_activity</i>likes
                 </div>

@@ -3,11 +3,14 @@
 
 <html>
 <head>
-    <title>Title</title>
+    <title>search</title>
     <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; minimum-scale=1.0; user-scalable=no; target-densityDpi=device-dpi" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/css/materialize.css">
     <link href="<c:url value="/resources/css/search.css"/>" rel="stylesheet">
+    <link href="<c:url value="/resources/css/header.css" />" rel="stylesheet">
+    <link href="<c:url value="/resources/css/sideBar.css" />" rel="stylesheet">
 </head>
 <body>
 
@@ -21,11 +24,11 @@
         <div class="search_creeterea">
             <nav>
                 <div class="nav-wrapper sort">
-                    <ul class="left hide-on-med-and-down sort_creeterea">
-                        <li><a href="">age</a></li>
-                        <li><a href="">location</a></li>
-                        <li><a href="">rating</a></li>
-                        <li><a href="">interests</a></li>
+                    <ul class="sort_creeterea">
+                        <li><a onclick="sortUsersList(event, 'searched')" name="age">age</a></li>
+                        <li><a onclick="sortUsersList(event, 'searched')" name="location">location</a></li>
+                        <li><a onclick="sortUsersList(event, 'searched')" name="rating">rating</a></li>
+                        <li><a onclick="sortUsersList(event, 'searched')" name="interests">interests</a></li>
                     </ul>
                 </div>
             </nav>
@@ -61,7 +64,7 @@
                 </div>
             </div>
             <div class="button_wrapper">
-                <a class="waves-effect waves-light btn" onclick="searchRequest()"><i class="material-icons left">cloud</i>button</a>
+                <a class="waves-effect waves-light btn" onclick="searchRequest('/search/searchForUsers')">find</a>
             </div>
             <div id="tip"></div>
         </div>

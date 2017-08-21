@@ -39,7 +39,6 @@ public class WebConfig extends WebMvcConfigurerAdapter{
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(new SecurityInterceptor()).addPathPatterns("/**").excludePathPatterns("/", "/authorization/**");
-        registry.addInterceptor(new EscapeInterceptor()).addPathPatterns("/authorization/signUp");
     }
 
     @Bean
