@@ -48,6 +48,8 @@ function buildPage() {
                     {
                         $(gallery[i]).attr('src', json.data.photos[i]);
                     }
+                    console.log(json.data);
+                    $('#user_name').text(json.data.firstName + " " + json.data.lastName);
                     $('.photo img')[0].src = (json.data.avatar === null) ? "http://localhost:8081/cdn/general/User.png" : json.data.avatar;
                     $('.age .info')[0].innerHTML = (json.data.age === '') ? '-' : json.data.age;
                     $('.pref .info')[0].innerHTML = (json.data.sexPref === '') ? '-' : json.data.sexPref;
@@ -57,6 +59,12 @@ function buildPage() {
                     $('.about_me .info')[0].innerHTML = (json.data.aboutMe === '') ? '-' : json.data.aboutMe;
                     $('#rate')[0].innerHTML = (json.data.rate === '0') ? '-' : json.data.rate;
 
+                    if(json.data.lastSean !== null)
+                    {
+                        date = new Date(json.data.lastSean);
+                        $('#status').text(date.toDateString().substr(3, 7) + " " + date.toTimeString().substr(0, 8));
+                    }else
+                        $('#status').text("online");
                     buildAcountPage(acountContext);
                 }
             }
@@ -197,4 +205,29 @@ function renderNotification(notification)
     {
         $('#hist_notif').show().text(notification.history);
     }
+}
+
+function reportAsFake() {
+
+    $.ajax(
+        {
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            type: "POST",
+            dataType: "json",
+            url: home + "/acount/reportAsFake/" + mass[mass.length - 1],
+
+            success: function (json) {
+                if (json.status === 'OK')
+                {
+                    $("#nav_bar").addClass('scale-out');
+                    setTimeout(function(){
+                        $('#nav_bar').remove();
+                    }, 250);
+                    Materialize.toast("report as fake acount", 7000);
+                }
+            }
+        });
 }

@@ -81,4 +81,10 @@ public class UserDaoImpl implements UserDao{
         String sql = "SELECT * FROM user WHERE age > ? AND age < ?";
         return null;
     }
+
+    @Override
+    public void addFakeAcount(Integer userId) {
+        String sql = "INSERT INTO fake (user_id) VALUE (?)";
+        template.update(sql, userId);
+    }
 }

@@ -5,13 +5,12 @@ import com.matcha.model.AcountManager;
 import com.matcha.model.JsonResponseWrapper;
 import com.matcha.model.UserInformationManager;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
+import javax.servlet.http.HttpSessionListener;
 
 @Controller
 @RequestMapping(value = "/acount")
@@ -59,11 +58,20 @@ public class AcountController {
         return json.toString();
     }
 
+    @RequestMapping(value = "/reportAsFake/{userId}", method = RequestMethod.POST)
+    @ResponseStatus(value = HttpStatus.OK)
+    public void reportAsFake(@PathVariable("userId") Integer id)
+    {
+        acountManager.saveFakeAcount(id);
+    }
+
     @RequestMapping(value = "/checkConnection/{userId}")
     public @ResponseBody String checkConnection(@PathVariable("userId") Integer userToCheck, HttpSession session)
     {
         JsonResponseWrapper json = acountManager.likeUser(userToCheck, session);
         return json.toString();
     }
+
+
 
 }

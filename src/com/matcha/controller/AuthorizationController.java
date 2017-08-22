@@ -1,5 +1,6 @@
 package com.matcha.controller;
 
+import com.matcha.dao.InformationDao;
 import com.matcha.entity.User;
 import com.matcha.model.AuthorizationManager;
 import com.matcha.model.JsonResponseWrapper;
@@ -18,14 +19,18 @@ import java.security.spec.InvalidKeySpecException;
 public class AuthorizationController {
 
     private AuthorizationManager authorizationManager;
+    private InformationDao infoDao;
 
     public AuthorizationController() {
     }
 
+
     @Autowired
-    public AuthorizationController(AuthorizationManager authorizationManager) {
+    public AuthorizationController(AuthorizationManager authorizationManager, InformationDao infoDao) {
         this.authorizationManager = authorizationManager;
+        this.infoDao = infoDao;
     }
+
 
     @RequestMapping(method = RequestMethod.GET)
     public String authorizationPage()
@@ -90,9 +95,9 @@ public class AuthorizationController {
     @RequestMapping(value = "/logout", method = RequestMethod.GET)
     public String logOut(HttpSession session)
     {
-        System.out.println("logout");
+        User user = (User) session.getAttribute(User.USER_ATTRIBUTE_NAME);
+        infoDao.setLastVisitTime(user.getId(), true);
         session.removeAttribute(User.USER_ATTRIBUTE_NAME);
-        System.out.println(session.getAttribute(User.USER_ATTRIBUTE_NAME));
-        return "authorization";
+        return "redirect:/";
     }
 }

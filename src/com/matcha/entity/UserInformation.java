@@ -4,6 +4,7 @@ package com.matcha.entity;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.matcha.entity.jsonDeserialize.UserInformationDesializer;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
 
 @JsonDeserialize(using = UserInformationDesializer.class)
@@ -21,6 +22,7 @@ public class UserInformation {
     private Double longitude;
     private Double latitude;
     private Integer rate;
+    private Timestamp lastSean;
 
 
     public UserInformation() {
@@ -134,6 +136,14 @@ public class UserInformation {
         this.avatar = avatar;
     }
 
+    public Timestamp getLastSean() {
+        return lastSean;
+    }
+
+    public void setLastSean(Timestamp lastSean) {
+        this.lastSean = lastSean;
+    }
+
     @Override
     public String toString() {
         return "UserInformation{" +
@@ -146,9 +156,10 @@ public class UserInformation {
                 ", sexPref='" + sexPref + '\'' +
                 ", photos=" + photos +
                 ", avatar='" + avatar + '\'' +
-                ", langitude=" + longitude +
+                ", longitude=" + longitude +
                 ", latitude=" + latitude +
                 ", rate=" + rate +
+                ", lastSean=" + lastSean +
                 '}';
     }
 }

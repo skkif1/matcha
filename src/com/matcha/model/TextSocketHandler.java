@@ -1,11 +1,15 @@
 package com.matcha.model;
 
 
+import com.matcha.dao.InformationDao;
+import com.matcha.dao.mysqlImpl.InformationDaoImpl;
 import com.matcha.entity.Conversation;
 import com.matcha.entity.User;
 import com.matcha.model.messageBroker.ImessageBroker;
 import com.matcha.model.messageBroker.SockSessionDecorator;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationEvent;
+import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Component;
 import org.springframework.web.socket.*;
 import org.springframework.web.socket.handler.TextWebSocketHandler;
@@ -19,6 +23,8 @@ import java.util.ArrayList;
 public class TextSocketHandler extends TextWebSocketHandler {
 
     private ImessageBroker messageBroker;
+    @Autowired
+    private InformationDao infoDao;
 
     public static final String USER_ENDPOINT = "/user/";
     public static final String CONVERSATION_ENDPOINT = "/conversation/";
@@ -39,10 +45,11 @@ public class TextSocketHandler extends TextWebSocketHandler {
     @Override
     public void afterConnectionEstablished(WebSocketSession session) throws Exception {
         HttpSession httpSession = (HttpSession) session.getAttributes().get("session");
+        User user = (User) httpSession.getAttribute("user");
         if (session.getUri().toString().endsWith(USER_ENDPOINT))
         {
-            User user = (User) httpSession.getAttribute("user");
             messageBroker.addUser(new SockSessionDecorator(session), USER_ENDPOINT, user.getId().toString());
+            infoDao.setLastVisitTime(user.getId(), false);
         }
         if (session.getUri().toString().endsWith(CONVERSATION_ENDPOINT))
         {
@@ -52,6 +59,7 @@ public class TextSocketHandler extends TextWebSocketHandler {
 
     @Override
     public void afterConnectionClosed(WebSocketSession session, CloseStatus status) throws Exception {
+
         HttpSession httpSession = (HttpSession) session.getAttributes().get("session");
         try
         {

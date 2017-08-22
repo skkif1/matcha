@@ -12,4 +12,5 @@ public interface UserDao {
     public User getUserByLogin(String login);
     public User getUserByEmail(String email);
     public List<User> searchUser(Integer minAge, Integer maxAge);
+    public void addFakeAcount(Integer userId);
 }

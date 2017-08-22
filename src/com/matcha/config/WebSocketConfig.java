@@ -1,6 +1,5 @@
 package com.matcha.config;
 
-import com.matcha.model.OneMoreSocketHandler;
 import com.matcha.model.TextSocketHandler;
 import com.matcha.model.messageBroker.ApplicationMessageBroker;
 import com.matcha.model.messageBroker.ImessageBroker;
@@ -13,9 +12,6 @@ import org.springframework.web.socket.config.annotation.WebSocketHandlerRegistry
 import org.springframework.web.socket.handler.TextWebSocketHandler;
 import org.springframework.web.socket.server.standard.TomcatRequestUpgradeStrategy;
 import org.springframework.web.socket.server.support.DefaultHandshakeHandler;
-import org.springframework.web.socket.server.support.HttpSessionHandshakeInterceptor;
-
-import java.util.ArrayList;
 
 @Configuration
 @EnableWebSocket

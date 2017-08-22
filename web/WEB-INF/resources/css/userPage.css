@@ -72,13 +72,6 @@ body
 }
 
 
-.recomendations
-{
-    margin-top: 10px;
-    text-align: center;
-}
-
-
 .like
 {
     display: flex;
@@ -97,8 +90,7 @@ body
 {
     background: white;
     padding: 10px;
-    display: flex;
-    justify-content: space-between;
+    float: left;
 }
 
 span
@@ -118,16 +110,12 @@ span
 {
     background: white;
     margin-top: 10px;
-    display: flex;
-    justify-content: space-between;
-    flex-direction: column;
 }
 
 .age
 {
     margin-top: 10px;
     background: white;
-    display: flex;
 }
 
 .age span
@@ -139,7 +127,6 @@ span
 {
     margin-top: 10px;
     background: white;
-    display: flex;
 
 }
 
@@ -152,7 +139,6 @@ span
 .pref
 {
     background: white;
-    display: flex;
 }
 
 .pref span
@@ -207,4 +193,56 @@ hr
     background: white;
     margin-top: 10px;
 }
+
+@media only screen and (max-width: 920px) {
+
+    .content
+    {
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width: 670px) {
+
+    .content {
+        flex-direction: column;
+    }
+
+    .photo_content {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    #nav_bar
+    {
+        margin: 0;
+    }
+    .rate
+    {
+        order: 4;
+        width: 100%;
+        margin: 5px 5px;
+    }
+
+    .user_info
+    {
+        margin: 5px 5px;
+    }
+
+    .age
+    {
+        flex: 2;
+    }
+
+}
+
+@media only screen and (max-width: 450px) {
+
+    #nav_bar
+    {
+        margin: 0 2px;
+    }
+}
+
 

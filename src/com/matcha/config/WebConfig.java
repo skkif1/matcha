@@ -1,20 +1,10 @@
 package com.matcha.config;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.matcha.controller.ChatController;
 import com.matcha.controller.SecurityInterceptor;
-import com.matcha.controller.UserController;
-import com.matcha.entity.jsonDeserialize.EscapeInterceptor;
-import com.matcha.model.messageBroker.ApplicationMessageBroker;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
-import org.springframework.http.converter.HttpMessageConverter;
-import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
-import org.springframework.ui.freemarker.FreeMarkerConfigurationFactoryBean;
-import org.springframework.web.multipart.MultipartResolver;
-import org.springframework.web.multipart.support.StandardServletMultipartResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;

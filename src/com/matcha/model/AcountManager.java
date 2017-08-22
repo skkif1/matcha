@@ -40,13 +40,16 @@ public class AcountManager {
         User author = (User) session.getAttribute("user");
 
         if (infoDao.likeUser(userId, author.getId())) {
+            infoDao.incrementRate(author.getId(), userId);
             Notification notification = new Notification();
             User user = userDao.getUserById(userId);
 
             if (infoDao.checkIfUserLiked(author.getId(), userId)) {
                 infoDao.requisterMathedConnection(author.getId(), userId);
+                infoDao.incrementRate(author.getId(), userId);
+                infoDao.incrementRate(userId, author.getId());
                 notification.setCategory("matched");
-                notification.setBody("now you are matched with " + user.getFirstName() + " " + user.getLastName());
+                notification.setBody("now you are matched with " + author.getFirstName() + " " + author.getLastName());
                 messageBroker.consumeMessage(new TextMessage(notification.toString()), userId.toString(), TextSocketHandler.USER_ENDPOINT);
             }
             notification.setBody(user.getFirstName() + " " + user.getLastName() + " liked your profile!");
@@ -194,19 +197,11 @@ public class AcountManager {
         return res;
     }
 
-    private boolean filterSearchResult(SearchRequest searchRequest, User userWhoSearch, User resultUser) {
-        DistanceCalculator.Point userWhoSearchLocation = new DistanceCalculator.Point(searchRequest.getLatitude(), searchRequest.getLongitude());
-        DistanceCalculator.Point userLocation = new DistanceCalculator.Point(resultUser.getInformation().getLatitude(), resultUser.getInformation().getLongitude());
-
-        if (searchRequest.getInterests() != null && searchRequest.getInterests().size() != 0)
-            if (Collections.disjoint(resultUser.getInformation().getInterests(), searchRequest.getInterests()))
-                return false;
-        if (resultUser.getId() == userWhoSearch.getId())
-            return false;
-        if (distanceCalculator.calculateDistanceTo(userWhoSearchLocation, userLocation) < searchRequest.getLocationRange())
-            return false;
-        return true;
+    public void saveFakeAcount(Integer userId)
+    {
+        userDao.addFakeAcount(userId);
     }
+
 
     private String getSearchedSex(User user) {
         String sex = null;

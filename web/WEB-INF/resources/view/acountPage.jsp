@@ -3,8 +3,9 @@
 
 <html>
 <head>
-    <title>Title</title>
+    <title>visit</title>
     <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; minimum-scale=1.0; user-scalable=no; target-densityDpi=device-dpi" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/css/materialize.css">
     <link href="<c:url value="/resources/css/userPage.css"/>" rel="stylesheet">
@@ -12,6 +13,7 @@
     <link href="<c:url value="/resources/css/header.css"/>" rel="stylesheet">
     <link href="<c:url value="/resources/css/sideBar.css"/>" rel="stylesheet">
 </head>
+
 <body>
 
 <%@include file="header.jsp" %>
@@ -40,7 +42,7 @@
             <ul id="dropdown2" class="dropdown-content">
                 <li><a onclick="dislikeUser()">dislike user</a></li>
                 <li><a onclick="addToBlackList()">add to blacklist</a></li>
-                <li><a href="#!">report as fake acount</a></li>
+                <li><a onclick="reportAsFake()">report as fake acount</a></li>
             </ul>
 
         </div>
@@ -48,7 +50,7 @@
     </div>
 
     <div class="user_info">
-        <div class="user_name"><h5>Alex Cross</h5><div class="status">online</div></div>
+        <div class="user_name"><h5 id="user_name"></h5><div id="status"></div></div>
 
         <div class="photo">
             <div class="carousel">
@@ -70,7 +72,12 @@
 
         <div class="sex"><span>sex:</span><div class="info">-</div></div>
 
-        <div class="pref"><span>pref:</span><div class="info">-</div></div>
+        <div class="pref">
+            <span>pref:</span>
+            <div class="info">
+            <hr>
+            </div>
+        </div>
 
         <div class="about_me">
             <span>about me:</span>

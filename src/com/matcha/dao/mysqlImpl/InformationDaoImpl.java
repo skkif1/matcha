@@ -21,6 +21,7 @@ import java.nio.file.Paths;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.*;
 
 @Repository
@@ -82,6 +83,8 @@ public class InformationDaoImpl implements InformationDao {
             userInfo.setPhotos((ArrayList<String>) getUserPhoto(userId));
             userInfo.setAvatar(template.queryForObject(avatarSql, new Integer[]{userId}, String.class));
         } catch (DataAccessException ex) {
+
+            ex.printStackTrace();
             if (userInfo != null)
                 return userInfo;
             return null;
@@ -153,14 +156,18 @@ public class InformationDaoImpl implements InformationDao {
 
 
     @Override
+    public void incrementRate(Integer authorId, Integer userId) {
+        String sql = "INSERT INTO `like` (author_id, user_id) VALUES (?,?)";
+        template.update(sql, authorId, userId);
+        updateRate(userId);
+    }
+
+    @Override
     public Boolean likeUser(Integer userId, Integer authorId) {
 
-        String like = "INSERT INTO `like` (author_id, user_id) VALUES (?,?)";
         String ifExist = "SELECT EXISTS(SELECT * FROM `like` WHERE author_id = ? AND user_id = ?)";
 
         if (template.queryForObject(ifExist, new Integer[]{authorId, userId}, Integer.class) == 0) {
-            template.update(like, authorId, userId);
-            updateRate(userId);
             return true;
         }
         return false;
@@ -323,6 +330,22 @@ public class InformationDaoImpl implements InformationDao {
 
         String sql = "INSERT INTO matches (user1_id, user2_id) VALUES (?,?)";
         template.update(sql, thisUserId, userId);
+    }
+
+    @Override
+    public void setLastVisitTime(Integer userId, Boolean state) {
+        String sql = "UPDATE user_information SET last_sean = ? WHERE user_id = ?";
+        if (state)
+        {
+            Timestamp now = new Timestamp(System.currentTimeMillis());
+            template.update(sql, now, userId);
+            System.out.println("InformationDaoImpl.setLastVisitTime " + now);
+        }
+        else
+        {
+            template.update(sql,0, userId);
+            System.out.println("InformationDaoImpl.setLastVisitTime " + 0);
+        }
     }
 
     private void updateRate(Integer id) {
