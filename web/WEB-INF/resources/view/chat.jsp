@@ -12,8 +12,11 @@
     <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/css/materialize.css">
-    <link href="<c:url value="/resources/css/chat.css"/>" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:600i" rel="stylesheet">
+    <link href="<c:url value="/resources/css/chat.css"/>" rel="stylesheet">
+    <link href="<c:url value="/resources/css/header.css" />" rel="stylesheet">
+    <link href="<c:url value="/resources/css/sideBar.css" />" rel="stylesheet">
+
 
 
 </head>
@@ -22,7 +25,9 @@
 <%@include file="header.jsp" %>
 
 <div class="content">
+
     <%@include file="side_bar.jsp" %>
+
 
     <div class="conversation_list list">
         <ul class="collection" id="conversation_collection">
@@ -36,30 +41,16 @@
 
     <div class="list hiden" id="conversation_messages">
         <div class="messages_list">
-            <%--<div class="card horizontal user_message" id="'+ message.id +'">--%>
-                <%--<div class="message-image"><img src="http://localhost:8081/cdn/1/images1.jpeg"></div>--%>
-                <%--<div class="message_text">--%>
-                    <%--<div class="author_name"><b>John Dow</b></div>--%>
-                    <%--<div class="time">12:11 10/31/2017</div>--%>
-                    <%--<div class="message">dfsansg'knf'nsad--%>
-                        <%--aoJSDOFIANOINGF[DOG--%>
-                        <%--ASDOPFMSGOHINDOndfs[goin--%>
-                        <%--asopfdgjdhopfj--%>
-                        <%--aosgfj'ofhonodfhoindsfg;hoinfg[o--%>
-                    <%--</div>--%>
-                <%--</div>--%>
-            <%--</div>--%>
+
         </div>
+
         <div class="message_form">
-            <div class="input-field col s6">
-                <input id="message_input" type="text">
-                <label for="message_input">message</label>
+            <div class="input-field col s12">
+                <textarea id="message_input" class="materialize-textarea" maxlength="1000">  </textarea>
             </div>
-            <button class="waves-effect waves-light btn" onclick="sendMessage()"><i
-                    class="material-icons left">cloud</i></button>
+            <button class="waves-effect waves-light btn" onclick="sendMessage()"><i>class="material-icons left">cloud</i></button>
         </div>
     </div>
-
 
 </div>
 

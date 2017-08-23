@@ -43,6 +43,4 @@ public class UserController {
         ctx.setPermissionForSearch(acountManager.checkIfUserEligableForSearch(user));
         return ctx;
     }
-
-
 }

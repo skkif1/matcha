@@ -5,8 +5,8 @@ import java.util.List;
 public class Conversation {
 
     private Integer id;
-    private User user1;
-    private User user2;
+    private User holder;
+    private User partner;
     private List<Message> messages;
 
 
@@ -14,10 +14,10 @@ public class Conversation {
 
     }
 
-    public Conversation(Integer id, User user1, User user2, List<Message> messages) {
+    public Conversation(Integer id, User holderId, User partner, List<Message> messages) {
         this.id = id;
-        this.user1 = user1;
-        this.user2 = user2;
+        this.holder = holderId;
+        this.partner = partner;
         this.messages = messages;
     }
 
@@ -31,20 +31,20 @@ public class Conversation {
         this.id = id;
     }
 
-    public User getUser1() {
-        return user1;
+    public User getHolder() {
+        return holder;
     }
 
-    public void setUser1(User user1) {
-        this.user1 = user1;
+    public void setHolder(User holderId) {
+        this.holder = holderId;
     }
 
-    public User getUser2() {
-        return user2;
+    public User getPartner() {
+        return partner;
     }
 
-    public void setUser2(User user2) {
-        this.user2 = user2;
+    public void setPartner(User partner) {
+        this.partner = partner;
     }
 
     public List<Message> getMessages() {
@@ -68,8 +68,8 @@ public class Conversation {
     public String toString() {
         return "Conversation{" +
                 "id=" + id +
-                ", user1=" + user1 + "\n" +
-                ", user2=" + user2 + "\n" +
+                ", user1=" + holder + "\n" +
+                ", user2=" + partner + "\n" +
                 ", messages=" + messages + "\n" +
                 '}';
     }

@@ -36,7 +36,6 @@ public class AcountController {
         return "404";
     }
 
-
     @RequestMapping(value = "/like/{userId}")
     public @ResponseBody String likeUser(@PathVariable("userId") Integer userId, HttpSession session)
     {

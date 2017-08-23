@@ -159,18 +159,14 @@ public class InformationDaoImpl implements InformationDao {
     public void incrementRate(Integer authorId, Integer userId) {
         String sql = "INSERT INTO `like` (author_id, user_id) VALUES (?,?)";
         template.update(sql, authorId, userId);
-        updateRate(userId);
     }
 
     @Override
-    public Boolean likeUser(Integer userId, Integer authorId) {
+    public void likeUser(Integer userId, Integer authorId) {
 
-        String ifExist = "SELECT EXISTS(SELECT * FROM `like` WHERE author_id = ? AND user_id = ?)";
+        String ifExist = "INSERT INTO `like` (author_id, user_id) VALUES (?, ?)";
 
-        if (template.queryForObject(ifExist, new Integer[]{authorId, userId}, Integer.class) == 0) {
-            return true;
-        }
-        return false;
+        template.update(ifExist, authorId, userId);
     }
 
     @Override
@@ -246,7 +242,7 @@ public class InformationDaoImpl implements InformationDao {
         List<User> users = new ArrayList<>();
         String sql = "SELECT *" +
                 " FROM user" +
-                " INNER JOIN visits ON user.id = visits.user_id AND visitor_id = ? LIMIT 20";;
+                " INNER JOIN visits ON user.id = visits.user_id AND visitor_id = ? LIMIT 20";
 
         template.query(sql, (ResultSet rs)->
         {
@@ -273,7 +269,6 @@ public class InformationDaoImpl implements InformationDao {
     public void removeLike(Integer authorId, Integer userId) {
         String sql = "DELETE FROM `like` WHERE author_id = ? AND user_id = ?";
         template.update(sql, authorId, userId);
-        updateRate(userId);
     }
 
     private void saveIntrestList(List<String> interestNames, Integer userId) {
@@ -333,11 +328,18 @@ public class InformationDaoImpl implements InformationDao {
     }
 
     @Override
+    public void removeConnection(Integer user1Id, Integer user2Id) {
+        String sql = "DELETE FROM matches WHERE (user1_id = ? AND user2_id = ?) OR (user1_id = ? AND user2_id = ?)";
+        template.update(sql, user1Id, user2Id, user2Id, user1Id);
+    }
+
+    @Override
     public void setLastVisitTime(Integer userId, Boolean state) {
         String sql = "UPDATE user_information SET last_sean = ? WHERE user_id = ?";
         if (state)
         {
             Timestamp now = new Timestamp(System.currentTimeMillis());
+            System.out.println(now);
             template.update(sql, now, userId);
             System.out.println("InformationDaoImpl.setLastVisitTime " + now);
         }
@@ -348,9 +350,15 @@ public class InformationDaoImpl implements InformationDao {
         }
     }
 
-    private void updateRate(Integer id) {
-        String sql = "UPDATE user_information SET rate = (SELECT COUNT(*) FROM `like` WHERE user_id = ?) WHERE user_id = ?";
-        template.update(sql, id, id);
+    @Override
+    public Boolean ifUserInBlackList(Integer listHolderId, Integer userId) {
+        String sql = "SELECT EXISTS(SELECT * FROM blacklist WHERE author_id = ? AND user_id = ?)";
+        return template.queryForObject(sql, new Object[]{listHolderId, userId}, Boolean.class);
+    }
+
+    public void incrementRate(Integer id) {
+        String sql = "UPDATE user_information SET rate = rate + 1 WHERE user_id = ?";
+        template.update(sql, id);
     }
 
     private List<String> selectUserInterestList(Integer userId) {

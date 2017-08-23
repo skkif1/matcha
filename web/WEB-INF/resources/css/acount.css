@@ -10,6 +10,7 @@
 .btn
 {
     margin-top:10px;
+    display: none;
 }
 
 .rate
@@ -17,7 +18,12 @@
     display: flex;
 }
 
-@media only screen and (max-width: 920px) {
-
-
+.relation_status
+{
+    text-align: center;
+    background: rgb(42, 185, 171);
+    color: white;
+    border-radius: 5px;
+    padding: 10px;
+    display: none;
 }

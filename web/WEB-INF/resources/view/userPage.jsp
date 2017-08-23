@@ -36,11 +36,10 @@
     </div>
 
     <div class="user_info">
-        <div class="user_name"><h5></h5><div class="status">online</div></div>
+        <div class="user_name"><h5 id="user_name"></h5><div class="status">online</div></div>
 
             <div class="photo">
                 <div class="carousel">
-
                     <a class="carousel-item"  href="#one!"><img class="standart" src="http://localhost:8081/cdn/general/User.png"></a>
                     <a class="carousel-item " href="#two!"><img class="standart" src="http://localhost:8081/cdn/general/User.png"></a>
                     <a class="carousel-item " href="#three!"><img class="standart" src="http://localhost:8081/cdn/general/User.png"></a>

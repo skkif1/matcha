@@ -34,15 +34,20 @@
         </div>
 
         <div class="nav scale-transition" id="nav_bar">
-            <button class="waves-effect waves-light btn scale-transition" onclick="likeUser()" id="like">like</button>
-            <button class="waves-effect waves-light btn" onclick="openConversation()">send message</button>
+            <div class="relation_status" id="liked"><i class="material-icons left">done</i>liked</div>
+            <div class="relation_status" id="matched"><i class="material-icons left">done_all</i>matched</div>
+            <div class="relation_status" id="blacklist"><i class="material-icons left">delete_forever</i>in blackList</div>
+            <div class="relation_status" id="blocked"><i class="material-icons left">highlight_off</i>user add you to blackList</div>
 
-            <a class="btn dropdown-button" href="#!" data-activates="dropdown2">more<i class="material-icons right">arrow_drop_down</i></a>
+            <button class="waves-effect waves-light btn scale-transition" onclick="likeUser()" id="like">like</button>
+            <button class="waves-effect waves-light btn" onclick="openConversation()" id="send">send message</button>
+
+            <a class="btn dropdown-button" id="dropdown" data-activates="dropdown2">more<i class="material-icons right">arrow_drop_down</i></a>
 
             <ul id="dropdown2" class="dropdown-content">
-                <li><a onclick="dislikeUser()">dislike user</a></li>
-                <li><a onclick="addToBlackList()">add to blacklist</a></li>
-                <li><a onclick="reportAsFake()">report as fake acount</a></li>
+                <li id="dislike"><a onclick="dislikeUser()">dislike user</a></li>
+                <li id="add_blackList"><a onclick="addToBlackList()">add to blacklist</a></li>
+                <li id="fake"><a onclick="reportAsFake()">report as fake acount</a></li>
             </ul>
 
         </div>
@@ -50,7 +55,7 @@
     </div>
 
     <div class="user_info">
-        <div class="user_name"><h5 id="user_name"></h5><div id="status"></div></div>
+        <div class="user_name"><div id="status"></div><h5 id="user_name"></h5></div>
 
         <div class="photo">
             <div class="carousel">
@@ -68,6 +73,7 @@
             <div class="state"><span>state:</span><div class="info">-</div></div>
         </div>
 
+        <div class="info_wrapper">
         <div class="age"><span>age:</span><div class="info">-</div></div>
 
         <div class="sex"><span>sex:</span><div class="info">-</div></div>
@@ -95,7 +101,7 @@
 
             </div>
         </div>
-
+        </div>
     </div>
 </div>
 

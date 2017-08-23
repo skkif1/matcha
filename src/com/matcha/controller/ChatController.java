@@ -83,8 +83,8 @@ public class ChatController {
         ajax.setStatus("Error");
         Conversation current  = (Conversation) session.getAttribute("currentConversation");
         message.setConversationId(current.getId());
-        message.setReciver(current.getUser2().getId());
-        message.setAuthor(current.getUser1().getId());
+        message.setReciver(current.getPartner().getId());
+        message.setAuthor(current.getHolder().getId());
 
         if(chatManager.sendMessage(message))
         {

@@ -2,58 +2,47 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="502769e5-1514-4855-bce4-0338b0878ce8" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/matcha_war_exploded/WEB-INF/classes/com/matcha/controller/SocketController.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/matcha/com/matcha/controller/SocketController.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/matcha/com/matcha/dao/mysqlImpl/UserDaoImpl.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/matcha/controller/SocketController.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/matcha/model/OneMoreSocketHandler.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/matcha_war_exploded/WEB-INF/classes/com/matcha/config/WebConfig.class" afterPath="$PROJECT_DIR$/out/artifacts/matcha_war_exploded/WEB-INF/classes/com/matcha/config/WebConfig.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/matcha_war_exploded/WEB-INF/classes/com/matcha/config/WebInit.class" afterPath="$PROJECT_DIR$/out/artifacts/matcha_war_exploded/WEB-INF/classes/com/matcha/config/WebInit.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/matcha_war_exploded/WEB-INF/classes/com/matcha/config/WebSocketConfig.class" afterPath="$PROJECT_DIR$/out/artifacts/matcha_war_exploded/WEB-INF/classes/com/matcha/config/WebSocketConfig.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/matcha_war_exploded/WEB-INF/classes/com/matcha/controller/AuthorizationController.class" afterPath="$PROJECT_DIR$/out/artifacts/matcha_war_exploded/WEB-INF/classes/com/matcha/controller/AuthorizationController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/matcha_war_exploded/WEB-INF/classes/com/matcha/controller/ChatController.class" afterPath="$PROJECT_DIR$/out/artifacts/matcha_war_exploded/WEB-INF/classes/com/matcha/controller/ChatController.class" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/matcha/com/matcha/dao/mysqlImpl/InformationDaoImpl$2.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/matcha/com/matcha/dao/mysqlImpl/InformationDaoImpl.class" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/matcha_war_exploded/WEB-INF/classes/com/matcha/config/DaoConfig.class" afterPath="$PROJECT_DIR$/out/artifacts/matcha_war_exploded/WEB-INF/classes/com/matcha/config/DaoConfig.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/matcha_war_exploded/WEB-INF/classes/com/matcha/controller/UserInformationController.class" afterPath="$PROJECT_DIR$/out/artifacts/matcha_war_exploded/WEB-INF/classes/com/matcha/controller/UserInformationController.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/matcha_war_exploded/WEB-INF/classes/com/matcha/dao/InformationDao.class" afterPath="$PROJECT_DIR$/out/artifacts/matcha_war_exploded/WEB-INF/classes/com/matcha/dao/InformationDao.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/matcha_war_exploded/WEB-INF/classes/com/matcha/dao/mysqlImpl/ChatDaoImpl.class" afterPath="$PROJECT_DIR$/out/artifacts/matcha_war_exploded/WEB-INF/classes/com/matcha/dao/mysqlImpl/ChatDaoImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/matcha_war_exploded/WEB-INF/classes/com/matcha/dao/mysqlImpl/InformationDaoImpl$1.class" afterPath="$PROJECT_DIR$/out/artifacts/matcha_war_exploded/WEB-INF/classes/com/matcha/dao/mysqlImpl/InformationDaoImpl$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/matcha_war_exploded/WEB-INF/classes/com/matcha/dao/UserDao.class" afterPath="$PROJECT_DIR$/out/artifacts/matcha_war_exploded/WEB-INF/classes/com/matcha/dao/UserDao.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/matcha_war_exploded/WEB-INF/classes/com/matcha/dao/mysqlImpl/InformationDaoImpl$2.class" afterPath="$PROJECT_DIR$/out/artifacts/matcha_war_exploded/WEB-INF/classes/com/matcha/dao/mysqlImpl/InformationDaoImpl$2.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/matcha_war_exploded/WEB-INF/classes/com/matcha/dao/mysqlImpl/InformationDaoImpl.class" afterPath="$PROJECT_DIR$/out/artifacts/matcha_war_exploded/WEB-INF/classes/com/matcha/dao/mysqlImpl/InformationDaoImpl.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/matcha_war_exploded/WEB-INF/classes/com/matcha/dao/mysqlImpl/UserDaoImpl.class" afterPath="$PROJECT_DIR$/out/artifacts/matcha_war_exploded/WEB-INF/classes/com/matcha/dao/mysqlImpl/UserDaoImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/matcha_war_exploded/WEB-INF/classes/com/matcha/entity/UserInformation.class" afterPath="$PROJECT_DIR$/out/artifacts/matcha_war_exploded/WEB-INF/classes/com/matcha/entity/UserInformation.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/matcha_war_exploded/WEB-INF/classes/com/matcha/model/EmailSender.class" afterPath="$PROJECT_DIR$/out/artifacts/matcha_war_exploded/WEB-INF/classes/com/matcha/model/EmailSender.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/matcha/com/matcha/config/WebConfig.class" afterPath="$PROJECT_DIR$/out/production/matcha/com/matcha/config/WebConfig.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/matcha/com/matcha/config/WebInit.class" afterPath="$PROJECT_DIR$/out/production/matcha/com/matcha/config/WebInit.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/matcha/com/matcha/config/WebSocketConfig.class" afterPath="$PROJECT_DIR$/out/production/matcha/com/matcha/config/WebSocketConfig.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/matcha/com/matcha/controller/AuthorizationController.class" afterPath="$PROJECT_DIR$/out/production/matcha/com/matcha/controller/AuthorizationController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/matcha/com/matcha/controller/ChatController.class" afterPath="$PROJECT_DIR$/out/production/matcha/com/matcha/controller/ChatController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/matcha/com/matcha/controller/SearchController.class" afterPath="$PROJECT_DIR$/out/production/matcha/com/matcha/controller/SearchController.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/matcha_war_exploded/WEB-INF/classes/com/matcha/model/UserInformationManager.class" afterPath="$PROJECT_DIR$/out/artifacts/matcha_war_exploded/WEB-INF/classes/com/matcha/model/UserInformationManager.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/matcha/com/matcha/config/DaoConfig.class" afterPath="$PROJECT_DIR$/out/production/matcha/com/matcha/config/DaoConfig.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/matcha/com/matcha/controller/UserInformationController.class" afterPath="$PROJECT_DIR$/out/production/matcha/com/matcha/controller/UserInformationController.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/matcha/com/matcha/dao/InformationDao.class" afterPath="$PROJECT_DIR$/out/production/matcha/com/matcha/dao/InformationDao.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/matcha/com/matcha/dao/mysqlImpl/ChatDaoImpl.class" afterPath="$PROJECT_DIR$/out/production/matcha/com/matcha/dao/mysqlImpl/ChatDaoImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/matcha/com/matcha/dao/mysqlImpl/InformationDaoImpl$1.class" afterPath="$PROJECT_DIR$/out/production/matcha/com/matcha/dao/mysqlImpl/InformationDaoImpl$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/matcha/com/matcha/dao/mysqlImpl/InformationDaoImpl$2.class" afterPath="$PROJECT_DIR$/out/production/matcha/com/matcha/dao/mysqlImpl/InformationDaoImpl$2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/matcha/com/matcha/dao/mysqlImpl/InformationDaoImpl.class" afterPath="$PROJECT_DIR$/out/production/matcha/com/matcha/dao/mysqlImpl/InformationDaoImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/matcha/com/matcha/entity/UserInformation.class" afterPath="$PROJECT_DIR$/out/production/matcha/com/matcha/entity/UserInformation.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/matcha/com/matcha/model/EmailSender.class" afterPath="$PROJECT_DIR$/out/production/matcha/com/matcha/model/EmailSender.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/matcha/com/matcha/dao/UserDao.class" afterPath="$PROJECT_DIR$/out/production/matcha/com/matcha/dao/UserDao.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/matcha/com/matcha/dao/mysqlImpl/UserDaoImpl.class" afterPath="$PROJECT_DIR$/out/production/matcha/com/matcha/dao/mysqlImpl/UserDaoImpl.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/matcha/com/matcha/model/UserInformationManager.class" afterPath="$PROJECT_DIR$/out/production/matcha/com/matcha/model/UserInformationManager.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources/fe3f9aa4-5880-4dbc-afe4-9dbc76383722.xml" afterPath="$PROJECT_DIR$/.idea/dataSources/fe3f9aa4-5880-4dbc-afe4-9dbc76383722.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/matcha_war_exploded/WEB-INF/resources/css/history.css" afterPath="$PROJECT_DIR$/out/artifacts/matcha_war_exploded/WEB-INF/resources/css/history.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/matcha_war_exploded/WEB-INF/resources/view/history.jsp" afterPath="$PROJECT_DIR$/out/artifacts/matcha_war_exploded/WEB-INF/resources/view/history.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/matcha/config/DaoConfig.java" afterPath="$PROJECT_DIR$/src/com/matcha/config/DaoConfig.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/matcha/config/WebConfig.java" afterPath="$PROJECT_DIR$/src/com/matcha/config/WebConfig.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/matcha/config/WebInit.java" afterPath="$PROJECT_DIR$/src/com/matcha/config/WebInit.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/matcha/config/WebSocketConfig.java" afterPath="$PROJECT_DIR$/src/com/matcha/config/WebSocketConfig.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/matcha_war_exploded/WEB-INF/resources/css/userPage.css" afterPath="$PROJECT_DIR$/out/artifacts/matcha_war_exploded/WEB-INF/resources/css/userPage.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/matcha_war_exploded/WEB-INF/resources/js/userPage.js" afterPath="$PROJECT_DIR$/out/artifacts/matcha_war_exploded/WEB-INF/resources/js/userPage.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/matcha_war_exploded/WEB-INF/resources/view/userPage.jsp" afterPath="$PROJECT_DIR$/out/artifacts/matcha_war_exploded/WEB-INF/resources/view/userPage.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/matcha/controller/AcountController.java" afterPath="$PROJECT_DIR$/src/com/matcha/controller/AcountController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/matcha/controller/AuthorizationController.java" afterPath="$PROJECT_DIR$/src/com/matcha/controller/AuthorizationController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/matcha/controller/ChatController.java" afterPath="$PROJECT_DIR$/src/com/matcha/controller/ChatController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/matcha/controller/UserController.java" afterPath="$PROJECT_DIR$/src/com/matcha/controller/UserController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/matcha/controller/UserInformationController.java" afterPath="$PROJECT_DIR$/src/com/matcha/controller/UserInformationController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/matcha/dao/InformationDao.java" afterPath="$PROJECT_DIR$/src/com/matcha/dao/InformationDao.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/matcha/dao/UserDao.java" afterPath="$PROJECT_DIR$/src/com/matcha/dao/UserDao.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/matcha/dao/mysqlImpl/ChatDaoImpl.java" afterPath="$PROJECT_DIR$/src/com/matcha/dao/mysqlImpl/ChatDaoImpl.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/matcha/dao/mysqlImpl/InformationDaoImpl.java" afterPath="$PROJECT_DIR$/src/com/matcha/dao/mysqlImpl/InformationDaoImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/matcha/dao/mysqlImpl/UserDaoImpl.java" afterPath="$PROJECT_DIR$/src/com/matcha/dao/mysqlImpl/UserDaoImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/matcha/entity/UserInformation.java" afterPath="$PROJECT_DIR$/src/com/matcha/entity/UserInformation.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/matcha/entity/AcountPageContext.java" afterPath="$PROJECT_DIR$/src/com/matcha/entity/AcountPageContext.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/matcha/entity/Conversation.java" afterPath="$PROJECT_DIR$/src/com/matcha/entity/Conversation.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/matcha/model/AcountManager.java" afterPath="$PROJECT_DIR$/src/com/matcha/model/AcountManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/matcha/model/TextSocketHandler.java" afterPath="$PROJECT_DIR$/src/com/matcha/model/TextSocketHandler.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/matcha/model/UserInformationManager.java" afterPath="$PROJECT_DIR$/src/com/matcha/model/UserInformationManager.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/matcha/model/UserSearchFiltrator.java" afterPath="$PROJECT_DIR$/src/com/matcha/model/UserSearchFiltrator.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/WEB-INF/resources/css/acount.css" afterPath="$PROJECT_DIR$/web/WEB-INF/resources/css/acount.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/WEB-INF/resources/css/chat.css" afterPath="$PROJECT_DIR$/web/WEB-INF/resources/css/chat.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/WEB-INF/resources/css/userPage.css" afterPath="$PROJECT_DIR$/web/WEB-INF/resources/css/userPage.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/WEB-INF/resources/js/chat.js" afterPath="$PROJECT_DIR$/web/WEB-INF/resources/js/chat.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/WEB-INF/resources/js/userPage.js" afterPath="$PROJECT_DIR$/web/WEB-INF/resources/js/userPage.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/WEB-INF/resources/view/acountPage.jsp" afterPath="$PROJECT_DIR$/web/WEB-INF/resources/view/acountPage.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/WEB-INF/resources/view/chat.jsp" afterPath="$PROJECT_DIR$/web/WEB-INF/resources/view/chat.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/WEB-INF/resources/view/userPage.jsp" afterPath="$PROJECT_DIR$/web/WEB-INF/resources/view/userPage.jsp" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -104,69 +93,97 @@
           <file leaf-file-name="AcountController.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/com/matcha/controller/AcountController.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="204">
-                  <caret line="26" column="32" lean-forward="false" selection-start-line="26" selection-start-column="32" selection-end-line="26" selection-end-column="32" />
-                  <folding>
-                    <element signature="e#2342#2343#0" expanded="true" />
-                    <element signature="e#2390#2391#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="UserInformationController.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/com/matcha/controller/UserInformationController.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="645">
-                  <caret line="79" column="54" lean-forward="false" selection-start-line="79" selection-start-column="54" selection-end-line="79" selection-end-column="54" />
+                <state relative-caret-position="435">
+                  <caret line="41" column="54" lean-forward="false" selection-start-line="41" selection-start-column="54" selection-end-line="41" selection-end-column="54" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="UserInformationManager.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/com/matcha/model/UserInformationManager.java">
+          <file leaf-file-name="AuthorizationController.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/com/matcha/controller/AuthorizationController.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="645">
-                  <caret line="55" column="80" lean-forward="true" selection-start-line="55" selection-start-column="80" selection-end-line="55" selection-end-column="80" />
+                <state relative-caret-position="877">
+                  <caret line="98" column="29" lean-forward="false" selection-start-line="98" selection-start-column="29" selection-end-line="98" selection-end-column="29" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="matcha.user_information" pinned="false" current-in-tab="false">
-            <entry file="dbDummy://dbtable:/22ccc8fd/fe3f9aa4-5880-4dbc-afe4-9dbc76383722/matcha.user_information">
-              <provider editor-type-id="text-editor">
-                <state relative-caret-position="0">
-                  <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-                  <folding />
-                </state>
-              </provider>
-              <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-                <state>
-                  <filtering enabled="true" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="AcountManager.java" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/com/matcha/model/AcountManager.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-1172">
-                  <caret line="78" column="25" lean-forward="false" selection-start-line="78" selection-start-column="25" selection-end-line="78" selection-end-column="25" />
-                  <folding>
-                    <element signature="e#8363#8364#0" expanded="true" />
-                    <element signature="e#8408#8409#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="InformationDao.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/com/matcha/dao/InformationDao.java">
+          <file leaf-file-name="UserController.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/com/matcha/controller/UserController.java">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="390">
-                  <caret line="33" column="3" lean-forward="true" selection-start-line="33" selection-start-column="3" selection-end-line="33" selection-end-column="3" />
+                  <caret line="36" column="0" lean-forward="true" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="Conversation.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/com/matcha/entity/Conversation.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="585">
+                  <caret line="43" column="5" lean-forward="true" selection-start-line="43" selection-start-column="5" selection-end-line="43" selection-end-column="5" />
+                  <folding>
+                    <element signature="e#598#599#0" expanded="true" />
+                    <element signature="e#627#628#0" expanded="true" />
+                    <element signature="e#671#672#0" expanded="true" />
+                    <element signature="e#709#710#0" expanded="true" />
+                    <element signature="e#741#742#0" expanded="true" />
+                    <element signature="e#771#772#0" expanded="true" />
+                    <element signature="e#815#816#0" expanded="true" />
+                    <element signature="e#853#854#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="ChatController.java" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/com/matcha/controller/ChatController.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="870">
+                  <caret line="86" column="45" lean-forward="false" selection-start-line="86" selection-start-column="45" selection-end-line="86" selection-end-column="45" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="IChat.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/com/matcha/model/IChat.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="120">
+                  <caret line="12" column="31" lean-forward="false" selection-start-line="12" selection-start-column="31" selection-end-line="12" selection-end-column="31" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="ChatManager.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/com/matcha/model/ChatManager.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="420">
+                  <caret line="43" column="61" lean-forward="false" selection-start-line="43" selection-start-column="61" selection-end-line="43" selection-end-column="61" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="ChatDao.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/com/matcha/dao/ChatDao.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="135">
+                  <caret line="13" column="30" lean-forward="false" selection-start-line="13" selection-start-column="30" selection-end-line="13" selection-end-column="30" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="TextSocketHandler.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/com/matcha/model/TextSocketHandler.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="705">
+                  <caret line="65" column="55" lean-forward="false" selection-start-line="65" selection-start-column="55" selection-end-line="65" selection-end-column="55" />
                   <folding />
                 </state>
               </provider>
@@ -175,70 +192,79 @@
         </leaf>
       </split-first>
       <split-second>
-        <splitter split-orientation="vertical" split-proportion="0.5">
+        <splitter split-orientation="vertical" split-proportion="0.67527676">
           <split-first>
             <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-              <file leaf-file-name="InformationDaoImpl.java" pinned="false" current-in-tab="false">
-                <entry file="file://$PROJECT_DIR$/src/com/matcha/dao/mysqlImpl/InformationDaoImpl.java">
+              <file leaf-file-name="chat.js" pinned="false" current-in-tab="true">
+                <entry file="file://$PROJECT_DIR$/web/WEB-INF/resources/js/chat.js">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="2248">
-                      <caret line="338" column="6" lean-forward="false" selection-start-line="338" selection-start-column="6" selection-end-line="338" selection-end-column="6" />
+                    <state relative-caret-position="-343">
+                      <caret line="36" column="13" lean-forward="true" selection-start-line="36" selection-start-column="13" selection-end-line="36" selection-end-column="13" />
                       <folding>
-                        <marker date="1503406891476" expanded="true" signature="1263:1439" ph="SELECT * FRO... user" />
-                        <marker date="1503406891476" expanded="true" signature="1300:1435" ph="SELECT user_... user_information" />
-                        <marker date="1503406891476" expanded="true" signature="1300:1438" ph="SELECT user_... user_information" />
-                        <marker date="1503406891476" expanded="true" signature="2133:2263" ph="INSERT INTO user_information... " />
-                        <marker date="1503406891476" expanded="true" signature="2294:2435" ph="UPDATE user_... " />
-                        <marker date="1503406891476" expanded="true" signature="3334:3382" ph="SELECT * FRO... user_information" />
-                        <marker date="1503406891476" expanded="true" signature="3413:3509" ph="SELECT path user_photo" />
-                        <marker date="1503406891476" expanded="true" signature="3453:3508" ph="SELECT photo... user_information" />
-                        <marker date="1503406891476" expanded="true" signature="4827:4878" ph="INSERT INTO user_photo... " />
-                        <marker date="1503406891476" expanded="true" signature="5027:5080" ph="DELETE FROM " />
-                        <marker date="1503406891476" expanded="true" signature="5324:5422" ph="UPDATE user_... " />
-                        <marker date="1503406891476" expanded="true" signature="5364:5404" ph="SELECT id FR... user_photo" />
-                        <marker date="1503406891476" expanded="true" signature="5563:5603" ph="SELECT path user_photo" />
-                        <marker date="1503406891476" expanded="true" signature="5780:5819" ph="INSERT INTO interests... " />
-                        <marker date="1503406891476" expanded="true" signature="6441:6493" ph="INSERT INTO `like`... " />
-                        <marker date="1503406891476" expanded="true" signature="6684:6755" ph="SELECT EXIST... " />
-                        <marker date="1503406891476" expanded="true" signature="6698:6754" ph="SELECT * FRO... like" />
-                        <marker date="1503406891476" expanded="true" signature="7033:7096" ph="SELECT COUNT... like" />
-                        <marker date="1503406891476" expanded="true" signature="7380:7536" ph="SELECT * FRO... user" />
-                        <marker date="1503406891476" expanded="true" signature="8086:8256" ph="SELECT EXIST... " />
-                        <marker date="1503406891476" expanded="true" signature="8100:8255" ph="SELECT * FRO... visits" />
-                        <marker date="1503406891476" expanded="true" signature="8163:8250" ph="SELECT count... visits" />
-                        <marker date="1503406891476" expanded="true" signature="8282:8335" ph="INSERT INTO visits... " />
-                        <marker date="1503406891476" expanded="true" signature="8666:8693" ph="SELECT * fro... visits" />
-                        <marker date="1503406891476" expanded="true" signature="8666:8732" ph="SELECT count... visits" />
-                        <marker date="1503406891476" expanded="true" signature="8984:9118" ph="SELECT * FRO... user" />
-                        <marker date="1503406891476" expanded="true" signature="9691:9698" ph="SELECT user.... visits" />
-                        <marker date="1503406891476" expanded="true" signature="9691:9825" ph="SELECT * FRO... user" />
-                        <marker date="1503406891476" expanded="true" signature="10410:10467" ph="INSERT INTO blacklist... " />
-                        <marker date="1503406891476" expanded="true" signature="10624:10678" ph="DELETE FROM " />
-                        <marker date="1503406891476" expanded="true" signature="10869:10914" ph="DELETE FROM " />
-                        <marker date="1503406891476" expanded="true" signature="10939:11054" ph="INSERT interests_list... " />
-                        <marker date="1503406891476" expanded="true" signature="10994:11053" ph="SELECT inter... interests" />
-                        <marker date="1503406891476" expanded="true" signature="11637:11767" ph="SELECT EXIST... " />
-                        <marker date="1503406891476" expanded="true" signature="11651:11766" ph="SELECT * FRO... matches" />
-                        <marker date="1503406891476" expanded="true" signature="12074:12263" ph="SELECT * FRO... user" />
-                        <marker date="1503406891476" expanded="true" signature="12829:12882" ph="INSERT INTO matches... " />
-                        <marker date="1503406891476" expanded="true" signature="13044:13067" ph="UPDATE user_... " />
-                        <marker date="1503406891476" expanded="true" signature="13044:13084" ph="UPDATE user_... " />
-                        <marker date="1503406891476" expanded="true" signature="13044:13103" ph="UPDATE user_... " />
-                        <marker date="1503406891476" expanded="true" signature="13565:13665" ph="UPDATE user_... " />
-                        <marker date="1503406891476" expanded="true" signature="13601:13646" ph="SELECT COUNT... like" />
-                        <marker date="1503406891476" expanded="true" signature="13849:13946" ph="SELECT name interests" />
-                        <marker date="1503406891476" expanded="true" signature="13889:13945" ph="SELECT inter... interests_list" />
-                        <marker date="1503406891476" expanded="true" signature="14236:14278" ph="SELECT * FRO... USER_PHOTO" />
+                        <element signature="n#!!block;n#findConversationOnView#0" expanded="false" />
+                        <element signature="n#!!block;n#getMessages#0" expanded="false" />
+                        <element signature="n#!!block;n#openConversation#0" expanded="false" />
+                        <element signature="n#!!block;n#getConversations#0" expanded="false" />
                       </folding>
                     </state>
                   </provider>
                 </entry>
               </file>
-              <file leaf-file-name="acountPage.jsp" pinned="false" current-in-tab="true">
-                <entry file="file://$PROJECT_DIR$/web/WEB-INF/resources/view/acountPage.jsp">
+              <file leaf-file-name="matcha.conversation" pinned="false" current-in-tab="false">
+                <entry file="dbDummy://dbtable:/22ccc8fd/fe3f9aa4-5880-4dbc-afe4-9dbc76383722/matcha.conversation">
+                  <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+                    <state>
+                      <filtering enabled="true" />
+                    </state>
+                  </provider>
+                  <provider editor-type-id="text-editor">
+                    <state relative-caret-position="0">
+                      <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+                      <folding />
+                    </state>
+                  </provider>
+                </entry>
+              </file>
+              <file leaf-file-name="matcha.message" pinned="false" current-in-tab="false">
+                <entry file="dbDummy://dbtable:/22ccc8fd/fe3f9aa4-5880-4dbc-afe4-9dbc76383722/matcha.message">
+                  <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+                    <state>
+                      <filtering enabled="true" />
+                    </state>
+                  </provider>
+                  <provider editor-type-id="text-editor">
+                    <state relative-caret-position="0">
+                      <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+                      <folding />
+                    </state>
+                  </provider>
+                </entry>
+              </file>
+              <file leaf-file-name="chat.jsp" pinned="false" current-in-tab="false">
+                <entry file="file://$PROJECT_DIR$/web/WEB-INF/resources/view/chat.jsp">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="-275">
-                      <caret line="47" column="14" lean-forward="true" selection-start-line="47" selection-start-column="14" selection-end-line="47" selection-end-column="14" />
+                    <state relative-caret-position="409">
+                      <caret line="50" column="84" lean-forward="false" selection-start-line="50" selection-start-column="84" selection-end-line="50" selection-end-column="84" />
+                      <folding />
+                    </state>
+                  </provider>
+                </entry>
+              </file>
+              <file leaf-file-name="suggestions.jsp" pinned="false" current-in-tab="false">
+                <entry file="file://$PROJECT_DIR$/web/WEB-INF/resources/view/suggestions.jsp">
+                  <provider selected="true" editor-type-id="text-editor">
+                    <state relative-caret-position="-591">
+                      <caret line="7" column="1" lean-forward="false" selection-start-line="7" selection-start-column="1" selection-end-line="11" selection-end-column="79" />
+                      <folding />
+                    </state>
+                  </provider>
+                </entry>
+              </file>
+              <file leaf-file-name="side_bar.jsp" pinned="false" current-in-tab="false">
+                <entry file="file://$PROJECT_DIR$/web/WEB-INF/resources/view/side_bar.jsp">
+                  <provider selected="true" editor-type-id="text-editor">
+                    <state relative-caret-position="0">
+                      <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
                       <folding />
                     </state>
                   </provider>
@@ -251,7 +277,7 @@
               <file leaf-file-name="header.css" pinned="false" current-in-tab="false">
                 <entry file="file://$PROJECT_DIR$/web/WEB-INF/resources/css/header.css">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="460">
+                    <state relative-caret-position="258">
                       <caret line="69" column="26" lean-forward="false" selection-start-line="69" selection-start-column="26" selection-end-line="69" selection-end-column="26" />
                       <folding />
                     </state>
@@ -261,28 +287,28 @@
               <file leaf-file-name="sideBar.css" pinned="false" current-in-tab="false">
                 <entry file="file://$PROJECT_DIR$/web/WEB-INF/resources/css/sideBar.css">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="400">
-                      <caret line="53" column="1" lean-forward="true" selection-start-line="38" selection-start-column="0" selection-end-line="53" selection-end-column="1" />
-                      <folding />
-                    </state>
-                  </provider>
-                </entry>
-              </file>
-              <file leaf-file-name="acount.css" pinned="false" current-in-tab="false">
-                <entry file="file://$PROJECT_DIR$/web/WEB-INF/resources/css/acount.css">
-                  <provider selected="true" editor-type-id="text-editor">
                     <state relative-caret-position="285">
-                      <caret line="19" column="0" lean-forward="true" selection-start-line="19" selection-start-column="0" selection-end-line="22" selection-end-column="1" />
+                      <caret line="19" column="14" lean-forward="false" selection-start-line="19" selection-start-column="14" selection-end-line="19" selection-end-column="14" />
                       <folding />
                     </state>
                   </provider>
                 </entry>
               </file>
-              <file leaf-file-name="userPage.css" pinned="false" current-in-tab="true">
+              <file leaf-file-name="chat.css" pinned="false" current-in-tab="true">
+                <entry file="file://$PROJECT_DIR$/web/WEB-INF/resources/css/chat.css">
+                  <provider selected="true" editor-type-id="text-editor">
+                    <state relative-caret-position="150">
+                      <caret line="57" column="16" lean-forward="false" selection-start-line="57" selection-start-column="16" selection-end-line="57" selection-end-column="16" />
+                      <folding />
+                    </state>
+                  </provider>
+                </entry>
+              </file>
+              <file leaf-file-name="userPage.css" pinned="false" current-in-tab="false">
                 <entry file="file://$PROJECT_DIR$/web/WEB-INF/resources/css/userPage.css">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="341">
-                      <caret line="120" column="1" lean-forward="true" selection-start-line="120" selection-start-column="1" selection-end-line="120" selection-end-column="1" />
+                    <state relative-caret-position="0">
+                      <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
                       <folding />
                     </state>
                   </provider>
@@ -326,6 +352,12 @@
       <find>matched</find>
       <find>.pref</find>
       <find>.user_nam</find>
+      <find>user</find>
+      <find>user_name</find>
+      <find>age</find>
+      <find>.messa</find>
+      <find>.message_text</find>
+      <find>.message_</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -339,27 +371,15 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/com/matcha/controller/HistoryController.java" />
-        <option value="$PROJECT_DIR$/src/com/matcha/controller/UserController.java" />
-        <option value="$PROJECT_DIR$/web/WEB-INF/resources/js/chat.js" />
-        <option value="$PROJECT_DIR$/src/com/matcha/model/messageBroker/ImessageBroker.java" />
-        <option value="$PROJECT_DIR$/src/com/matcha/model/messageBroker/ApplicationMessageBroker.java" />
-        <option value="$PROJECT_DIR$/web/WEB-INF/properties/dump" />
-        <option value="$APPLICATION_CONFIG_DIR$/consoles/db/fe3f9aa4-5880-4dbc-afe4-9dbc76383722/console_3.sql" />
-        <option value="$PROJECT_DIR$/web/WEB-INF/resources/js/validation.js" />
-        <option value="$PROJECT_DIR$/web/WEB-INF/resources/css/sideBar.css" />
         <option value="$PROJECT_DIR$/web/WEB-INF/resources/css/userInformation.css" />
         <option value="$PROJECT_DIR$/web/WEB-INF/resources/view/authorization.jsp" />
         <option value="$PROJECT_DIR$/web/WEB-INF/resources/view/userInformation.jsp" />
-        <option value="$PROJECT_DIR$/web/WEB-INF/resources/view/userPage.jsp" />
-        <option value="$PROJECT_DIR$/src/com/matcha/model/UserInformationManager.java" />
         <option value="$PROJECT_DIR$/src/com/matcha/model/DistanceCalculator.java" />
         <option value="$PROJECT_DIR$/src/com/matcha/entity/SearchRequest.java" />
         <option value="$PROJECT_DIR$/web/WEB-INF/resources/js/userInformation.js" />
         <option value="$PROJECT_DIR$/web/WEB-INF/resources/view/side_bar.jsp" />
         <option value="$PROJECT_DIR$/web/WEB-INF/resources/view/header.jsp" />
         <option value="$PROJECT_DIR$/web/WEB-INF/resources/css/header.css" />
-        <option value="$PROJECT_DIR$/src/com/matcha/model/UserSearchFiltrator.java" />
         <option value="$PROJECT_DIR$/web/WEB-INF/resources/css/search.css" />
         <option value="$PROJECT_DIR$/web/WEB-INF/resources/view/suggestions.jsp" />
         <option value="$PROJECT_DIR$/web/WEB-INF/resources/view/search.jsp" />
@@ -378,18 +398,30 @@
         <option value="$PROJECT_DIR$/src/com/matcha/model/TextSocketHandler.java" />
         <option value="$PROJECT_DIR$/src/com/matcha/controller/AuthorizationController.java" />
         <option value="$PROJECT_DIR$/src/com/matcha/entity/UserInformation.java" />
-        <option value="$PROJECT_DIR$/src/com/matcha/dao/mysqlImpl/InformationDaoImpl.java" />
         <option value="$PROJECT_DIR$/src/com/matcha/config/DaoConfig.java" />
         <option value="$PROJECT_DIR$/src/com/matcha/dao/UserDao.java" />
-        <option value="$PROJECT_DIR$/src/com/matcha/model/AcountManager.java" />
-        <option value="$APPLICATION_CONFIG_DIR$/consoles/db/fe3f9aa4-5880-4dbc-afe4-9dbc76383722/console.sql" />
         <option value="$PROJECT_DIR$/src/com/matcha/dao/mysqlImpl/UserDaoImpl.java" />
+        <option value="$PROJECT_DIR$/src/com/matcha/controller/UserController.java" />
         <option value="$PROJECT_DIR$/src/com/matcha/controller/AcountController.java" />
+        <option value="$PROJECT_DIR$/src/com/matcha/controller/UserInformationController.java" />
+        <option value="$PROJECT_DIR$/src/com/matcha/model/UserSearchFiltrator.java" />
+        <option value="$PROJECT_DIR$/web/WEB-INF/resources/view/userPage.jsp" />
+        <option value="$PROJECT_DIR$/src/com/matcha/entity/AcountPageContext.java" />
+        <option value="$PROJECT_DIR$/src/com/matcha/model/UserInformationManager.java" />
         <option value="$PROJECT_DIR$/src/com/matcha/dao/InformationDao.java" />
-        <option value="$PROJECT_DIR$/web/WEB-INF/resources/js/userPage.js" />
-        <option value="$PROJECT_DIR$/web/WEB-INF/resources/css/acount.css" />
         <option value="$PROJECT_DIR$/web/WEB-INF/resources/view/acountPage.jsp" />
+        <option value="$PROJECT_DIR$/src/com/matcha/dao/mysqlImpl/InformationDaoImpl.java" />
+        <option value="$PROJECT_DIR$/web/WEB-INF/resources/css/acount.css" />
         <option value="$PROJECT_DIR$/web/WEB-INF/resources/css/userPage.css" />
+        <option value="$PROJECT_DIR$/src/com/matcha/model/AcountManager.java" />
+        <option value="$PROJECT_DIR$/web/WEB-INF/resources/js/userPage.js" />
+        <option value="$APPLICATION_CONFIG_DIR$/consoles/db/fe3f9aa4-5880-4dbc-afe4-9dbc76383722/console.sql" />
+        <option value="$PROJECT_DIR$/src/com/matcha/entity/Conversation.java" />
+        <option value="$PROJECT_DIR$/src/com/matcha/dao/mysqlImpl/ChatDaoImpl.java" />
+        <option value="$PROJECT_DIR$/src/com/matcha/controller/ChatController.java" />
+        <option value="$PROJECT_DIR$/web/WEB-INF/resources/view/chat.jsp" />
+        <option value="$PROJECT_DIR$/web/WEB-INF/resources/js/chat.js" />
+        <option value="$PROJECT_DIR$/web/WEB-INF/resources/css/chat.css" />
       </list>
     </option>
   </component>
@@ -425,9 +457,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -770,6 +801,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -1452,7 +1484,8 @@
       <workItem from="1503232770047" duration="14706000" />
       <workItem from="1503322954585" duration="9547000" />
       <workItem from="1503393194353" duration="3113000" />
-      <workItem from="1503398511210" duration="12255000" />
+      <workItem from="1503398511210" duration="12284000" />
+      <workItem from="1503490193016" duration="19742000" />
     </task>
     <task id="LOCAL-00001" summary="authorization">
       <created>1500378727327</created>
@@ -1706,11 +1739,18 @@
       <option name="project" value="LOCAL" />
       <updated>1503337278930</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="suggestions final">
+      <created>1503414711629</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1503414711629</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="447794000" />
+    <option name="totallyTimeSpent" value="467565000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="2560" height="1440" extended-state="0" />
@@ -1740,9 +1780,8 @@
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329927" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329927" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1620438" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.12470215" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.12549643" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329927" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -1750,6 +1789,7 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329927" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1817,7 +1857,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="19" />
+      <option name="time" value="21" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1826,185 +1866,12 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://$USER_HOME$/java/jdk1.8.0/src.zip!/java/util/List.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="373">
-          <caret line="236" column="12" lean-forward="false" selection-start-line="236" selection-start-column="12" selection-end-line="236" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/matcha/controller/HistoryController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="32" column="57" lean-forward="false" selection-start-line="32" selection-start-column="57" selection-end-line="32" selection-end-column="57" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#653#654#0" expanded="false" />
-            <element signature="e#703#704#0" expanded="false" />
-            <element signature="e#789#790#0" expanded="false" />
-            <element signature="e#821#822#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/matcha/model/UserSearchFiltrator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1058">
-          <caret line="108" column="0" lean-forward="false" selection-start-line="108" selection-start-column="0" selection-end-line="108" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/matcha/entity/jsonDeserialize/EscapeInterceptor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="12" column="13" lean-forward="false" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/matcha/controller/SecurityInterceptor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="19" column="68" lean-forward="true" selection-start-line="19" selection-start-column="68" selection-end-line="19" selection-end-column="68" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/WEB-INF/resources/js/history.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="525">
-          <caret line="35" column="16" lean-forward="false" selection-start-line="35" selection-start-column="16" selection-end-line="35" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/WEB-INF/resources/js/search.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1260">
-          <caret line="124" column="0" lean-forward="false" selection-start-line="124" selection-start-column="0" selection-end-line="124" selection-end-column="0" />
-          <folding>
-            <element signature="n#!!block;n#addTag#0" expanded="false" />
-            <element signature="n#!!block;n#addUserToList#0" expanded="false" />
-            <element signature="n#!!block;n#sortUsersList#0" expanded="false" />
-            <element signature="n#!!block;n#findMe#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.ideaLibSources/spring-jdbc-4.3.9.RELEASE-sources.jar!/org/springframework/jdbc/core/BatchPreparedStatementSetter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="570">
-          <caret line="53" column="8" lean-forward="false" selection-start-line="53" selection-start-column="8" selection-end-line="53" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="dbDummy://dbtable:/22ccc8fd/fe3f9aa4-5880-4dbc-afe4-9dbc76383722/matcha.visits">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="dbDummy://dbtable:/22ccc8fd/fe3f9aa4-5880-4dbc-afe4-9dbc76383722/matcha.like">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="dbDummy://dbtable:/22ccc8fd/fe3f9aa4-5880-4dbc-afe4-9dbc76383722/matcha.user">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="dbDummy://dbtable:/22ccc8fd/fe3f9aa4-5880-4dbc-afe4-9dbc76383722/matcha.matches">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/matcha/controller/SocketController.java" />
-    <entry file="file://$PROJECT_DIR$/src/com/matcha/model/OneMoreSocketHandler.java" />
-    <entry file="jar://$USER_HOME$/java/jdk1.8.0/src.zip!/java/lang/Override.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="50" column="18" lean-forward="false" selection-start-line="50" selection-start-column="18" selection-end-line="50" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/spring-webmvc-4.3.9.RELEASE.jar!/org/springframework/web/servlet/support/AbstractDispatcherServletInitializer.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="855">
-          <caret line="79" column="55" lean-forward="false" selection-start-line="79" selection-start-column="55" selection-end-line="79" selection-end-column="55" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.ideaLibSources/spring-webmvc-4.3.9.RELEASE-sources.jar!/org/springframework/web/servlet/support/AbstractDispatcherServletInitializer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/matcha/config/WebConfig.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="31" lean-forward="false" selection-start-line="7" selection-start-column="31" selection-end-line="7" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/matcha/model/SessionListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="12" lean-forward="false" selection-start-line="6" selection-start-column="12" selection-end-line="6" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/matcha/model/events/VisitEvent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/matcha/config/WebInit.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="540">
           <caret line="42" column="5" lean-forward="true" selection-start-line="42" selection-start-column="5" selection-end-line="42" selection-end-column="5" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -2014,8 +1881,8 @@
         <state relative-caret-position="255">
           <caret line="28" column="42" lean-forward="true" selection-start-line="28" selection-start-column="42" selection-end-line="28" selection-end-column="42" />
           <folding>
-            <element signature="e#1406#1407#0" expanded="true" />
-            <element signature="e#1470#1471#0" expanded="true" />
+            <element signature="e#1406#1407#0" expanded="false" />
+            <element signature="e#1470#1471#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -2033,40 +1900,11 @@
         <state relative-caret-position="158">
           <caret line="147" column="18" lean-forward="false" selection-start-line="147" selection-start-column="18" selection-end-line="147" selection-end-column="18" />
           <folding>
-            <element signature="e#3016#3017#0" expanded="true" />
-            <element signature="e#3047#3048#0" expanded="true" />
-            <element signature="e#3098#3099#0" expanded="true" />
-            <element signature="e#3138#3139#0" expanded="true" />
+            <element signature="e#3016#3017#0" expanded="false" />
+            <element signature="e#3047#3048#0" expanded="false" />
+            <element signature="e#3098#3099#0" expanded="false" />
+            <element signature="e#3138#3139#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/matcha/controller/AuthorizationController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="883">
-          <caret line="100" column="28" lean-forward="false" selection-start-line="100" selection-start-column="28" selection-end-line="100" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="dbDummy://dbtable:/22ccc8fd/fe3f9aa4-5880-4dbc-afe4-9dbc76383722/matcha.user_information">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/matcha/config/DaoConfig.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="23" column="26" lean-forward="true" selection-start-line="23" selection-start-column="26" selection-end-line="23" selection-end-column="26" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2085,82 +1923,18 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="330">
           <caret line="26" column="11" lean-forward="false" selection-start-line="26" selection-start-column="11" selection-end-line="26" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/fe3f9aa4-5880-4dbc-afe4-9dbc76383722/console.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="0" lean-forward="true" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="dbDummy://dbtable:/22ccc8fd/fe3f9aa4-5880-4dbc-afe4-9dbc76383722/matcha.fake">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state>
           <filtering enabled="true" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/matcha/dao/InformationDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="33" column="3" lean-forward="true" selection-start-line="33" selection-start-column="3" selection-end-line="33" selection-end-column="3" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/matcha/model/TextSocketHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="735">
-          <caret line="65" column="55" lean-forward="false" selection-start-line="65" selection-start-column="55" selection-end-line="65" selection-end-column="55" />
-          <folding>
-            <element signature="e#1221#1222#0" expanded="true" />
-            <element signature="e#1271#1272#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/WEB-INF/resources/js/userPage.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="737">
-          <caret line="50" column="43" lean-forward="false" selection-start-line="50" selection-start-column="43" selection-end-line="50" selection-end-column="43" />
-          <folding>
-            <element signature="n#!!block;n#buildUserPageContext#0" expanded="false" />
-            <element signature="n#!!block;n#buildAcountPage#0" expanded="false" />
-            <element signature="n#!!block;n#likeUser#0" expanded="false" />
-            <element signature="n#!!block;n#dislikeUser#0" expanded="false" />
-            <element signature="n#!!block;n#addToBlackList#0" expanded="false" />
-            <element signature="n#!!block;n#renderNotification#0" expanded="false" />
-            <element signature="n#!!block;n#reportAsFake#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/matcha/controller/AcountController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="26" column="32" lean-forward="false" selection-start-line="26" selection-start-column="32" selection-end-line="26" selection-end-column="32" />
-          <folding>
-            <element signature="e#2342#2343#0" expanded="true" />
-            <element signature="e#2390#2391#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/matcha/controller/UserController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="460">
-          <caret line="42" column="56" lean-forward="false" selection-start-line="42" selection-start-column="56" selection-end-line="42" selection-end-column="56" />
-          <folding />
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -2187,122 +1961,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/matcha/dao/mysqlImpl/ChatDaoImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-921">
-          <caret line="24" column="13" lean-forward="false" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="13" />
-          <folding>
-            <marker date="1502282546148" expanded="true" signature="1251:1331" ph="INSERT INTO message... " />
-            <marker date="1502282546148" expanded="true" signature="1658:1967" ph="INSERT INTO conversation... " />
-            <marker date="1502282546148" expanded="true" signature="1726:1967" ph="SELECT * FRO... tmp" />
-            <marker date="1502282546148" expanded="true" signature="1827:1966" ph="SELECT user1... conversation" />
-            <marker date="1502282546148" expanded="true" signature="2546:2607" ph="SELECT * FRO... conversation" />
-            <marker date="1502282546148" expanded="true" signature="3578:3661" ph="SELECT * FRO... message" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/matcha/controller/UserInformationController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="645">
-          <caret line="79" column="54" lean-forward="false" selection-start-line="79" selection-start-column="54" selection-end-line="79" selection-end-column="54" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/matcha/model/UserInformationManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="645">
-          <caret line="55" column="80" lean-forward="true" selection-start-line="55" selection-start-column="80" selection-end-line="55" selection-end-column="80" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/matcha/model/AcountManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1172">
-          <caret line="78" column="25" lean-forward="false" selection-start-line="78" selection-start-column="25" selection-end-line="78" selection-end-column="25" />
-          <folding>
-            <element signature="e#8363#8364#0" expanded="true" />
-            <element signature="e#8408#8409#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/matcha/dao/mysqlImpl/InformationDaoImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2248">
-          <caret line="338" column="6" lean-forward="false" selection-start-line="338" selection-start-column="6" selection-end-line="338" selection-end-column="6" />
-          <folding>
-            <marker date="1503406891476" expanded="true" signature="1263:1439" ph="SELECT * FRO... user" />
-            <marker date="1503406891476" expanded="true" signature="1300:1435" ph="SELECT user_... user_information" />
-            <marker date="1503406891476" expanded="true" signature="1300:1438" ph="SELECT user_... user_information" />
-            <marker date="1503406891476" expanded="true" signature="2133:2263" ph="INSERT INTO user_information... " />
-            <marker date="1503406891476" expanded="true" signature="2294:2435" ph="UPDATE user_... " />
-            <marker date="1503406891476" expanded="true" signature="3334:3382" ph="SELECT * FRO... user_information" />
-            <marker date="1503406891476" expanded="true" signature="3413:3509" ph="SELECT path user_photo" />
-            <marker date="1503406891476" expanded="true" signature="3453:3508" ph="SELECT photo... user_information" />
-            <marker date="1503406891476" expanded="true" signature="4827:4878" ph="INSERT INTO user_photo... " />
-            <marker date="1503406891476" expanded="true" signature="5027:5080" ph="DELETE FROM " />
-            <marker date="1503406891476" expanded="true" signature="5324:5422" ph="UPDATE user_... " />
-            <marker date="1503406891476" expanded="true" signature="5364:5404" ph="SELECT id FR... user_photo" />
-            <marker date="1503406891476" expanded="true" signature="5563:5603" ph="SELECT path user_photo" />
-            <marker date="1503406891476" expanded="true" signature="5780:5819" ph="INSERT INTO interests... " />
-            <marker date="1503406891476" expanded="true" signature="6441:6493" ph="INSERT INTO `like`... " />
-            <marker date="1503406891476" expanded="true" signature="6684:6755" ph="SELECT EXIST... " />
-            <marker date="1503406891476" expanded="true" signature="6698:6754" ph="SELECT * FRO... like" />
-            <marker date="1503406891476" expanded="true" signature="7033:7096" ph="SELECT COUNT... like" />
-            <marker date="1503406891476" expanded="true" signature="7380:7536" ph="SELECT * FRO... user" />
-            <marker date="1503406891476" expanded="true" signature="8086:8256" ph="SELECT EXIST... " />
-            <marker date="1503406891476" expanded="true" signature="8100:8255" ph="SELECT * FRO... visits" />
-            <marker date="1503406891476" expanded="true" signature="8163:8250" ph="SELECT count... visits" />
-            <marker date="1503406891476" expanded="true" signature="8282:8335" ph="INSERT INTO visits... " />
-            <marker date="1503406891476" expanded="true" signature="8666:8693" ph="SELECT * fro... visits" />
-            <marker date="1503406891476" expanded="true" signature="8666:8732" ph="SELECT count... visits" />
-            <marker date="1503406891476" expanded="true" signature="8984:9118" ph="SELECT * FRO... user" />
-            <marker date="1503406891476" expanded="true" signature="9691:9698" ph="SELECT user.... visits" />
-            <marker date="1503406891476" expanded="true" signature="9691:9825" ph="SELECT * FRO... user" />
-            <marker date="1503406891476" expanded="true" signature="10410:10467" ph="INSERT INTO blacklist... " />
-            <marker date="1503406891476" expanded="true" signature="10624:10678" ph="DELETE FROM " />
-            <marker date="1503406891476" expanded="true" signature="10869:10914" ph="DELETE FROM " />
-            <marker date="1503406891476" expanded="true" signature="10939:11054" ph="INSERT interests_list... " />
-            <marker date="1503406891476" expanded="true" signature="10994:11053" ph="SELECT inter... interests" />
-            <marker date="1503406891476" expanded="true" signature="11637:11767" ph="SELECT EXIST... " />
-            <marker date="1503406891476" expanded="true" signature="11651:11766" ph="SELECT * FRO... matches" />
-            <marker date="1503406891476" expanded="true" signature="12074:12263" ph="SELECT * FRO... user" />
-            <marker date="1503406891476" expanded="true" signature="12829:12882" ph="INSERT INTO matches... " />
-            <marker date="1503406891476" expanded="true" signature="13044:13067" ph="UPDATE user_... " />
-            <marker date="1503406891476" expanded="true" signature="13044:13084" ph="UPDATE user_... " />
-            <marker date="1503406891476" expanded="true" signature="13044:13103" ph="UPDATE user_... " />
-            <marker date="1503406891476" expanded="true" signature="13565:13665" ph="UPDATE user_... " />
-            <marker date="1503406891476" expanded="true" signature="13601:13646" ph="SELECT COUNT... like" />
-            <marker date="1503406891476" expanded="true" signature="13849:13946" ph="SELECT name interests" />
-            <marker date="1503406891476" expanded="true" signature="13889:13945" ph="SELECT inter... interests_list" />
-            <marker date="1503406891476" expanded="true" signature="14236:14278" ph="SELECT * FRO... USER_PHOTO" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/WEB-INF/resources/css/history.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="78">
           <caret line="68" column="35" lean-forward="true" selection-start-line="68" selection-start-column="35" selection-end-line="68" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/WEB-INF/resources/css/header.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="460">
-          <caret line="69" column="26" lean-forward="false" selection-start-line="69" selection-start-column="26" selection-end-line="69" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/WEB-INF/resources/css/sideBar.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="400">
-          <caret line="53" column="1" lean-forward="true" selection-start-line="38" selection-start-column="0" selection-end-line="53" selection-end-column="1" />
           <folding />
         </state>
       </provider>
@@ -2315,34 +1977,435 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/WEB-INF/resources/view/authorization.jsp">
+    <entry file="jar://$USER_HOME$/.ideaLibSources/spring-jdbc-4.3.9.RELEASE-sources.jar!/org/springframework/jdbc/core/JdbcOperations.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+        <state relative-caret-position="181">
+          <caret line="595" column="10" lean-forward="false" selection-start-line="595" selection-start-column="10" selection-end-line="595" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/matcha/model/UserSearchFiltrator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="887">
+          <caret line="107" column="0" lean-forward="true" selection-start-line="107" selection-start-column="0" selection-end-line="107" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/matcha/entity/UserPageContext.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/matcha/model/UserInformationManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="34" column="44" lean-forward="true" selection-start-line="34" selection-start-column="44" selection-end-line="34" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbtable:/22ccc8fd/fe3f9aa4-5880-4dbc-afe4-9dbc76383722/matcha.matches">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbtable:/22ccc8fd/fe3f9aa4-5880-4dbc-afe4-9dbc76383722/matcha.like">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/matcha/controller/UserInformationController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="778">
+          <caret line="102" column="65" lean-forward="false" selection-start-line="102" selection-start-column="65" selection-end-line="102" selection-end-column="65" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/matcha/dao/InformationDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="309">
+          <caret line="43" column="16" lean-forward="false" selection-start-line="43" selection-start-column="16" selection-end-line="43" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/matcha/config/DaoConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="23" column="26" lean-forward="true" selection-start-line="23" selection-start-column="26" selection-end-line="23" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/matcha/dao/mysqlImpl/InformationDaoImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="259">
+          <caret line="342" column="36" lean-forward="false" selection-start-line="342" selection-start-column="36" selection-end-line="342" selection-end-column="36" />
+          <folding>
+            <marker date="1503504377920" expanded="true" signature="1263:1439" ph="SELECT * FRO... user" />
+            <marker date="1503504377920" expanded="true" signature="1300:1435" ph="SELECT user_... user_information" />
+            <marker date="1503504377920" expanded="true" signature="1300:1438" ph="SELECT user_... user_information" />
+            <marker date="1503504377920" expanded="true" signature="2133:2263" ph="INSERT INTO user_information... " />
+            <marker date="1503504377920" expanded="true" signature="2294:2435" ph="UPDATE user_... " />
+            <marker date="1503504377920" expanded="true" signature="3334:3382" ph="SELECT * FRO... user_information" />
+            <marker date="1503504377920" expanded="true" signature="3413:3509" ph="SELECT path user_photo" />
+            <marker date="1503504377920" expanded="true" signature="3453:3508" ph="SELECT photo... user_information" />
+            <marker date="1503504377920" expanded="true" signature="4827:4878" ph="INSERT INTO user_photo... " />
+            <marker date="1503504377920" expanded="true" signature="5027:5080" ph="DELETE FROM " />
+            <marker date="1503504377920" expanded="true" signature="5324:5422" ph="UPDATE user_... " />
+            <marker date="1503504377920" expanded="true" signature="5364:5404" ph="SELECT id FR... user_photo" />
+            <marker date="1503504377920" expanded="true" signature="5563:5603" ph="SELECT path user_photo" />
+            <marker date="1503504377920" expanded="true" signature="5780:5819" ph="INSERT INTO interests... " />
+            <marker date="1503504377920" expanded="true" signature="6441:6493" ph="INSERT INTO `like`... " />
+            <marker date="1503504377920" expanded="true" signature="6653:6706" ph="INSERT INTO `like`... " />
+            <marker date="1503504377920" expanded="true" signature="6878:6941" ph="SELECT COUNT... like" />
+            <marker date="1503504377920" expanded="true" signature="7225:7381" ph="SELECT * FRO... user" />
+            <marker date="1503504377920" expanded="true" signature="7931:8101" ph="SELECT EXIST... " />
+            <marker date="1503504377920" expanded="true" signature="7945:8100" ph="SELECT * FRO... visits" />
+            <marker date="1503504377920" expanded="true" signature="8008:8095" ph="SELECT count... visits" />
+            <marker date="1503504377920" expanded="true" signature="8127:8180" ph="INSERT INTO visits... " />
+            <marker date="1503504377920" expanded="true" signature="8511:8538" ph="SELECT * fro... visits" />
+            <marker date="1503504377920" expanded="true" signature="8511:8577" ph="SELECT count... visits" />
+            <marker date="1503504377920" expanded="true" signature="8829:8963" ph="SELECT * FRO... user" />
+            <marker date="1503504377920" expanded="true" signature="9536:9543" ph="SELECT user.... visits" />
+            <marker date="1503504377920" expanded="true" signature="9536:9670" ph="SELECT * FRO... user" />
+            <marker date="1503504377920" expanded="true" signature="10254:10311" ph="INSERT INTO blacklist... " />
+            <marker date="1503504377920" expanded="true" signature="10468:10522" ph="DELETE FROM " />
+            <marker date="1503504377920" expanded="true" signature="10685:10730" ph="DELETE FROM " />
+            <marker date="1503504377920" expanded="true" signature="10755:10870" ph="INSERT interests_list... " />
+            <marker date="1503504377920" expanded="true" signature="10810:10869" ph="SELECT inter... interests" />
+            <marker date="1503504377920" expanded="true" signature="11453:11583" ph="SELECT EXIST... " />
+            <marker date="1503504377920" expanded="true" signature="11467:11582" ph="SELECT * FRO... matches" />
+            <marker date="1503504377920" expanded="true" signature="11890:12079" ph="SELECT * FRO... user" />
+            <marker date="1503504377920" expanded="true" signature="12645:12698" ph="INSERT INTO matches... " />
+            <marker date="1503504377920" expanded="true" signature="12863:12917" ph="DELETE FROM " />
+            <marker date="1503504377920" expanded="true" signature="12863:12920" ph="DELETE FROM " />
+            <marker date="1503504377920" expanded="true" signature="12863:12955" ph="DELETE FROM " />
+            <marker date="1503504377920" expanded="true" signature="13133:13156" ph="UPDATE user_... " />
+            <marker date="1503504377920" expanded="true" signature="13133:13173" ph="UPDATE user_... " />
+            <marker date="1503504377920" expanded="true" signature="13133:13192" ph="UPDATE user_... " />
+            <marker date="1503504377920" expanded="true" signature="13740:13814" ph="SELECT EXIST... " />
+            <marker date="1503504377920" expanded="true" signature="13754:13812" ph="SELECT * FRO... blacklist" />
+            <marker date="1503504377920" expanded="true" signature="13754:13813" ph="SELECT * FRO... blacklist" />
+            <marker date="1503504377920" expanded="true" signature="13986:14047" ph="UPDATE user_... " />
+            <marker date="1503504377920" expanded="true" signature="14227:14324" ph="SELECT name interests" />
+            <marker date="1503504377920" expanded="true" signature="14267:14323" ph="SELECT inter... interests_list" />
+            <marker date="1503504377920" expanded="true" signature="14614:14656" ph="SELECT * FRO... USER_PHOTO" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/matcha/entity/AcountPageContext.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="35" column="32" lean-forward="false" selection-start-line="35" selection-start-column="32" selection-end-line="35" selection-end-column="32" />
+          <folding>
+            <element signature="e#689#690#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/WEB-INF/resources/view/userPage.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="260">
+          <caret line="39" column="0" lean-forward="false" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/WEB-INF/resources/js/userPage.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="446">
+          <caret line="190" column="28" lean-forward="false" selection-start-line="190" selection-start-column="28" selection-end-line="190" selection-end-column="28" />
+          <folding>
+            <element signature="n#!!block;n#buildPage#0" expanded="false" />
+            <element signature="n#!!block;n#buildUserPageContext#0" expanded="false" />
+            <element signature="n#!!block;n#buildAcountPage#0" expanded="false" />
+            <element signature="n#!!block;n#likeUser#0" expanded="false" />
+            <element signature="n#!!block;n#addToBlackList#0" expanded="false" />
+            <element signature="n#!!block;n#renderNotification#0" expanded="false" />
+            <element signature="n#!!block;n#reportAsFake#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/WEB-INF/resources/view/acountPage.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="768">
+          <caret line="71" column="30" lean-forward="false" selection-start-line="71" selection-start-column="30" selection-end-line="71" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbtable:/22ccc8fd/fe3f9aa4-5880-4dbc-afe4-9dbc76383722/matcha.user_information">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbtable:/22ccc8fd/fe3f9aa4-5880-4dbc-afe4-9dbc76383722/matcha.blacklist">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web/WEB-INF/resources/css/acount.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="19" column="0" lean-forward="true" selection-start-line="19" selection-start-column="0" selection-end-line="22" selection-end-column="1" />
+        <state relative-caret-position="400">
+          <caret line="29" column="0" lean-forward="false" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/WEB-INF/resources/view/acountPage.jsp">
+    <entry file="file://$PROJECT_DIR$/web/WEB-INF/resources/css/header.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-275">
-          <caret line="47" column="14" lean-forward="true" selection-start-line="47" selection-start-column="14" selection-end-line="47" selection-end-column="14" />
+        <state relative-caret-position="258">
+          <caret line="69" column="26" lean-forward="false" selection-start-line="69" selection-start-column="26" selection-end-line="69" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/fe3f9aa4-5880-4dbc-afe4-9dbc76383722/console.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="54" lean-forward="true" selection-start-line="8" selection-start-column="54" selection-end-line="8" selection-end-column="54" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/WEB-INF/resources/view/authorization.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-243">
+          <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/matcha/model/TextSocketHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="705">
+          <caret line="65" column="55" lean-forward="false" selection-start-line="65" selection-start-column="55" selection-end-line="65" selection-end-column="55" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/matcha/model/AcountManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="32" column="31" lean-forward="true" selection-start-line="32" selection-start-column="31" selection-end-line="32" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbtable:/22ccc8fd/fe3f9aa4-5880-4dbc-afe4-9dbc76383722/matcha.conversation">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/matcha/controller/AuthorizationController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="877">
+          <caret line="98" column="29" lean-forward="false" selection-start-line="98" selection-start-column="29" selection-end-line="98" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/matcha/controller/UserController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="36" column="0" lean-forward="true" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/matcha/controller/AcountController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="41" column="54" lean-forward="false" selection-start-line="41" selection-start-column="54" selection-end-line="41" selection-end-column="54" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/matcha/entity/Conversation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="585">
+          <caret line="43" column="5" lean-forward="true" selection-start-line="43" selection-start-column="5" selection-end-line="43" selection-end-column="5" />
+          <folding>
+            <element signature="e#598#599#0" expanded="true" />
+            <element signature="e#627#628#0" expanded="true" />
+            <element signature="e#671#672#0" expanded="true" />
+            <element signature="e#709#710#0" expanded="true" />
+            <element signature="e#741#742#0" expanded="true" />
+            <element signature="e#771#772#0" expanded="true" />
+            <element signature="e#815#816#0" expanded="true" />
+            <element signature="e#853#854#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/matcha/dao/mysqlImpl/ChatDaoImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="837">
+          <caret line="93" column="5" lean-forward="true" selection-start-line="93" selection-start-column="5" selection-end-line="93" selection-end-column="5" />
+          <folding>
+            <marker date="1503510515472" expanded="true" signature="1251:1331" ph="INSERT INTO message... " />
+            <marker date="1503510515472" expanded="true" signature="1658:1967" ph="INSERT INTO conversation... " />
+            <marker date="1503510515472" expanded="true" signature="1726:1967" ph="SELECT * FRO... tmp" />
+            <marker date="1503510515472" expanded="true" signature="1827:1966" ph="SELECT user1... conversation" />
+            <marker date="1503510515472" expanded="true" signature="2546:2607" ph="SELECT * FRO... conversation" />
+            <marker date="1503510515472" expanded="true" signature="3597:3680" ph="SELECT * FRO... message" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/matcha/dao/ChatDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="13" column="30" lean-forward="false" selection-start-line="13" selection-start-column="30" selection-end-line="13" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/matcha/model/ChatManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="43" column="61" lean-forward="false" selection-start-line="43" selection-start-column="61" selection-end-line="43" selection-end-column="61" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/matcha/model/IChat.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="12" column="31" lean-forward="false" selection-start-line="12" selection-start-column="31" selection-end-line="12" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/matcha/controller/ChatController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="870">
+          <caret line="86" column="45" lean-forward="false" selection-start-line="86" selection-start-column="45" selection-end-line="86" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbtable:/22ccc8fd/fe3f9aa4-5880-4dbc-afe4-9dbc76383722/matcha.message">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/WEB-INF/resources/css/sideBar.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" column="14" lean-forward="false" selection-start-line="19" selection-start-column="14" selection-end-line="19" selection-end-column="14" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web/WEB-INF/resources/css/userPage.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="341">
-          <caret line="120" column="1" lean-forward="true" selection-start-line="120" selection-start-column="1" selection-end-line="120" selection-end-column="1" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/WEB-INF/resources/view/chat.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="409">
+          <caret line="50" column="84" lean-forward="false" selection-start-line="50" selection-start-column="84" selection-end-line="50" selection-end-column="84" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/WEB-INF/resources/view/suggestions.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-591">
+          <caret line="7" column="1" lean-forward="false" selection-start-line="7" selection-start-column="1" selection-end-line="11" selection-end-column="79" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/WEB-INF/resources/view/side_bar.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/WEB-INF/resources/js/chat.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-343">
+          <caret line="36" column="13" lean-forward="true" selection-start-line="36" selection-start-column="13" selection-end-line="36" selection-end-column="13" />
+          <folding>
+            <element signature="n#!!block;n#findConversationOnView#0" expanded="false" />
+            <element signature="n#!!block;n#getMessages#0" expanded="false" />
+            <element signature="n#!!block;n#openConversation#0" expanded="false" />
+            <element signature="n#!!block;n#getConversations#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/WEB-INF/resources/css/chat.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="57" column="16" lean-forward="false" selection-start-line="57" selection-start-column="16" selection-end-line="57" selection-end-column="16" />
           <folding />
         </state>
       </provider>

@@ -33,6 +33,7 @@ function sendMessage() {
                 message.id = json.data.id;
                 message.text(json.data.message);
                 message.appendTo(list);
+                $('#message_input').val('');
             }
         }
     });
@@ -78,14 +79,15 @@ function connnectToConversation()
 
         var message = JSON.parse(response.data);
         console.log(message);
-        if (message.author == currentConversation.user1.id) {
-            avatar = currentConversation.user1.information.avatar;
-            name = currentConversation.user1.firstName + " " + currentConversation.user1.lastName;
+
+        if (message.author === currentConversation.holder.id) {
+            avatar = currentConversation.holder.information.avatar;
+            name = currentConversation.holder.firstName + " " + currentConversation.holder.lastName;
         }
         else
         {
-            avatar = currentConversation.user2.information.avatar;
-            name = currentConversation.user1.firstName + " " + currentConversation.user1.lastName;
+            avatar = currentConversation.partner.information.avatar;
+            name = currentConversation.partner.firstName + " " + currentConversation.partner.lastName;
         }
 
         date = new Date();
@@ -101,15 +103,15 @@ function connnectToConversation()
 }
 
 function insertMessage(list, value) {
-    if (value.author == currentConversation.user1.id)
+    if (value.author == currentConversation.holder.id)
     {
-        avatar = currentConversation.user1.information.avatar;
-        name = currentConversation.user1.firstName + " " + currentConversation.user1.lastName;
+        avatar = currentConversation.holder.information.avatar;
+        name = currentConversation.holder.firstName + " " + currentConversation.holder.lastName;
     }
     else
     {
-        avatar = currentConversation.user2.information.avatar;
-        name = currentConversation.user2.firstName + " " + currentConversation.user2.lastName;
+        avatar = currentConversation.partner.information.avatar;
+        name = currentConversation.partner.firstName + " " + currentConversation.partner.lastName;
     }
         time = new Date(value.time);
 
@@ -119,8 +121,7 @@ function insertMessage(list, value) {
         '<div class="message_text"> ' +
         '<div class="author_name"><b>'+ name +'</b></div> ' +
         '<div class="time">'+ time.toTimeString().substring(0, 8) + ' ' + time.toDateString() + '</div> ' +
-        '<div class="message">'+ value.message +'' +
-        '</div> ' +
+        '<div class="message">'+ value.message +'' + '</div> ' +
         '</div> ' +
         '</div>');
 }
@@ -131,28 +132,6 @@ function openConversation() {
     location.href = url + mass[mass.length - 1];
 }
 
-
-function getDate() {
-    var today = new Date();
-    var dd = today.getDate();
-    var mm = today.getMonth()+1;
-    var yyyy = today.getFullYear();
-    var hh = today.getHours();
-    var min = today.getMinutes();
-
-
-    if(dd<10) {
-        dd = '0'+dd
-    }
-
-    if(mm<10) {
-        mm = '0'+mm
-    }
-
-    today = hh + ':' + min + "  " +mm + '/' + dd + '/' + yyyy;
-    return today;
-}
-
 function getConversations() {
 
     $.ajax(
@@ -160,21 +139,16 @@ function getConversations() {
             type: "POST",
             url: home + "/chat/conversationList",
             success: function (json) {
-               if (json.status === "OK")
+               console.log(json);
+                if (json.status === "OK")
                {
                    conversations = json.data;
                    for (i = 0; i < json.data.length; i++)
                    {
                         var conversation = $("#hiden_conversation").clone();
-                        $(conversation).children('img').attr("src", json.data[i].user2.information.avatar);
-                        $(conversation).children('span').text(json.data[i].user2.firstName + ' ' + json.data[i].user2.lastName);
+                        $(conversation).children('img').attr("src", json.data[i].partner.information.avatar);
+                        $(conversation).children('span').text(json.data[i].partner.firstName + ' ' + json.data[i].partner.lastName);
 
-                        if (json.data[i].user2.information.interests !== null)
-                        {
-                            for (var j = 0; j < json.data[i].user2.information.interests.length; j++) {
-                               $(conversation).children('p').text('#' + json.data[i].user2.information.interests[j] + ' ');
-                            }
-                        }
 
                         $(conversation).removeClass('hiden')
                                 .attr('id', json.data[i].id)

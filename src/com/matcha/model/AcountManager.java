@@ -25,39 +25,36 @@ public class AcountManager {
     private InformationDao infoDao;
     private ImessageBroker messageBroker;
     private UserDao userDao;
-    private DistanceCalculator distanceCalculator;
 
     @Autowired
     public AcountManager(InformationDao infoDao, ImessageBroker messageBroker, UserDao userDao) {
         this.infoDao = infoDao;
         this.messageBroker = messageBroker;
         this.userDao = userDao;
-        this.distanceCalculator = new DistanceCalculator();
     }
 
     public JsonResponseWrapper likeUser(Integer userId, HttpSession session) {
         JsonResponseWrapper json = new JsonResponseWrapper();
         User author = (User) session.getAttribute("user");
 
-        if (infoDao.likeUser(userId, author.getId())) {
-            infoDao.incrementRate(author.getId(), userId);
+            infoDao.likeUser(userId, author.getId());
+            infoDao.incrementRate(userId);
             Notification notification = new Notification();
             User user = userDao.getUserById(userId);
 
             if (infoDao.checkIfUserLiked(author.getId(), userId)) {
                 infoDao.requisterMathedConnection(author.getId(), userId);
-                infoDao.incrementRate(author.getId(), userId);
-                infoDao.incrementRate(userId, author.getId());
+                infoDao.incrementRate(userId);
+                infoDao.incrementRate(author.getId());
                 notification.setCategory("matched");
                 notification.setBody("now you are matched with " + author.getFirstName() + " " + author.getLastName());
                 messageBroker.consumeMessage(new TextMessage(notification.toString()), userId.toString(), TextSocketHandler.USER_ENDPOINT);
             }
-            notification.setBody(user.getFirstName() + " " + user.getLastName() + " liked your profile!");
+
+            notification.setBody(author.getFirstName() + " " + author.getLastName() + " liked your profile!");
             notification.setCategory("like");
             json.setStatus("OK");
             messageBroker.consumeMessage(new TextMessage(notification.toString()), userId.toString(), TextSocketHandler.USER_ENDPOINT);
-        } else
-            json.setStatus("Error");
         return json;
     }
 
@@ -65,6 +62,7 @@ public class AcountManager {
         JsonResponseWrapper json = new JsonResponseWrapper();
         User author = (User) session.getAttribute(User.USER_ATTRIBUTE_NAME);
         infoDao.removeLike(author.getId(), userId);
+        infoDao.removeConnection(author.getId(), userId);
         Notification notification = new Notification();
         notification.setCategory("history");
         notification.setBody("you lost connection with " + author.getFirstName() + " " + author.getLastName());
@@ -194,8 +192,10 @@ public class AcountManager {
             res = UserSearchFiltrator.filterByLocation(res, request.getLocationRange(), userWhoSearch);
             res = UserSearchFiltrator.filterByRating(res, request.getRate());
             res = UserSearchFiltrator.filterByTag(res, request.getInterests());
+            removeUsersInBlackList(res, userWhoSearch);
         return res;
     }
+
 
     public void saveFakeAcount(Integer userId)
     {
@@ -214,5 +214,10 @@ public class AcountManager {
         if (user.getInformation().getSexPref().equals("bisexual"))
             sex = "'man, woman'";
         return sex;
+    }
+
+    private void removeUsersInBlackList(List<User> listOfUsers, User userWhoSearch)
+    {
+        listOfUsers.removeIf(user -> infoDao.ifUserInBlackList(userWhoSearch.getId(), user.getId()));
     }
 }

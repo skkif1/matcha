@@ -17,7 +17,6 @@ body
     display: flex;
     justify-content: space-between;
     margin-top: 10px;
-
 }
 
 .side_bar
@@ -84,13 +83,25 @@ body
     display: flex;
     flex-direction: column;
     margin-left: 10px;
+
 }
 
 .user_name
 {
     background: white;
     padding: 10px;
-    float: left;
+    display: inline;
+}
+
+#user_name
+{
+    margin: 0;
+}
+
+#status
+{
+    text-align: right;
+    color: grey;
 }
 
 span
@@ -116,6 +127,7 @@ span
 {
     margin-top: 10px;
     background: white;
+    display: flex;
 }
 
 .age span
@@ -127,7 +139,7 @@ span
 {
     margin-top: 10px;
     background: white;
-
+    display: flex;
 }
 
 .sex span
@@ -139,6 +151,7 @@ span
 .pref
 {
     background: white;
+    display: flex;
 }
 
 .pref span
@@ -242,6 +255,16 @@ hr
     #nav_bar
     {
         margin: 0 2px;
+    }
+
+    .photo_wrapper
+    {
+        padding: 0;
+    }
+
+    .photo_wrapper img
+    {
+        width: 100%;
     }
 }
 

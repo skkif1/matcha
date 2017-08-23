@@ -73,19 +73,19 @@ public class ChatDaoImpl implements ChatDao{
         String sql = "SELECT * FROM conversation WHERE user1_id = ? OR user2_id = ?";
         template.query(sql, (ResultSet rs) -> {
            Conversation conversation = new Conversation();
-           conversation.setUser1(user);
+           conversation.setHolder(user);
            int id = rs.getInt("user1_id");
            if (user.getId() == id)
            {
-               User user2 = userDao.getUserById(rs.getInt("user2_id"));
-               user2.setInformation(infoDao.getUserInfoByUserId(user2.getId()));
-               conversation.setUser2(user2);
+               User partner = userDao.getUserById(rs.getInt("user2_id"));
+               partner.setInformation(infoDao.getUserInfoByUserId(partner.getId()));
+               conversation.setPartner(partner);
            }
            else
            {
-               User user2 = userDao.getUserById(id);
-               user2.setInformation(infoDao.getUserInfoByUserId(id));
-               conversation.setUser2(user2);
+               User partner = userDao.getUserById(id);
+               partner.setInformation(infoDao.getUserInfoByUserId(id));
+               conversation.setPartner(partner);
            }
             conversation.setId(rs.getInt("id"));
             conversations.add(conversation);

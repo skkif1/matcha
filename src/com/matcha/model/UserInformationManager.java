@@ -104,6 +104,9 @@ public class UserInformationManager {
     {
         AcountPageContext ctx = new AcountPageContext();
         ctx.setLiked(informationDao.checkIfUserLiked(userId, visitorId));
+        ctx.setMatched(informationDao.checkIfMatchedWith(visitorId, userId));
+        ctx.setBlackList(informationDao.ifUserInBlackList(visitorId, userId));
+        ctx.setBlocked(informationDao.ifUserInBlackList(userId, visitorId));
         return ctx;
     }
 

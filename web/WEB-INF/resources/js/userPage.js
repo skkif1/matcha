@@ -37,34 +37,45 @@ function buildPage() {
                     if (location.href.indexOf('acount') > 0)
                     {
                         acountContext = json.data[1];
-                        json.data = json.data[0];
-                    }
-                    for (var i = json.data.interests.length - 1; i >= 0;  i--)
+                        console.log(acountContext);
+                        user = json.data[0];
+                    }else
                     {
-                        chipsHolder.prepend('<div class="chip"> <img src="http://localhost:8081/cdn/general/User.png">' +
-                            json.data.interests[i] + '</div>');
+                        user = json.data;
                     }
-                    for (var i = 0; i < json.data.photos.length;  i++)
-                    {
-                        $(gallery[i]).attr('src', json.data.photos[i]);
-                    }
-                    console.log(json.data);
-                    $('#user_name').text(json.data.firstName + " " + json.data.lastName);
-                    $('.photo img')[0].src = (json.data.avatar === null) ? "http://localhost:8081/cdn/general/User.png" : json.data.avatar;
-                    $('.age .info')[0].innerHTML = (json.data.age === '') ? '-' : json.data.age;
-                    $('.pref .info')[0].innerHTML = (json.data.sexPref === '') ? '-' : json.data.sexPref;
-                    $('.sex .info')[0].innerHTML = (json.data.sex === '') ? '-' : json.data.sex;
-                    $('.country .info')[0].innerHTML = (json.data.country === '') ? '-' : json.data.country;
-                    $('.state .info')[0].innerHTML = (json.data.state === '') ? '-' : json.data.state;
-                    $('.about_me .info')[0].innerHTML = (json.data.aboutMe === '') ? '-' : json.data.aboutMe;
-                    $('#rate')[0].innerHTML = (json.data.rate === '0') ? '-' : json.data.rate;
 
-                    if(json.data.lastSean !== null)
+                    $('.chip').each(function () {
+                        this.remove();
+                    });
+
+                    for (var i = user.information.interests.length - 1; i >= 0;  i--)
                     {
-                        date = new Date(json.data.lastSean);
+                        chipsHolder.prepend('<div class="chip"> <img src="'+ user.information.avatar +'">' +
+                            user.information.interests[i] + '</div>');
+                    }
+                    for (var i = 0; i < user.information.photos.length;  i++)
+                    {
+                        $(gallery[i]).attr('src', user.information.photos[i]);
+                    }
+
+                    $('#user_name').text(user.firstName + " " + user.lastName);
+                    $('.photo img')[0].src = (user.information.avatar === null) ? "http://localhost:8081/cdn/general/User.png" : user.information.avatar;
+                    $('.age .info')[0].innerHTML = (user.information.age === '') ? '-' : user.information.age;
+                    $('.pref .info')[0].innerHTML = (user.information.sexPref === '') ? '-' : user.information.sexPref;
+                    $('.sex .info')[0].innerHTML = (user.information.sex === '') ? '-' : user.information.sex;
+                    $('.country .info')[0].innerHTML = (user.information.country === '') ? '-' : user.information.country;
+                    $('.state .info')[0].innerHTML = (user.information.state === '') ? '-' : user.information.state;
+                    $('.about_me .info')[0].innerHTML = (user.information.aboutMe === '') ? '-' : user.information.aboutMe;
+                    $('#rate').text(user.information.rate);
+                    console.log($('#rate').val());
+
+                    if(user.information.lastSean !== null)
+                    {
+                        date = new Date(user.information.lastSean);
                         $('#status').text(date.toDateString().substr(3, 7) + " " + date.toTimeString().substr(0, 8));
                     }else
                         $('#status').text("online");
+
                     buildAcountPage(acountContext);
                 }
             }
@@ -100,10 +111,32 @@ function buildUserPageContext()
 
 function buildAcountPage(context)
 {
+    if(context !== null) {
+        if (context.blocked === true)
+        {
+            $('#blocked').css('display', 'block');
+            return ;
+        }
+        if (context.blackList === true)
+            $('#blacklist').css('display', 'block');
+        else
+            if (context.matched === true)
+            {
+                $('#matched').css('display', 'block');
+                $('#send').css('display', 'block');
+                $('#dropdown').css('display', 'block');
+            }
+            else
+            {
+                if(context.liked === true)
+                {
+                    $('#liked').css('display', 'block');
+                }else
+                {
+                    $('#like').css('display', 'block');
+                }
+            }
 
-    if(context !== null && context.liked === true)
-    {
-        $('#like').remove();
     }
 
 }
@@ -126,13 +159,14 @@ function likeUser()
                 {
                     $('#like').addClass('scale-out');
                     setTimeout(function(){
-                        $('#like').remove();
+                        $('#like').css('display', 'none');
                     }, 250);
 
                 }else
                 {
                     Materialize.toast("You allready rate this user", 7000);
                 }
+             buildPage();
             }
         });
 }
@@ -152,11 +186,12 @@ function dislikeUser()
             success: function (json) {
                 if (json.status === 'OK')
                 {
-                    $('#like').addClass('scale-out');
                     setTimeout(function(){
-                        $('#like').remove();
+                        location.href = location.href;
                     }, 250);
                     Materialize.toast("Connection with user interrupted!", 7000);
+
+
                 }else
                 {
                     Materialize.toast("You allready interrupt this connection", 7000);
@@ -187,6 +222,8 @@ function addToBlackList()
                     }, 250);
                     Materialize.toast("This user will never disturb you!", 7000);
                 }
+                buildPage();
+
             }
         });
 }

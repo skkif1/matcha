@@ -110,4 +110,5 @@ public class UserSearchFiltrator {
                 !user.getInformation().getInterests().containsAll(tagList));
         return res;
     }
+
 }

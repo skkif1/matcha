@@ -1,5 +1,6 @@
 package com.matcha.controller;
 
+import com.matcha.dao.UserDao;
 import com.matcha.entity.AcountPageContext;
 import com.matcha.entity.User;
 import com.matcha.entity.UserInformation;
@@ -20,10 +21,13 @@ import java.io.IOException;
 public class UserInformationController {
 
     private UserInformationManager infoManager;
+    private UserDao userDao;
+
 
     @Autowired
-    public UserInformationController(UserInformationManager infoManager) {
+    public UserInformationController(UserInformationManager infoManager, UserDao userDao) {
         this.infoManager = infoManager;
+        this.userDao = userDao;
     }
 
     @RequestMapping(method = RequestMethod.GET)
@@ -77,11 +81,14 @@ public class UserInformationController {
     public @ResponseBody String getUserInfo(HttpSession session)
     {
         JsonResponseWrapper json = new JsonResponseWrapper();
-        UserInformation userInfo = infoManager.getUserInfo((User) session.getAttribute("user"));
+        User user = (User) session.getAttribute(User.USER_ATTRIBUTE_NAME);
+        UserInformation userInfo = infoManager.getUserInfo(user);
+        user.setInformation(userInfo);
+
         if (userInfo != null)
         {
             json.setStatus("OK");
-            json.setData(userInfo);
+            json.setData(user);
         }
         return json.toString();
     }
@@ -90,14 +97,15 @@ public class UserInformationController {
     public @ResponseBody String getUserInfo(@PathVariable("id") Integer id, HttpSession session)
     {
         JsonResponseWrapper json = new JsonResponseWrapper();
-        User user = new User();
-        user.setId(id);
+        User user = userDao.getUserById(id);
         UserInformation userInfo = infoManager.getUserInfo(user);
+        user.setInformation(userInfo);
         AcountPageContext acountPageContext = infoManager.getAcountPageContext(id, ((User)session.getAttribute(User.USER_ATTRIBUTE_NAME)).getId());
+
         if (userInfo != null)
         {
             json.setStatus("OK");
-            json.setData(new Object[] {userInfo, acountPageContext});
+            json.setData(new Object[] {user, acountPageContext});
         }
         return json.toString();
     }

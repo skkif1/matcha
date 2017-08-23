@@ -17,7 +17,6 @@ body
     display: flex;
     justify-content: space-between;
     margin-top: 10px;
-
 }
 
 .side_bar
@@ -72,13 +71,6 @@ body
 }
 
 
-.recomendations
-{
-    margin-top: 10px;
-    text-align: center;
-}
-
-
 .like
 {
     display: flex;
@@ -91,14 +83,25 @@ body
     display: flex;
     flex-direction: column;
     margin-left: 10px;
+
 }
 
 .user_name
 {
     background: white;
     padding: 10px;
-    display: flex;
-    justify-content: space-between;
+    display: inline;
+}
+
+#user_name
+{
+    margin: 0;
+}
+
+#status
+{
+    text-align: right;
+    color: grey;
 }
 
 span
@@ -118,9 +121,6 @@ span
 {
     background: white;
     margin-top: 10px;
-    display: flex;
-    justify-content: space-between;
-    flex-direction: column;
 }
 
 .age
@@ -140,7 +140,6 @@ span
     margin-top: 10px;
     background: white;
     display: flex;
-
 }
 
 .sex span
@@ -207,4 +206,66 @@ hr
     background: white;
     margin-top: 10px;
 }
+
+@media only screen and (max-width: 920px) {
+
+    .content
+    {
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width: 670px) {
+
+    .content {
+        flex-direction: column;
+    }
+
+    .photo_content {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    #nav_bar
+    {
+        margin: 0;
+    }
+    .rate
+    {
+        order: 4;
+        width: 100%;
+        margin: 5px 5px;
+    }
+
+    .user_info
+    {
+        margin: 5px 5px;
+    }
+
+    .age
+    {
+        flex: 2;
+    }
+
+}
+
+@media only screen and (max-width: 450px) {
+
+    #nav_bar
+    {
+        margin: 0 2px;
+    }
+
+    .photo_wrapper
+    {
+        padding: 0;
+    }
+
+    .photo_wrapper img
+    {
+        width: 100%;
+    }
+}
+
 
