@@ -31,7 +31,7 @@ public class AcountController {
         System.out.println(acountManager.checkIfUserEligableForSearch(visitor));
         if (id == visitor.getId() || !acountManager.checkIfUserEligableForSearch(visitor))
             return "redirect:/";
-        if (acountManager.requisterVisit(visitor.getId(), id))
+        if (acountManager.requisterVisit(visitor, id))
             return "acountPage";
         return "404";
     }

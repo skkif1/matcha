@@ -14,14 +14,23 @@ body
 {
     width: 920px;
     display: flex;
+    flex-direction:row;
+    justify-content: space-between;
     margin-top: 10px;
     height: 92%;
+
+}
+
+.list_wrapper
+{
+    flex: 2;
+    margin-left: 10px;
 }
 
 .list
 {
     width: 100%;
-    margin-left: 10px;
+    height: 90%;
 }
 
 .collection-item
@@ -46,6 +55,7 @@ body
     display: flex;
     flex-direction: column;
 }
+
 .hiden
 {
     display: none;
@@ -57,13 +67,14 @@ body
     background: white;
     padding: 10px 0;
     width: 100%;
+    overflow: scroll;
 }
 
 .card
 {
-    margin: 5px 10px;
     display: flex;
-    width: 100%;
+    width: 99%;
+    margin: 5px auto;
 }
 
 .card b
@@ -94,24 +105,30 @@ body
     font-size: 1em;
     margin-bottom: 10px;
     margin-right: 10px;
-    word-wrap: normal;
+    word-wrap: break-word;
+    word-break: break-all;
 }
 
-/*.time*/
-/*{*/
-    /*text-align: right;*/
-    /*padding-right: 10px;*/
-    /*font-weight: 100;*/
-    /*color: grey;*/
-    /*font-size: 0.7em;*/
-    /*width: 100%;*/
-/*}*/
+.time
+{
+    text-align: right;
+    padding-right: 10px;
+    font-weight: 100;
+    color: grey;
+    font-size: 0.7em;
+    width: 100%;
+}
 
-/*.author_name*/
-/*{*/
-    /*font-family: 'Open Sans', sans-serif;*/
-    /*margin-left: 20px;*/
-/*}*/
+.author_name
+{
+    font-family: 'Open Sans', sans-serif;
+    margin-left: 20px;
+}
+
+.unread
+{
+    background: grey;
+}
 
 .message_form
 {
@@ -134,5 +151,45 @@ body
 {
     margin: 10px;
     word-break: break-all;
+}
 
+.previous_messages
+{
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    border: none;
+    color: rgb(43,187,173);;
+    border-radius: 2px;
+    background: rgb(245,245,245);
+    opacity: 0.15;
+    transition: opacity 1s, background-color 1s, color 1s;
+    display: none;
+}
+
+.btn
+{
+    margin-right: 5px;
+}
+
+.previous_messages:hover
+{
+    opacity: 1;
+    background: rgb(43,187,173);
+    color: white;
+}
+
+@media only screen and (max-width: 920px) {
+
+    .content
+    {
+        width: 100%;
+        margin: 5px 10px;
+        padding:0;
+    }
+
+    .list
+    {
+        margin:0;
+    }
 }

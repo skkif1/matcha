@@ -26,6 +26,7 @@ public class ApplicationMessageBroker implements ImessageBroker {
         addSubscription(endPointName, subscriptionName);
         List<WebSocketSession> subscribedSessions = endpointStorage.get(endPointName).getPointSubscriptions().get(subscriptionName);
         subscribedSessions.add(session);
+        System.out.println("ApplicationMessageBroker.addUser" + subscribedSessions);
     }
 
     @Override
@@ -33,7 +34,8 @@ public class ApplicationMessageBroker implements ImessageBroker {
         Endpoint endpoint = this.endpointStorage.get(endPointName);
         List<WebSocketSession> subscribers = endpoint.getPointSubscriptions().get(subscriptionName);
         if (subscribers != null && subscribers.contains(session))
-            subscribers.remove(session);
+                subscribers.remove(session);
+        System.out.println("ApplicationMessageBroker.removeUser" + subscribers);
     }
 
 
@@ -52,6 +54,7 @@ public class ApplicationMessageBroker implements ImessageBroker {
             {
                 try {
                     subscriber.sendMessage(message);
+                    System.out.println("ApplicationMessageBroker.consumeMessage" + " send message to " + subscriber);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }

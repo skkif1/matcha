@@ -17,11 +17,8 @@ public class SecurityInterceptor implements HandlerInterceptor {
         HttpSession session = httpServletRequest.getSession();
         if(session == null || session.getAttribute(User.USER_ATTRIBUTE_NAME) == null)
         {
-            System.out.println(httpServletRequest.getServletPath());
-            System.out.println(httpServletRequest.getContextPath());
             httpServletResponse.setStatus(HttpStatus.UNAUTHORIZED.value());
             httpServletResponse.sendRedirect("/matcha");
-            System.out.println("rejected");
             return false;
         }
         return true;

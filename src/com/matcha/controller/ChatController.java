@@ -2,11 +2,14 @@ package com.matcha.controller;
 
 import com.matcha.entity.Conversation;
 import com.matcha.entity.Message;
+import com.matcha.entity.User;
 import com.matcha.model.IChat;
 import com.matcha.model.JsonResponseWrapper;
 import com.matcha.model.messageBroker.ImessageBroker;
 import com.mysql.cj.api.Session;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.messaging.handler.annotation.DestinationVariable;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
@@ -76,6 +79,16 @@ public class ChatController {
         return ajax;
     }
 
+    @RequestMapping(value = "/conversation/{offset}")
+    public @ResponseBody JsonResponseWrapper getPreviousMessages(@RequestParam Integer conversationId,
+                                                                 @PathVariable("offset") Integer messageOnView,
+                                                                 HttpSession session)
+    {
+        JsonResponseWrapper ajax = chatManager.getConversationMessages(conversationId, messageOnView, session);
+        ajax.setStatus("OK");
+        return ajax;
+    }
+
     @RequestMapping(value = "/send", method = RequestMethod.POST, consumes = "application/json")
     public @ResponseBody JsonResponseWrapper sendMessage(@RequestBody Message message, HttpSession session)
     {
@@ -92,5 +105,13 @@ public class ChatController {
             ajax.setData(message);
         }
         return ajax;
+    }
+
+    @RequestMapping(value = "/read")
+    @ResponseStatus(HttpStatus.OK)
+    public void readMessage(@RequestParam("messageId") Integer messageId, HttpSession session)
+    {
+        User user = (User) session.getAttribute(User.USER_ATTRIBUTE_NAME);
+        chatManager.readMessage(messageId, user);
     }
 }

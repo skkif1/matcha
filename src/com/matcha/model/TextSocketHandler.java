@@ -44,22 +44,27 @@ public class TextSocketHandler extends TextWebSocketHandler {
 
     @Override
     public void afterConnectionEstablished(WebSocketSession session) throws Exception {
-        HttpSession httpSession = (HttpSession) session.getAttributes().get("session");
-        User user = (User) httpSession.getAttribute("user");
-        if (session.getUri().toString().endsWith(USER_ENDPOINT))
+
+        try {
+            HttpSession httpSession = (HttpSession) session.getAttributes().get("session");
+            User user = (User) httpSession.getAttribute("user");
+            if (session.getUri().toString().endsWith(USER_ENDPOINT)) {
+                messageBroker.addUser(new SockSessionDecorator(session), USER_ENDPOINT, user.getId().toString());
+                infoDao.setLastVisitTime(user.getId(), false);
+            }
+            if (session.getUri().toString().endsWith(CONVERSATION_ENDPOINT)) {
+                messageBroker.addUser(new SockSessionDecorator(session), CONVERSATION_ENDPOINT, ((Conversation) httpSession.getAttribute("currentConversation")).getId().toString());
+            }
+        }catch (Exception ex)
         {
-            messageBroker.addUser(new SockSessionDecorator(session), USER_ENDPOINT, user.getId().toString());
-            infoDao.setLastVisitTime(user.getId(), false);
-        }
-        if (session.getUri().toString().endsWith(CONVERSATION_ENDPOINT))
-        {
-            messageBroker.addUser(new SockSessionDecorator(session), CONVERSATION_ENDPOINT, ((Conversation)httpSession.getAttribute("currentConversation")).getId().toString());
+            ex.printStackTrace();
         }
     }
 
     @Override
     public void afterConnectionClosed(WebSocketSession session, CloseStatus status) throws Exception {
 
+        System.out.println("TextSocketHandler.afterConnectionClosed" + status);
         HttpSession httpSession = (HttpSession) session.getAttributes().get("session");
         try
         {

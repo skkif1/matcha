@@ -15,18 +15,10 @@ public class Message {
     private String  message;
     private Integer author;
     private Integer reciver;
+    private Boolean read;
     private Timestamp time;
 
     public Message() {
-    }
-
-    public Message(Integer conversationId, Integer id, String message, Integer author, Integer reciver, Timestamp time) {
-        this.conversationId = conversationId;
-        this.id = id;
-        this.message = message;
-        this.author = author;
-        this.reciver = reciver;
-        this.time = time;
     }
 
     public String getMessage() {
@@ -75,6 +67,14 @@ public class Message {
 
     public void setTime(Timestamp time) {
         this.time = time;
+    }
+
+    public Boolean getRead() {
+        return read;
+    }
+
+    public void setRead(Boolean read) {
+        this.read = read;
     }
 
     @Override

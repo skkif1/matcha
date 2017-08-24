@@ -79,15 +79,15 @@ public class AcountManager {
         return json;
     }
 
-    public Boolean requisterVisit(Integer visitorId, Integer userId) {
+    public Boolean requisterVisit(User visitor, Integer userId) {
         if (infoDao.getUserInfoByUserId(userId) == null)
             return false;
         else {
-            if (infoDao.saveVisit(visitorId, userId)) {
+            if (infoDao.saveVisit(visitor.getId(), userId)) {
                 Notification notification = new Notification();
                 User user = userDao.getUserById(userId);
                 notification.setCategory("visit");
-                notification.setBody(user.getFirstName() + " " + user.getLastName() + " visit your prfile!");
+                notification.setBody(visitor.getFirstName() + " " + visitor.getLastName() + " visit your prfile!");
                 messageBroker.consumeMessage(new TextMessage(notification.toString()), userId.toString(), TextSocketHandler.USER_ENDPOINT);
             }
         }

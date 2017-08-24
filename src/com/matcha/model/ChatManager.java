@@ -6,6 +6,7 @@ import com.matcha.entity.Message;
 import com.matcha.entity.Notification;
 import com.matcha.entity.User;
 import com.matcha.model.messageBroker.ImessageBroker;
+import org.apache.commons.lang.StringEscapeUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.socket.TextMessage;
@@ -50,6 +51,8 @@ public class ChatManager implements IChat{
 
     @Override
     public Boolean sendMessage(Message message) {
+        chatDao.saveMessage(message);
+        message.setMessage(StringEscapeUtils.escapeHtml(message.getMessage()));
         messageBroker.consumeMessage(new TextMessage(message.toString()), message.getConversationId().toString(),
                 TextSocketHandler.CONVERSATION_ENDPOINT);
         Notification notification = new Notification();
@@ -57,7 +60,6 @@ public class ChatManager implements IChat{
         notification.setBody("You have new message!");
         messageBroker.consumeMessage(new TextMessage(notification.toString()), message.getReciver().toString(),
                 TextSocketHandler.USER_ENDPOINT);
-        chatDao.saveMessage(message);
         return true;
     }
 
@@ -73,5 +75,12 @@ public class ChatManager implements IChat{
         json.setStatus("OK");
         json.setData(conversationInfo);
         return json;
+    }
+
+    @Override
+    public void readMessage(Integer messageId, User conversationHolder) {
+        Message message = chatDao.getMessage(messageId);
+        message.setRead(true);
+        chatDao.updateMessage(message);
     }
 }

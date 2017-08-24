@@ -7,7 +7,9 @@ import com.matcha.entity.Conversation;
 import com.matcha.entity.Message;
 import com.matcha.entity.User;
 import com.mysql.cj.api.mysqla.result.Resultset;
+import org.apache.commons.lang.StringEscapeUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.PreparedStatementCreator;
 import org.springframework.jdbc.core.RowCallbackHandler;
@@ -36,6 +38,7 @@ public class ChatDaoImpl implements ChatDao{
         this.infoDao = infoDao;
     }
 
+
     @Override
     public void saveMessage(Message message) {
         String sql = "INSERT INTO message (text, author, conversation_id, reciver_id) VALUES (?,?,?,?)";
@@ -43,8 +46,31 @@ public class ChatDaoImpl implements ChatDao{
     }
 
     @Override
-    public Message getMessage(Integer id) {
-        return null;
+    public void updateMessage(Message message) {
+        String sql = "UPDATE message SET text = ?,  author = ?, conversation_id = ?,  reciver_id = ?, `read` = ? WHERE id = ?";
+        template.update(sql, message.getMessage(), message.getAuthor(), message.getConversationId(),
+                message.getReciver(), message.getRead(), message.getId());
+    }
+
+    @Override
+    public Message getMessage(Integer id)
+    {
+        String sql = "SELECT * FROM message WHERE id = ?";
+
+        final Message message = new Message();;
+
+        template.query(sql, (ResultSet rs) ->
+        {
+            message.setId(rs.getInt("id"));
+            message.setAuthor(rs.getInt("author"));
+            message.setMessage(StringEscapeUtils.escapeHtml(rs.getString("text")));
+            message.setConversationId(rs.getInt("conversation_id"));
+            message.setReciver(rs.getInt("reciver_id"));
+            message.setTime(rs.getTimestamp("time"));
+            message.setRead(rs.getBoolean("read"));
+        }, id);
+
+        return message;
     }
 
     @Override
@@ -88,6 +114,7 @@ public class ChatDaoImpl implements ChatDao{
                conversation.setPartner(partner);
            }
             conversation.setId(rs.getInt("id"));
+            conversation.setNotReadNumber(getUnreadMessagesNumber(conversation.getId(), user.getId()));
             conversations.add(conversation);
             }, user.getId(), user.getId());
         return conversations;
@@ -103,12 +130,19 @@ public class ChatDaoImpl implements ChatDao{
             Message message = new Message();
             message.setId(rs.getInt("id"));
             message.setAuthor(rs.getInt("author"));
-            message.setMessage(rs.getString("text"));
+            message.setMessage(StringEscapeUtils.escapeHtml(rs.getString("text")));
             message.setConversationId(id);
             message.setReciver(rs.getInt("reciver_id"));
             message.setTime(rs.getTimestamp("time"));
+            message.setRead(rs.getBoolean("read"));
             messages.add(message);
         }, id, limit, offset);
         return messages;
+    }
+
+    private Integer getUnreadMessagesNumber(Integer conversationId, Integer recieverId)
+    {
+        String sql = "SELECT count(*) FROM message WHERE conversation_id = ? AND reciver_id = ?";
+        return template.queryForObject(sql, new Object[]{conversationId, recieverId}, Integer.class);
     }
 }

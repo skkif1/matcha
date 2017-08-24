@@ -10,6 +10,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
     <script src="//code.jquery.com/jquery-2.1.0.min.js"></script>
     <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; minimum-scale=1.0; user-scalable=no; target-densityDpi=device-dpi" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/css/materialize.css">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:600i" rel="stylesheet">
@@ -28,7 +29,7 @@
 
     <%@include file="side_bar.jsp" %>
 
-
+<div class="list_wrapper">
     <div class="conversation_list list">
         <ul class="collection" id="conversation_collection">
             <li class="collection-item hiden" id="hiden_conversation">
@@ -40,18 +41,19 @@
     </div>
 
     <div class="list hiden" id="conversation_messages">
-        <div class="messages_list">
+        <button class="previous_messages" onclick="getPreviousMessages()">more</button>
+        <div class="messages_list" onscroll="checkScrollHeight(this)">
 
         </div>
 
         <div class="message_form">
             <div class="input-field col s12">
-                <textarea id="message_input" class="materialize-textarea" maxlength="1000">  </textarea>
+                <textarea id="message_input" class="materialize-textarea" maxlength="250">  </textarea>
             </div>
-            <button class="waves-effect waves-light btn" onclick="sendMessage()"><i>class="material-icons left">cloud</i></button>
+            <button class="waves-effect waves-light btn" onclick="sendMessage()">send</button>
         </div>
     </div>
-
+</div>
 </div>
 
 

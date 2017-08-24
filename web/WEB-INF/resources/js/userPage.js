@@ -229,20 +229,6 @@ function addToBlackList()
 }
 
 
-function renderNotification(notification)
-{
-    notification = JSON.parse(notification.data);
-    console.log(notification);
-        Materialize.toast(notification.body, 7000);
-    if (notification.category === "message")
-    {
-        $('#mess_notif').show().text(notification.history);
-
-    }else
-    {
-        $('#hist_notif').show().text(notification.history);
-    }
-}
 
 function reportAsFake() {
 

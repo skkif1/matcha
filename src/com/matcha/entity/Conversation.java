@@ -7,18 +7,12 @@ public class Conversation {
     private Integer id;
     private User holder;
     private User partner;
+    private Integer notReadNumber;
     private List<Message> messages;
 
 
     public Conversation() {
 
-    }
-
-    public Conversation(Integer id, User holderId, User partner, List<Message> messages) {
-        this.id = id;
-        this.holder = holderId;
-        this.partner = partner;
-        this.messages = messages;
     }
 
 
@@ -55,6 +49,13 @@ public class Conversation {
         this.messages = messages;
     }
 
+    public Integer getNotReadNumber() {
+        return notReadNumber;
+    }
+
+    public void setNotReadNumber(Integer notReadNumber) {
+        this.notReadNumber = notReadNumber;
+    }
 
     @Override
     public boolean equals(Object obj) {
@@ -68,9 +69,10 @@ public class Conversation {
     public String toString() {
         return "Conversation{" +
                 "id=" + id +
-                ", user1=" + holder + "\n" +
-                ", user2=" + partner + "\n" +
-                ", messages=" + messages + "\n" +
+                ", holder=" + holder +
+                ", partner=" + partner +
+                ", notReadNumber=" + notReadNumber +
+                ", messages=" + messages +
                 '}';
     }
 }

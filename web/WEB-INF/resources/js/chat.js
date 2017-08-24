@@ -69,6 +69,12 @@ function getMessages(event) {
             });
             connnectToConversation();
             $('#conversation_messages').removeClass("hiden");
+
+            list.scrollTop = list.scrollHeight;
+
+            $('.unread').mouseover(function () {
+                readMessage(this);
+            });
         }
     });
 }
@@ -99,6 +105,9 @@ function connnectToConversation()
             '<div class="message"> '+ message.message +' </div> ' +
             '</div> ' +
             '</div>');
+
+        list = $('.messages_list')[0];
+        list.scrollTop = list.scrollHeight;
 })
 }
 
@@ -113,10 +122,12 @@ function insertMessage(list, value) {
         avatar = currentConversation.partner.information.avatar;
         name = currentConversation.partner.firstName + " " + currentConversation.partner.lastName;
     }
-        time = new Date(value.time);
+
+    time = new Date(value.time);
+    readed = (value.read) ? "" : "unread";
 
 
-    $(list).prepend(' <div class="card horizontal user_message" id=""> ' +
+    $(list).prepend(' <div class="card horizontal user_message '+ readed +'" id="'+ value.id +'"> ' +
         '<div class="message-image"><img src="' + avatar + '"></div> ' +
         '<div class="message_text"> ' +
         '<div class="author_name"><b>'+ name +'</b></div> ' +
@@ -124,6 +135,28 @@ function insertMessage(list, value) {
         '<div class="message">'+ value.message +'' + '</div> ' +
         '</div> ' +
         '</div>');
+
+}
+
+function readMessage(message)
+{
+    $(message).removeClass('unread');
+    console.log(message);
+    data = {
+        messageId : message.id
+    };
+
+    $.ajax(
+        {
+            type: "POST",
+            url: home + "/chat/read",
+            data: data,
+            success: function (json) {
+
+            }
+        }
+    );
+
 }
 
 function openConversation() {
@@ -132,7 +165,8 @@ function openConversation() {
     location.href = url + mass[mass.length - 1];
 }
 
-function getConversations() {
+function getConversations()
+{
 
     $.ajax(
         {
@@ -148,7 +182,7 @@ function getConversations() {
                         var conversation = $("#hiden_conversation").clone();
                         $(conversation).children('img').attr("src", json.data[i].partner.information.avatar);
                         $(conversation).children('span').text(json.data[i].partner.firstName + ' ' + json.data[i].partner.lastName);
-
+                        $(conversation).children('p').text(json.data[i].notReadNumber);
 
                         $(conversation).removeClass('hiden')
                                 .attr('id', json.data[i].id)
@@ -161,4 +195,38 @@ function getConversations() {
             }
         }
     );
+}
+
+function getPreviousMessages()
+{
+    var data =
+        {
+            conversationId: $('.messages_list')[0].id
+        };
+
+    $.ajax(
+        {
+            type: "POST",
+            url: home + "/chat/conversation/" + $('.card').length,
+            data: data,
+            success: function (json) {
+                console.log(json);
+                if (json.status === "OK")
+                {
+                    var list = $('#' + data.conversationId);
+                    $.each(json.data.mess, function (index, value) {
+                        insertMessage(list, value);
+                    });
+                }
+            }
+        }
+    );
+}
+
+function checkScrollHeight(list)
+{
+    if (list.scrollTop < 10)
+        $('.previous_messages').css('display', 'block');
+    if (list.scrollTop > 10)
+        $('.previous_messages').css('display', 'none');
 }

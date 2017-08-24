@@ -3,7 +3,7 @@
 
 <html>
 <head>
-    <title>Title</title>
+    <title>profile</title>
 
 
     <link rel="shortcut icon" href="<c:url value="/resources/favicon.ico"/>" type="image/x-icon" />
@@ -84,13 +84,5 @@
     <script src="<c:url value="/resources/js/socket.js" />"></script>
     <script src="<c:url value="/resources/js/userPage.js" />"></script>
 
-    <script>
-        $(document).ready(function () {
-            connect('ws://localhost:8080/matcha/user/', function(data)
-            {
-                renderNotification(data);
-            })
-        });
-    </script>
 </body>
 </html>
