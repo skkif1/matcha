@@ -2,8 +2,6 @@ package com.matcha.dao.mysqlImpl;
 
 
 import com.matcha.dao.InformationDao;
-import com.matcha.entity.Notification;
-import com.matcha.entity.SearchRequest;
 import com.matcha.entity.User;
 import com.matcha.entity.UserInformation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -177,6 +175,12 @@ public class InformationDaoImpl implements InformationDao {
     }
 
     @Override
+    public void readNewLike(Integer userId) {
+        String sql = "UPDATE `like` SET `read` = TRUE WHERE user_id = ?";
+        template.update(sql, userId);
+    }
+
+    @Override
     public List<User> getLikeAuthors(Integer userId) {
 
         List<User> likeAuthors = new ArrayList<>(20);
@@ -260,6 +264,12 @@ public class InformationDaoImpl implements InformationDao {
     }
 
     @Override
+    public void readNewVisits(Integer userId) {
+        String sql = "UPDATE visits SET `read` = TRUE  WHERE user_id = ?";
+        template.update(sql, userId);
+    }
+
+    @Override
     public void addUserToBlackList(Integer authorId, Integer userId) {
         String sql = "INSERT INTO blacklist (author_id, user_id)  VALUES (?, ?)";
         template.update(sql, authorId, userId);
@@ -293,8 +303,8 @@ public class InformationDaoImpl implements InformationDao {
 
     @Override
     public Boolean checkIfMatchedWith(Integer thisUserId, Integer userId) {
-        String sql = "SELECT EXISTS(SELECT * FROM matches WHERE (user1_id = ? AND  user2_id = ?) OR" +
-                "(user1_id = ? AND user2_id = ?))";
+        String sql = "SELECT EXISTS(SELECT * FROM matches WHERE (connection_author_id = ? AND  user2_id = ?) OR" +
+                "(connection_author_id = ? AND user2_id = ?))";
         Integer res = template.queryForObject(sql, new Object[]{thisUserId, userId, userId, thisUserId}, Integer.class);
         return res > 0;
     }
@@ -304,7 +314,7 @@ public class InformationDaoImpl implements InformationDao {
         List<User> connectedUsers = new ArrayList<>(20);
         String sql = "SELECT * FROM user" +
                 " INNER JOIN matches " +
-                " ON (user.id = matches.user1_id OR user.id = matches.user2_id) AND user.id != ?" +
+                " ON (user.id = matches.connection_author_id OR user.id = matches.user2_id) AND user.id != ?" +
                 " LIMIT 20";
 
         template.query(sql, (ResultSet rs) -> {
@@ -323,14 +333,20 @@ public class InformationDaoImpl implements InformationDao {
     @Override
     public void requisterMathedConnection(Integer thisUserId, Integer userId) {
 
-        String sql = "INSERT INTO matches (user1_id, user2_id) VALUES (?,?)";
+        String sql = "INSERT INTO matches (connection_author_id, user2_id) VALUES (?,?)";
         template.update(sql, thisUserId, userId);
     }
 
     @Override
     public void removeConnection(Integer user1Id, Integer user2Id) {
-        String sql = "DELETE FROM matches WHERE (user1_id = ? AND user2_id = ?) OR (user1_id = ? AND user2_id = ?)";
+        String sql = "DELETE FROM matches WHERE (connection_author_id = ? AND user2_id = ?) OR (connection_author_id = ? AND user2_id = ?)";
         template.update(sql, user1Id, user2Id, user2Id, user1Id);
+    }
+
+    @Override
+    public void readNewConnections(Integer userId) {
+        String sql = "UPDATE matches SET `read` = TRUE  WHERE user2_id = ?";
+        template.update(sql, userId);
     }
 
     @Override
@@ -354,6 +370,39 @@ public class InformationDaoImpl implements InformationDao {
     public Boolean ifUserInBlackList(Integer listHolderId, Integer userId) {
         String sql = "SELECT EXISTS(SELECT * FROM blacklist WHERE author_id = ? AND user_id = ?)";
         return template.queryForObject(sql, new Object[]{listHolderId, userId}, Boolean.class);
+    }
+
+    @Override
+    public Integer getNewEventsNumber(Integer userId) {
+
+        String sql = "SELECT" +
+               "  (SELECT COUNT(*) FROM `like` WHERE user_id = ? AND `read` = FALSE) AS table1," +
+               "  (SELECT COUNT(*) FROM matches WHERE user2_id = ? AND `read` = FALSE) AS table2," +
+               "  (SELECT COUNT(*) FROM visits WHERE user_id = ? AND `read` = FALSE) AS table3;";
+
+      Integer res =  template.queryForObject(sql, new Integer[]{userId, userId, userId}, (ResultSet rs, int rowNum) ->
+       {
+           return  (rs.getInt(1) + rs.getInt(2) + rs.getInt(3));
+       });
+
+       return res;
+    }
+
+    @Override
+    public void getNewEventsNumber(Map<String, Integer> eventsHolder, Integer userId) {
+
+        String sql = "SELECT" +
+                "  (SELECT COUNT(*) FROM `like` WHERE user_id = ? AND `read` = FALSE) AS table1," +
+                "  (SELECT COUNT(*) FROM matches WHERE user2_id = ? AND `read` = FALSE) AS table2," +
+                "  (SELECT COUNT(*) FROM visits WHERE user_id = ? AND `read` = FALSE) AS table3;";
+
+        template.queryForObject(sql, new Integer[]{userId, userId, userId}, (ResultSet rs, int rowNum) ->
+        {
+            eventsHolder.put("visitors", rs.getInt(1));
+            eventsHolder.put("likes", rs.getInt(2));
+            eventsHolder.put("connections", rs.getInt(3));
+            return eventsHolder;
+        });
     }
 
     public void incrementRate(Integer id) {

@@ -4,18 +4,16 @@ import java.util.List;
 
 public class HistoryPageContext {
 
+    private Integer newLikes;
+    private Integer newVisitors;
+    private Integer newConnections;
+
     private List<User> likes;
     private List<User> visited;
     private List<User> visitors;
     private List<User> lastConnections;
 
     public HistoryPageContext() {
-    }
-
-    public HistoryPageContext(List<User> likes, List<User> visitors, List<User> lastConnections) {
-        this.likes = likes;
-        this.visitors = visitors;
-        this.lastConnections = lastConnections;
     }
 
     public List<User> getLikes() {
@@ -48,5 +46,29 @@ public class HistoryPageContext {
 
     public void setVisited(List<User> visited) {
         this.visited = visited;
+    }
+
+    public Integer getNewLikes() {
+        return newLikes;
+    }
+
+    public void setNewLikes(Integer newLikes) {
+        this.newLikes = newLikes;
+    }
+
+    public Integer getNewVisitors() {
+        return newVisitors;
+    }
+
+    public void setNewVisitors(Integer newVisitors) {
+        this.newVisitors = newVisitors;
+    }
+
+    public Integer getNewConnections() {
+        return newConnections;
+    }
+
+    public void setNewConnections(Integer newConnections) {
+        this.newConnections = newConnections;
     }
 }

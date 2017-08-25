@@ -3,7 +3,7 @@
 
 <html>
 <head>
-    <title>Title</title>
+    <title>profile</title>
 
 
     <link rel="shortcut icon" href="<c:url value="/resources/favicon.ico"/>" type="image/x-icon" />
@@ -81,16 +81,8 @@
 
     <script src="//code.jquery.com/jquery-2.1.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/js/materialize.min.js"></script>
-    <script src="<c:url value="/resources/js/socket.js" />"></script>
+    <script src="<c:url value="/resources/js/sideBar.js" />"></script>
     <script src="<c:url value="/resources/js/userPage.js" />"></script>
 
-    <script>
-        $(document).ready(function () {
-            connect('ws://localhost:8080/matcha/user/', function(data)
-            {
-                renderNotification(data);
-            })
-        });
-    </script>
 </body>
 </html>

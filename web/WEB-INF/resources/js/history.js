@@ -2,11 +2,12 @@ var historyContext;
 var home = "http://localhost:8080/matcha";
 
 $(document).ready(function () {
-    buildHistoryPage();
+    getHistoryPageContext();
 });
 
 
-function buildHistoryPage() {
+function getHistoryPageContext()
+{
     $.ajax(
         {
             headers: {
@@ -17,36 +18,60 @@ function buildHistoryPage() {
             dataType: "json",
             url: home + "/history/historyContext/",
             success: function (json) {
-                console.log(json);
-                if (json.visitors !== null) {
-                    for (i = 0; i < json.visitors.length; i++)
-                        renderCard($('#visitors'), json.visitors[i]);
+                historyContext = json;
+                buildHistoryPage();
+            }
+        });
+}
+
+function buildHistoryPage() {
+
+                if (historyContext.visitors !== null) {
+                    for (i = 0; i < historyContext.visitors.length; i++)
+                        renderCard($('#visitors'), historyContext.visitors[i]);
                 }
 
-                if (json.likes !== null) {
-                    for (i = 0; i < json.likes.length; i++)
-                        renderCard($('#likes'), json.likes[i]);
+                if (historyContext.likes !== null) {
+                    for (i = 0; i < historyContext.likes.length; i++)
+                        renderCard($('#likes'), historyContext.likes[i]);
                 }
 
-                if (json.lastConnections !== null) {
-                    for (i = 0; i < json.lastConnections.length; i++)
-                        renderCard($('#connections'), json.lastConnections[i]);
+                if (historyContext.lastConnections !== null) {
+                    for (i = 0; i < historyContext.lastConnections.length; i++)
+                        renderCard($('#connections'), historyContext.lastConnections[i]);
                 }
 
-                if (json.lastConnections !== null) {
-                    for (i = 0; i < json.visited.length; i++)
-                        renderCard($('#visited'), json.visited[i]);
+                if (historyContext.lastConnections !== null) {
+                    for (i = 0; i < historyContext.visited.length; i++)
+                        renderCard($('#visited'), historyContext.visited[i]);
                 }
 
                 $('.card').click(function (event) {
                     location.href = event.currentTarget.id;
-                })
-            }
-        }
-    );
+                });
+
+    renderNewEventsNumber();
 }
 
-function renderCard(list, user) {
+function renderNewEventsNumber()
+{
+    if (historyContext.newVisitors !== null && historyContext.newVisitors !== 0)
+        $('#new_visitors').show().text(historyContext.newVisitors);
+    else
+        $('#new_visitors').hide();
+
+    if (historyContext.newConnections !== null && historyContext.newConnections !== 0)
+        $('#new_connections').show().text(historyContext.newConnections);
+    else
+        $('#new_connections').hide();
+
+    if (historyContext.newLikes !== null && historyContext.newLikes !== 0)
+        $('#new_likes').show().text(historyContext.newLikes);
+    else
+        $('#new_likes').hide();
+}
+
+function renderCard(list, user ) {
 
     var url = home + "/acount/" + user.id;
     var avatar = user.information.avatar;
@@ -71,4 +96,21 @@ function renderCard(list, user) {
         '</div>');
 
 
+}
+
+function read(eventType) {
+
+    $.ajax(
+        {
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            type: "POST",
+            dataType: "json",
+            url: home + "/history/read/" + eventType,
+            success: function (json) {
+
+            }
+    });
 }

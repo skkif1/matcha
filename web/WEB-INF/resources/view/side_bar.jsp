@@ -13,39 +13,3 @@
 
         </div>
 </div>
-
-
-<script src="//code.jquery.com/jquery-2.1.0.min.js"></script>
-
-<script>
-
-    $(document).ready(function () {
-        connect('ws://localhost:8080/matcha/user/', function(data)
-        {
-            renderNotification(data);
-        })
-    });
-
-
-    function connect(addr, callback) {
-        ws = new WebSocket(addr);
-        ws.onmessage = callback;
-    }
-
-
-    function renderNotification(notification)
-    {
-        notification = JSON.parse(notification.data);
-        console.log(notification);
-        Materialize.toast(notification.body, 7000);
-        if (notification.category === "message")
-        {
-            $('#mess_notif').show().text(notification.history);
-
-        }else
-        {
-            $('#hist_notif').show().text(notification.history);
-        }
-    }
-
-</script>

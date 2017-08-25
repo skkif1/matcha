@@ -8,6 +8,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 
 public interface InformationDao {
 
@@ -29,21 +30,27 @@ public interface InformationDao {
     public List<User> getLikeAuthors(Integer userId);
     public void removeLike(Integer authorId, Integer userId);
     public Boolean checkIfUserLiked(Integer userId, Integer visitorId);
+    public void readNewLike(Integer userId);
 
     public Boolean saveVisit(Integer visitorId, Integer userId);
     public Boolean checkIfUserVisit(Integer visitorId, Integer userId);
     public List<User> getUserVisitors(Integer userId);
     public List<User> getUserVisits(Integer userId);
-
+    public void readNewVisits(Integer userId);
 
     public Boolean checkIfMatchedWith(Integer thisUserId, Integer userId);
     public List<User> getUserConnections(Integer userId);
     public void requisterMathedConnection(Integer thisUserId, Integer userId);
     public void removeConnection(Integer user1Id, Integer user2Id);
+    public void readNewConnections(Integer userId);
 
     public void setLastVisitTime(Integer userId, Boolean state);
     public void incrementRate(Integer id);
 
     public void addUserToBlackList(Integer authorId, Integer userId);
     public Boolean ifUserInBlackList(Integer listHolderId, Integer userId);
+
+    public Integer getNewEventsNumber(Integer userId);
+    public void getNewEventsNumber(Map<String, Integer> eventsHolder, Integer userId);
 }
+

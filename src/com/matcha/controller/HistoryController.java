@@ -1,12 +1,12 @@
 package com.matcha.controller;
 
 import com.matcha.entity.HistoryPageContext;
+import com.matcha.entity.User;
 import com.matcha.model.AcountManager;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 
@@ -32,5 +32,13 @@ public class HistoryController {
     {
         HistoryPageContext ctx = acountManager.getHistoryPageContext(session);
         return ctx;
+    }
+
+    @RequestMapping(value = "/read/{eventType}")
+    @ResponseStatus(HttpStatus.OK)
+    public void readEvents(@PathVariable("eventType") String evenType, HttpSession session)
+    {
+        User user = (User) session.getAttribute(User.USER_ATTRIBUTE_NAME);
+        acountManager.readEvents(evenType, user);
     }
 }

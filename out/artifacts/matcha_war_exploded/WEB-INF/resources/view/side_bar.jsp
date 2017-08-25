@@ -1,6 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 
+
 <div class="menu" id="menu"  >
         <div class="collection">
             <a href="http://localhost:8080/matcha" class="collection-item"><span class="new badge"></span>my page</a>
@@ -12,4 +13,3 @@
 
         </div>
 </div>
-

@@ -109,9 +109,10 @@ public class ChatController {
 
     @RequestMapping(value = "/read")
     @ResponseStatus(HttpStatus.OK)
-    public void readMessage(@RequestParam("messageId") Integer messageId, HttpSession session)
+    public void readMessage(HttpSession session)
     {
         User user = (User) session.getAttribute(User.USER_ATTRIBUTE_NAME);
-        chatManager.readMessage(messageId, user);
+        Conversation current = (Conversation) session.getAttribute("currentConversation");
+        chatManager.readAllConversationMessages(current, user);
     }
 }

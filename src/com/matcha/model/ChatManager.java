@@ -51,8 +51,11 @@ public class ChatManager implements IChat{
 
     @Override
     public Boolean sendMessage(Message message) {
-        chatDao.saveMessage(message);
+        Integer id = chatDao.saveMessage(message);
+
+        message = chatDao.getMessage(id);
         message.setMessage(StringEscapeUtils.escapeHtml(message.getMessage()));
+
         messageBroker.consumeMessage(new TextMessage(message.toString()), message.getConversationId().toString(),
                 TextSocketHandler.CONVERSATION_ENDPOINT);
         Notification notification = new Notification();
@@ -60,6 +63,7 @@ public class ChatManager implements IChat{
         notification.setBody("You have new message!");
         messageBroker.consumeMessage(new TextMessage(notification.toString()), message.getReciver().toString(),
                 TextSocketHandler.USER_ENDPOINT);
+
         return true;
     }
 
@@ -78,9 +82,7 @@ public class ChatManager implements IChat{
     }
 
     @Override
-    public void readMessage(Integer messageId, User conversationHolder) {
-        Message message = chatDao.getMessage(messageId);
-        message.setRead(true);
-        chatDao.updateMessage(message);
+    public void readAllConversationMessages(Conversation conversation, User conversationHolder) {
+        chatDao.readAllConversationMessages(conversation.getId(), conversationHolder.getId());
     }
 }

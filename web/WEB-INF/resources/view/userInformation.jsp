@@ -176,6 +176,7 @@
 <script src="//code.jquery.com/jquery-2.1.0.min.js"></script>
 <script src="//js.maxmind.com/js/apis/geoip2/v2.1/geoip2.js" type="text/javascript"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/js/materialize.min.js"></script>
+<script src="<c:url value="/resources/js/sideBar.js" />"></script>
 <script src="<c:url value="/resources/js/userInformation.js" />"></script>
 <script src="<c:url value="/resources/js/validation.js" />"></script>
 </html>

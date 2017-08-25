@@ -14,5 +14,5 @@ public interface IChat {
     public JsonResponseWrapper getConversationList(HttpSession session);
     public Boolean sendMessage(Message message);
     public JsonResponseWrapper getConversationMessages(Integer id, Integer offset, HttpSession session);
-    public void readMessage(Integer messageId, User conversationHolder);
+    public void readAllConversationMessages(Conversation conversation, User conversationHolder);
 }

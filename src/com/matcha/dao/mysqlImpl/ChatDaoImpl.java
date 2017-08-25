@@ -13,13 +13,16 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.PreparedStatementCreator;
 import org.springframework.jdbc.core.RowCallbackHandler;
+import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
+import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 import sun.nio.cs.ext.MS874;
 
 import javax.sql.DataSource;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -40,9 +43,19 @@ public class ChatDaoImpl implements ChatDao{
 
 
     @Override
-    public void saveMessage(Message message) {
+    public Integer saveMessage(Message message) {
+        KeyHolder keyHolder = new GeneratedKeyHolder();
         String sql = "INSERT INTO message (text, author, conversation_id, reciver_id) VALUES (?,?,?,?)";
-        template.update(sql, message.getMessage(), message.getAuthor(), message.getConversationId(), message.getReciver());
+        template.update((con) ->
+        {
+            PreparedStatement stm = con.prepareStatement(sql, new String[]{"id"});
+            stm.setString(1, message.getMessage());
+            stm.setInt(2, message.getAuthor());
+            stm.setInt(3, message.getConversationId());
+            stm.setInt(4,message.getReciver());
+            return stm;
+        }, keyHolder);
+        return keyHolder.getKey().intValue();
     }
 
     @Override
@@ -123,7 +136,7 @@ public class ChatDaoImpl implements ChatDao{
     @Override
     public List<Message> getConversationMessages(Integer id, Integer offset, Integer limit)
     {
-        String sql = "SELECT * FROM message WHERE conversation_id = ? ORDER BY time DESC LIMIT ? OFFSET ?";
+        String sql = "SELECT * FROM message WHERE conversation_id = ? ORDER BY time ASC LIMIT ? OFFSET ?";
         List<Message> messages = new ArrayList<>(limit + limit / 2);
         template.query(sql, (ResultSet rs) ->
         {
@@ -140,9 +153,22 @@ public class ChatDaoImpl implements ChatDao{
         return messages;
     }
 
+    @Override
+    public void readAllConversationMessages(Integer conversationId, Integer recieverId) {
+        String sql = "UPDATE message SET `read` = TRUE WHERE conversation_id = ? AND reciver_id = ?";
+        template.update(sql, conversationId, recieverId);
+    }
+
+    @Override
+    public Integer getAllNewMessages(Integer userId) {
+
+        String sql = "SELECT count(*) FROM message WHERE reciver_id = ? AND `read` = FALSE";
+        return template.queryForObject(sql, new Integer[]{userId}, Integer.class);
+    }
+
     private Integer getUnreadMessagesNumber(Integer conversationId, Integer recieverId)
     {
-        String sql = "SELECT count(*) FROM message WHERE conversation_id = ? AND reciver_id = ?";
+        String sql = "SELECT count(*) FROM message WHERE conversation_id = ? AND reciver_id = ? AND `read` = FALSE";
         return template.queryForObject(sql, new Object[]{conversationId, recieverId}, Integer.class);
     }
 }

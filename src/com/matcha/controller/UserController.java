@@ -16,12 +16,10 @@ import javax.servlet.http.HttpSession;
 @RequestMapping(value = "/")
 public class UserController {
 
-    private ImessageBroker broker;
     private AcountManager acountManager;
 
     @Autowired
-    public UserController(ImessageBroker broker, AcountManager infoManager) {
-        this.broker = broker;
+    public UserController(AcountManager infoManager) {
         this.acountManager = infoManager;
     }
 
@@ -38,9 +36,8 @@ public class UserController {
     @RequestMapping(value = "/context", method = RequestMethod.POST)
     public @ResponseBody UserPageContext getUserPageContext(HttpSession session)
     {
-        UserPageContext ctx = new UserPageContext();
         User user = (User) session.getAttribute(User.USER_ATTRIBUTE_NAME);
-        ctx.setPermissionForSearch(acountManager.checkIfUserEligableForSearch(user));
+        UserPageContext ctx = acountManager.getUserContext(user);
         return ctx;
     }
 }

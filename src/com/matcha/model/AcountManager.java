@@ -1,23 +1,19 @@
 package com.matcha.model;
 
+import com.matcha.dao.ChatDao;
 import com.matcha.dao.InformationDao;
 import com.matcha.dao.UserDao;
 import com.matcha.entity.*;
 import com.matcha.model.messageBroker.ImessageBroker;
-import com.sun.tools.internal.xjc.reader.xmlschema.bindinfo.BIConversion;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.socket.TextMessage;
 
 import javax.servlet.http.HttpSession;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
-import java.util.function.Predicate;
+import java.util.Map;
 import java.util.stream.Collectors;
-
-import com.matcha.model.DistanceCalculator;
 
 @Component
 public class AcountManager {
@@ -25,12 +21,14 @@ public class AcountManager {
     private InformationDao infoDao;
     private ImessageBroker messageBroker;
     private UserDao userDao;
+    private ChatDao chatDao;
 
     @Autowired
-    public AcountManager(InformationDao infoDao, ImessageBroker messageBroker, UserDao userDao) {
+    public AcountManager(InformationDao infoDao, ImessageBroker messageBroker, UserDao userDao, ChatDao chatDao) {
         this.infoDao = infoDao;
         this.messageBroker = messageBroker;
         this.userDao = userDao;
+        this.chatDao = chatDao;
     }
 
     public JsonResponseWrapper likeUser(Integer userId, HttpSession session) {
@@ -46,13 +44,13 @@ public class AcountManager {
                 infoDao.requisterMathedConnection(author.getId(), userId);
                 infoDao.incrementRate(userId);
                 infoDao.incrementRate(author.getId());
-                notification.setCategory("matched");
+                notification.setCategory("history");
                 notification.setBody("now you are matched with " + author.getFirstName() + " " + author.getLastName());
                 messageBroker.consumeMessage(new TextMessage(notification.toString()), userId.toString(), TextSocketHandler.USER_ENDPOINT);
             }
 
             notification.setBody(author.getFirstName() + " " + author.getLastName() + " liked your profile!");
-            notification.setCategory("like");
+            notification.setCategory("history");
             json.setStatus("OK");
             messageBroker.consumeMessage(new TextMessage(notification.toString()), userId.toString(), TextSocketHandler.USER_ENDPOINT);
         return json;
@@ -98,6 +96,7 @@ public class AcountManager {
     public HistoryPageContext getHistoryPageContext(HttpSession session) {
         User user = (User) session.getAttribute(User.USER_ATTRIBUTE_NAME);
         HistoryPageContext ctx = new HistoryPageContext();
+
         List<User> visitors = infoDao.getUserVisitors(user.getId());
         List<User> likeAuthors = infoDao.getLikeAuthors(user.getId());
         List<User> connectdUsers = infoDao.getUserConnections(user.getId());
@@ -106,7 +105,31 @@ public class AcountManager {
         ctx.setLikes(likeAuthors);
         ctx.setVisited(visitedUsers);
         ctx.setLastConnections(connectdUsers);
+        Map<String, Integer> eventsNumber = new HashMap<>();
+        infoDao.getNewEventsNumber(eventsNumber, user.getId());
+        ctx.setNewConnections(eventsNumber.get("connections"));
+        ctx.setNewLikes(eventsNumber.get("likes"));
+        ctx.setNewVisitors(eventsNumber.get("visitors"));
+
         return ctx;
+    }
+
+    public void readEvents(String eventType, User user)
+    {
+        switch (eventType)
+        {
+            case "visitors":
+                infoDao.readNewVisits(user.getId());
+                break;
+
+            case "likes":
+                infoDao.readNewLike(user.getId());
+                break;
+
+            case "connections":
+                infoDao.readNewConnections(user.getId());
+                break;
+        }
     }
 
     public Boolean checkIfUserEligableForSearch(User user)
@@ -115,6 +138,19 @@ public class AcountManager {
         if (info == null || info.getSex() == null || info.getAvatar() == null)
             return false;
         return true;
+    }
+
+    public UserPageContext getUserContext(User user)
+    {
+        UserPageContext ctx = new UserPageContext();
+        UserInformation info = infoDao.getUserInfoByUserId(user.getId());
+        if (info == null || info.getSex() == null || info.getAvatar() == null)
+            ctx.setPermissionForSearch(false);
+        else
+            ctx.setPermissionForSearch(true);
+        ctx.setNumberOfNewEvents(infoDao.getNewEventsNumber(user.getId()));
+        ctx.setNumberOfNewMessages(chatDao.getAllNewMessages(user.getId()));
+        return ctx;
     }
 
 

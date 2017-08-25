@@ -64,17 +64,25 @@ function getMessages(event) {
             var list = $(".messages_list")[0];
             var hiden = $("#hiden_message");
             findConversationOnView(id);
-            $.each(json.data.mess, function (index, value) {
-             insertMessage(list, value);
-            });
+
+            var meatUnreadMessage = false;
+            for (i = 0; i < json.data.mess.length; i++)
+            {
+                if (!json.data.mess[i].read && !meatUnreadMessage)
+                {
+                    console.log(json.data.mess[i].read);
+                    $(list).append('<div class="card">new '+i+'</div>');
+                    meatUnreadMessage = true;
+                }
+                insertMessage(list, json.data.mess[i]);
+                console.log(json.data.mess[i].message);
+            }
+
             connnectToConversation();
             $('#conversation_messages').removeClass("hiden");
-
             list.scrollTop = list.scrollHeight;
 
-            $('.unread').mouseover(function () {
-                readMessage(this);
-            });
+            readMessage();
         }
     });
 }
@@ -86,32 +94,16 @@ function connnectToConversation()
         var message = JSON.parse(response.data);
         console.log(message);
 
-        if (message.author === currentConversation.holder.id) {
-            avatar = currentConversation.holder.information.avatar;
-            name = currentConversation.holder.firstName + " " + currentConversation.holder.lastName;
-        }
-        else
-        {
-            avatar = currentConversation.partner.information.avatar;
-            name = currentConversation.partner.firstName + " " + currentConversation.partner.lastName;
-        }
+        var list = $('.messages_list')[0];
+        insertMessage(list, message)
+        readMessage();
 
-        date = new Date();
-        $($('.messages_list')[0]).append(' <div class="card horizontal user_message" id=""> ' +
-            '<div class="message-image"><img src="' + avatar + '"></div> ' +
-            '<div class="message_text"> ' +
-            '<div class="author_name"><b>'+ name +'</b></div> ' +
-            '<div class="time">' + date.toTimeString().substring(0, 8) + date.toDateString() + '</div>' +
-            '<div class="message"> '+ message.message +' </div> ' +
-            '</div> ' +
-            '</div>');
-
-        list = $('.messages_list')[0];
-        list.scrollTop = list.scrollHeight;
 })
 }
 
 function insertMessage(list, value) {
+
+
     if (value.author == currentConversation.holder.id)
     {
         avatar = currentConversation.holder.information.avatar;
@@ -124,10 +116,8 @@ function insertMessage(list, value) {
     }
 
     time = new Date(value.time);
-    readed = (value.read) ? "" : "unread";
 
-
-    $(list).prepend(' <div class="card horizontal user_message '+ readed +'" id="'+ value.id +'"> ' +
+    $(list).append(' <div class="card horizontal user_message"  id="'+ value.id +'"> ' +
         '<div class="message-image"><img src="' + avatar + '"></div> ' +
         '<div class="message_text"> ' +
         '<div class="author_name"><b>'+ name +'</b></div> ' +
@@ -136,21 +126,17 @@ function insertMessage(list, value) {
         '</div> ' +
         '</div>');
 
+
+    list.scrollTop = list.scrollHeight;
 }
 
-function readMessage(message)
+function readMessage()
 {
-    $(message).removeClass('unread');
-    console.log(message);
-    data = {
-        messageId : message.id
-    };
 
     $.ajax(
         {
             type: "POST",
             url: home + "/chat/read",
-            data: data,
             success: function (json) {
 
             }

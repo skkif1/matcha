@@ -5,7 +5,6 @@ var userPageContext;
 
 $(document).ready(function(){
     buildPage();
-    buildUserPageContext();
     $('.carousel').carousel();
 });
 
@@ -82,32 +81,6 @@ function buildPage() {
         }
     );
 }
-
-
-function buildUserPageContext()
-{
-    $.ajax(
-        {
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            type: "POST",
-            dataType: "json",
-            url: home + '/context',
-            success: function (context) {
-                userPageContext = context;
-                if (context.permissionForSearch === true)
-                {
-
-                }else {
-                    Materialize.toast("You need fill minimum requaired information about yourself.\n" +
-                        "To have full access for application", 7000)
-                }
-            }
-        })
-}
-
 
 function buildAcountPage(context)
 {
