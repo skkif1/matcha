@@ -7,7 +7,6 @@
       <root url="jar://$PROJECT_DIR$/lib/spring-web-4.3.9.RELEASE.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/spring-webmvc-4.3.9.RELEASE.jar!/" />
       <root url="jar://$USER_HOME$/java/jar/jstl-1.2.jar!/" />
-      <root url="jar://$USER_HOME$/java/jar/jackson-mapper-asl-1.9.13.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>

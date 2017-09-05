@@ -1,18 +1,19 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
 <html>
 <head>
-    <title>search</title>
+    <title>we recomend you</title>
     <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Faustina|Saira+Semi+Condensed" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/css/materialize.css">
-    <link href="<c:url value="/resources/css/search.css"/>" rel="stylesheet">
     <link href="<c:url value="/resources/css/header.css" />" rel="stylesheet">
+    <link href="<c:url value="/resources/css/search.css"/>" rel="stylesheet">
     <link href="<c:url value="/resources/css/sideBar.css" />" rel="stylesheet">
     <link rel="shortcut icon" href="<c:url value="/resources/favicon.ico"/>" type="image/x-icon"/>
+
+
 
 </head>
 <body>
@@ -28,10 +29,10 @@
             <nav>
                 <div class="nav-wrapper sort">
                     <ul class="sort_creeterea">
-                        <li><a onclick="sortUsersList(event, 'searched')" name="age">age</a></li>
-                        <li><a onclick="sortUsersList(event, 'searched')" name="location">location</a></li>
-                        <li><a onclick="sortUsersList(event, 'searched')" name="rating">rating</a></li>
-                        <li><a onclick="sortUsersList(event, 'searched')" name="interests">interests</a></li>
+                        <li><a onclick="sortUsersList(event)" name="age">age</a></li>
+                        <li><a onclick="sortUsersList(event)" name="location">location</a></li>
+                        <li><a onclick="sortUsersList(event)" name="rating">rating</a></li>
+                        <li><a onclick="sortUsersList(event)" name="interests">interests</a></li>
                     </ul>
                 </div>
             </nav>
@@ -67,15 +68,17 @@
                 </div>
             </div>
             <div class="button_wrapper">
-                <a class="waves-effect waves-light btn" onclick="searchRequest('/search/searchForUsers')">find</a>
+                <a class="waves-effect waves-light btn" onclick="searchRequest('/search/filter')">filter</a>
             </div>
-            <div id="tip"></div>
-        </div>
-    <div class="result">
-        <ul class="collection" id="result_collection">
+            <div id="tip">
 
-        </ul>
-    </div>
+            </div>
+        </div>
+        <div class="result">
+            <ul class="collection" id="result_collection">
+
+            </ul>
+        </div>
     </div>
 
 </div>

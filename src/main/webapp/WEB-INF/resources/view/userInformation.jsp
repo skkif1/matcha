@@ -27,7 +27,8 @@
 
     <%@include file="side_bar.jsp" %>
 
-        <div id="user_info" class="info scale-transition">
+    <div class="info scale-transition">
+        <div id="user_info">
             <div class="input-field col s6">
                 <i class="material-icons prefix">account_circle</i>
 
@@ -100,6 +101,7 @@
             </div>
             <button id="edit_info" class="waves-effect waves-light btn" onclick="changeUserInfo()">save</button>
         </div>
+    </div>
     <div class="user_photo scale-transition">
 
         <div class="carousel">
