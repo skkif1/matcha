@@ -33,6 +33,13 @@ body
     height: 90%;
 }
 
+.conversation_list
+{
+
+    color: #9e9e9e;
+    text-align: center;
+}
+
 .collection-item
 {
     display: flex;
@@ -73,6 +80,13 @@ body
     padding: 10px 0;
     width: 100%;
     overflow: scroll;
+}
+
+.messages_list section
+{
+    text-align: center;
+    width: 100%;
+    color: #9e9e9e;
 }
 
 .card

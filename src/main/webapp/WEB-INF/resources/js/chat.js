@@ -68,6 +68,9 @@ function getMessages(event) {
             var hiden = $("#hiden_message");
             findConversationOnView(id);
 
+            if (json.data.mess.length === 0)
+                $(list).append('<section>You have no messages yet</section>');
+
             for (i = 0; i < json.data.mess.length; i++) {
                 insertMessage(list, json.data.mess[i]);
 
@@ -97,7 +100,6 @@ function insertMessage(list, value, notification) {
 
 
     if (value.author == currentConversation.holder.id) {
-        console.log(currentConversation.holder.information.avatar);
         avatar = (currentConversation.holder.information.avatar === null) ? 'http://localhost:8081/cdn/general/User.png'
             :currentConversation.holder.information.avatar;
         name = currentConversation.holder.firstName + " " + currentConversation.holder.lastName;
@@ -123,6 +125,7 @@ function insertMessage(list, value, notification) {
     else
         $(list).prepend(messageText);
 
+    $('.messages_list section').remove();
 
     list.scrollTop = list.scrollHeight;
 }
@@ -157,6 +160,12 @@ function getConversations() {
 
                 if (json.status === "OK") {
                     conversations = json.data;
+
+                    if (conversations.length === 0)
+                    {
+                        $('.conversation_list').append('<span>you have no conversations yet <br> conversation will open after connection</span>');
+                    }
+
                     for (i = 0; i < json.data.length; i++) {
                         var conversation = $("#hiden_conversation").clone();
                         json.data[i].partner.information.avatar = (json.data[i].partner.information.avatar === null) ?

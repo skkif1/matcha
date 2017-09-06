@@ -7,8 +7,6 @@
           <element id="module-output" name="matcha" />
         </element>
         <element id="directory" name="lib">
-          <element id="library" level="project" name="Spring-4.3.9.RELEASE" />
-          <element id="library" level="project" name="Spring MVC-4.3.9.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-webmvc:4.3.10.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-aop:4.3.10.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-beans:4.3.10.RELEASE" />
@@ -33,14 +31,17 @@
           <element id="library" level="project" name="Maven: org.codehaus.jackson:jackson-mapper-asl:1.9.13" />
           <element id="library" level="project" name="Maven: org.codehaus.jackson:jackson-core-asl:1.9.13" />
           <element id="library" level="project" name="Maven: org.freemarker:freemarker:2.3.26-incubating" />
-          <element id="library" level="project" name="Maven: javax.mail:javax.mail-api:1.6.0" />
           <element id="library" level="project" name="Maven: jstl:jstl:1.2" />
+          <element id="library" level="project" name="Maven: com.sun.mail:javax.mail:1.6.0" />
+          <element id="library" level="project" name="Maven: javax.activation:activation:1.1.1" />
+          <element id="library" level="project" name="Maven: javax.mail:javax.mail-api:1.5.6" />
+          <element id="library" level="project" name="Maven: javax.mail:mailapi:1.4.3" />
         </element>
         <element id="directory" name="properties">
-          <element id="dir-copy" path="$USER_HOME$/Desktop/matcha/src/main/webapp/WEB-INF/properties" />
+          <element id="dir-copy" path="$PROJECT_DIR$/src/main/webapp/WEB-INF/properties" />
         </element>
         <element id="directory" name="resources">
-          <element id="dir-copy" path="$USER_HOME$/Desktop/matcha/src/main/webapp/WEB-INF/resources" />
+          <element id="dir-copy" path="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources" />
         </element>
       </element>
     </root>
