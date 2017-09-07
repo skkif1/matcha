@@ -40,22 +40,22 @@
                 <div class="creeterea">
                     <label>age</label>
                     <div class="input-field col s6">
-                        <input placeholder="min age" id="age_min" type="text" class="validate">
+                        <input placeholder="min age" id="age_min" type="text" class="validate" maxlength="2">
                     </div>
                     <div class="input-field col s6">
-                        <input placeholder="max age" id="age_max" type="text" class="validate">
+                        <input placeholder="max age" id="age_max" type="text" class="validate" maxlength="2">
                     </div>
                 </div>
                 <div class="creeterea">
                     <label>location range</label>
                     <div class="input-field col s6">
-                        <input placeholder="location" id="location" type="text" class="validate">
+                        <input placeholder="location" id="location" type="text" class="validate" maxlength="4">
                     </div>
                 </div>
                 <div class="creeterea">
                     <label>rating</label>
                     <div class="input-field col s6">
-                        <input placeholder="min rating" id="rating" type="text" class="validate">
+                        <input placeholder="min rating" id="rating" type="text" class="validate" maxlength="4">
                     </div>
                 </div>
                 <div class="creeterea">

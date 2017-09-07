@@ -9,11 +9,6 @@ import org.springframework.web.servlet.NoHandlerFoundException;
 public class GlobalExceptionHandler
 {
 
-    @ExceptionHandler(Exception.class)
-    public String handle500(Exception e) {
-        return "userPage";
-    }
-
     @ExceptionHandler(NoHandlerFoundException.class)
     public ModelAndView handle400(Exception e)
     {

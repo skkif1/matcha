@@ -54,11 +54,12 @@ function addUserToList(list, user) {
 }
 
 function searchRequest(url) {
-    var minAge = $('#age_min').val();
-    var maxAge = $('#age_max').val();
-    var location = $('#location').val();
-    var rate = $('#rating').val();
+    var minAge = $('#age_min').val().replace(/\ /g, '');
+    var maxAge = $('#age_max').val().replace(/\ /g, '');
+    var location = $('#location').val().replace(/\ /g, '');
+    var rate = $('#rating').val().replace(/\ /g, '');
     var interests = [];
+
 
     $('.chip').each(function (index, data) {
         var interest = $(data).text().trim();

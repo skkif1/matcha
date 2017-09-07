@@ -1,5 +1,9 @@
 function validateUserName(input) {
     input = $(input);
+
+    if (input.val().trim() === '')
+        return false;
+
     req = new RegExp("^[a-zA-Z0-9_-]{3,32}$");
     if (!req.test(input.val())) {
 
@@ -17,6 +21,9 @@ function validateUserName(input) {
 function validateEmail(input) {
     input = $(input);
 
+    if (input.val().trim() === '')
+        return false;
+
     if (input.val().length < 3 || input.val().length > 255) {
 
         removeToast();
@@ -31,6 +38,10 @@ function validateEmail(input) {
 
 function validatePassword(input) {
     input = $(input);
+
+    if (input.val().trim() === '')
+        return false;
+
     reg = new RegExp("^(?=.*[a-z])(?=.*[0-9])(?=.{8,})");
     if (!reg.test(input.val())) {
 
