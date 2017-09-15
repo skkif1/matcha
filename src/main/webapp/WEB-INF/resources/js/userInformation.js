@@ -106,6 +106,7 @@ function uploadPhoto() {
     var amount = $('.standart');
     var form = new FormData();
 
+
     if (amount.length === 0) {
 
         var $toastContent = $('<section>You can download 5 photo with max size of 10MB</section>').mouseover(function () {
